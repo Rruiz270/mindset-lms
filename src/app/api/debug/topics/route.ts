@@ -5,29 +5,27 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
   try {
     const topics = await prisma.topic.findMany({
-      orderBy: [{ level: 'asc' }, { orderIndex: 'asc' }],
+      orderBy: { orderIndex: 'asc' },
       select: {
         id: true,
         name: true,
         level: true,
-        orderIndex: true,
-        _count: {
-          select: {
-            exercises: true
-          }
-        }
+        orderIndex: true
       }
     })
 
+    const exerciseCounts = await Promise.all(
+      topics.map(async (topic) => {
+        const count = await prisma.exercise.count({
+          where: { topicId: topic.id }
+        })
+        return { ...topic, exerciseCount: count }
+      })
+    )
+
     return NextResponse.json({
       total: topics.length,
-      topics: topics.map(topic => ({
-        id: topic.id,
-        name: topic.name,
-        level: topic.level,
-        orderIndex: topic.orderIndex,
-        exerciseCount: topic._count.exercises
-      }))
+      topics: exerciseCounts
     })
   } catch (error) {
     console.error('Debug topics error:', error)
