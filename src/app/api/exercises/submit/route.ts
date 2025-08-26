@@ -41,24 +41,37 @@ export async function POST(request: NextRequest) {
     let score = 0
     let feedback = ''
 
-    if (exercise.type === 'MULTIPLE_CHOICE' || exercise.type === 'TRUE_FALSE') {
-      const isCorrect = JSON.stringify(answer) === JSON.stringify(exercise.correctAnswer)
+    if (exercise.type === 'MULTIPLE_CHOICE') {
+      const isCorrect = answer === exercise.correctAnswer
       score = isCorrect ? exercise.points : 0
-      feedback = isCorrect ? 'Correct!' : 'Incorrect. Try again!'
+      feedback = isCorrect ? '✅ Correct! Well done!' : `❌ Incorrect. The correct answer was option ${exercise.correctAnswer}.`
+    } else if (exercise.type === 'TRUE_FALSE') {
+      const isCorrect = answer === exercise.correctAnswer
+      score = isCorrect ? exercise.points : 0
+      feedback = isCorrect ? '✅ Correct! Great job!' : `❌ Incorrect. The correct answer was ${exercise.correctAnswer ? 'True' : 'False'}.`
     } else if (exercise.type === 'GAP_FILL') {
-      // For gap fill, we compare each answer
-      const correctAnswers = exercise.correctAnswer as string[]
-      const userAnswers = answer as string[]
-      let correctCount = 0
-      
-      userAnswers.forEach((userAnswer, index) => {
-        if (userAnswer.toLowerCase().trim() === correctAnswers[index]?.toLowerCase().trim()) {
-          correctCount++
-        }
-      })
-      
-      score = Math.round((correctCount / correctAnswers.length) * exercise.points)
-      feedback = `You got ${correctCount}/${correctAnswers.length} correct.`
+      // For gap fill, handle both single answer and array formats
+      if (typeof exercise.correctAnswer === 'string') {
+        // Single answer format (our seeded data)
+        const userAnswer = typeof answer === 'string' ? answer : answer[0]
+        const isCorrect = userAnswer?.toLowerCase().trim() === exercise.correctAnswer.toLowerCase().trim()
+        score = isCorrect ? exercise.points : 0
+        feedback = isCorrect ? '✅ Perfect!' : `❌ Incorrect. The correct answer is "${exercise.correctAnswer}".`
+      } else {
+        // Array format (legacy)
+        const correctAnswers = exercise.correctAnswer as string[]
+        const userAnswers = answer as string[]
+        let correctCount = 0
+        
+        userAnswers.forEach((userAnswer, index) => {
+          if (userAnswer.toLowerCase().trim() === correctAnswers[index]?.toLowerCase().trim()) {
+            correctCount++
+          }
+        })
+        
+        score = Math.round((correctCount / correctAnswers.length) * exercise.points)
+        feedback = `You got ${correctCount}/${correctAnswers.length} correct.`
+      }
     } else {
       // For essay and other open-ended questions, give partial credit for now
       score = Math.round(exercise.points * 0.8) // 80% for attempting

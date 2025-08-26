@@ -115,6 +115,36 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
                 <p className="text-sm leading-relaxed">{exercise.content.text}</p>
               </div>
             )}
+            
+            {/* Handle single question format (our seeded data) */}
+            {exercise.content.question && exercise.content.options && (
+              <div className="space-y-3">
+                <p className="font-medium text-lg">{exercise.content.question}</p>
+                <div className="space-y-2">
+                  {exercise.content.options.map((option: string, optIndex: number) => (
+                    <label key={optIndex} className="flex items-center space-x-3 cursor-pointer p-3 hover:bg-gray-50 rounded-lg border border-gray-200">
+                      <input
+                        type="radio"
+                        name={`question-${exercise.id}`}
+                        value={optIndex}
+                        checked={answer === optIndex}
+                        onChange={(e) => handleAnswerChange(exercise.id, parseInt(e.target.value))}
+                        disabled={!!submission}
+                        className="text-blue-600 w-4 h-4"
+                      />
+                      <span className={`flex-1 ${submission && exercise.correctAnswer === optIndex ? 'text-green-600 font-medium' : ''}`}>
+                        {option}
+                      </span>
+                      {submission && exercise.correctAnswer === optIndex && (
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                      )}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Handle multiple questions format (legacy) */}
             {exercise.content.questions?.map((question: any, qIndex: number) => (
               <div key={qIndex} className="space-y-3">
                 <p className="font-medium">{question.question}</p>
@@ -142,6 +172,50 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
       case 'TRUE_FALSE':
         return (
           <div className="space-y-4">
+            {/* Handle single statement format (our seeded data) */}
+            {exercise.content.statement && (
+              <div className="space-y-3">
+                <p className="font-medium text-lg">{exercise.content.statement}</p>
+                <div className="space-y-3">
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 hover:bg-gray-50 rounded-lg border border-gray-200">
+                    <input
+                      type="radio"
+                      name={`question-${exercise.id}`}
+                      value="true"
+                      checked={answer === true}
+                      onChange={() => handleAnswerChange(exercise.id, true)}
+                      disabled={!!submission}
+                      className="text-blue-600 w-4 h-4"
+                    />
+                    <span className={`flex-1 ${submission && exercise.correctAnswer === true ? 'text-green-600 font-medium' : ''}`}>
+                      True
+                    </span>
+                    {submission && exercise.correctAnswer === true && (
+                      <CheckCircle className="h-5 w-5 text-green-600" />
+                    )}
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer p-3 hover:bg-gray-50 rounded-lg border border-gray-200">
+                    <input
+                      type="radio"
+                      name={`question-${exercise.id}`}
+                      value="false"
+                      checked={answer === false}
+                      onChange={() => handleAnswerChange(exercise.id, false)}
+                      disabled={!!submission}
+                      className="text-blue-600 w-4 h-4"
+                    />
+                    <span className={`flex-1 ${submission && exercise.correctAnswer === false ? 'text-green-600 font-medium' : ''}`}>
+                      False
+                    </span>
+                    {submission && exercise.correctAnswer === false && (
+                      <CheckCircle className="h-5 w-5 text-green-600" />
+                    )}
+                  </label>
+                </div>
+              </div>
+            )}
+
+            {/* Handle multiple questions format (legacy) */}
             {exercise.content.questions?.map((question: any, qIndex: number) => (
               <div key={qIndex} className="space-y-3">
                 <p className="font-medium">{question.statement}</p>
@@ -187,11 +261,53 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
       case 'GAP_FILL':
         return (
           <div className="space-y-4">
-            {exercise.content.text && (
-              <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                <p className="text-sm leading-relaxed">{exercise.content.text}</p>
+            {/* Handle single sentence format (our seeded data) */}
+            {exercise.content.sentence && (
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <p className="font-medium text-lg mb-2">Fill in the blank:</p>
+                  <p className="text-gray-800 text-lg">{exercise.content.sentence}</p>
+                  {exercise.content.hint && (
+                    <p className="text-sm text-gray-600 mt-2 italic">Hint: {exercise.content.hint}</p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Input
+                    placeholder="Type your answer here..."
+                    value={answer || ''}
+                    onChange={(e) => handleAnswerChange(exercise.id, e.target.value)}
+                    disabled={!!submission}
+                    className={`text-lg p-4 ${submission ? (submission.score > 0 ? 'border-green-500 bg-green-50' : 'border-red-500 bg-red-50') : ''}`}
+                  />
+                  {submission && (
+                    <div className="text-sm">
+                      <p className={submission.score > 0 ? 'text-green-600' : 'text-red-600'}>
+                        Correct answer: <span className="font-medium">{exercise.correctAnswer}</span>
+                      </p>
+                    </div>
+                  )}
+                </div>
+                {exercise.content.options && (
+                  <div className="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+                    <p className="text-sm font-medium mb-2 text-yellow-800">Multiple choice options:</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {exercise.content.options.map((option: string, idx: number) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleAnswerChange(exercise.id, option)}
+                          disabled={!!submission}
+                          className="text-sm px-3 py-2 bg-white border border-yellow-300 rounded hover:bg-yellow-50 disabled:opacity-50"
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
+
+            {/* Handle multiple sentences format (legacy) */}
             {exercise.content.sentences?.map((sentence: string, sIndex: number) => (
               <div key={sIndex} className="space-y-2">
                 <p className="font-medium">Fill in the blank:</p>
@@ -369,19 +485,47 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
             Previous
           </Button>
 
-          {!submissions[currentExercise.id] && answers[currentExercise.id] && (
-            <Button onClick={() => handleSubmitExercise(currentExercise)}>
-              Submit Answer
-            </Button>
-          )}
+          <div className="flex space-x-2">
+            {!submissions[currentExercise.id] && answers[currentExercise.id] !== undefined && (
+              <Button 
+                onClick={() => handleSubmitExercise(currentExercise)}
+                className="bg-blue-600 hover:bg-blue-700"
+              >
+                Submit Answer
+              </Button>
+            )}
+
+            {!answers[currentExercise.id] && !submissions[currentExercise.id] && (
+              <Button 
+                variant="outline" 
+                disabled
+                className="text-gray-400"
+              >
+                Answer Required
+              </Button>
+            )}
+          </div>
 
           <Button
             disabled={currentIndex === exercises.length - 1}
             onClick={() => setCurrentIndex(currentIndex + 1)}
+            variant={currentIndex === exercises.length - 1 ? "outline" : "default"}
           >
-            Next
+            {currentIndex === exercises.length - 1 ? 'Complete' : 'Next'}
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>
+        </div>
+
+        {/* Progress Summary */}
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-600">
+              Progress: {Object.keys(submissions).length}/{exercises.length} completed
+            </span>
+            <span className="text-gray-600">
+              Total Points: {Object.values(submissions).reduce((sum: number, sub: any) => sum + (sub.score || 0), 0)} / {exercises.reduce((sum, ex) => sum + ex.points, 0)}
+            </span>
+          </div>
         </div>
       </div>
     </div>
