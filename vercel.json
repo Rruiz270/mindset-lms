@@ -1,0 +1,8 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run db:generate && npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "NEXTAUTH_URL": "https://mindset-lms.vercel.app"
+  }
+}
