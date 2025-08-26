@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Progress } from '@/components/ui/progress'
-import { ArrowLeft, ArrowRight, CheckCircle, Clock } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, Clock, Play, Pause, Mic, MicOff, Volume2 } from 'lucide-react'
 
 interface Exercise {
   id: string
@@ -36,6 +36,11 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
   const [answers, setAnswers] = useState<{[key: string]: any}>({})
   const [submissions, setSubmissions] = useState<{[key: string]: any}>({})
   const [loading, setLoading] = useState(true)
+  const [isPlaying, setIsPlaying] = useState<{[key: string]: boolean}>({})
+  const [isRecording, setIsRecording] = useState<{[key: string]: boolean}>({})
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
+  const [audioBlob, setAudioBlob] = useState<{[key: string]: Blob | null}>({})
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -76,29 +81,132 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
 
   const handleSubmitExercise = async (exercise: Exercise) => {
     const answer = answers[exercise.id]
-    if (!answer) return
+    if (!answer && !audioBlob[exercise.id]) return
 
     try {
-      const response = await fetch('/api/exercises/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          exerciseId: exercise.id,
-          answer
+      // For speaking exercises with audio recording
+      if (exercise.type === 'AUDIO_RECORDING' && audioBlob[exercise.id]) {
+        const formData = new FormData()
+        formData.append('exerciseId', exercise.id)
+        formData.append('audio', audioBlob[exercise.id]!, 'recording.wav')
+        
+        const response = await fetch('/api/exercises/submit-audio', {
+          method: 'POST',
+          body: formData
         })
-      })
 
-      if (response.ok) {
-        const result = await response.json()
-        setSubmissions(prev => ({
-          ...prev,
-          [exercise.id]: result
-        }))
+        if (response.ok) {
+          const result = await response.json()
+          setSubmissions(prev => ({
+            ...prev,
+            [exercise.id]: result
+          }))
+        }
+      } else {
+        // Regular text-based submissions
+        const response = await fetch('/api/exercises/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            exerciseId: exercise.id,
+            answer
+          })
+        })
+
+        if (response.ok) {
+          const result = await response.json()
+          setSubmissions(prev => ({
+            ...prev,
+            [exercise.id]: result
+          }))
+        }
       }
     } catch (error) {
       console.error('Error submitting exercise:', error)
+    }
+  }
+
+  const handlePlayAudio = (exerciseId: string, audioText?: string) => {
+    // Stop current audio if playing
+    if (currentAudio) {
+      currentAudio.pause()
+      currentAudio.currentTime = 0
+    }
+
+    // For demo purposes, use text-to-speech
+    if (audioText && 'speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(audioText)
+      utterance.rate = 0.8
+      utterance.pitch = 1
+      
+      setIsPlaying(prev => ({ ...prev, [exerciseId]: true }))
+      
+      utterance.onend = () => {
+        setIsPlaying(prev => ({ ...prev, [exerciseId]: false }))
+      }
+      
+      speechSynthesis.speak(utterance)
+    }
+  }
+
+  const handleStopAudio = (exerciseId: string) => {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel()
+    }
+    if (currentAudio) {
+      currentAudio.pause()
+      currentAudio.currentTime = 0
+    }
+    setIsPlaying(prev => ({ ...prev, [exerciseId]: false }))
+  }
+
+  const handleStartRecording = async (exerciseId: string) => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const recorder = new MediaRecorder(stream)
+      const audioChunks: BlobPart[] = []
+
+      recorder.ondataavailable = (event) => {
+        audioChunks.push(event.data)
+      }
+
+      recorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' })
+        setAudioBlob(prev => ({ ...prev, [exerciseId]: audioBlob }))
+        setAnswers(prev => ({ ...prev, [exerciseId]: 'audio_recorded' }))
+        stream.getTracks().forEach(track => track.stop())
+      }
+
+      recorder.start()
+      setMediaRecorder(recorder)
+      setIsRecording(prev => ({ ...prev, [exerciseId]: true }))
+    } catch (error) {
+      console.error('Error starting recording:', error)
+      alert('Unable to access microphone. Please check your browser permissions.')
+    }
+  }
+
+  const handleStopRecording = (exerciseId: string) => {
+    if (mediaRecorder) {
+      mediaRecorder.stop()
+      setMediaRecorder(null)
+      setIsRecording(prev => ({ ...prev, [exerciseId]: false }))
+    }
+  }
+
+  const handlePlayRecording = (exerciseId: string) => {
+    if (audioBlob[exerciseId]) {
+      const audio = new Audio(URL.createObjectURL(audioBlob[exerciseId]!))
+      audio.play()
+      setCurrentAudio(audio)
+      setIsPlaying(prev => ({ ...prev, [exerciseId]: true }))
+      
+      audio.onended = () => {
+        setIsPlaying(prev => ({ ...prev, [exerciseId]: false }))
+        setCurrentAudio(null)
+      }
     }
   }
 
@@ -358,6 +466,175 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
           </div>
         )
 
+      case 'AUDIO_QUIZ':
+      case 'LISTENING':
+        return (
+          <div className="space-y-4">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <div className="flex items-center justify-between mb-3">
+                <p className="font-medium text-lg">🎧 Listening Exercise</p>
+                <div className="flex space-x-2">
+                  {!isPlaying[exercise.id] ? (
+                    <Button
+                      onClick={() => handlePlayAudio(exercise.id, exercise.content.transcript || exercise.content.question)}
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
+                      <Play className="h-4 w-4" />
+                      <span>Play Audio</span>
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => handleStopAudio(exercise.id)}
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
+                      <Pause className="h-4 w-4" />
+                      <span>Stop</span>
+                    </Button>
+                  )}
+                </div>
+              </div>
+              {exercise.content.transcript && (
+                <div className="text-sm text-gray-600 border-l-4 border-blue-300 pl-3">
+                  <p className="italic">Audio transcript: "{exercise.content.transcript}"</p>
+                </div>
+              )}
+            </div>
+            
+            {/* Multiple choice question for listening */}
+            {exercise.content.question && exercise.content.options && (
+              <div className="space-y-3">
+                <p className="font-medium text-lg">{exercise.content.question}</p>
+                <div className="space-y-2">
+                  {exercise.content.options.map((option: string, optIndex: number) => (
+                    <label key={optIndex} className="flex items-center space-x-3 cursor-pointer p-3 hover:bg-gray-50 rounded-lg border border-gray-200">
+                      <input
+                        type="radio"
+                        name={`question-${exercise.id}`}
+                        value={optIndex}
+                        checked={answer === optIndex}
+                        onChange={(e) => handleAnswerChange(exercise.id, parseInt(e.target.value))}
+                        disabled={!!submission}
+                        className="text-blue-600 w-4 h-4"
+                      />
+                      <span className={`flex-1 ${submission && exercise.correctAnswer === optIndex ? 'text-green-600 font-medium' : ''}`}>
+                        {option}
+                      </span>
+                      {submission && exercise.correctAnswer === optIndex && (
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                      )}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )
+
+      case 'AUDIO_RECORDING':
+      case 'PRONUNCIATION':
+        return (
+          <div className="space-y-4">
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+              <div className="flex items-center mb-3">
+                <Mic className="h-6 w-6 text-green-600 mr-2" />
+                <p className="font-medium text-lg">🎤 Speaking Exercise</p>
+              </div>
+              
+              {exercise.content.question && (
+                <p className="text-gray-800 mb-3">{exercise.content.question}</p>
+              )}
+              
+              {exercise.content.prompts && (
+                <div className="space-y-2 mb-4">
+                  <p className="font-medium text-sm">Practice saying:</p>
+                  {exercise.content.prompts.map((prompt: string, idx: number) => (
+                    <div key={idx} className="bg-white p-2 rounded border border-green-200">
+                      <p className="text-gray-700">• {prompt}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {exercise.content.options && (
+                <div className="space-y-2 mb-4">
+                  <p className="font-medium text-sm">Choose the best response:</p>
+                  {exercise.content.options.map((option: string, optIndex: number) => (
+                    <label key={optIndex} className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-white rounded border border-green-200">
+                      <input
+                        type="radio"
+                        name={`question-${exercise.id}`}
+                        value={optIndex}
+                        checked={answer === optIndex}
+                        onChange={(e) => handleAnswerChange(exercise.id, parseInt(e.target.value))}
+                        disabled={!!submission}
+                        className="text-green-600 w-4 h-4"
+                      />
+                      <span className={`flex-1 ${submission && exercise.correctAnswer === optIndex ? 'text-green-600 font-medium' : ''}`}>
+                        {option}
+                      </span>
+                      {submission && exercise.correctAnswer === optIndex && (
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                      )}
+                    </label>
+                  ))}
+                </div>
+              )}
+
+              {/* Recording controls */}
+              <div className="flex items-center space-x-3 mt-4 p-3 bg-white rounded border border-green-200">
+                {!isRecording[exercise.id] ? (
+                  <Button
+                    onClick={() => handleStartRecording(exercise.id)}
+                    className="bg-green-600 hover:bg-green-700"
+                    disabled={!!submission}
+                  >
+                    <Mic className="h-4 w-4 mr-2" />
+                    Start Recording
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={() => handleStopRecording(exercise.id)}
+                    className="bg-red-600 hover:bg-red-700"
+                  >
+                    <MicOff className="h-4 w-4 mr-2" />
+                    Stop Recording
+                  </Button>
+                )}
+
+                {audioBlob[exercise.id] && !isRecording[exercise.id] && (
+                  <Button
+                    onClick={() => handlePlayRecording(exercise.id)}
+                    variant="outline"
+                    className="flex items-center space-x-2"
+                  >
+                    <Volume2 className="h-4 w-4" />
+                    <span>Play Recording</span>
+                  </Button>
+                )}
+
+                {isRecording[exercise.id] && (
+                  <div className="flex items-center text-red-600">
+                    <div className="animate-pulse">
+                      <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                    </div>
+                    <span className="text-sm font-medium">Recording...</span>
+                  </div>
+                )}
+              </div>
+
+              {audioBlob[exercise.id] && (
+                <div className="mt-3 p-2 bg-green-100 rounded text-sm text-green-700">
+                  ✅ Recording completed! You can play it back or submit your answer.
+                </div>
+              )}
+            </div>
+          </div>
+        )
+
       default:
         return (
           <div className="text-center py-8">
@@ -486,22 +763,22 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
           </Button>
 
           <div className="flex space-x-2">
-            {!submissions[currentExercise.id] && answers[currentExercise.id] !== undefined && (
+            {!submissions[currentExercise.id] && (answers[currentExercise.id] !== undefined || audioBlob[currentExercise.id]) && (
               <Button 
                 onClick={() => handleSubmitExercise(currentExercise)}
                 className="bg-blue-600 hover:bg-blue-700"
               >
-                Submit Answer
+                {audioBlob[currentExercise.id] ? 'Submit Recording' : 'Submit Answer'}
               </Button>
             )}
 
-            {!answers[currentExercise.id] && !submissions[currentExercise.id] && (
+            {!answers[currentExercise.id] && !audioBlob[currentExercise.id] && !submissions[currentExercise.id] && (
               <Button 
                 variant="outline" 
                 disabled
                 className="text-gray-400"
               >
-                Answer Required
+                {currentExercise.type === 'AUDIO_RECORDING' ? 'Recording Required' : 'Answer Required'}
               </Button>
             )}
           </div>
