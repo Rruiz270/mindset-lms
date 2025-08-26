@@ -2,15 +2,19 @@
 
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from '@/components/layout/navbar'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { BookOpen, Clock, CheckCircle, ArrowLeft } from 'lucide-react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { BookOpen, Clock, CheckCircle, ArrowLeft, Play } from 'lucide-react'
 
 export default function StudentExercises() {
   const { data: session, status } = useSession()
   const router = useRouter()
+  const [topics, setTopics] = useState<any[]>([])
+  const [selectedTopic, setSelectedTopic] = useState<string>('')
+  const [exerciseCounts, setExerciseCounts] = useState<{[key: string]: number}>({})
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -19,6 +23,62 @@ export default function StudentExercises() {
       router.push('/dashboard')
     }
   }, [status, session, router])
+
+  useEffect(() => {
+    // Fetch topics for student's level
+    const fetchTopics = async () => {
+      if (!session?.user?.level) return
+      
+      try {
+        const response = await fetch(`/api/topics?level=${session.user.level}`)
+        if (response.ok) {
+          const topicsData = await response.json()
+          setTopics(topicsData)
+          if (topicsData.length > 0) {
+            setSelectedTopic(topicsData[0].id)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching topics:', error)
+      }
+    }
+
+    if (session?.user?.level) {
+      fetchTopics()
+    }
+  }, [session?.user?.level])
+
+  useEffect(() => {
+    // Fetch exercise counts for each category
+    const fetchExerciseCounts = async () => {
+      if (!selectedTopic) return
+
+      try {
+        const categories = ['READING', 'WRITING', 'LISTENING', 'SPEAKING', 'GRAMMAR', 'VOCABULARY']
+        const counts: {[key: string]: number} = {}
+
+        for (const category of categories) {
+          const response = await fetch(`/api/exercises/${selectedTopic}?phase=PRE_CLASS&category=${category}`)
+          if (response.ok) {
+            const exercises = await response.json()
+            counts[category] = exercises.length
+          }
+        }
+        
+        setExerciseCounts(counts)
+      } catch (error) {
+        console.error('Error fetching exercise counts:', error)
+      }
+    }
+
+    fetchExerciseCounts()
+  }, [selectedTopic])
+
+  const handleStartExercises = (category: string) => {
+    if (selectedTopic) {
+      router.push(`/student/exercises/${selectedTopic}?category=${category}`)
+    }
+  }
 
   if (status === 'loading') {
     return (
@@ -31,6 +91,15 @@ export default function StudentExercises() {
   if (!session?.user || session.user.role !== 'STUDENT') {
     return null
   }
+
+  const exerciseCategories = [
+    { key: 'READING', name: 'Reading', icon: BookOpen, description: 'Improve your reading comprehension skills' },
+    { key: 'WRITING', name: 'Writing', icon: BookOpen, description: 'Practice your writing skills' },
+    { key: 'LISTENING', name: 'Listening', icon: BookOpen, description: 'Enhance your listening comprehension' },
+    { key: 'SPEAKING', name: 'Speaking', icon: BookOpen, description: 'Practice pronunciation and speaking' },
+    { key: 'GRAMMAR', name: 'Grammar', icon: BookOpen, description: 'Master grammar rules and structures' },
+    { key: 'VOCABULARY', name: 'Vocabulary', icon: BookOpen, description: 'Expand your vocabulary knowledge' }
+  ]
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -54,134 +123,71 @@ export default function StudentExercises() {
           </p>
         </div>
 
+        {/* Topic Selection */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Select Topic</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Select value={selectedTopic} onValueChange={setSelectedTopic}>
+              <SelectTrigger>
+                <SelectValue placeholder="Choose a topic to practice" />
+              </SelectTrigger>
+              <SelectContent>
+                {topics.map((topic) => (
+                  <SelectItem key={topic.id} value={topic.id}>
+                    {topic.name} (Level: {session.user.level})
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </CardContent>
+        </Card>
+
         {/* Exercise Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Reading
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Improve your reading comprehension skills
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <CheckCircle className="h-5 w-5 text-green-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Reading
-              </Button>
-            </CardContent>
-          </Card>
+        {selectedTopic && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {exerciseCategories.map((category) => {
+              const Icon = category.icon
+              const count = exerciseCounts[category.key] || 0
+              const hasExercises = count > 0
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Writing
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Practice your writing skills
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <Clock className="h-5 w-5 text-yellow-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Writing
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Listening
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Enhance your listening comprehension
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <Clock className="h-5 w-5 text-yellow-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Listening
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Speaking
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Practice pronunciation and speaking
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <Clock className="h-5 w-5 text-yellow-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Speaking
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Grammar
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Master grammar rules and structures
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <Clock className="h-5 w-5 text-yellow-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Grammar
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
-                Vocabulary
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">
-                Expand your vocabulary knowledge
-              </p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm text-gray-500">3 exercises available</span>
-                <Clock className="h-5 w-5 text-yellow-500" />
-              </div>
-              <Button className="w-full" disabled>
-                Start Vocabulary
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+              return (
+                <Card key={category.key}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center">
+                      <Icon className="h-5 w-5 mr-2" />
+                      {category.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">
+                      {category.description}
+                    </p>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm text-gray-500">
+                        {count} exercise{count !== 1 ? 's' : ''} available
+                      </span>
+                      {hasExercises ? (
+                        <CheckCircle className="h-5 w-5 text-green-500" />
+                      ) : (
+                        <Clock className="h-5 w-5 text-gray-400" />
+                      )}
+                    </div>
+                    <Button 
+                      className="w-full" 
+                      disabled={!hasExercises}
+                      onClick={() => handleStartExercises(category.key)}
+                    >
+                      <Play className="h-4 w-4 mr-2" />
+                      Start {category.name}
+                    </Button>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        )}
 
         {/* Progress Summary */}
         <Card>
@@ -190,16 +196,28 @@ export default function StudentExercises() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="font-medium">Overall Progress</span>
-                <span className="text-sm text-gray-500">1/6 categories completed</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-green-600 h-2 rounded-full" style={{ width: '16.7%' }}></div>
-              </div>
-              <p className="text-sm text-gray-600">
-                Complete all exercise categories before your next live class to maximize your learning.
-              </p>
+              {selectedTopic ? (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Current Topic Progress</span>
+                    <span className="text-sm text-gray-500">
+                      {topics.find(t => t.id === selectedTopic)?.name}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-6 gap-2 text-xs">
+                    {exerciseCategories.map((category) => (
+                      <div key={category.key} className="text-center">
+                        <div className="font-medium">{category.name}</div>
+                        <div className="text-gray-500">
+                          {exerciseCounts[category.key] || 0} exercises
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p className="text-gray-500">Select a topic to see available exercises.</p>
+              )}
             </div>
           </CardContent>
         </Card>
