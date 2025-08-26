@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
   try {
     const topics = await prisma.topic.findMany({
-      orderBy: { level: 'asc', orderIndex: 'asc' },
+      orderBy: [{ level: 'asc' }, { orderIndex: 'asc' }],
       select: {
         id: true,
         name: true,
