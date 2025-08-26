@@ -40,10 +40,11 @@ export default function StudentExercises() {
         }
       } catch (error) {
         console.error('Error fetching topics:', error)
+        setTopics([])
       }
     }
 
-    if (session?.user?.level) {
+    if (session?.user?.level && typeof window !== 'undefined') {
       fetchTopics()
     }
   }, [session?.user?.level])
@@ -68,10 +69,13 @@ export default function StudentExercises() {
         setExerciseCounts(counts)
       } catch (error) {
         console.error('Error fetching exercise counts:', error)
+        setExerciseCounts({})
       }
     }
 
-    fetchExerciseCounts()
+    if (selectedTopic && typeof window !== 'undefined') {
+      fetchExerciseCounts()
+    }
   }, [selectedTopic])
 
   const handleStartExercises = (category: string) => {

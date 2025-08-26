@@ -56,12 +56,13 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
         }
       } catch (error) {
         console.error('Error fetching exercises:', error)
+        setExercises([])
       } finally {
         setLoading(false)
       }
     }
 
-    if (params.topicId && category) {
+    if (params.topicId && category && typeof window !== 'undefined') {
       fetchExercises()
     }
   }, [params.topicId, category])

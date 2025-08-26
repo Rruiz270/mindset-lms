@@ -32,10 +32,11 @@ export default function StudentDashboard() {
         }
       } catch (error) {
         console.error('Error fetching package info:', error)
+        setPackageInfo(null)
       }
     }
 
-    if (session?.user?.id) {
+    if (session?.user?.id && typeof window !== 'undefined') {
       fetchPackageInfo()
     }
   }, [session?.user?.id])

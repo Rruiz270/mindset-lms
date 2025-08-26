@@ -37,11 +37,13 @@ export default function BookClassPage() {
           }
         } catch (error) {
           console.error('Error fetching topics:', error)
+          // Fallback during build or when API is unavailable
+          setTopics([])
         }
       }
     }
 
-    if (session?.user?.level) {
+    if (session?.user?.level && typeof window !== 'undefined') {
       fetchTopics()
     }
   }, [session?.user?.level])
