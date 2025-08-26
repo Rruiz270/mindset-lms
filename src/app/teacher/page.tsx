@@ -102,7 +102,7 @@ export default function TeacherDashboard() {
               <p className="text-gray-600 mb-4">
                 View and manage your teaching schedule
               </p>
-              <Button className="w-full" disabled>
+              <Button className="w-full" onClick={() => alert('Schedule management feature coming soon!')}>
                 View Schedule
               </Button>
             </CardContent>
@@ -119,7 +119,7 @@ export default function TeacherDashboard() {
               <p className="text-gray-600 mb-4">
                 View student progress and information
               </p>
-              <Button variant="outline" className="w-full" disabled>
+              <Button variant="outline" className="w-full" onClick={() => alert('Student management feature coming soon!')}>
                 View Students
               </Button>
             </CardContent>
@@ -136,7 +136,7 @@ export default function TeacherDashboard() {
               <p className="text-gray-600 mb-4">
                 Access slides and teaching materials
               </p>
-              <Button variant="outline" className="w-full" disabled>
+              <Button variant="outline" className="w-full" onClick={() => alert('Class materials feature coming soon!')}>
                 View Materials
               </Button>
             </CardContent>

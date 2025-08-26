@@ -59,7 +59,7 @@ export default function AdminDashboard() {
               <p className="text-gray-600 mb-4">
                 Add, edit, and manage student and teacher accounts
               </p>
-              <Button className="w-full" disabled>
+              <Button className="w-full" onClick={() => alert('User management feature coming soon!')}>
                 Manage Users
               </Button>
             </CardContent>
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
               <p className="text-gray-600 mb-4">
                 Manage topics, exercises, and course content
               </p>
-              <Button className="w-full" disabled>
+              <Button className="w-full" onClick={() => alert('Content management feature coming soon!')}>
                 Manage Content
               </Button>
             </CardContent>
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
               <p className="text-gray-600 mb-4">
                 View and manage class bookings and schedules
               </p>
-              <Button className="w-full" disabled>
+              <Button className="w-full" onClick={() => alert('Class scheduling feature coming soon!')}>
                 View Schedule
               </Button>
             </CardContent>
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
               <p className="text-gray-600 mb-4">
                 Configure system settings and preferences
               </p>
-              <Button className="w-full" disabled>
+              <Button className="w-full" onClick={() => alert('System settings feature coming soon!')}>
                 Settings
               </Button>
             </CardContent>
