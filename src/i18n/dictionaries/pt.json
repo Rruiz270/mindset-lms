@@ -1,0 +1,82 @@
+{
+  "common": {
+    "welcome": "Bem-vindo",
+    "logout": "Sair",
+    "login": "Entrar",
+    "register": "Registrar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "submit": "Enviar",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Senha",
+    "name": "Nome Completo",
+    "role": "Função",
+    "student": "Aluno",
+    "teacher": "Professor",
+    "admin": "Administrador",
+    "loginTitle": "Entrar no Mindset LMS",
+    "registerTitle": "Crie sua conta",
+    "forgotPassword": "Esqueceu a senha?",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "dontHaveAccount": "Não tem uma conta?"
+  },
+  "levels": {
+    "starter": "Iniciante",
+    "survivor": "Básico",
+    "explorer": "Intermediário",
+    "expert": "Avançado"
+  },
+  "dashboard": {
+    "title": "Painel",
+    "myClasses": "Minhas Aulas",
+    "upcomingClasses": "Próximas Aulas",
+    "completedClasses": "Aulas Concluídas",
+    "remainingLessons": "Aulas Restantes",
+    "bookClass": "Agendar Aula",
+    "viewSchedule": "Ver Agenda",
+    "myProgress": "Meu Progresso"
+  },
+  "booking": {
+    "title": "Agendar Aula",
+    "selectDate": "Selecionar Data",
+    "selectTime": "Selecionar Horário",
+    "selectTopic": "Selecionar Tópico",
+    "availableSlots": "Horários Disponíveis",
+    "noSlotsAvailable": "Sem horários disponíveis",
+    "confirmBooking": "Confirmar Agendamento",
+    "cancelBooking": "Cancelar Agendamento",
+    "bookingConfirmed": "Agendamento confirmado!",
+    "bookingCancelled": "Agendamento cancelado",
+    "cancellationPolicy": "Você pode cancelar até 6 horas antes da aula"
+  },
+  "exercises": {
+    "preClass": "Atividades Pré-Aula",
+    "afterClass": "Atividades Pós-Aula",
+    "completed": "Concluída",
+    "notStarted": "Não Iniciada",
+    "inProgress": "Em Andamento",
+    "score": "Pontuação",
+    "attempts": "Tentativas",
+    "startExercise": "Iniciar Exercício",
+    "continueExercise": "Continuar Exercício",
+    "viewResults": "Ver Resultados"
+  },
+  "topics": {
+    "workGettingJob": "Trabalho: Conseguindo um Emprego",
+    "teacherOfYear": "Professor do Ano",
+    "yesWeCan": "Sim, Nós Podemos!",
+    "girlPower": "Poder Feminino",
+    "onTheJob": "No Trabalho",
+    "youAreWhatYouEat": "Você É o Que Você Come",
+    "makeUpYourMind": "Decida-se"
+  }
+}

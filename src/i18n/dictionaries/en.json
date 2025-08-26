@@ -1,0 +1,82 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "role": "Role",
+    "student": "Student",
+    "teacher": "Teacher",
+    "admin": "Admin",
+    "loginTitle": "Login to Mindset LMS",
+    "registerTitle": "Create your account",
+    "forgotPassword": "Forgot password?",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "levels": {
+    "starter": "Starter",
+    "survivor": "Survivor",
+    "explorer": "Explorer",
+    "expert": "Expert"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "myClasses": "My Classes",
+    "upcomingClasses": "Upcoming Classes",
+    "completedClasses": "Completed Classes",
+    "remainingLessons": "Remaining Lessons",
+    "bookClass": "Book a Class",
+    "viewSchedule": "View Schedule",
+    "myProgress": "My Progress"
+  },
+  "booking": {
+    "title": "Book a Class",
+    "selectDate": "Select Date",
+    "selectTime": "Select Time",
+    "selectTopic": "Select Topic",
+    "availableSlots": "Available Slots",
+    "noSlotsAvailable": "No slots available",
+    "confirmBooking": "Confirm Booking",
+    "cancelBooking": "Cancel Booking",
+    "bookingConfirmed": "Booking confirmed!",
+    "bookingCancelled": "Booking cancelled",
+    "cancellationPolicy": "You can cancel up to 6 hours before the class"
+  },
+  "exercises": {
+    "preClass": "Pre-Class Activities",
+    "afterClass": "After-Class Activities",
+    "completed": "Completed",
+    "notStarted": "Not Started",
+    "inProgress": "In Progress",
+    "score": "Score",
+    "attempts": "Attempts",
+    "startExercise": "Start Exercise",
+    "continueExercise": "Continue Exercise",
+    "viewResults": "View Results"
+  },
+  "topics": {
+    "workGettingJob": "Work: Getting a Job",
+    "teacherOfYear": "Teacher of the Year",
+    "yesWeCan": "Yes, We Can!",
+    "girlPower": "Girl Power",
+    "onTheJob": "On the Job",
+    "youAreWhatYouEat": "You Are What You Eat",
+    "makeUpYourMind": "Make Up Your Mind"
+  }
+}

@@ -1,0 +1,211 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum Level {
+  STARTER
+  SURVIVOR
+  EXPLORER
+  EXPERT
+}
+
+enum BookingStatus {
+  SCHEDULED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  password       String
+  name           String
+  role           UserRole        @default(STUDENT)
+  level          Level?          // Only for students
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  
+  // Relations
+  studentBookings Booking[]      @relation("StudentBookings")
+  teacherClasses  Booking[]      @relation("TeacherBookings")
+  packages        Package[]
+  progress        Progress[]
+  submissions     Submission[]
+  teacherAvailability Availability[]
+}
+
+model Package {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  totalLessons    Int      // e.g., 80
+  usedLessons     Int      @default(0)
+  remainingLessons Int     // calculated: totalLessons - usedLessons
+  validFrom       DateTime
+  validUntil      DateTime // e.g., 1 year from purchase
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Topic {
+  id              String   @id @default(cuid())
+  name            String
+  level           Level
+  orderIndex      Int      // 1-40 for cycling
+  description     String?
+  
+  // Relations
+  bookings        Booking[]
+  exercises       Exercise[]
+  liveClassSlides Slide[]
+  progress        Progress[]
+}
+
+model Booking {
+  id              String        @id @default(cuid())
+  studentId       String
+  student         User          @relation("StudentBookings", fields: [studentId], references: [id])
+  teacherId       String
+  teacher         User          @relation("TeacherBookings", fields: [teacherId], references: [id])
+  topicId         String
+  topic           Topic         @relation(fields: [topicId], references: [id])
+  scheduledAt     DateTime
+  duration        Int           @default(60) // minutes
+  status          BookingStatus @default(SCHEDULED)
+  googleMeetLink  String?
+  googleEventId   String?
+  cancelledAt     DateTime?
+  attendedAt      DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Availability {
+  id          String   @id @default(cuid())
+  teacherId   String
+  teacher     User     @relation(fields: [teacherId], references: [id])
+  dayOfWeek   Int      // 0-6 (Sunday-Saturday)
+  startTime   String   // "09:00"
+  endTime     String   // "17:00"
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Exercise {
+  id              String       @id @default(cuid())
+  topicId         String
+  topic           Topic        @relation(fields: [topicId], references: [id])
+  phase           Phase        // PRE_CLASS, AFTER_CLASS
+  category        ExerciseCategory
+  type            ExerciseType
+  title           String
+  instructions    String
+  content         Json         // Flexible JSON for different exercise types
+  correctAnswer   Json?        // For auto-grading
+  points          Int          @default(10)
+  orderIndex      Int
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  // Relations
+  submissions     Submission[]
+}
+
+model Slide {
+  id              String   @id @default(cuid())
+  topicId         String
+  topic           Topic    @relation(fields: [topicId], references: [id])
+  slideNumber     Int      // 1-5
+  title           String
+  content         Json     // Rich content with text, images, activities
+  notes           String?  // Teacher notes
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Submission {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  exerciseId      String
+  exercise        Exercise @relation(fields: [exerciseId], references: [id])
+  answer          Json
+  score           Float?   // Percentage or points
+  feedback        String?
+  submittedAt     DateTime @default(now())
+  gradedAt        DateTime?
+}
+
+model Progress {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  topicId         String
+  topic           Topic    @relation(fields: [topicId], references: [id])
+  preClassComplete Boolean @default(false)
+  liveClassAttended Boolean @default(false)
+  afterClassComplete Boolean @default(false)
+  completedAt     DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([userId, topicId])
+}
+
+enum Phase {
+  PRE_CLASS
+  AFTER_CLASS
+}
+
+enum ExerciseCategory {
+  READING
+  WRITING
+  LISTENING
+  SPEAKING
+  GRAMMAR
+  VOCABULARY
+}
+
+enum ExerciseType {
+  // Reading
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  GAP_FILL
+  MATCHING
+  SEQUENCING
+  
+  // Writing
+  ESSAY
+  ERROR_CORRECTION
+  SENTENCE_TRANSFORMATION
+  
+  // Listening
+  AUDIO_QUIZ
+  DICTATION
+  NOTE_TAKING
+  
+  // Speaking
+  AUDIO_RECORDING
+  PRONUNCIATION
+  
+  // Grammar & Vocabulary
+  DRAG_DROP
+  CROSSWORD
+  FLASHCARD
+}

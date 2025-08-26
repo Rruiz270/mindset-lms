@@ -1,36 +1,204 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mindset LMS
+
+A comprehensive Language Learning Management System built for Mindset Institute, supporting both English and Spanish learning with an open entry system.
+
+## Features
+
+✅ **Completed Features:**
+- Multi-language support (English, Portuguese, Spanish)
+- Role-based authentication (Student, Teacher, Admin)
+- Student dashboard with package tracking
+- Topic management system with 40 topics per level (Starter, Survivor, Explorer, Expert)
+- Basic booking interface
+- Responsive design for all devices
+
+🚧 **In Development:**
+- Calendar scheduling system with Google Meet integration
+- Pre-class exercises (Reading, Writing, Listening, Speaking, Grammar)
+- Live class slides system
+- After-class homework system
+- Speech recognition for pronunciation practice
+- Credit/lesson tracking system
+- Attendance management
+
+## Tech Stack
+
+- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Database**: PostgreSQL
+- **Authentication**: NextAuth.js
+- **UI Components**: Radix UI, Lucide Icons
+- **Styling**: Tailwind CSS with CSS Variables
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- PostgreSQL database
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd mindset-lms
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `.env` with your database URL and other configurations:
+```
+DATABASE_URL="postgresql://username:password@localhost:5432/mindset_lms"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-## Learn More
+4. Set up the database:
+```bash
+# Generate Prisma client
+npm run db:generate
 
-To learn more about Next.js, take a look at the following resources:
+# Push schema to database
+npm run db:push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Seed the database with sample data
+npm run db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Start the development server:
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+Visit `http://localhost:3000` to see the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Demo Accounts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+After running the seed script, you can use these demo accounts:
+
+**Admin:**
+- Email: `admin@mindset.com`
+- Password: `admin123`
+
+**Teachers:**
+- Email: `teacher1@mindset.com` / Password: `teacher123`
+- Email: `teacher2@mindset.com` / Password: `teacher123`
+- Email: `teacher3@mindset.com` / Password: `teacher123`
+
+**Students:**
+- Email: `student1@mindset.com` / Password: `student123` (Starter Level)
+- Email: `student2@mindset.com` / Password: `student123` (Survivor Level)
+- Email: `student3@mindset.com` / Password: `student123` (Explorer Level)
+- Email: `student4@mindset.com` / Password: `student123` (Expert Level)
+
+## Database Schema
+
+### Key Models:
+
+- **User**: Students, Teachers, and Admins with role-based access
+- **Topic**: 40 topics per level with cycling system
+- **Booking**: Class scheduling with 6-hour cancellation policy
+- **Package**: Student lesson credits (e.g., 80 lessons for 1 year)
+- **Exercise**: Pre-class and after-class activities
+- **Slide**: Live class presentation materials
+- **Availability**: Teacher scheduling availability
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API endpoints
+│   ├── auth/              # Authentication pages
+│   ├── student/           # Student dashboard
+│   ├── teacher/           # Teacher dashboard (TBD)
+│   └── admin/             # Admin dashboard (TBD)
+├── components/            # Reusable UI components
+│   ├── ui/               # Base UI components
+│   ├── layout/           # Layout components
+│   ├── exercises/        # Exercise components (TBD)
+│   └── calendar/         # Calendar components (TBD)
+├── lib/                  # Utility libraries
+├── hooks/                # Custom React hooks
+├── types/                # TypeScript type definitions
+└── i18n/                 # Internationalization
+```
+
+## Learning System Architecture
+
+### Open Entry System
+Students can enroll at any time and immediately start taking classes based on their level.
+
+### Level Structure
+1. **Starter** (Beginner): Basic English fundamentals
+2. **Survivor** (Elementary): Everyday communication
+3. **Explorer** (Intermediate): Complex topics and discussions
+4. **Expert** (Advanced): Professional and academic English
+
+### Class Flow
+1. **Pre-Class Activities**: Exercises to prepare for the topic
+2. **Live Class**: 1-hour interactive session (max 10 students)
+3. **After-Class Activities**: Homework to reinforce learning
+
+### Credit System
+- Students purchase packages (e.g., 80 lessons for 1 year)
+- Each live class attendance deducts 1 credit
+- Cancellations within 6 hours count as used credits
+- Bookings allowed up to 1 hour before class
+
+## API Endpoints
+
+### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/[...nextauth]` - NextAuth.js authentication
+
+### Student APIs
+- `GET /api/student/package` - Get student package information
+- `GET /api/topics?level=STARTER` - Get topics by level
+
+### Upcoming APIs
+- `POST /api/bookings` - Book a class
+- `GET /api/bookings` - Get user bookings
+- `DELETE /api/bookings/{id}` - Cancel booking
+- `GET /api/exercises` - Get exercises by topic and phase
+- `POST /api/submissions` - Submit exercise answers
+
+## Next Steps
+
+### Priority Development:
+1. **Calendar Integration**: Google Calendar API for scheduling
+2. **Exercise System**: Interactive exercises for all categories
+3. **Live Class Slides**: Interactive presentation system
+4. **Speech Recognition**: Pronunciation practice and feedback
+5. **Teacher Dashboard**: Class management and student progress
+6. **Admin Panel**: User management and system configuration
+
+### Future Enhancements:
+- Mobile app using React Native
+- Advanced analytics and reporting
+- Gamification with badges and achievements
+- Integration with external assessment tools
+- Automated lesson content generation
+- Video recording and playback for classes
+
+## Contributing
+
+1. Follow the existing code style
+2. Use TypeScript for all new code
+3. Add proper error handling
+4. Include appropriate tests
+5. Update documentation
+
+## License
+
+This project is proprietary software for Mindset Institute.
