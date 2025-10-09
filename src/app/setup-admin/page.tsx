@@ -14,15 +14,21 @@ export default function SetupAdminPage() {
   const setupAdmin = async () => {
     setSetting(true);
     try {
-      const response = await fetch('/api/setup/admin', {
+      const response = await fetch('/api/bootstrap', {
         method: 'POST',
       });
       const data = await response.json();
       setResult(data);
+      
+      // If there's an error, also log it to console for debugging
+      if (!data.success) {
+        console.error('Bootstrap error:', data);
+      }
     } catch (error) {
+      console.error('Network error:', error);
       setResult({ 
         success: false, 
-        error: 'Failed to setup admin account' 
+        error: 'Network error - failed to connect to server' 
       });
     } finally {
       setSetting(false);
@@ -60,6 +66,12 @@ export default function SetupAdminPage() {
                     {result.defaultPassword && (
                       <p><strong>Password:</strong> {result.defaultPassword}</p>
                     )}
+                  </div>
+                )}
+                {!result.success && result.details && (
+                  <div className="mt-3 text-sm text-red-600">
+                    <p><strong>Error Details:</strong> {result.details}</p>
+                    {result.code && <p><strong>Code:</strong> {result.code}</p>}
                   </div>
                 )}
               </CardContent>
