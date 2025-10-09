@@ -5,25 +5,29 @@ A comprehensive Language Learning Management System built for Mindset Institute,
 ## Features
 
 ✅ **Completed Features:**
-- Multi-language support (English, Portuguese, Spanish)
+- Complete A0-A1 Starter Level with 32 CEFR-aligned topics
+- Modern UI/UX with Mindset LMS branding and styling
+- Pre-class exercises (Reading, Writing, Listening, Speaking, Grammar)
+- Live class slides system (5-slide structure per topic)
+- Post-class homework system with automated grading
+- Speech recognition for pronunciation practice
+- Google Calendar and Meet integration
 - Role-based authentication (Student, Teacher, Admin)
-- Student dashboard with package tracking
-- Topic management system with 40 topics per level (Starter, Survivor, Explorer, Expert)
-- Basic booking interface
+- Student dashboard with progress tracking
+- Teacher dashboard with availability management
+- Admin dashboard with user and content management
+- Credit/lesson tracking system with booking validation
 - Responsive design for all devices
 
-🚧 **In Development:**
-- Calendar scheduling system with Google Meet integration
-- Pre-class exercises (Reading, Writing, Listening, Speaking, Grammar)
-- Live class slides system
-- After-class homework system
-- Speech recognition for pronunciation practice
-- Credit/lesson tracking system
-- Attendance management
+🚧 **Next Development Phase:**
+- Implement Survivor, Explorer, and Expert levels
+- Advanced analytics and reporting
+- Mobile app optimization
+- Enhanced speech recognition features
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes, Prisma ORM
 - **Database**: PostgreSQL
 - **Authentication**: NextAuth.js
