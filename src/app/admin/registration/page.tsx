@@ -65,6 +65,17 @@ interface CompanyForm {
   notes: string;
 }
 
+interface TeacherForm {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  experience: string;
+  certifications: string;
+  specialties: string;
+  availability: string;
+}
+
 export default function RegistrationPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -102,6 +113,17 @@ export default function RegistrationPage() {
     employeeCount: 0,
     contractType: '',
     notes: ''
+  });
+
+  const [teacherForm, setTeacherForm] = useState<TeacherForm>({
+    fullName: '',
+    email: '',
+    phone: '',
+    address: '',
+    experience: '',
+    certifications: '',
+    specialties: '',
+    availability: ''
   });
 
   useEffect(() => {
@@ -203,6 +225,47 @@ export default function RegistrationPage() {
     }
   };
 
+  const handleTeacherSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccess('');
+    
+    try {
+      const response = await fetch('/api/admin/teachers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(teacherForm),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to register teacher');
+      }
+      
+      setError('');
+      setSuccess(`Teacher registered successfully! Temporary password: ${result.tempPassword}`);
+      setTeacherForm({
+        fullName: '',
+        email: '',
+        phone: '',
+        address: '',
+        experience: '',
+        certifications: '',
+        specialties: '',
+        availability: ''
+      });
+    } catch (error) {
+      console.error('Error registering teacher:', error);
+      setSuccess('');
+      setError(error instanceof Error ? error.message : 'Failed to register teacher');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (status === 'loading') {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
@@ -230,7 +293,7 @@ export default function RegistrationPage() {
             Registration Center
           </h1>
           <p className="text-gray-600">
-            Register new students and partner companies
+            Register new students, teachers, and partner companies
           </p>
         </div>
 
@@ -257,10 +320,14 @@ export default function RegistrationPage() {
         )}
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="student" className="flex items-center gap-2">
               <UserPlus className="h-4 w-4" />
               Student Registration
+            </TabsTrigger>
+            <TabsTrigger value="teacher" className="flex items-center gap-2">
+              <GraduationCap className="h-4 w-4" />
+              Teacher Registration
             </TabsTrigger>
             <TabsTrigger value="company" className="flex items-center gap-2">
               <Building2 className="h-4 w-4" />
@@ -501,6 +568,123 @@ export default function RegistrationPage() {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Registering...' : 'Register Student'}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Teacher Registration */}
+          <TabsContent value="teacher">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5" />
+                  New Teacher Registration
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleTeacherSubmit} className="space-y-6">
+                  {/* Personal Information */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      <User className="h-5 w-5" />
+                      Personal Information
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Full Name *</label>
+                        <Input
+                          value={teacherForm.fullName}
+                          onChange={(e) => setTeacherForm({...teacherForm, fullName: e.target.value})}
+                          placeholder="Enter full name"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Email *</label>
+                        <Input
+                          type="email"
+                          value={teacherForm.email}
+                          onChange={(e) => setTeacherForm({...teacherForm, email: e.target.value})}
+                          placeholder="teacher@email.com"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Phone *</label>
+                        <Input
+                          value={teacherForm.phone}
+                          onChange={(e) => setTeacherForm({...teacherForm, phone: e.target.value})}
+                          placeholder="+1 (555) 123-4567"
+                          required
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label className="block text-sm font-medium mb-2">Address</label>
+                        <Textarea
+                          value={teacherForm.address}
+                          onChange={(e) => setTeacherForm({...teacherForm, address: e.target.value})}
+                          placeholder="Enter full address"
+                          rows={2}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Professional Information */}
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      <Briefcase className="h-5 w-5" />
+                      Professional Information
+                    </h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Teaching Experience *</label>
+                        <Textarea
+                          value={teacherForm.experience}
+                          onChange={(e) => setTeacherForm({...teacherForm, experience: e.target.value})}
+                          placeholder="Describe your teaching experience, years of experience, previous institutions, etc."
+                          rows={3}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Certifications & Qualifications</label>
+                        <Textarea
+                          value={teacherForm.certifications}
+                          onChange={(e) => setTeacherForm({...teacherForm, certifications: e.target.value})}
+                          placeholder="List your teaching certifications, degrees, TESOL/TEFL certificates, etc."
+                          rows={3}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Teaching Specialties</label>
+                        <Textarea
+                          value={teacherForm.specialties}
+                          onChange={(e) => setTeacherForm({...teacherForm, specialties: e.target.value})}
+                          placeholder="Business English, Conversation, Grammar, Test Preparation, etc."
+                          rows={2}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Availability</label>
+                        <Textarea
+                          value={teacherForm.availability}
+                          onChange={(e) => setTeacherForm({...teacherForm, availability: e.target.value})}
+                          placeholder="Preferred days and times for teaching (e.g., Monday-Friday 9AM-5PM, evenings available)"
+                          rows={2}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-purple-600 hover:bg-purple-700"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Registering...' : 'Register Teacher'}
                   </Button>
                 </form>
               </CardContent>
