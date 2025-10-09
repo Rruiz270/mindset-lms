@@ -26,7 +26,8 @@ import {
   MessageSquare,
   Award,
   UserCheck,
-  Globe
+  Globe,
+  Eye
 } from 'lucide-react';
 import { format, isToday, startOfMonth, endOfMonth } from 'date-fns';
 import axios from 'axios';
