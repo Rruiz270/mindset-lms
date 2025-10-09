@@ -14,21 +14,24 @@ export default function SetupAdminPage() {
   const setupAdmin = async () => {
     setSetting(true);
     try {
-      const response = await fetch('/api/bootstrap', {
+      const response = await fetch('/api/init-system', {
         method: 'POST',
       });
       const data = await response.json();
       setResult(data);
       
-      // If there's an error, also log it to console for debugging
+      // Log all results for debugging
+      console.log('Init system result:', data);
+      
       if (!data.success) {
-        console.error('Bootstrap error:', data);
+        console.error('System initialization error:', data);
       }
     } catch (error) {
       console.error('Network error:', error);
       setResult({ 
         success: false, 
-        error: 'Network error - failed to connect to server' 
+        error: 'Network error - failed to connect to server',
+        details: error instanceof Error ? error.message : 'Unknown network error'
       });
     } finally {
       setSetting(false);
@@ -105,6 +108,15 @@ export default function SetupAdminPage() {
             >
               Go to Login
             </Button>
+          )}
+
+          {result?.action === 'setup_required' && (
+            <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-800">
+                <strong>Database Setup Required:</strong><br/>
+                The database tables need to be created first. You can try accessing the admin setup page directly or contact your system administrator.
+              </p>
+            </div>
           )}
         </CardContent>
       </Card>
