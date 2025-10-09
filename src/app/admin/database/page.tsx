@@ -153,9 +153,19 @@ export default function DatabasePage() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
-                              <h4 className="font-medium text-lg">{student.name}</h4>
-                              <Badge variant="outline">{student.level}</Badge>
-                              <Badge>{student.role}</Badge>
+                              <div>
+                                <h4 className="font-medium text-lg">{student.name}</h4>
+                                {student.studentId && (
+                                  <p className="text-sm font-mono text-blue-600 font-semibold">
+                                    Student ID: {student.studentId}
+                                  </p>
+                                )}
+                              </div>
+                              <div className="flex gap-2 ml-auto">
+                                <Badge variant="outline">{student.level}</Badge>
+                                <Badge>{student.role}</Badge>
+                                {student.isActive && <Badge className="bg-green-500">ACTIVE</Badge>}
+                              </div>
                             </div>
                             
                             <p className="text-sm text-gray-600 mb-2">{student.email}</p>

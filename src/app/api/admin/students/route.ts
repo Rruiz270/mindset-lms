@@ -4,6 +4,33 @@ import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
+// Generate unique student ID in format: MST-YYYY-NNNN
+async function generateStudentId(): Promise<string> {
+  const currentYear = new Date().getFullYear();
+  const prefix = `MST-${currentYear}-`;
+  
+  // Find the highest number for this year
+  const lastStudent = await prisma.user.findFirst({
+    where: {
+      role: 'STUDENT',
+      studentId: {
+        startsWith: prefix
+      }
+    },
+    orderBy: {
+      studentId: 'desc'
+    }
+  });
+
+  let nextNumber = 1;
+  if (lastStudent?.studentId) {
+    const lastNumber = parseInt(lastStudent.studentId.split('-')[2]);
+    nextNumber = lastNumber + 1;
+  }
+
+  return `${prefix}${nextNumber.toString().padStart(4, '0')}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
@@ -44,6 +71,9 @@ export async function POST(request: NextRequest) {
       'C2': 'EXPERT'
     };
 
+    // Generate unique student ID
+    const studentId = await generateStudentId();
+
     // Create user account
     const user = await prisma.user.create({
       data: {
@@ -51,7 +81,9 @@ export async function POST(request: NextRequest) {
         password: hashedPassword,
         name: data.fullName,
         role: 'STUDENT',
-        level: levelMapping[data.cefrLevel] || 'STARTER'
+        level: levelMapping[data.cefrLevel] || 'STARTER',
+        studentId: studentId,
+        isActive: true
       }
     });
 
@@ -82,6 +114,7 @@ export async function POST(request: NextRequest) {
       success: true, 
       message: 'Student registered successfully',
       userId: user.id,
+      studentId: user.studentId,
       packageId: studentPackage.id,
       tempPassword // In production, send this via email instead
     });

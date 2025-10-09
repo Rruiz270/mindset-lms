@@ -35,6 +35,8 @@ export async function GET(request: Request) {
         email: true,
         role: true,
         level: true,
+        studentId: true,
+        isActive: true,
         createdAt: true,
         updatedAt: true,
         _count: {

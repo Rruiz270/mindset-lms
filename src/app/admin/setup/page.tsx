@@ -292,6 +292,57 @@ export default function SetupPage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Database Cleanup Section */}
+        <Card className="border-red-200 bg-red-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-red-800">
+              <AlertTriangle className="h-5 w-5" />
+              Clean Database
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-red-700 mb-4">
+              <strong>Warning:</strong> This will remove all dummy/seed data including test students, teachers, and bookings. 
+              Only use this to start fresh with real data. Admin accounts will be preserved.
+            </p>
+            <Button 
+              onClick={async () => {
+                if (confirm('Are you sure you want to clean all dummy data? This cannot be undone.')) {
+                  setSetting(true);
+                  try {
+                    const response = await fetch('/api/admin/cleanup', {
+                      method: 'POST',
+                    });
+                    const result = await response.json();
+                    setSetupResult(result);
+                  } catch (error) {
+                    setSetupResult({ 
+                      success: false, 
+                      error: 'Failed to cleanup database' 
+                    });
+                  } finally {
+                    setSetting(false);
+                  }
+                }
+              }}
+              disabled={setting}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              {setting ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Cleaning up...
+                </>
+              ) : (
+                <>
+                  <AlertTriangle className="h-4 w-4 mr-2" />
+                  Clean All Dummy Data
+                </>
+              )}
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
