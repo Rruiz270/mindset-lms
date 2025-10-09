@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Navbar from '@/components/layout/navbar'
-import BookingCalendar from '@/components/booking/BookingCalendar'
+import EnhancedBookingCalendar from '@/components/booking/EnhancedBookingCalendar'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 
@@ -33,7 +33,7 @@ export default function BookClassPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -55,7 +55,7 @@ export default function BookClassPage() {
           </p>
         </div>
 
-        <BookingCalendar 
+        <EnhancedBookingCalendar 
           studentLevel={session.user.level || 'STARTER'}
           onBookingComplete={() => router.push('/student')}
         />

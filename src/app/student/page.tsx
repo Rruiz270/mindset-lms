@@ -65,6 +65,24 @@ export default function StudentDashboard() {
           <p className="text-gray-600">
             Continue your English learning journey
           </p>
+          
+          {/* Course Information */}
+          <div className="mt-4 p-4 bg-white/60 backdrop-blur-sm rounded-lg border">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <span className="font-medium text-gray-700">Course Start:</span>
+                <p className="text-gray-900">January 15, 2024</p>
+              </div>
+              <div>
+                <span className="font-medium text-gray-700">Current Course:</span>
+                <p className="text-gray-900">English Starter (A0-A1)</p>
+              </div>
+              <div>
+                <span className="font-medium text-gray-700">Contract End:</span>
+                <p className="text-gray-900">January 14, 2025</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Quick Stats */}
