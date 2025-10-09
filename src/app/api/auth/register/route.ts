@@ -31,22 +31,46 @@ export async function POST(request: NextRequest) {
     const hashedPassword = await bcrypt.hash(password, 10)
 
     // Create user (default role is STUDENT)
-    const user = await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-        role: UserRole.STUDENT,
+    // Note: isActive field may not exist if schema hasn't been migrated yet
+    const userData: any = {
+      name,
+      email,
+      password: hashedPassword,
+      role: UserRole.STUDENT,
+    };
+
+    // Only add isActive if the field exists in the schema
+    try {
+      userData.isActive = true;
+      const user = await prisma.user.create({
+        data: userData
+      });
+      
+      // Remove password from response
+      const { password: _, ...userWithoutPassword } = user;
+
+      return NextResponse.json(
+        { message: 'User created successfully', user: userWithoutPassword },
+        { status: 201 }
+      );
+    } catch (schemaError: any) {
+      // If error is about missing column, try without isActive
+      if (schemaError.message?.includes('column') || schemaError.message?.includes('isActive')) {
+        delete userData.isActive;
+        const user = await prisma.user.create({
+          data: userData
+        });
+        
+        // Remove password from response
+        const { password: _, ...userWithoutPassword } = user;
+
+        return NextResponse.json(
+          { message: 'User created successfully', user: userWithoutPassword },
+          { status: 201 }
+        );
       }
-    })
-
-    // Remove password from response
-    const { password: _, ...userWithoutPassword } = user
-
-    return NextResponse.json(
-      { message: 'User created successfully', user: userWithoutPassword },
-      { status: 201 }
-    )
+      throw schemaError;
+    }
   } catch (error) {
     console.error('Registration error:', error)
     return NextResponse.json(
