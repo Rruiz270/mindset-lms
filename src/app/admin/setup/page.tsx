@@ -15,7 +15,8 @@ import {
   AlertTriangle,
   RefreshCw,
   Play,
-  Loader2
+  Loader2,
+  User
 } from 'lucide-react';
 
 interface DatabaseStatus {
@@ -292,6 +293,54 @@ export default function SetupPage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Admin Account Section */}
+        <Card className="border-green-200 bg-green-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-green-800">
+              <User className="h-5 w-5" />
+              Admin Account Setup
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-green-700 mb-4">
+              Ensure admin account exists for system access. Default credentials: admin@mindset.com / admin123
+            </p>
+            <Button 
+              onClick={async () => {
+                setSetting(true);
+                try {
+                  const response = await fetch('/api/setup/admin', {
+                    method: 'POST',
+                  });
+                  const result = await response.json();
+                  setSetupResult(result);
+                } catch (error) {
+                  setSetupResult({ 
+                    success: false, 
+                    error: 'Failed to setup admin account' 
+                  });
+                } finally {
+                  setSetting(false);
+                }
+              }}
+              disabled={setting}
+              className="bg-green-600 hover:bg-green-700"
+            >
+              {setting ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Setting up admin...
+                </>
+              ) : (
+                <>
+                  <User className="h-4 w-4 mr-2" />
+                  Ensure Admin Account
+                </>
+              )}
+            </Button>
+          </CardContent>
+        </Card>
 
         {/* Schema Migration Section */}
         <Card className="border-blue-200 bg-blue-50">
