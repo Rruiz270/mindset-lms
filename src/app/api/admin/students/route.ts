@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     const validFrom = new Date(data.contractStart);
     const validUntil = new Date(data.contractEnd);
     
-    const package = await prisma.package.create({
+    const studentPackage = await prisma.package.create({
       data: {
         userId: user.id,
         totalLessons: data.totalHours || 80,
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       success: true, 
       message: 'Student registered successfully',
       userId: user.id,
-      packageId: package.id,
+      packageId: studentPackage.id,
       tempPassword // In production, send this via email instead
     });
 
