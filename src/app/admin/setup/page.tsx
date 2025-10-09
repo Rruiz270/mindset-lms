@@ -293,6 +293,55 @@ export default function SetupPage() {
           </Card>
         )}
 
+        {/* Schema Migration Section */}
+        <Card className="border-blue-200 bg-blue-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="h-5 w-5" />
+              Update Database Schema
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-blue-700 mb-4">
+              Update the database schema to support student IDs and active status. 
+              This adds new columns to enable the student card system.
+            </p>
+            <Button 
+              onClick={async () => {
+                setSetting(true);
+                try {
+                  const response = await fetch('/api/admin/migrate-schema', {
+                    method: 'POST',
+                  });
+                  const result = await response.json();
+                  setSetupResult(result);
+                } catch (error) {
+                  setSetupResult({ 
+                    success: false, 
+                    error: 'Failed to migrate schema' 
+                  });
+                } finally {
+                  setSetting(false);
+                }
+              }}
+              disabled={setting}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              {setting ? (
+                <>
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Updating schema...
+                </>
+              ) : (
+                <>
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Update Schema for Student IDs
+                </>
+              )}
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Database Cleanup Section */}
         <Card className="border-red-200 bg-red-50">
           <CardHeader>
