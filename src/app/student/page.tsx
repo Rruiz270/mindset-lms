@@ -54,19 +54,13 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div 
-      className="min-h-screen" 
-      style={{ 
-        background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)',
-        minHeight: '100vh'
-      }}
-    >
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
+        <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {session.user.name}! 🚀
+            Welcome back, {session.user.name}!
           </h1>
           <p className="text-gray-600">
             Continue your English learning journey
@@ -75,7 +69,7 @@ export default function StudentDashboard() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-white hover:shadow-lg transition-all duration-300">
             <CardContent className="flex items-center p-6">
               <Clock className="h-8 w-8 text-blue-600" />
               <div className="ml-4">
@@ -87,7 +81,7 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
           
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-white hover:shadow-lg transition-all duration-300">
             <CardContent className="flex items-center p-6">
               <BookOpen className="h-8 w-8 text-green-600" />
               <div className="ml-4">
@@ -99,7 +93,7 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
           
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-white hover:shadow-lg transition-all duration-300">
             <CardContent className="flex items-center p-6">
               <Trophy className="h-8 w-8 text-yellow-600" />
               <div className="ml-4">
@@ -111,7 +105,7 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
           
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-white hover:shadow-lg transition-all duration-300">
             <CardContent className="flex items-center p-6">
               <Calendar className="h-8 w-8 text-purple-600" />
               <div className="ml-4">
@@ -126,22 +120,19 @@ export default function StudentDashboard() {
 
         {/* Main Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <CardHeader>
-              <CardTitle className="flex items-center text-gray-900">
+              <CardTitle className="flex items-center text-blue-900">
                 <Calendar className="h-5 w-5 mr-2 text-blue-600" />
                 Book a Class
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">
+              <p className="text-blue-700 mb-4">
                 Schedule your next live class with one of our teachers
               </p>
               <Button 
-                className="w-full text-white transition-colors duration-200" 
-                style={{ backgroundColor: '#2563eb' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transition-all duration-200"
                 onClick={() => router.push('/student/book')}
               >
                 Book Now
@@ -149,35 +140,35 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <CardHeader>
-              <CardTitle className="flex items-center text-gray-900">
+              <CardTitle className="flex items-center text-green-900">
                 <BookOpen className="h-5 w-5 mr-2 text-green-600" />
                 Pre-Class Activities
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">
+              <p className="text-green-700 mb-4">
                 Complete exercises before your live class
               </p>
-              <Button variant="outline" className="w-full" onClick={() => router.push('/student/exercises')}>
+              <Button variant="outline" className="w-full border-green-300 text-green-700 hover:bg-green-50" onClick={() => router.push('/student/exercises')}>
                 View Exercises
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+          <Card className="bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <CardHeader>
-              <CardTitle className="flex items-center text-gray-900">
-                <Trophy className="h-5 w-5 mr-2 text-yellow-600" />
+              <CardTitle className="flex items-center text-purple-900">
+                <Trophy className="h-5 w-5 mr-2 text-purple-600" />
                 My Progress
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">
+              <p className="text-purple-700 mb-4">
                 Track your learning progress and achievements
               </p>
-              <Button variant="outline" className="w-full" onClick={() => router.push('/student/progress')}>
+              <Button variant="outline" className="w-full border-purple-300 text-purple-700 hover:bg-purple-50" onClick={() => router.push('/student/progress')}>
                 View Progress
               </Button>
             </CardContent>
@@ -185,7 +176,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Recent Activity */}
-        <Card className="mt-8 transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 border-0" style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+        <Card className="mt-8 bg-white hover:shadow-lg transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-gray-900">Recent Activity</CardTitle>
           </CardHeader>
