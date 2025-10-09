@@ -49,6 +49,22 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Mindset LMS Brand Colors
+        mindset: {
+          blue: "#2563eb",    // Primary blue
+          purple: "#7c3aed",  // Secondary purple  
+          green: "#059669",   // Success green
+          orange: "#ea580c",  // Warning orange
+          red: "#dc2626",     // Error red
+          gray: "#6b7280",    // Neutral gray
+        },
+        // Learning Categories
+        reading: "#3b82f6",     // Blue
+        writing: "#10b981",     // Green
+        listening: "#8b5cf6",   // Purple
+        speaking: "#f59e0b",    // Amber
+        grammar: "#ef4444",     // Red
+        vocabulary: "#06b6d4",  // Cyan
       },
       borderRadius: {
         lg: "var(--radius)",

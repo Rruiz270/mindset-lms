@@ -140,35 +140,35 @@ export default function ExerciseCard({ exercise, onSubmit }: ExerciseCardProps) 
     }
   };
 
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
-      READING: 'bg-blue-100 text-blue-800',
-      WRITING: 'bg-green-100 text-green-800',
-      LISTENING: 'bg-purple-100 text-purple-800',
-      SPEAKING: 'bg-orange-100 text-orange-800',
-      GRAMMAR: 'bg-yellow-100 text-yellow-800',
-      VOCABULARY: 'bg-pink-100 text-pink-800',
+  const getCategoryStyle = (category: string) => {
+    const styles: Record<string, string> = {
+      READING: 'category-reading',
+      WRITING: 'category-writing',
+      LISTENING: 'category-listening',
+      SPEAKING: 'category-speaking',
+      GRAMMAR: 'category-grammar',
+      VOCABULARY: 'category-vocabulary',
     };
-    return colors[category] || 'bg-gray-100 text-gray-800';
+    return `category-badge ${styles[category] || 'bg-gray-100 text-gray-800'}`;
   };
 
   const hasSubmitted = submission && submission.score !== null;
 
   return (
-    <Card>
+    <Card className="exercise-card fade-in">
       <CardHeader>
         <div className="flex justify-between items-start">
           <div className="flex-1">
-            <CardTitle className="text-lg">{exercise.title}</CardTitle>
-            <div className="flex gap-2 mt-2">
-              <span className={`text-xs px-2 py-1 rounded ${getCategoryColor(exercise.category)}`}>
+            <CardTitle className="text-lg font-semibold text-gray-900">{exercise.title}</CardTitle>
+            <div className="flex gap-2 mt-3">
+              <span className={getCategoryStyle(exercise.category)}>
                 {exercise.category}
               </span>
-              <span className="text-xs px-2 py-1 rounded bg-gray-100 text-gray-800">
+              <span className="category-badge bg-slate-100 text-slate-700">
                 {exercise.points} points
               </span>
               {hasSubmitted && (
-                <span className="text-xs px-2 py-1 rounded bg-blue-100 text-blue-800 flex items-center gap-1">
+                <span className="category-badge bg-emerald-100 text-emerald-700 flex items-center gap-1">
                   <CheckCircle2 className="h-3 w-3" />
                   {submission.score}/{exercise.points}
                 </span>
