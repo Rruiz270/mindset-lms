@@ -14,36 +14,31 @@ export async function POST(request: NextRequest) {
     // Test database connection
     await prisma.$connect();
     
-    // Push schema to database (creates all tables)
-    const { execSync } = require('child_process');
-    
-    try {
-      // This will create all tables based on our Prisma schema
-      execSync('npx prisma db push --force-reset', { stdio: 'inherit' });
-      
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Database schema created successfully! All tables are now ready.',
-        tables: [
-          'User (for students, teachers, admins)',
-          'Package (lesson packages)',
-          'Topic (class topics)',
-          'Booking (class bookings)', 
-          'AttendanceLog (attendance tracking)',
-          'StudentStats (attendance statistics)',
-          'Exercise (class exercises)',
-          'Slide (class materials)',
-          'Progress (student progress)',
-          'Availability (teacher schedules)'
-        ]
-      });
-    } catch (error) {
-      console.error('Prisma push error:', error);
-      return NextResponse.json({ 
-        error: 'Failed to create database schema', 
-        details: error instanceof Error ? error.message : 'Unknown error'
-      }, { status: 500 });
-    }
+    // For Vercel deployment, we can't use execSync
+    // Instead, we'll provide instructions for manual setup
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Database connection successful! To complete setup, please run: npx prisma db push',
+      instructions: [
+        '1. Install Vercel CLI: npm i -g vercel',
+        '2. Link to project: vercel link',
+        '3. Pull environment variables: vercel env pull .env.local',
+        '4. Push schema: npx prisma db push',
+        '5. Optional - Seed data: npm run db:seed'
+      ],
+      tables: [
+        'User (for students, teachers, admins)',
+        'Package (lesson packages)',
+        'Topic (class topics)',
+        'Booking (class bookings)', 
+        'AttendanceLog (attendance tracking)',
+        'StudentStats (attendance statistics)',
+        'Exercise (class exercises)',
+        'Slide (class materials)',
+        'Progress (student progress)',
+        'Availability (teacher schedules)'
+      ]
+    });
 
   } catch (error) {
     console.error('Database setup error:', error);
