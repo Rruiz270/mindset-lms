@@ -19,15 +19,34 @@ export async function POST(request: NextRequest) {
 
     // Create admin account
     const adminPassword = await bcrypt.hash('admin123', 12);
-    const admin = await prisma.user.create({
-      data: {
-        email: 'admin@mindset.com',
-        password: adminPassword,
-        name: 'Admin User',
-        role: 'ADMIN',
-        isActive: true
+    
+    // Try to create admin with new schema fields, fallback if schema not updated
+    let admin;
+    try {
+      admin = await prisma.user.create({
+        data: {
+          email: 'admin@mindset.com',
+          password: adminPassword,
+          name: 'Admin User',
+          role: 'ADMIN',
+          isActive: true
+        }
+      });
+    } catch (schemaError: any) {
+      // If error is about missing column, try without isActive
+      if (schemaError.message?.includes('column') || schemaError.message?.includes('isActive')) {
+        admin = await prisma.user.create({
+          data: {
+            email: 'admin@mindset.com',
+            password: adminPassword,
+            name: 'Admin User',
+            role: 'ADMIN'
+          }
+        });
+      } else {
+        throw schemaError;
       }
-    });
+    }
 
     console.log('Created admin account:', admin.email);
 
