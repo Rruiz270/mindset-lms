@@ -30,7 +30,8 @@ import {
   GraduationCap,
   Clock,
   Briefcase,
-  Check
+  Check,
+  XCircle
 } from 'lucide-react';
 
 interface StudentForm {
@@ -70,6 +71,7 @@ export default function RegistrationPage() {
   const [activeTab, setActiveTab] = useState('student');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
 
   const [studentForm, setStudentForm] = useState<StudentForm>({
     fullName: '',
@@ -113,15 +115,25 @@ export default function RegistrationPage() {
   const handleStudentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSuccess('');
     
     try {
-      // TODO: Implement API call to register student
-      console.log('Registering student:', studentForm);
+      const response = await fetch('/api/admin/students', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(studentForm),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to register student');
+      }
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setSuccess('Student registered successfully!');
+      setError('');
+      setSuccess(`Student registered successfully! Temporary password: ${result.tempPassword}`);
       setStudentForm({
         fullName: '',
         email: '',
@@ -142,6 +154,8 @@ export default function RegistrationPage() {
       });
     } catch (error) {
       console.error('Error registering student:', error);
+      setSuccess('');
+      setError(error instanceof Error ? error.message : 'Failed to register student');
     } finally {
       setIsSubmitting(false);
     }
@@ -150,14 +164,24 @@ export default function RegistrationPage() {
   const handleCompanySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSuccess('');
     
     try {
-      // TODO: Implement API call to register company
-      console.log('Registering company:', companyForm);
+      const response = await fetch('/api/admin/companies', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(companyForm),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to register company');
+      }
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      setError('');
       setSuccess('Company registered successfully!');
       setCompanyForm({
         companyName: '',
@@ -172,6 +196,8 @@ export default function RegistrationPage() {
       });
     } catch (error) {
       console.error('Error registering company:', error);
+      setSuccess('');
+      setError(error instanceof Error ? error.message : 'Failed to register company');
     } finally {
       setIsSubmitting(false);
     }
@@ -214,6 +240,17 @@ export default function RegistrationPage() {
               <div className="flex items-center gap-2 text-green-700">
                 <Check className="h-5 w-5" />
                 <span>{success}</span>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {error && (
+          <Card className="mb-6 border-red-200 bg-red-50">
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-2 text-red-700">
+                <XCircle className="h-5 w-5" />
+                <span>{error}</span>
               </div>
             </CardContent>
           </Card>
