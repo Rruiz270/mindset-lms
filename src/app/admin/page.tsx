@@ -166,7 +166,7 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
               <button 
                 onClick={() => router.push('/admin/live-class-content')}
                 className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
@@ -208,6 +208,13 @@ export default function AdminDashboard() {
               >
                 <FileText className="h-6 w-6 mx-auto mb-2 text-gray-600" />
                 <span className="text-sm">View Database</span>
+              </button>
+              <button 
+                onClick={() => router.push('/admin/setup')}
+                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
+              >
+                <Settings className="h-6 w-6 mx-auto mb-2 text-orange-600" />
+                <span className="text-sm">Setup Database</span>
               </button>
             </div>
           </CardContent>
