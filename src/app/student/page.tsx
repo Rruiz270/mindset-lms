@@ -54,13 +54,19 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, rgb(239 246 255) 0%, rgb(255 255 255) 50%, rgb(250 245 255) 100%)' }}>
+    <div 
+      className="min-h-screen" 
+      style={{ 
+        background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)',
+        minHeight: '100vh'
+      }}
+    >
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8">
+        <div className="mb-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {session.user.name}!
+            Welcome back, {session.user.name}! 🚀
           </h1>
           <p className="text-gray-600">
             Continue your English learning journey
