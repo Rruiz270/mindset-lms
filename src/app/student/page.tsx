@@ -54,7 +54,7 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -69,43 +69,43 @@ export default function StudentDashboard() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardContent className="flex items-center p-6">
               <Clock className="h-8 w-8 text-blue-600" />
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Remaining Lessons</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {packageInfo?.remainingLessons || 0}
+                  80
                 </p>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardContent className="flex items-center p-6">
               <BookOpen className="h-8 w-8 text-green-600" />
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Current Level</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {session.user.level || 'Not Set'}
+                  STARTER
                 </p>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardContent className="flex items-center p-6">
               <Trophy className="h-8 w-8 text-yellow-600" />
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Completed</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  {packageInfo?.usedLessons || 0}
+                  0
                 </p>
               </div>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardContent className="flex items-center p-6">
               <Calendar className="h-8 w-8 text-purple-600" />
               <div className="ml-4">
@@ -120,10 +120,10 @@ export default function StudentDashboard() {
 
         {/* Main Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Calendar className="h-5 w-5 mr-2" />
+              <CardTitle className="flex items-center text-gray-900">
+                <Calendar className="h-5 w-5 mr-2 text-blue-600" />
                 Book a Class
               </CardTitle>
             </CardHeader>
@@ -131,16 +131,16 @@ export default function StudentDashboard() {
               <p className="text-gray-600 mb-4">
                 Schedule your next live class with one of our teachers
               </p>
-              <Button className="w-full" onClick={() => router.push('/student/book')}>
+              <Button className="w-full btn-mindset" onClick={() => router.push('/student/book')}>
                 Book Now
               </Button>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <BookOpen className="h-5 w-5 mr-2" />
+              <CardTitle className="flex items-center text-gray-900">
+                <BookOpen className="h-5 w-5 mr-2 text-green-600" />
                 Pre-Class Activities
               </CardTitle>
             </CardHeader>
@@ -154,10 +154,10 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="card-hover border-0 shadow-md">
             <CardHeader>
-              <CardTitle className="flex items-center">
-                <Trophy className="h-5 w-5 mr-2" />
+              <CardTitle className="flex items-center text-gray-900">
+                <Trophy className="h-5 w-5 mr-2 text-yellow-600" />
                 My Progress
               </CardTitle>
             </CardHeader>
@@ -173,9 +173,9 @@ export default function StudentDashboard() {
         </div>
 
         {/* Recent Activity */}
-        <Card className="mt-8">
+        <Card className="mt-8 card-hover border-0 shadow-md">
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
+            <CardTitle className="text-gray-900">Recent Activity</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-gray-500">No recent activity. Start by booking your first class!</p>

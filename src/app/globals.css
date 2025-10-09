@@ -61,7 +61,7 @@
 /* Mindset LMS Custom Styles */
 @layer components {
   .mindset-gradient {
-    @apply bg-gradient-to-br from-mindset-blue to-mindset-purple;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   }
 
   .mindset-gradient-soft {
@@ -137,11 +137,23 @@
   }
 
   .btn-mindset {
-    @apply bg-mindset-blue text-white hover:bg-blue-700 transition-colors duration-200;
+    background-color: #2563eb;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-mindset:hover {
+    background-color: #1d4ed8;
   }
 
   .btn-mindset-secondary {
-    @apply bg-mindset-purple text-white hover:bg-purple-700 transition-colors duration-200;
+    background-color: #7c3aed;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-mindset-secondary:hover {
+    background-color: #6d28d9;
   }
 
   .focus-ring {
