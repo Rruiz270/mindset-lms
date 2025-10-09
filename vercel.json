@@ -4,5 +4,6 @@
   "installCommand": "npm install",
   "env": {
     "NEXTAUTH_URL": "https://mindset-lms.vercel.app"
-  }
+  },
+  "regions": ["cle1"]
 }
