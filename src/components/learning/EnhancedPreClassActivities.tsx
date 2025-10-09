@@ -283,6 +283,7 @@ export default function EnhancedPreClassActivities({ studentLevel }: EnhancedPre
                     size="sm" 
                     className="w-full"
                     disabled={selectedTopic.liveClassStatus !== 'live'}
+                    onClick={() => selectedTopic.liveClassStatus === 'live' && window.open(`/live-class/${selectedTopic.id}`, '_blank')}
                   >
                     {selectedTopic.liveClassStatus === 'live' ? (
                       <>

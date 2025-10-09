@@ -282,12 +282,12 @@ export default function AdminDashboard() {
                     </Button>
                   </div>
                   <div className="border rounded-lg p-4">
-                    <h4 className="font-semibold mb-2">Slides</h4>
+                    <h4 className="font-semibold mb-2">Live Class Content</h4>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Manage live class slides
+                      Manage slides, exercises, and media for live classes
                     </p>
-                    <Button size="sm" onClick={() => router.push('/admin/slides')}>
-                      Manage Slides
+                    <Button size="sm" onClick={() => router.push('/admin/live-class-content')}>
+                      Manage Live Class Content
                     </Button>
                   </div>
                 </div>
