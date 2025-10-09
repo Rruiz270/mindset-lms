@@ -68,6 +68,9 @@ model Topic {
   level           Level
   orderIndex      Int      // 1-40 for cycling
   description     String?
+  lessonPlan      String?  // Teacher lesson plan
+  objectives      Json?    // Learning objectives array
+  materials       Json?    // Required materials array
   
   // Relations
   bookings        Booking[]
@@ -133,8 +136,25 @@ model Slide {
   topic           Topic    @relation(fields: [topicId], references: [id])
   slideNumber     Int      // 1-5
   title           String
+  type            String   // intro, vocabulary, grammar, communication, review
   content         Json     // Rich content with text, images, activities
   notes           String?  // Teacher notes
+  order           Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  exercises       SlideExercise[]
+}
+
+model SlideExercise {
+  id              String   @id @default(cuid())
+  slideId         String
+  slide           Slide    @relation(fields: [slideId], references: [id], onDelete: Cascade)
+  type            String   // match, pronunciation, fill-blank, etc.
+  content         String
+  options         Json?    // For multiple choice, etc.
+  correctAnswer   String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }

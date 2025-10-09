@@ -12,14 +12,17 @@ export async function GET(request: NextRequest) {
 
     const topics = await prisma.topic.findMany({
       include: {
-        slides: {
+        liveClassSlides: {
           include: {
             exercises: true
+          },
+          orderBy: {
+            order: 'asc'
           }
         }
       },
       orderBy: {
-        order: 'asc'
+        orderIndex: 'asc'
       }
     });
 
@@ -57,7 +60,8 @@ export async function PUT(request: NextRequest) {
           title: slide.title,
           type: slide.type,
           content: slide.content,
-          notes: slide.notes
+          notes: slide.notes,
+          slideNumber: slide.slideNumber || 1
         },
         create: {
           id: slide.id,
@@ -66,20 +70,21 @@ export async function PUT(request: NextRequest) {
           type: slide.type,
           content: slide.content,
           notes: slide.notes,
-          order: slide.order || 0
+          order: slide.order || 0,
+          slideNumber: slide.slideNumber || 1
         }
       });
 
       // Update exercises for this slide
       if (slide.content.exercises) {
         // Delete existing exercises
-        await prisma.exercise.deleteMany({
+        await prisma.slideExercise.deleteMany({
           where: { slideId: slide.id }
         });
 
         // Create new exercises
         for (const exercise of slide.content.exercises) {
-          await prisma.exercise.create({
+          await prisma.slideExercise.create({
             data: {
               id: exercise.id,
               slideId: slide.id,
