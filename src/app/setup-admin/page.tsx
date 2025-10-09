@@ -41,19 +41,54 @@ export default function SetupAdminPage() {
 
   const setupAdmin = async () => {
     setSetting(true);
+    setResult(null);
+    
     try {
-      const response = await fetch('/api/init-system', {
+      // First, try to set up database tables
+      console.log('Step 1: Setting up database tables...');
+      const dbResponse = await fetch('/api/setup-database', {
         method: 'POST',
       });
-      const data = await response.json();
-      setResult(data);
+      const dbData = await dbResponse.json();
       
-      // Log all results for debugging
-      console.log('Init system result:', data);
+      console.log('Database setup result:', dbData);
       
-      if (!data.success) {
-        console.error('System initialization error:', data);
+      if (!dbData.success) {
+        setResult({
+          success: false,
+          error: 'Database setup failed',
+          details: dbData.details || dbData.error,
+          step: 'database'
+        });
+        return;
       }
+      
+      // If database setup succeeded, create admin
+      console.log('Step 2: Creating admin account...');
+      const adminResponse = await fetch('/api/init-system', {
+        method: 'POST',
+      });
+      const adminData = await adminResponse.json();
+      
+      console.log('Admin creation result:', adminData);
+      
+      if (adminData.success) {
+        setResult({
+          success: true,
+          message: 'System setup complete! Database tables created and admin account ready.',
+          adminEmail: adminData.adminEmail,
+          defaultPassword: adminData.defaultPassword,
+          step: 'complete'
+        });
+      } else {
+        setResult({
+          success: false,
+          error: 'Admin creation failed',
+          details: adminData.details || adminData.error,
+          step: 'admin'
+        });
+      }
+      
     } catch (error) {
       console.error('Network error:', error);
       setResult({ 
@@ -72,12 +107,12 @@ export default function SetupAdminPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-center">
             <Database className="h-6 w-6" />
-            System Setup
+            Setup Mindset LMS
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-gray-600 text-center">
-            Set up your Mindset LMS system in 2 steps.
+            Initialize your database and create admin account.
           </p>
 
           {/* Step 1: Database Setup */}
@@ -162,18 +197,18 @@ export default function SetupAdminPage() {
 
             <Button 
               onClick={setupAdmin}
-              disabled={setting || !dbResult?.success}
-              className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400"
+              disabled={setting}
+              className="w-full bg-blue-600 hover:bg-blue-700"
             >
               {setting ? (
                 <>
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Creating admin...
+                  Setting up system...
                 </>
               ) : (
                 <>
-                  <User className="h-4 w-4 mr-2" />
-                  Create Admin Account
+                  <Database className="h-4 w-4 mr-2" />
+                  Setup Complete System
                 </>
               )}
             </Button>
