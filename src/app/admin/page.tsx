@@ -15,7 +15,8 @@ import {
   Calendar,
   Award,
   BarChart3,
-  FileText
+  FileText,
+  UserCheck
 } from 'lucide-react'
 
 
@@ -165,7 +166,7 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               <button 
                 onClick={() => router.push('/admin/live-class-content')}
                 className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
@@ -193,6 +194,13 @@ export default function AdminDashboard() {
               >
                 <Users className="h-6 w-6 mx-auto mb-2 text-gray-600" />
                 <span className="text-sm">Communications</span>
+              </button>
+              <button 
+                onClick={() => router.push('/admin/attendance')}
+                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
+              >
+                <UserCheck className="h-6 w-6 mx-auto mb-2 text-gray-600" />
+                <span className="text-sm">Attendance Reports</span>
               </button>
             </div>
           </CardContent>

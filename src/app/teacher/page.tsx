@@ -31,6 +31,7 @@ import {
 import { format, isToday, startOfMonth, endOfMonth } from 'date-fns';
 import axios from 'axios';
 import Navbar from '@/components/layout/navbar';
+import LiveAttendanceTracker from '@/components/attendance/LiveAttendanceTracker';
 
 interface Student {
   id: string;
@@ -100,6 +101,7 @@ export default function TeacherDashboard() {
     recentReviews: []
   });
   const [loading, setLoading] = useState(true);
+  const [showAttendanceForClass, setShowAttendanceForClass] = useState<string | null>(null);
 
   useEffect(() => {
     if (status === 'loading') return;
@@ -228,6 +230,10 @@ export default function TeacherDashboard() {
     router.push(`/teacher/guide/${materialId}`);
   };
 
+  const handleShowAttendance = (classId: string) => {
+    setShowAttendanceForClass(showAttendanceForClass === classId ? null : classId);
+  };
+
   const getCourseTypeColor = (courseType: string) => {
     switch (courseType) {
       case 'Smart Learning': return 'bg-blue-600';
@@ -310,8 +316,9 @@ export default function TeacherDashboard() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="today" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="today">Today's Classes</TabsTrigger>
+            <TabsTrigger value="attendance">Attendance</TabsTrigger>
             <TabsTrigger value="students">Students</TabsTrigger>
             <TabsTrigger value="performance">Performance</TabsTrigger>
             <TabsTrigger value="reviews">Reviews</TabsTrigger>
@@ -369,7 +376,7 @@ export default function TeacherDashboard() {
                           </div>
                           
                           {/* Action Buttons */}
-                          <div className="flex gap-3">
+                          <div className="flex gap-3 flex-wrap">
                             <Button 
                               onClick={() => handleStartClass(classItem.googleMeetLink!)}
                               className="bg-green-600 hover:bg-green-700"
@@ -392,11 +399,183 @@ export default function TeacherDashboard() {
                               <HelpCircle className="h-4 w-4 mr-2" />
                               Teacher Guide
                             </Button>
+                            <Button 
+                              variant={showAttendanceForClass === classItem.id ? "default" : "outline"}
+                              onClick={() => handleShowAttendance(classItem.id)}
+                            >
+                              <UserCheck className="h-4 w-4 mr-2" />
+                              {showAttendanceForClass === classItem.id ? 'Hide' : 'Live'} Attendance
+                            </Button>
                           </div>
+                          
+                          {/* Live Attendance Tracker */}
+                          {showAttendanceForClass === classItem.id && (
+                            <div className="mt-6 pt-6 border-t">
+                              <LiveAttendanceTracker 
+                                bookingId={classItem.id}
+                                isTeacher={true}
+                                autoRefresh={true}
+                              />
+                            </div>
+                          )}
                         </CardContent>
                       </Card>
                     ))
                   )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Attendance Tab */}
+          <TabsContent value="attendance" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Overall Attendance</CardTitle>
+                  <UserCheck className="h-5 w-5 text-green-600" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold text-green-700">{stats.monthlyStats.attendanceRate}%</div>
+                  <p className="text-xs text-green-600 mt-1">This month</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Classes with Full Attendance</CardTitle>
+                  <CheckCircle className="h-5 w-5 text-blue-600" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold text-blue-700">18</div>
+                  <p className="text-xs text-blue-600 mt-1">Out of {stats.monthlyStats.classesCompleted} classes</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Late Arrivals</CardTitle>
+                  <Clock className="h-5 w-5 text-orange-600" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold text-orange-700">8</div>
+                  <p className="text-xs text-orange-600 mt-1">Students this month</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5" />
+                  Recent Classes Attendance
+                </CardTitle>
+                <CardDescription>
+                  Attendance tracking for your recent classes
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {todayClasses.map((classItem) => (
+                    <Card key={classItem.id} className="p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <div>
+                          <h4 className="font-medium">{classItem.topic}</h4>
+                          <p className="text-sm text-gray-600">{format(new Date(), 'MMM d')} • {classItem.time}</p>
+                        </div>
+                        <Badge className={getCourseTypeColor(classItem.courseType)}>
+                          {classItem.courseType}
+                        </Badge>
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2">
+                            <Users className="h-4 w-4 text-gray-500" />
+                            <span className="text-sm">
+                              {classItem.students.length}/{classItem.maxStudents} expected
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <UserCheck className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-green-600">
+                              {Math.round((classItem.students.length / classItem.maxStudents) * 100)}% attendance
+                            </span>
+                          </div>
+                        </div>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleShowAttendance(classItem.id)}
+                        >
+                          <Eye className="h-4 w-4 mr-2" />
+                          View Details
+                        </Button>
+                      </div>
+                      
+                      {/* Progress bar */}
+                      <div className="mt-3">
+                        <div className="w-full h-2 bg-gray-200 rounded-full">
+                          <div 
+                            className="h-2 bg-green-500 rounded-full"
+                            style={{ width: `${(classItem.students.length / classItem.maxStudents) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Live Attendance Details */}
+                      {showAttendanceForClass === classItem.id && (
+                        <div className="mt-4 pt-4 border-t">
+                          <LiveAttendanceTracker 
+                            bookingId={classItem.id}
+                            isTeacher={true}
+                            autoRefresh={true}
+                          />
+                        </div>
+                      )}
+                    </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5" />
+                  Attendance Trends
+                </CardTitle>
+                <CardDescription>
+                  Student attendance patterns and insights
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-green-50 rounded-lg">
+                      <h4 className="font-medium text-green-800 mb-2">Excellent Attendance (90%+)</h4>
+                      <div className="space-y-2">
+                        {students.filter(s => s.attendanceRate >= 90).map((student) => (
+                          <div key={student.id} className="flex items-center justify-between">
+                            <span className="text-sm">{student.name}</span>
+                            <Badge variant="outline" className="text-green-600">{student.attendanceRate}%</Badge>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 bg-yellow-50 rounded-lg">
+                      <h4 className="font-medium text-yellow-800 mb-2">Needs Attention (&lt;85%)</h4>
+                      <div className="space-y-2">
+                        {students.filter(s => s.attendanceRate < 85).map((student) => (
+                          <div key={student.id} className="flex items-center justify-between">
+                            <span className="text-sm">{student.name}</span>
+                            <Badge variant="outline" className="text-yellow-600">{student.attendanceRate}%</Badge>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -595,6 +774,14 @@ export default function TeacherDashboard() {
                 >
                   <BookOpen className="h-4 w-4 mr-2" />
                   Teaching Materials
+                </Button>
+                <Button 
+                  variant="outline" 
+                  onClick={() => router.push('/teacher/attendance')}
+                  className="w-full justify-start"
+                >
+                  <UserCheck className="h-4 w-4 mr-2" />
+                  Attendance Reports
                 </Button>
               </CardContent>
             </Card>

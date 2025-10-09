@@ -17,7 +17,10 @@ import {
   BookOpen,
   GraduationCap,
   Clock,
-  Globe
+  Globe,
+  UserCheck,
+  AlertTriangle,
+  CheckCircle
 } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -58,6 +61,23 @@ interface ContractInfo {
   company?: string;
 }
 
+interface AttendanceMetrics {
+  overallRate: number;
+  totalClasses: number;
+  attendedClasses: number;
+  lateArrivals: number;
+  perfectAttendance: number;
+  needsAttention: number;
+  byLevel: {
+    A1: number;
+    A2: number;
+    B1: number;
+    B2: number;
+    C1: number;
+    C2: number;
+  };
+}
+
 export default function AdminDashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -76,6 +96,15 @@ export default function AdminDashboardPage() {
     companies: []
   });
   const [contracts, setContracts] = useState<ContractInfo[]>([]);
+  const [attendanceMetrics, setAttendanceMetrics] = useState<AttendanceMetrics>({
+    overallRate: 0,
+    totalClasses: 0,
+    attendedClasses: 0,
+    lateArrivals: 0,
+    perfectAttendance: 0,
+    needsAttention: 0,
+    byLevel: { A1: 0, A2: 0, B1: 0, B2: 0, C1: 0, C2: 0 }
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -126,6 +155,16 @@ export default function AdminDashboardPage() {
           level: 'A2 - STARTER',
         }
       ]);
+
+      setAttendanceMetrics({
+        overallRate: 87,
+        totalClasses: 423,
+        attendedClasses: 368,
+        lateArrivals: 34,
+        perfectAttendance: 89,
+        needsAttention: 23,
+        byLevel: { A1: 82, A2: 85, B1: 90, B2: 88, C1: 92, C2: 89 }
+      });
     } catch (error) {
       console.error('Error fetching metrics:', error);
     } finally {
@@ -204,6 +243,96 @@ export default function AdminDashboardPage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Attendance Analytics */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <UserCheck className="h-5 w-5" />
+              Attendance Analytics
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+              <div className="bg-green-50 p-4 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-green-900">Overall Attendance</h4>
+                  <UserCheck className="h-5 w-5 text-green-600" />
+                </div>
+                <p className="text-3xl font-bold text-green-700">{attendanceMetrics.overallRate}%</p>
+                <p className="text-xs text-green-600">{attendanceMetrics.attendedClasses}/{attendanceMetrics.totalClasses} classes</p>
+              </div>
+              
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-blue-900">Perfect Attendance</h4>
+                  <CheckCircle className="h-5 w-5 text-blue-600" />
+                </div>
+                <p className="text-3xl font-bold text-blue-700">{attendanceMetrics.perfectAttendance}</p>
+                <p className="text-xs text-blue-600">Students (100% rate)</p>
+              </div>
+              
+              <div className="bg-orange-50 p-4 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-orange-900">Late Arrivals</h4>
+                  <Clock className="h-5 w-5 text-orange-600" />
+                </div>
+                <p className="text-3xl font-bold text-orange-700">{attendanceMetrics.lateArrivals}</p>
+                <p className="text-xs text-orange-600">This month</p>
+              </div>
+              
+              <div className="bg-red-50 p-4 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-medium text-red-900">Needs Attention</h4>
+                  <AlertTriangle className="h-5 w-5 text-red-600" />
+                </div>
+                <p className="text-3xl font-bold text-red-700">{attendanceMetrics.needsAttention}</p>
+                <p className="text-xs text-red-600">Students (&lt;75% rate)</p>
+              </div>
+            </div>
+
+            {/* Attendance by Level */}
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h4 className="font-medium text-gray-900 mb-4">Attendance Rate by Level</h4>
+              <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+                {Object.entries(attendanceMetrics.byLevel).map(([level, rate]) => (
+                  <div key={level} className="text-center">
+                    <div className="mb-2">
+                      <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center relative">
+                        <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 100 100">
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            stroke="currentColor"
+                            strokeWidth="8"
+                            fill="transparent"
+                            className="text-gray-300"
+                          />
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            stroke="currentColor"
+                            strokeWidth="8"
+                            fill="transparent"
+                            strokeDasharray={`${2 * Math.PI * 40}`}
+                            strokeDashoffset={`${2 * Math.PI * 40 * (1 - rate / 100)}`}
+                            className={rate >= 90 ? 'text-green-500' : rate >= 80 ? 'text-yellow-500' : 'text-red-500'}
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-xs font-bold">{rate}%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <Badge variant="outline" className="text-xs">{level}</Badge>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Course Distribution */}
         <Card className="mb-8">

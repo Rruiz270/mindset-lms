@@ -47,6 +47,8 @@ model User {
   progress        Progress[]
   submissions     Submission[]
   teacherAvailability Availability[]
+  attendanceLogs  AttendanceLog[]
+  studentStats    StudentStats?
 }
 
 model Package {
@@ -96,6 +98,9 @@ model Booking {
   attendedAt      DateTime?
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
+  
+  // Relations
+  attendanceLogs  AttendanceLog[]
 }
 
 model Availability {
@@ -228,4 +233,30 @@ enum ExerciseType {
   DRAG_DROP
   CROSSWORD
   FLASHCARD
+}
+
+model AttendanceLog {
+  id              String   @id @default(cuid())
+  bookingId       String
+  booking         Booking  @relation(fields: [bookingId], references: [id])
+  studentId       String
+  student         User     @relation(fields: [studentId], references: [id])
+  action          String   // 'joined', 'left', 'rejoined', 'marked_present', 'marked_absent'
+  timestamp       DateTime
+  recordedBy      String?  // User ID who recorded the attendance
+  source          String   @default("manual") // 'google_meet', 'manual', 'webhook'
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model StudentStats {
+  id              String   @id @default(cuid())
+  studentId       String   @unique
+  student         User     @relation(fields: [studentId], references: [id])
+  totalClasses    Int      @default(0)
+  attendedClasses Int      @default(0)
+  attendanceRate  Int      @default(0) // Percentage
+  lastUpdated     DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
