@@ -205,25 +205,40 @@ export const getTopicForDate = (date: Date, level: 'STARTER' | 'SURVIVOR' | 'EXP
   const topics = getTopicsByLevel(level);
   if (topics.length === 0) return null;
 
-  // Calculate days since September 1, 2025 (the start date from the calendar)
-  const startDate = new Date('2025-09-01');
-  const daysSinceStart = Math.floor((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
-  
   // Handle Sundays (no topic lessons)
   if (date.getDay() === 0) return null;
 
-  // Calculate cycle day based on level
-  let cycleDay: number;
-  if (level === 'STARTER') {
-    // STARTER: 3-day cycle + Sunday off = effectively 4-day pattern
-    cycleDay = Math.floor(daysSinceStart / 7) * 6 + (daysSinceStart % 7);
+  // Calculate days since September 1, 2025 (Monday) - the start date from your calendar
+  const startDate = new Date('2025-09-01'); // Sept 1, 2025 was a Monday
+  const daysSinceStart = Math.floor((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+  
+  // If date is before start date, return null
+  if (daysSinceStart < 0) return null;
+
+  // Calculate the week number and day of week (Monday = 1, Tuesday = 2, etc., Sunday = 0)
+  const dayOfWeek = date.getDay();
+  const weekNumber = Math.floor(daysSinceStart / 7);
+  
+  // Calculate teaching days (excluding Sundays)
+  let teachingDaysSinceStart = weekNumber * 6; // 6 teaching days per week
+  
+  // Add days within current week (excluding Sunday)
+  if (dayOfWeek > 0) {
+    teachingDaysSinceStart += dayOfWeek - 1; // Monday = 0, Tuesday = 1, etc.
   } else {
-    // Others: 2-day cycle + Sunday off
-    cycleDay = Math.floor(daysSinceStart / 7) * 6 + (daysSinceStart % 7);
+    return null; // Sunday - no classes
   }
 
-  // Find appropriate topic based on cycle day
-  const topicIndex = Math.floor(cycleDay / (level === 'STARTER' ? 3 : 2)) % topics.length;
+  let topicIndex: number;
+  
+  if (level === 'STARTER') {
+    // STARTER: 3-day cycle (Mon-Tue-Wed same topic, Thu-Fri-Sat same topic, etc.)
+    topicIndex = Math.floor(teachingDaysSinceStart / 3) % topics.length;
+  } else {
+    // SURVIVOR, EXPLORER, EXPERT: 2-day cycle (Mon-Tue same, Wed-Thu same, Fri-Sat same)
+    topicIndex = Math.floor(teachingDaysSinceStart / 2) % topics.length;
+  }
+
   return topics[topicIndex] || null;
 };
 

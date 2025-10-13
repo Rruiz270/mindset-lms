@@ -12,10 +12,15 @@ interface ClassSession {
   date: string;
   time: string;
   topic: string;
-  teacherName: string;
-  studentsBooked: number;
-  maxStudents: number;
+  teacher: {
+    id: string;
+    name: string;
+  };
+  capacity: number;
+  enrolled: number;
+  available: number;
   level: string;
+  courseType: string;
 }
 
 interface EnhancedBookingCalendarProps {
@@ -29,80 +34,65 @@ export default function EnhancedBookingCalendar({ studentLevel, onBookingComplet
   const [classSessions, setClassSessions] = useState<ClassSession[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Generate next 30 days of mock class sessions
+  // Fetch real class sessions from API
   useEffect(() => {
-    generateMockSessions();
-  }, []);
+    fetchAvailableClasses();
+  }, [currentDate]);
 
-  const generateMockSessions = () => {
-    const sessions: ClassSession[] = [];
-    const startDate = new Date();
-    
-    // Sample topics for different days
-    const topics = [
-      'Shopping: How Much Is It?',
-      'Food: What\'s for Lunch?', 
-      'Health: How Are You Feeling?',
-      'Work: What Do You Do?',
-      'Travel: Getting Around',
-      'People: Meet My Family',
-      'Entertainment: TV Shows',
-      'School: In the Classroom',
-      'Time: My Daily Routine',
-      'Hobbies: Free Time Activities'
-    ];
+  const fetchAvailableClasses = async () => {
+    setLoading(true);
+    try {
+      // Calculate date range (current month + next month)
+      const startDate = startOfMonth(currentDate);
+      const endDate = endOfMonth(addDays(currentDate, 60)); // Next 2 months
 
-    for (let i = 0; i < 30; i++) {
-      const date = addDays(startDate, i);
+      const response = await fetch(
+        `/api/student/available-classes?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`
+      );
       
-      // Skip weekends for now
-      if (date.getDay() === 0 || date.getDay() === 6) continue;
-      
-      // Morning class
-      sessions.push({
-        id: `morning-${i}`,
-        date: format(date, 'yyyy-MM-dd'),
-        time: '09:00',
-        topic: topics[i % topics.length],
-        teacherName: i % 3 === 0 ? 'Sarah Johnson' : i % 3 === 1 ? 'Mike Wilson' : 'Anna Garcia',
-        studentsBooked: Math.floor(Math.random() * 8) + 1,
-        maxStudents: 10,
-        level: studentLevel
-      });
-
-      // Evening class
-      sessions.push({
-        id: `evening-${i}`,
-        date: format(date, 'yyyy-MM-dd'),
-        time: '19:00',
-        topic: topics[(i + 5) % topics.length],
-        teacherName: i % 2 === 0 ? 'David Brown' : 'Lisa Chen',
-        studentsBooked: Math.floor(Math.random() * 6) + 2,
-        maxStudents: 10,
-        level: studentLevel
-      });
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setClassSessions(data.classes);
+        } else {
+          console.error('Failed to fetch classes:', data.error);
+          // Fallback to empty array
+          setClassSessions([]);
+        }
+      } else {
+        console.error('API request failed:', response.status);
+        setClassSessions([]);
+      }
+    } catch (error) {
+      console.error('Error fetching available classes:', error);
+      setClassSessions([]);
+    } finally {
+      setLoading(false);
     }
-    
-    setClassSessions(sessions);
   };
 
   const handleBookClass = async (session: ClassSession) => {
     setLoading(true);
     try {
-      // Simulate booking API call
+      // TODO: Implement actual booking API call when ready
+      // For now, simulate the booking
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Update the session to show increased student count
+      // Update the session to show increased enrollment
       setClassSessions(prev => prev.map(s => 
         s.id === session.id 
-          ? { ...s, studentsBooked: s.studentsBooked + 1 }
+          ? { 
+              ...s, 
+              enrolled: s.enrolled + 1,
+              available: s.available - 1
+            }
           : s
       ));
       
-      alert(`Successfully booked: ${session.topic} on ${format(new Date(session.date), 'MMM d')} at ${session.time}`);
+      alert(`✅ Successfully booked!\n\nTopic: ${session.topic}\nCourse: ${session.courseType}\nDate: ${format(new Date(session.date), 'MMM d, yyyy')}\nTime: ${session.time}\nTeacher: ${session.teacher.name}\n\nRemaining spots: ${session.available - 1}`);
       onBookingComplete?.();
     } catch (error) {
-      alert('Failed to book class. Please try again.');
+      alert('❌ Failed to book class. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -206,7 +196,7 @@ export default function EnhancedBookingCalendar({ studentLevel, onBookingComplet
                         <div className="flex items-center gap-1">
                           <Users className="h-3 w-3 text-green-600" />
                           <span className="text-xs text-green-700">
-                            {session.studentsBooked}/{session.maxStudents}
+                            {session.enrolled}/{session.capacity}
                           </span>
                         </div>
                       </div>
@@ -216,17 +206,20 @@ export default function EnhancedBookingCalendar({ studentLevel, onBookingComplet
                           {session.topic}
                         </h4>
                         <p className="text-xs text-gray-600">
-                          Teacher: {session.teacherName}
+                          Teacher: {session.teacher.name}
                         </p>
+                        <Badge variant="outline" className="text-xs">
+                          {session.courseType}
+                        </Badge>
                       </div>
                       
                       <Button 
                         size="sm" 
                         className="w-full text-xs"
-                        disabled={isPast || session.studentsBooked >= session.maxStudents || loading}
+                        disabled={isPast || session.available <= 0 || loading}
                         onClick={() => handleBookClass(session)}
                       >
-                        {session.studentsBooked >= session.maxStudents ? 'Full' : 'Book Class'}
+                        {session.available <= 0 ? 'Full' : `Book Class (${session.available} spots)`}
                       </Button>
                     </div>
                   ))
