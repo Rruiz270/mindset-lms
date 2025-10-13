@@ -38,6 +38,9 @@ model User {
   role           UserRole        @default(STUDENT)
   level          Level?          // Only for students
   studentId      String?         @unique // Unique student ID for students only
+  phone          String?         // Student phone number
+  remainingHours Int?            // Remaining hours from Fix up.csv
+  comments       String?         // Comments from Fix up.csv
   isActive       Boolean         @default(true) // Student active status
   createdAt      DateTime        @default(now())
   updatedAt      DateTime        @updatedAt

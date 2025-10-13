@@ -19,7 +19,10 @@ import {
   Building,
   Shield,
   CheckCircle,
-  XCircle
+  XCircle,
+  Clock,
+  MessageSquare,
+  Eye
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -36,6 +39,8 @@ interface User {
   birthDate?: string;
   gender?: string;
   address?: string;
+  remainingHours?: number;
+  comments?: string;
   packages?: {
     id: string;
     totalLessons: number;
@@ -287,7 +292,7 @@ export default function AdminUsersPage() {
                           )}
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 text-sm text-gray-600">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 text-sm text-gray-600">
                           <div className="flex items-center gap-2">
                             <Mail className="h-4 w-4" />
                             <span>{user.email}</span>
@@ -311,6 +316,15 @@ export default function AdminUsersPage() {
                               <span>Level: {user.level}</span>
                             </div>
                           )}
+                          
+                          {user.remainingHours !== undefined && (
+                            <div className="flex items-center gap-2">
+                              <Clock className="h-4 w-4" />
+                              <span className={user.remainingHours > 0 ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
+                                {user.remainingHours} hours remaining
+                              </span>
+                            </div>
+                          )}
                         </div>
 
                         {user.packages && user.packages.length > 0 && (
@@ -324,7 +338,43 @@ export default function AdminUsersPage() {
                             ))}
                           </div>
                         )}
+                        
+                        {user.comments && (
+                          <div className="mt-2 p-2 bg-yellow-50 rounded border-l-2 border-yellow-200">
+                            <div className="flex items-start gap-2">
+                              <MessageSquare className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                              <p className="text-sm text-yellow-800">{user.comments}</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
+                      
+                      {user.role === 'STUDENT' && (
+                        <div className="flex flex-col gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={() => {
+                              const details = {
+                                name: user.name,
+                                email: user.email,
+                                phone: user.phone || 'Not provided',
+                                studentId: user.studentId || 'N/A',
+                                level: user.level || 'Not set',
+                                remainingHours: user.remainingHours ?? 'Not set',
+                                comments: user.comments || 'No comments',
+                                status: user.isActive ? 'Active' : 'Inactive',
+                                joinedDate: formatDate(user.createdAt)
+                              };
+                              
+                              alert(`Student Details:\n\nName: ${details.name}\nEmail: ${details.email}\nPhone: ${details.phone}\nStudent ID: ${details.studentId}\nLevel: ${details.level}\nRemaining Hours: ${details.remainingHours}\nStatus: ${details.status}\nJoined: ${details.joinedDate}\n\nComments:\n${details.comments}`);
+                            }}
+                          >
+                            <Eye className="h-4 w-4 mr-2" />
+                            View Details
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))

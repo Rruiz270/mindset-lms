@@ -50,6 +50,8 @@ export async function GET(request: Request) {
       studentId: user.studentId,
       isActive: user.isActive,
       phone: user.phone,
+      remainingHours: user.remainingHours,
+      comments: user.comments,
       birthDate: user.birthDate?.toISOString(),
       gender: user.gender,
       address: user.address,
