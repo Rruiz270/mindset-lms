@@ -77,7 +77,7 @@ export default function AutoPopulatePage() {
               <div className="bg-blue-50 p-4 rounded">
                 <h4 className="font-medium mb-2 text-blue-800">What this will do:</h4>
                 <ul className="text-sm space-y-1 text-blue-700">
-                  <li>• Import 100 NEW students from CSV data (Batch 3 - fresh batch)</li>
+                  <li>• Import 100 NEW students from CSV data (Batch 4 - fresh batch)</li>
                   <li>• Generate unique student IDs (MST-2025-XXXX format)</li>
                   <li>• Create lesson packages based on contract data</li>
                   <li>• Parse DD/MM/YYYY date format correctly</li>
