@@ -20,7 +20,7 @@ export default function AutoPopulatePage() {
   }
 
   const handleAutoPopulate = async () => {
-    if (!confirm('This will add 50 sample students from your CSV file to the database. Continue?')) {
+    if (!confirm('This will import ALL 817 students from your CSV file to the database. Continue?')) {
       return;
     }
 
@@ -77,7 +77,7 @@ export default function AutoPopulatePage() {
               <div className="bg-blue-50 p-4 rounded">
                 <h4 className="font-medium mb-2 text-blue-800">What this will do:</h4>
                 <ul className="text-sm space-y-1 text-blue-700">
-                  <li>• Import 50 sample students from your CSV data</li>
+                  <li>• Import ALL 817 students from your complete CSV data</li>
                   <li>• Generate unique student IDs (MST-2025-XXXX format)</li>
                   <li>• Create lesson packages based on contract data</li>
                   <li>• Parse DD/MM/YYYY date format correctly</li>
@@ -102,7 +102,7 @@ export default function AutoPopulatePage() {
                 className="w-full"
                 size="lg"
               >
-{importing ? 'Importing 50 Sample Students...' : 'Import 50 Sample Students from CSV Data'}
+{importing ? 'Importing All 817 Students...' : 'Import All 817 Students from Complete CSV Data'}
               </Button>
             </div>
           </CardContent>
