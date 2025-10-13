@@ -49,12 +49,6 @@ export async function GET(request: Request) {
       level: user.level,
       studentId: user.studentId,
       isActive: user.isActive,
-      phone: user.phone,
-      remainingHours: user.remainingHours,
-      comments: user.comments,
-      birthDate: user.birthDate?.toISOString(),
-      gender: user.gender,
-      address: user.address,
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
       packages: user.packages.map(pkg => ({
