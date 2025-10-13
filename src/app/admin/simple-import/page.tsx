@@ -37,7 +37,7 @@ export default function SimpleImportPage() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('/api/admin/bulk-import', {
+      const response = await fetch('/api/admin/import-csv', {
         method: 'POST',
         body: formData,
       });
@@ -132,14 +132,46 @@ export default function SimpleImportPage() {
             </CardHeader>
             <CardContent>
               {result.success ? (
-                <div className="bg-green-50 p-4 rounded">
-                  <p className="text-green-800 font-medium">
-                    ✅ Successfully imported {result.imported} students!
-                  </p>
+                <div className="space-y-4">
+                  <div className="bg-green-50 p-4 rounded">
+                    <p className="text-green-800 font-medium">
+                      ✅ Successfully imported {result.imported} out of {result.total || result.imported} students!
+                    </p>
+                  </div>
+                  
+                  {result.students && result.students.length > 0 && (
+                    <div className="bg-blue-50 p-4 rounded">
+                      <p className="font-medium text-blue-800 mb-2">Sample imported students:</p>
+                      <div className="text-sm space-y-1">
+                        {result.students.slice(0, 5).map((student: any, index: number) => (
+                          <div key={index} className="text-blue-700">
+                            • {student.name} ({student.studentId}) - Level: {student.level}
+                          </div>
+                        ))}
+                        {result.students.length > 5 && <p className="text-blue-600">...and {result.students.length - 5} more</p>}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {result.errors && result.errors.length > 0 && (
+                    <div className="bg-yellow-50 p-4 rounded">
+                      <p className="font-medium text-yellow-800">Some students were skipped:</p>
+                      <ul className="text-sm text-yellow-700 mt-1">
+                        {result.errors.slice(0, 5).map((error: string, index: number) => (
+                          <li key={index}>• {error}</li>
+                        ))}
+                        {result.errors.length > 5 && <p>...and {result.errors.length - 5} more errors</p>}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="bg-red-50 p-4 rounded">
                   <p className="text-red-800 font-medium">Import failed</p>
+                  <p className="text-red-600 text-sm mt-1">{result.error}</p>
+                  {result.details && (
+                    <p className="text-red-600 text-sm">{result.details}</p>
+                  )}
                   {result.errors && result.errors.length > 0 && (
                     <div className="mt-2">
                       <p className="font-medium">Errors:</p>
