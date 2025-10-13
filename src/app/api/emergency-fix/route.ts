@@ -59,9 +59,21 @@ export async function GET(request: NextRequest) {
       try {
         console.log(`🔄 Processing ${account.email}...`);
         
-        // Delete existing user if exists
+        // Delete existing user if exists (select only original columns)
         const existingUser = await prisma.user.findUnique({
-          where: { email: account.email }
+          where: { email: account.email },
+          select: {
+            id: true,
+            email: true,
+            password: true,
+            name: true,
+            role: true,
+            level: true,
+            studentId: true,
+            isActive: true,
+            createdAt: true,
+            updatedAt: true
+          }
         });
         
         if (existingUser) {
