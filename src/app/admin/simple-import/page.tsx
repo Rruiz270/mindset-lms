@@ -1,0 +1,167 @@
+'use client';
+
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ArrowLeft, Upload, CheckCircle, XCircle } from 'lucide-react';
+import Link from 'next/link';
+
+export default function SimpleImportPage() {
+  const { data: session, status } = useSession();
+  const [file, setFile] = useState<File | null>(null);
+  const [importing, setImporting] = useState(false);
+  const [result, setResult] = useState<any>(null);
+
+  if (status === 'loading') return <div className="p-8">Loading...</div>;
+  
+  if (!session || session.user?.role !== 'ADMIN') {
+    redirect('/auth/login');
+  }
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setResult(null);
+    }
+  };
+
+  const handleImport = async () => {
+    if (!file) return;
+
+    setImporting(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/admin/bulk-import', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      setResult(data);
+    } catch (error) {
+      setResult({
+        success: false,
+        imported: 0,
+        errors: ['Failed to import file'],
+        students: []
+      });
+    } finally {
+      setImporting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-6">
+          <Link href="/admin">
+            <Button variant="outline" size="sm">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Admin
+            </Button>
+          </Link>
+          <h1 className="text-2xl font-bold mt-4">Import Students from CSV</h1>
+        </div>
+
+        {/* Upload Card */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle>Upload CSV File</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <Input
+                type="file"
+                accept=".csv"
+                onChange={handleFileSelect}
+              />
+              
+              {file && (
+                <div className="bg-blue-50 p-4 rounded">
+                  <p>Selected: {file.name}</p>
+                  <p>Size: {(file.size / 1024).toFixed(2)} KB</p>
+                </div>
+              )}
+
+              <div className="bg-gray-50 p-4 rounded">
+                <h4 className="font-medium mb-2">CSV Format Expected:</h4>
+                <ul className="text-sm space-y-1">
+                  <li>• Full Name (required)</li>
+                  <li>• Email (required)</li>
+                  <li>• Phone</li>
+                  <li>• CEFR Level (A1, A2, B1, B2, C1, C2)</li>
+                  <li>• Total Lessons</li>
+                  <li>• Contract End (YYYY-MM-DD)</li>
+                </ul>
+                <p className="text-xs text-gray-500 mt-2">
+                  Contract Start will be auto-calculated as 1 year before Contract End
+                </p>
+              </div>
+
+              <Button 
+                onClick={handleImport} 
+                disabled={!file || importing}
+                className="w-full"
+              >
+                {importing ? 'Importing...' : 'Import Students'}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Results */}
+        {result && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                {result.success ? (
+                  <CheckCircle className="h-5 w-5 text-green-600" />
+                ) : (
+                  <XCircle className="h-5 w-5 text-red-600" />
+                )}
+                Import Results
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {result.success ? (
+                <div className="bg-green-50 p-4 rounded">
+                  <p className="text-green-800 font-medium">
+                    ✅ Successfully imported {result.imported} students!
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-red-50 p-4 rounded">
+                  <p className="text-red-800 font-medium">Import failed</p>
+                  {result.errors && result.errors.length > 0 && (
+                    <div className="mt-2">
+                      <p className="font-medium">Errors:</p>
+                      <ul className="text-sm">
+                        {result.errors.slice(0, 10).map((error: string, index: number) => (
+                          <li key={index}>• {error}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="mt-4">
+                <Link href="/admin/users">
+                  <Button variant="outline">View All Students</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}

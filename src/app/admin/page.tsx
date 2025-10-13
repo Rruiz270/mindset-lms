@@ -176,11 +176,11 @@ export default function AdminDashboard() {
                 <span className="text-sm font-medium text-blue-700">View Users</span>
               </button>
               <button 
-                onClick={() => router.push('/admin/bulk-import')}
+                onClick={() => router.push('/admin/simple-import')}
                 className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
               >
                 <Upload className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                <span className="text-sm font-medium text-green-700">Bulk Import</span>
+                <span className="text-sm font-medium text-green-700">Import CSV</span>
               </button>
               <button 
                 onClick={() => router.push('/admin/live-class-content')}

@@ -32,11 +32,33 @@ async function generateStudentId(): Promise<string> {
 }
 
 function parseCSV(text: string): any[] {
-  const lines = text.trim().split('\\n');
+  const lines = text.trim().split('\n');
   if (lines.length < 2) return [];
   
   const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
   const rows = [];
+  
+  // Column mapping for Portuguese/English
+  const columnMap: Record<string, string> = {
+    'Nome': 'Full Name',
+    'Student Name': 'Full Name',
+    'Name': 'Full Name',
+    'E-mail': 'Email',
+    'Email': 'Email',
+    'Telefone': 'Phone',
+    'Phone': 'Phone',
+    'Nível': 'CEFR Level',
+    'Level': 'CEFR Level',
+    'CEFR Level': 'CEFR Level',
+    'Aulas': 'Total Lessons',
+    'Lessons': 'Total Lessons',
+    'Total Lessons': 'Total Lessons',
+    'Classes': 'Total Lessons',
+    'Fim de Contrato': 'Contract End',
+    'Contract End': 'Contract End',
+    'Data Fim': 'Contract End',
+    'End Date': 'Contract End'
+  };
   
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -46,11 +68,22 @@ function parseCSV(text: string): any[] {
     const row: any = {};
     
     headers.forEach((header, index) => {
-      row[header] = values[index] || '';
+      const mappedHeader = columnMap[header] || header;
+      row[mappedHeader] = values[index] || '';
     });
     
     // Skip empty rows
-    if (!row['Full Name'] && !row['Email']) continue;
+    const hasName = row['Full Name'] || row['Nome'] || row['Student Name'] || row['Name'];
+    const hasEmail = row['Email'] || row['E-mail'];
+    if (!hasName && !hasEmail) continue;
+    
+    // Ensure we have Full Name and Email fields
+    if (!row['Full Name']) {
+      row['Full Name'] = row['Nome'] || row['Student Name'] || row['Name'] || '';
+    }
+    if (!row['Email']) {
+      row['Email'] = row['E-mail'] || '';
+    }
     
     rows.push(row);
   }
@@ -219,10 +252,16 @@ export async function POST(request: NextRequest) {
         });
 
         // Create package if lesson information provided
-        if (student['Total Lessons'] && student['Contract Start'] && student['Contract End']) {
+        if (student['Contract End']) {
           const totalLessons = parseInt(student['Total Lessons']) || 80;
-          const validFrom = new Date(student['Contract Start']);
           const validUntil = new Date(student['Contract End']);
+          
+          // Auto-calculate contract start as 1 year before end date
+          let validFrom = new Date(student['Contract Start'] || '');
+          if (isNaN(validFrom.getTime())) {
+            validFrom = new Date(validUntil);
+            validFrom.setFullYear(validFrom.getFullYear() - 1);
+          }
           
           await prisma.package.create({
             data: {
