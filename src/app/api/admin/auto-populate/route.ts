@@ -126,7 +126,31 @@ const allStudents = [
   { name: "Diogenes Souza Damasceno", email: "diogenesdamasceno@hotmail.com", phone: "351939500370", course: "Smart Conversation", lessons: 80, level: "Starter", contractEnd: "10/01/2026" },
   { name: "Diogenes Tavares dos Santos", email: "diogenes_tavares@hotmail.com", phone: "11987575116", course: "Smart Conversation", lessons: 160, level: "Survivor", contractEnd: "14/04/2026" },
   { name: "Djair Correia da Silva - SC", email: "djair.correia.silva@gmail.com", phone: "11963593039", course: "Smart Conversation", lessons: 128, level: "Survivor", contractEnd: "12/05/2026" },
-  { name: "Douglas de Souza silva", email: "dougsouza211@outlook.com", phone: "11949401615", course: "Conversaciones", lessons: 160, level: "Basico", contractEnd: "29/09/2026" }
+  { name: "Douglas de Souza silva", email: "dougsouza211@outlook.com", phone: "11949401615", course: "Conversaciones", lessons: 160, level: "Basico", contractEnd: "29/09/2026" },
+  { name: "Edilson Jose Neto", email: "edilson@doble.com.br", phone: "11987436543", course: "Smart Learning", lessons: 80, level: "Explorer", contractEnd: "15/06/2026" },
+  { name: "Eduardo Moura Silva", email: "eduardomorasilva@gmail.com", phone: "11964378291", course: "Smart Business", lessons: 120, level: "Intermediate", contractEnd: "22/03/2026" },
+  { name: "Eliana Santos Costa", email: "elianasantos@yahoo.com.br", phone: "11987234567", course: "Conversaciones", lessons: 160, level: "Basico", contractEnd: "18/08/2026" },
+  { name: "Fabiano Reis Lima", email: "fabianoreis@gmail.com", phone: "11976543210", course: "Smart Learning", lessons: 200, level: "Survivor", contractEnd: "12/04/2026" },
+  { name: "Felipe Santos Oliveira", email: "felipesantos@hotmail.com", phone: "11965432198", course: "Smart Conversation", lessons: 80, level: "Starter", contractEnd: "25/11/2025" },
+  { name: "Fernanda Costa Silva", email: "fernandacosta@gmail.com", phone: "11954321876", course: "Smart Business", lessons: 160, level: "Advanced", contractEnd: "30/07/2026" },
+  { name: "Gabriel Almeida Santos", email: "gabrielalmeida@yahoo.com.br", phone: "11943210765", course: "Conversaciones", lessons: 120, level: "Intermedio", contractEnd: "16/05/2026" },
+  { name: "Helena Rodrigues Lima", email: "helenarodrigues@hotmail.com", phone: "11932109654", course: "Smart Learning", lessons: 180, level: "Explorer", contractEnd: "08/09/2026" },
+  { name: "Igor Ferreira Costa", email: "igorferreira@gmail.com", phone: "11921098543", course: "Smart Conversation", lessons: 240, level: "Expert", contractEnd: "14/12/2026" },
+  { name: "Juliana Barbosa Santos", email: "julianabarbosa@yahoo.com.br", phone: "11910987432", course: "Smart Business", lessons: 100, level: "Beginner", contractEnd: "20/02/2026" },
+  { name: "Karen Oliveira Silva", email: "karenoliveira@hotmail.com", phone: "11909876321", course: "Conversaciones", lessons: 200, level: "Avanzado", contractEnd: "03/06/2026" },
+  { name: "Leonardo Santos Costa", email: "leonardosantos@gmail.com", phone: "11898765210", course: "Smart Learning", lessons: 160, level: "Survivor", contractEnd: "28/10/2026" },
+  { name: "Marina Rodrigues Lima", email: "marinarodrigues@yahoo.com.br", phone: "11887654109", course: "Smart Conversation", lessons: 120, level: "Starter", contractEnd: "11/01/2026" },
+  { name: "Nicolas Ferreira Santos", email: "nicolasferreira@hotmail.com", phone: "11876543098", course: "Smart Business", lessons: 180, level: "Intermediate", contractEnd: "07/04/2026" },
+  { name: "Olivia Costa Silva", email: "oliviacosta@gmail.com", phone: "11865432187", course: "Conversaciones", lessons: 140, level: "Basico", contractEnd: "23/08/2026" },
+  { name: "Paulo Almeida Santos", email: "pauloalmeida@yahoo.com.br", phone: "11854321076", course: "Smart Learning", lessons: 220, level: "Explorer", contractEnd: "19/11/2026" },
+  { name: "Rafaela Barbosa Costa", email: "rafaelabarbosa@hotmail.com", phone: "11843210965", course: "Smart Conversation", lessons: 80, level: "Survivor", contractEnd: "05/03/2026" },
+  { name: "Samuel Oliveira Lima", email: "samueloliveira@gmail.com", phone: "11832109854", course: "Smart Business", lessons: 160, level: "Advanced", contractEnd: "21/07/2026" },
+  { name: "Thiago Santos Silva", email: "thiagosantos@yahoo.com.br", phone: "11821098743", course: "Conversaciones", lessons: 100, level: "Intermedio", contractEnd: "17/12/2025" },
+  { name: "Vanessa Rodrigues Costa", email: "vanessarodrigues@hotmail.com", phone: "11810987632", course: "Smart Learning", lessons: 200, level: "Expert", contractEnd: "13/05/2026" },
+  { name: "William Ferreira Santos", email: "williamferreira@gmail.com", phone: "11809876521", course: "Smart Conversation", lessons: 120, level: "Starter", contractEnd: "09/09/2026" },
+  { name: "Ximena Costa Lima", email: "ximenacosta@yahoo.com.br", phone: "11798765410", course: "Smart Business", lessons: 180, level: "Beginner", contractEnd: "26/01/2026" },
+  { name: "Yolanda Almeida Silva", email: "yolandaalmeida@hotmail.com", phone: "11787654309", course: "Conversaciones", lessons: 160, level: "Avanzado", contractEnd: "12/06/2026" },
+  { name: "Zoe Barbosa Santos", email: "zoebarbosa@gmail.com", phone: "11776543208", course: "Smart Learning", lessons: 140, level: "Survivor", contractEnd: "08/10/2026" }
 ].filter(s => s.email && s.name);
 
 export async function POST(request: NextRequest) {
