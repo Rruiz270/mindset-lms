@@ -29,30 +29,53 @@ export async function GET(request: Request) {
 
     const users = await prisma.user.findMany({
       where,
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        level: true,
-        studentId: true,
-        isActive: true,
-        createdAt: true,
-        updatedAt: true,
-        _count: {
-          select: {
-            studentBookings: true,
-            teacherClasses: true,
-            packages: true,
-          },
-        },
+      include: {
+        packages: {
+          orderBy: { createdAt: 'desc' }
+        }
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: [
+        { role: 'asc' },
+        { createdAt: 'desc' }
+      ],
     });
 
-    return NextResponse.json(users);
+    // Format the response
+    const formattedUsers = users.map(user => ({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      level: user.level,
+      studentId: user.studentId,
+      isActive: user.isActive,
+      phone: user.phone,
+      birthDate: user.birthDate?.toISOString(),
+      gender: user.gender,
+      address: user.address,
+      createdAt: user.createdAt.toISOString(),
+      updatedAt: user.updatedAt.toISOString(),
+      packages: user.packages.map(pkg => ({
+        id: pkg.id,
+        totalLessons: pkg.totalLessons,
+        usedLessons: pkg.usedLessons,
+        remainingLessons: pkg.remainingLessons,
+        validFrom: pkg.validFrom.toISOString(),
+        validUntil: pkg.validUntil.toISOString(),
+      }))
+    }));
+
+    return NextResponse.json({
+      success: true,
+      users: formattedUsers,
+      stats: {
+        total: users.length,
+        students: users.filter(u => u.role === 'STUDENT').length,
+        teachers: users.filter(u => u.role === 'TEACHER').length,
+        admins: users.filter(u => u.role === 'ADMIN').length,
+        active: users.filter(u => u.isActive).length
+      }
+    });
   } catch (error) {
     console.error('Error fetching users:', error);
     return NextResponse.json(
