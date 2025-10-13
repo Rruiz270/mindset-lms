@@ -16,7 +16,8 @@ import {
   Award,
   BarChart3,
   FileText,
-  UserCheck
+  UserCheck,
+  Upload
 } from 'lucide-react'
 
 
@@ -166,13 +167,20 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-8 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-9 gap-4">
               <button 
                 onClick={() => router.push('/admin/users')}
                 className="p-4 text-center hover:bg-blue-50 rounded-lg transition-colors border-2 border-blue-200"
               >
                 <Users className="h-6 w-6 mx-auto mb-2 text-blue-600" />
                 <span className="text-sm font-medium text-blue-700">View Users</span>
+              </button>
+              <button 
+                onClick={() => router.push('/admin/bulk-import')}
+                className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
+              >
+                <Upload className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                <span className="text-sm font-medium text-green-700">Bulk Import</span>
               </button>
               <button 
                 onClick={() => router.push('/admin/live-class-content')}
