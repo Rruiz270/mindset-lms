@@ -48,36 +48,59 @@ export async function POST(request: NextRequest) {
     const text = await file.text();
     console.log('File content preview:', text.substring(0, 200));
     
-    const lines = text.trim().split('\n');
+    // Better CSV parsing that handles quoted fields
+    function parseCSVLine(line: string): string[] {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    const lines = text.trim().split('\n').filter(line => line.trim());
     if (lines.length < 2) {
       return NextResponse.json({ error: 'CSV must have at least 2 lines (header + data)' }, { status: 400 });
     }
     
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-    console.log('CSV Headers:', headers);
+    const headers = parseCSVLine(lines[0]).map(h => h.replace(/"/g, ''));
+    console.log('CSV Headers found:', headers);
     
     const students = [];
     
     for (let i = 1; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (!line) continue;
-      
-      const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
+      const values = parseCSVLine(lines[i]).map(v => v.replace(/"/g, ''));
       const student: any = {};
       
       headers.forEach((header, index) => {
         student[header] = values[index] || '';
       });
       
-      // Map to expected format
+      console.log(`Row ${i} student data:`, student);
+      
+      // Map to expected format - try multiple column name variations
       const mappedStudent = {
-        'Full Name': student['Full Name'] || student['Nome'] || '',
-        'Email': student['Email'] || student['E-mail'] || '',
-        'Phone': student['Phone'] || student['Telefone'] || '',
-        'CEFR Level': student['Level'] || student['CEFR Level'] || '',
-        'Total Lessons': student['Total Lessons'] || student['Aulas'] || '',
-        'Contract End': student['Contract End'] || student['Fim de Contrato'] || ''
+        'Full Name': student['Full Name'] || student['Nome'] || student['Name'] || student['Student Name'] || '',
+        'Email': student['Email'] || student['E-mail'] || student['email'] || '',
+        'Phone': student['Phone'] || student['Telefone'] || student['phone'] || '',
+        'CEFR Level': student['Level'] || student['CEFR Level'] || student['Nivel'] || student['Nível'] || '',
+        'Total Lessons': student['Total Lessons'] || student['Aulas'] || student['Lessons'] || student['Classes'] || '',
+        'Contract End': student['Contract End'] || student['Fim de Contrato'] || student['End Date'] || ''
       };
+      
+      console.log(`Row ${i} mapped:`, mappedStudent);
       
       // Only add if has name and email
       if (mappedStudent['Full Name'] && mappedStudent['Email']) {
