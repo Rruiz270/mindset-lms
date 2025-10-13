@@ -22,22 +22,24 @@ export default function StudentDashboard() {
   }, [status, session, router])
 
   useEffect(() => {
-    // Fetch student package information
-    const fetchPackageInfo = async () => {
+    // Fetch complete student dashboard data
+    const fetchDashboardData = async () => {
       try {
-        const response = await fetch('/api/student/package')
+        const response = await fetch('/api/student/dashboard')
         if (response.ok) {
           const data = await response.json()
-          setPackageInfo(data)
+          setPackageInfo(data.package)
+          // You can store other data like current topic, upcoming topics, etc.
+          console.log('Dashboard data:', data)
         }
       } catch (error) {
-        console.error('Error fetching package info:', error)
+        console.error('Error fetching dashboard data:', error)
         setPackageInfo(null)
       }
     }
 
     if (session?.user?.id && typeof window !== 'undefined') {
-      fetchPackageInfo()
+      fetchDashboardData()
     }
   }, [session?.user?.id])
 
@@ -71,15 +73,21 @@ export default function StudentDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div>
                 <span className="font-medium text-gray-700">Course Start:</span>
-                <p className="text-gray-900">January 15, 2024</p>
+                <p className="text-gray-900">
+                  {packageInfo?.validFrom ? new Date(packageInfo.validFrom).toLocaleDateString() : 'Not available'}
+                </p>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Current Course:</span>
-                <p className="text-gray-900">English Starter (A0-A1)</p>
+                <p className="text-gray-900">
+                  {session?.user?.level ? `English ${session.user.level}` : 'Not assigned'}
+                </p>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Contract End:</span>
-                <p className="text-gray-900">January 14, 2025</p>
+                <p className="text-gray-900">
+                  {packageInfo?.validUntil ? new Date(packageInfo.validUntil).toLocaleDateString() : 'Not available'}
+                </p>
               </div>
             </div>
           </div>
@@ -93,7 +101,7 @@ export default function StudentDashboard() {
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Remaining Lessons</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  80
+                  {packageInfo?.remainingLessons || 0}
                 </p>
               </div>
             </CardContent>
@@ -105,7 +113,7 @@ export default function StudentDashboard() {
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Current Level</p>
                 <p className="text-2xl font-bold text-gray-900">
-                  STARTER
+                  {session?.user?.level || 'Not Set'}
                 </p>
               </div>
             </CardContent>

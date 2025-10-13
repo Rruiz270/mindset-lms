@@ -19,6 +19,7 @@ import {
   UserCheck,
   Upload,
   Database,
+  BookOpen,
 } from 'lucide-react'
 
 
@@ -252,6 +253,25 @@ export default function AdminDashboard() {
               >
                 <Users className="h-6 w-6 mx-auto mb-2 text-red-600" />
                 <span className="text-sm font-medium text-red-700">Fix Demo Accounts</span>
+              </button>
+              <button 
+                onClick={() => {
+                  // Setup topics
+                  fetch('/api/admin/setup-topics', { method: 'POST' })
+                    .then(res => res.json())
+                    .then(data => {
+                      if (data.success) {
+                        alert(`Successfully created ${data.details.created} topics for all levels!`);
+                      } else {
+                        alert(`Error: ${data.error}`);
+                      }
+                    })
+                    .catch(err => alert(`Error: ${err.message}`));
+                }}
+                className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
+              >
+                <BookOpen className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                <span className="text-sm font-medium text-green-700">Setup Topics</span>
               </button>
             </div>
           </CardContent>
