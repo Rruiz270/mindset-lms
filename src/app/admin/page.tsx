@@ -17,7 +17,8 @@ import {
   BarChart3,
   FileText,
   UserCheck,
-  Upload
+  Upload,
+  Table2
 } from 'lucide-react'
 
 
@@ -183,11 +184,11 @@ export default function AdminDashboard() {
                 <span className="text-sm font-medium text-green-700">Import CSV</span>
               </button>
               <button 
-                onClick={() => router.push('/admin/auto-populate')}
+                onClick={() => router.push('/admin/google-sheets-import')}
                 className="p-4 text-center hover:bg-purple-50 rounded-lg transition-colors border-2 border-purple-200"
               >
-                <Users className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                <span className="text-sm font-medium text-purple-700">Auto-Populate</span>
+                <Table2 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                <span className="text-sm font-medium text-purple-700">Sheets Import</span>
               </button>
               <button 
                 onClick={() => router.push('/admin/live-class-content')}
