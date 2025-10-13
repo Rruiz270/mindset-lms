@@ -31,20 +31,34 @@ export default function GoogleSheetsImportPage() {
     setResult(null);
 
     try {
+      // Add timeout to the frontend request too
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+
       const response = await fetch('/api/admin/google-sheets-import', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sheetUrl }),
+        signal: controller.signal,
       });
 
+      clearTimeout(timeoutId);
       const data = await response.json();
       setResult(data);
-    } catch (error) {
-      setResult({
-        success: false,
-        imported: 0,
-        errors: ['Failed to import from Google Sheets'],
-      });
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        setResult({
+          success: false,
+          imported: 0,
+          errors: ['Import timed out - please try again or use a smaller dataset'],
+        });
+      } else {
+        setResult({
+          success: false,
+          imported: 0,
+          errors: ['Failed to import from Google Sheets: ' + error.message],
+        });
+      }
     } finally {
       setImporting(false);
     }

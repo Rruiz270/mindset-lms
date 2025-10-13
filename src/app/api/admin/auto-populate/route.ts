@@ -26,7 +26,7 @@ async function generateStudentId(): Promise<string> {
   return `${prefix}${nextNumber.toString().padStart(4, '0')}`;
 }
 
-// Your complete student data from UPLOAD ALUNOS.numbers
+// Complete student data from Google Sheets (expanded dataset)
 const allStudents = [
   { name: "Abelardo Junior", email: "abelardo.geografia@gmail.com", phone: "8298240664", course: "Conversaciones", lessons: 193, level: "Basico", contractEnd: "2026-10-23" },
   { name: "Adonai Gabriel da Silva", email: "adonaigabriel@gmail.com", phone: "11997626734", course: "Conversaciones", lessons: 339, level: "Basico", contractEnd: "2026-08-20" },

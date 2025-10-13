@@ -54,38 +54,83 @@ export async function POST(request: NextRequest) {
     const spreadsheetId = match[1];
     const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=0`;
 
-    // Fetch CSV data
-    const response = await fetch(csvUrl);
+    console.log('Fetching CSV from:', csvUrl);
+
+    // Fetch CSV data with timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+    let response;
+    try {
+      response = await fetch(csvUrl, { 
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; Mindset-LMS/1.0)'
+        }
+      });
+      clearTimeout(timeoutId);
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      if (error.name === 'AbortError') {
+        throw new Error('Request timeout - spreadsheet took too long to respond');
+      }
+      throw new Error(`Failed to fetch spreadsheet: ${error.message}`);
+    }
+    
     if (!response.ok) {
-      throw new Error('Failed to fetch spreadsheet data');
+      throw new Error(`Google Sheets returned ${response.status}: ${response.statusText}`);
     }
 
     const csvText = await response.text();
+    console.log('CSV data length:', csvText.length);
     const lines = csvText.trim().split('\n');
     
     if (lines.length < 2) {
       return NextResponse.json({ error: 'No data found in spreadsheet' }, { status: 400 });
     }
 
-    // Parse CSV
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+    // Parse CSV with better handling
+    function parseCSVLine(line: string): string[] {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    const headers = parseCSVLine(lines[0]);
+    console.log('Headers found:', headers);
+    
     const students = [];
 
     for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
-      if (values.length < 7) continue; // Skip incomplete rows
+      const values = parseCSVLine(lines[i]);
+      if (values.length < 6) continue; // Skip incomplete rows
       
       const student = {
-        name: values[0],
-        email: values[1],
-        phone: values[2],
-        course: values[3],
+        name: values[0] || '',
+        email: values[1] || '',
+        phone: values[2] || '',
+        course: values[3] || '',
         lessons: parseInt(values[4]) || 0,
-        level: values[5],
-        contractEnd: values[6]
+        level: values[5] || '',
+        contractEnd: values[6] || ''
       };
       
-      if (student.name && student.email) {
+      if (student.name && student.email && student.email.includes('@')) {
         students.push(student);
       }
     }
