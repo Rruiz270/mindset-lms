@@ -122,9 +122,12 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Import students
+    // Import students with batch processing
     const imported: any[] = [];
     const errors: string[] = [];
+    const BATCH_SIZE = 10; // Process 10 students at a time
+    
+    console.log(`Starting import of ${students.length} students in batches of ${BATCH_SIZE}`);
     
     // Level mapping
     const levelMapping: Record<string, string> = {
@@ -135,9 +138,17 @@ export async function POST(request: NextRequest) {
       'A1': 'STARTER', 'A2': 'STARTER', 'B1': 'SURVIVOR', 'B2': 'EXPLORER', 'C1': 'EXPERT', 'C2': 'EXPERT'
     };
 
-    for (let i = 0; i < students.length; i++) {
-      const student = students[i];
-      const rowNum = i + 2;
+    // Process in batches to avoid timeouts
+    for (let batchStart = 0; batchStart < students.length; batchStart += BATCH_SIZE) {
+      const batchEnd = Math.min(batchStart + BATCH_SIZE, students.length);
+      const batch = students.slice(batchStart, batchEnd);
+      
+      console.log(`Processing batch ${Math.floor(batchStart / BATCH_SIZE) + 1}: students ${batchStart + 1}-${batchEnd}`);
+      
+      for (let i = 0; i < batch.length; i++) {
+        const studentIndex = batchStart + i;
+        const student = batch[i];
+        const rowNum = studentIndex + 2;
       
       try {
         // Check if email exists
@@ -217,6 +228,12 @@ export async function POST(request: NextRequest) {
         errors.push(`Row ${rowNum}: ${error.message}`);
       }
     }
+    
+    // Small delay between batches to prevent database overload
+    if (batchStart + BATCH_SIZE < students.length) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
 
     return NextResponse.json({
       success: imported.length > 0,

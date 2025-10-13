@@ -37,20 +37,35 @@ export default function SimpleImportPage() {
     formData.append('file', file);
 
     try {
+      // Add timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minute timeout
+
       const response = await fetch('/api/admin/import-csv', {
         method: 'POST',
         body: formData,
+        signal: controller.signal,
       });
 
+      clearTimeout(timeoutId);
       const data = await response.json();
       setResult(data);
-    } catch (error) {
-      setResult({
-        success: false,
-        imported: 0,
-        errors: ['Failed to import file'],
-        students: []
-      });
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        setResult({
+          success: false,
+          imported: 0,
+          errors: ['Import timed out after 2 minutes. The file may be too large or there may be a server issue.'],
+          students: []
+        });
+      } else {
+        setResult({
+          success: false,
+          imported: 0,
+          errors: ['Failed to import file: ' + error.message],
+          students: []
+        });
+      }
     } finally {
       setImporting(false);
     }
