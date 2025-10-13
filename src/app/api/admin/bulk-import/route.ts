@@ -43,21 +43,24 @@ function parseCSV(text: string): any[] {
     'Nome': 'Full Name',
     'Student Name': 'Full Name',
     'Name': 'Full Name',
+    'Full Name': 'Full Name',
     'E-mail': 'Email',
     'Email': 'Email',
     'Telefone': 'Phone',
     'Phone': 'Phone',
     'Nível': 'CEFR Level',
-    'Level': 'CEFR Level',
+    'Level': 'CEFR Level',  // Your CSV uses "Level"
     'CEFR Level': 'CEFR Level',
     'Aulas': 'Total Lessons',
     'Lessons': 'Total Lessons',
     'Total Lessons': 'Total Lessons',
     'Classes': 'Total Lessons',
+    'Course': 'Course',  // Add Course mapping
     'Fim de Contrato': 'Contract End',
     'Contract End': 'Contract End',
     'Data Fim': 'Contract End',
-    'End Date': 'Contract End'
+    'End Date': 'Contract End',
+    'Inicio Contrato': 'Contract Start'
   };
   
   for (let i = 1; i < lines.length; i++) {
@@ -219,7 +222,21 @@ export async function POST(request: NextRequest) {
       'B1': 'SURVIVOR',
       'B2': 'EXPLORER',
       'C1': 'EXPERT',
-      'C2': 'EXPERT'
+      'C2': 'EXPERT',
+      // Your CSV format mappings
+      'Basico': 'STARTER',
+      'Basic': 'STARTER',
+      'Beginner': 'STARTER',
+      'Starter': 'STARTER',
+      'Survivor': 'SURVIVOR',
+      'Explorer': 'EXPLORER',
+      'Expert': 'EXPERT',
+      'Intermediate': 'SURVIVOR',
+      'Intermedio': 'SURVIVOR',
+      'Advanced': 'EXPLORER',
+      'Avancado': 'EXPLORER',
+      'Avançado': 'EXPLORER',
+      'Elemental': 'STARTER'
     };
 
     for (let i = 0; i < students.length; i++) {
