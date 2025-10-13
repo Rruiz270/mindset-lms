@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { remainingStudents } from '@/data/all-remaining-students.js';
+import { remainingStudents } from '@/data/remaining-students';
 
 // Generate unique student ID
 async function generateStudentId(): Promise<string> {
