@@ -91,6 +91,8 @@ export async function POST(request: NextRequest) {
     const imported: any[] = [];
     const errors: string[] = [];
     
+    console.log(`Starting import of ${allStudents.length} students`);
+    
     // Level mapping
     const levelMapping: Record<string, string> = {
       'Basico': 'STARTER', 'Basic': 'STARTER', 'Beginner': 'STARTER', 'Starter': 'STARTER', 'Elemental': 'STARTER',
@@ -116,7 +118,7 @@ export async function POST(request: NextRequest) {
         const hashedPassword = await bcrypt.hash(tempPassword, 12);
         const studentId = await generateStudentId();
         
-        // Create user
+        // Create user with all required fields
         const user = await prisma.user.create({
           data: {
             email: studentData.email.toLowerCase(),
@@ -125,26 +127,36 @@ export async function POST(request: NextRequest) {
             role: 'STUDENT',
             level: levelMapping[studentData.level] || 'STARTER',
             studentId: studentId,
-            isActive: true,
-            phone: studentData.phone || null
+            isActive: true
           }
         });
 
-        // Create package
-        const validUntil = new Date(studentData.contractEnd);
-        const validFrom = new Date(validUntil);
-        validFrom.setFullYear(validFrom.getFullYear() - 1);
-        
-        await prisma.package.create({
-          data: {
-            userId: user.id,
-            totalLessons: studentData.lessons,
-            usedLessons: 0,
-            remainingLessons: studentData.lessons,
-            validFrom,
-            validUntil
+        // Create package if contract end date exists and is valid
+        if (studentData.contractEnd) {
+          // Parse date from DD/MM/YYYY format
+          function parseDate(dateStr: string): Date {
+            if (!dateStr) return new Date();
+            const [day, month, year] = dateStr.split('/').map(Number);
+            return new Date(year, month - 1, day);
           }
-        });
+          
+          const validUntil = parseDate(studentData.contractEnd);
+          const validFrom = new Date(validUntil);
+          validFrom.setFullYear(validFrom.getFullYear() - 1);
+          
+          if (!isNaN(validUntil.getTime())) {
+            await prisma.package.create({
+              data: {
+                userId: user.id,
+                totalLessons: studentData.lessons,
+                usedLessons: 0,
+                remainingLessons: studentData.lessons,
+                validFrom,
+                validUntil
+              }
+            });
+          }
+        }
 
         imported.push({
           studentId: user.studentId,
@@ -156,7 +168,8 @@ export async function POST(request: NextRequest) {
         });
 
       } catch (error: any) {
-        errors.push(`${studentData.name}: ${error.message}`);
+        console.error(`Error importing ${studentData.name}:`, error);
+        errors.push(`${studentData.name}: ${error.message || 'Unknown error'}`);
       }
     }
 
