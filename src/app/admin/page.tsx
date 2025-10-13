@@ -255,24 +255,7 @@ export default function AdminDashboard() {
                 <span className="text-sm font-medium text-red-700">Fix Demo Accounts</span>
               </button>
               <button 
-                onClick={() => {
-                  // Setup topics using simple endpoint
-                  console.log('Setting up topics...');
-                  fetch('/api/admin/setup-topics-simple', { method: 'POST' })
-                    .then(res => res.json())
-                    .then(data => {
-                      console.log('Setup response:', data);
-                      if (data.success) {
-                        alert(`✅ Successfully created ${data.details.created} topics!\n\nBreakdown:\n- STARTER: ${data.summary.STARTER} topics\n- SURVIVOR: ${data.summary.SURVIVOR} topics\n- EXPLORER: ${data.summary.EXPLORER} topics\n- EXPERT: ${data.summary.EXPERT} topics`);
-                      } else {
-                        alert(`❌ Error: ${data.error}\n\nDetails: ${data.details || 'No additional details'}`);
-                      }
-                    })
-                    .catch(err => {
-                      console.error('Setup error:', err);
-                      alert(`❌ Network Error: ${err.message}`);
-                    });
-                }}
+                onClick={() => router.push('/admin/setup/topics')}
                 className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
               >
                 <BookOpen className="h-6 w-6 mx-auto mb-2 text-green-600" />

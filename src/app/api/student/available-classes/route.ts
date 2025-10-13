@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
     const current = new Date(start);
 
     while (current <= end) {
-      // Skip Sundays (no classes)
+      // Skip Sundays (no classes) - Sunday = 0 in JavaScript
       if (current.getDay() !== 0) {
         // Get the correct topic for this date and student level
         const topic = getTopicForDate(current, student.level as any);

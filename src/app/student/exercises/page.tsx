@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Navbar from '@/components/layout/navbar'
-import EnhancedPreClassActivities from '@/components/learning/EnhancedPreClassActivities'
+import RealTimePreClassActivities from '@/components/learning/RealTimePreClassActivities'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 
@@ -54,8 +54,9 @@ export default function StudentExercises() {
           </p>
         </div>
 
-        <EnhancedPreClassActivities 
-          studentLevel={session.user.level || 'STARTER'}
+        <RealTimePreClassActivities 
+          studentLevel={(session.user.level || 'STARTER') as any}
+          studentId={session.user.id}
         />
       </div>
     </div>
