@@ -183,6 +183,13 @@ export default function AdminDashboard() {
                 <span className="text-sm font-medium text-green-700">Import CSV</span>
               </button>
               <button 
+                onClick={() => router.push('/admin/auto-populate')}
+                className="p-4 text-center hover:bg-purple-50 rounded-lg transition-colors border-2 border-purple-200"
+              >
+                <Users className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                <span className="text-sm font-medium text-purple-700">Auto-Populate</span>
+              </button>
+              <button 
                 onClick={() => router.push('/admin/live-class-content')}
                 className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
               >
