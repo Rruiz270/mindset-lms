@@ -48,8 +48,11 @@ export async function POST(request: NextRequest) {
     const text = await file.text();
     console.log('File content preview:', text.substring(0, 200));
     
-    // Better CSV parsing that handles quoted fields
+    // CSV parsing that handles both comma and semicolon separators
     function parseCSVLine(line: string): string[] {
+      // Detect separator (semicolon or comma)
+      const separator = line.includes(';') ? ';' : ',';
+      
       const result = [];
       let current = '';
       let inQuotes = false;
@@ -59,7 +62,7 @@ export async function POST(request: NextRequest) {
         
         if (char === '"') {
           inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
+        } else if (char === separator && !inQuotes) {
           result.push(current.trim());
           current = '';
         } else {
@@ -90,13 +93,15 @@ export async function POST(request: NextRequest) {
       
       console.log(`Row ${i} student data:`, student);
       
-      // Map to expected format - try multiple column name variations
+      // Map to expected format - handle your specific CSV format
       const mappedStudent = {
         'Full Name': student['Full Name'] || student['Nome'] || student['Name'] || student['Student Name'] || '',
         'Email': student['Email'] || student['E-mail'] || student['email'] || '',
         'Phone': student['Phone'] || student['Telefone'] || student['phone'] || '',
+        'Course': student['Course'] || student['Curso'] || '',
         'CEFR Level': student['Level'] || student['CEFR Level'] || student['Nivel'] || student['Nível'] || '',
         'Total Lessons': student['Total Lessons'] || student['Aulas'] || student['Lessons'] || student['Classes'] || '',
+        'Contract Start': student['Inicio Contrato'] || student['Contract Start'] || student['Data Inicio'] || '',
         'Contract End': student['Contract End'] || student['Fim de Contrato'] || student['End Date'] || ''
       };
       
@@ -167,9 +172,23 @@ export async function POST(request: NextRequest) {
         // Create package if contract end date exists
         if (student['Contract End']) {
           const totalLessons = parseInt(student['Total Lessons']) || 80;
-          const validUntil = new Date(student['Contract End']);
-          const validFrom = new Date(validUntil);
-          validFrom.setFullYear(validFrom.getFullYear() - 1);
+          
+          // Parse date from DD/MM/YYYY format
+          function parseDate(dateStr: string): Date {
+            if (!dateStr) return new Date();
+            const [day, month, year] = dateStr.split('/').map(Number);
+            return new Date(year, month - 1, day);
+          }
+          
+          const validUntil = parseDate(student['Contract End']);
+          let validFrom = new Date(validUntil);
+          
+          // Use contract start if provided, otherwise default to 1 year before end
+          if (student['Contract Start']) {
+            validFrom = parseDate(student['Contract Start']);
+          } else {
+            validFrom.setFullYear(validFrom.getFullYear() - 1);
+          }
           
           if (!isNaN(validUntil.getTime())) {
             await prisma.package.create({

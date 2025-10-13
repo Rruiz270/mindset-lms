@@ -93,17 +93,21 @@ export default function SimpleImportPage() {
 
               <div className="bg-gray-50 p-4 rounded">
                 <h4 className="font-medium mb-2">CSV Format Expected:</h4>
+                <p className="text-sm text-blue-600 mb-2">Supports both comma (,) and semicolon (;) separators</p>
                 <ul className="text-sm space-y-1">
-                  <li>• Full Name (required)</li>
-                  <li>• Email (required)</li>
-                  <li>• Phone</li>
-                  <li>• CEFR Level (A1, A2, B1, B2, C1, C2)</li>
-                  <li>• Total Lessons</li>
-                  <li>• Contract End (YYYY-MM-DD)</li>
+                  <li>• <strong>Full Name</strong> (required)</li>
+                  <li>• <strong>Email</strong> (required)</li>
+                  <li>• <strong>Phone</strong></li>
+                  <li>• <strong>Course</strong> (Smart Learning, Conversaciones, etc.)</li>
+                  <li>• <strong>Total Lessons</strong></li>
+                  <li>• <strong>Level</strong> (Basico, Survivor, Explorer, Expert, etc.)</li>
+                  <li>• <strong>Inicio Contrato</strong> (optional)</li>
+                  <li>• <strong>Contract End</strong> (DD/MM/YYYY format)</li>
                 </ul>
-                <p className="text-xs text-gray-500 mt-2">
-                  Contract Start will be auto-calculated as 1 year before Contract End
-                </p>
+                <div className="mt-3 p-2 bg-blue-50 rounded text-xs">
+                  <p className="font-medium text-blue-800">Example header:</p>
+                  <code className="text-blue-600">Full Name;Email;Phone;Course;Total Lessons;Level;Inicio Contrato;Contract End</code>
+                </div>
               </div>
 
               <Button 

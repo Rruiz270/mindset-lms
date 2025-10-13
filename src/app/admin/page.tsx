@@ -18,7 +18,6 @@ import {
   FileText,
   UserCheck,
   Upload,
-  Table2
 } from 'lucide-react'
 
 
@@ -182,13 +181,6 @@ export default function AdminDashboard() {
               >
                 <Upload className="h-6 w-6 mx-auto mb-2 text-green-600" />
                 <span className="text-sm font-medium text-green-700">Import CSV</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/google-sheets-import')}
-                className="p-4 text-center hover:bg-purple-50 rounded-lg transition-colors border-2 border-purple-200"
-              >
-                <Table2 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                <span className="text-sm font-medium text-purple-700">Sheets Import</span>
               </button>
               <button 
                 onClick={() => router.push('/admin/live-class-content')}
