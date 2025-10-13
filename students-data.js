@@ -1,0 +1,7360 @@
+// Auto-generated student data array from CSV
+// Total students: 816
+// Generated on: 2025-10-13T19:14:48.330Z
+
+const students = [
+  {
+    "name": "Abelardo Junior",
+    "email": "abelardo.geografia@gmail.com",
+    "phone": "8298240664",
+    "course": "Conversaciones",
+    "lessons": 193,
+    "level": "Basico",
+    "contractEnd": "23/10/2026"
+  },
+  {
+    "name": "Adonai Gabriel da Silva",
+    "email": "adonaigabriel@gmail.com",
+    "phone": "11997626734",
+    "course": "Conversaciones",
+    "lessons": 339,
+    "level": "Basico",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Adriana Abreu da Silva",
+    "email": "adrianasilva@grupoflipper.com.br",
+    "phone": "13996056876",
+    "course": "Smart Learning",
+    "lessons": 235,
+    "level": "Explorer",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Adriana Florio Cintas",
+    "email": "adriflorio2@gmail.com",
+    "phone": "11993944623",
+    "course": "Smart Learning",
+    "lessons": 31,
+    "level": "Explorer",
+    "contractEnd": "04/17/2024"
+  },
+  {
+    "name": "Agnes Ruescas - SL",
+    "email": "agnes.ruescas@outlook.com",
+    "phone": "11962994292",
+    "course": "Smart Learning",
+    "lessons": 233,
+    "level": "Survivor",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Alan Freitas Pereira - SL",
+    "email": "a.freitas.pereira@hotmail.com",
+    "phone": "27999187006",
+    "course": "Smart Learning",
+    "lessons": 206,
+    "level": "Expert",
+    "contractEnd": "17/04/2026"
+  },
+  {
+    "name": "Alana Barros Silva - SBO",
+    "email": "alana.sillva1234@gmail.com",
+    "phone": "11947574406",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "27/09/2026"
+  },
+  {
+    "name": "Alanna Ferreira Alves",
+    "email": "alannaalves_aaf@hotmail.com",
+    "phone": "11986809550",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "17/06/2026"
+  },
+  {
+    "name": "Alessandro Salazar Mousinho Bergo - CNV",
+    "email": "alessandro.bergo@gmail.com",
+    "phone": "21991709988",
+    "course": "Conversaciones",
+    "lessons": 200,
+    "level": "Avanzado",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Alexandre Ferreira",
+    "email": "a_ly_rio@hotmail.com",
+    "phone": "61999010137",
+    "course": "Smart Learning",
+    "lessons": 117,
+    "level": "Expert",
+    "contractEnd": "23/10/2025"
+  },
+  {
+    "name": "Alexandre Pierro - SBO",
+    "email": "alexandrepierro@gmail.com",
+    "phone": "11986543449",
+    "course": "Smart Business",
+    "lessons": 227,
+    "level": "Advanced",
+    "contractEnd": "06/12/2026"
+  },
+  {
+    "name": "Alexandre Pierro - SL",
+    "email": "alexandrepierro@gmail.com",
+    "phone": "11986543449",
+    "course": "Smart Learning",
+    "lessons": 58,
+    "level": "Expert",
+    "contractEnd": "06/12/2026"
+  },
+  {
+    "name": "Alexandre Silva Nogueira",
+    "email": "alexandresilvanogueira@hotmail.com",
+    "phone": "38991732196",
+    "course": "Conversaciones",
+    "lessons": 150,
+    "level": "Avanzado",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Alice Selegato",
+    "email": "aliceselegatto@gmail.com",
+    "phone": "19981399973",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "03/11/2026"
+  },
+  {
+    "name": "Aline Maria Santos de Carvalho Stival",
+    "email": "alinemstival2022@gmail.com",
+    "phone": "62999896188",
+    "course": "Conversaciones",
+    "lessons": 107,
+    "level": "Intermedio",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Aline Santos Rios",
+    "email": "aline.rios@grupobimbo.com",
+    "phone": "11991255638",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "19/09/2026"
+  },
+  {
+    "name": "Almir Rodilhano",
+    "email": "rodilhano.almir@uol.com.br",
+    "phone": "11999644358",
+    "course": "Smart Learning",
+    "lessons": 171,
+    "level": "Explorer",
+    "contractEnd": "18/12/2025"
+  },
+  {
+    "name": "Alvaro Luiz Bruzadin Furtado",
+    "email": "alvaro.bruzadin@gmail.com",
+    "phone": "11976471821",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "02/07/2026"
+  },
+  {
+    "name": "Alvaro Nicolas Valenzuela Angulo CLOUDKITCHENS LATAM",
+    "email": "alvaro.valenzuela@cloudkitchens.com",
+    "phone": "56997356130",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "27/11/2025"
+  },
+  {
+    "name": "Amalia Oliveira",
+    "email": "amalia.oliveira@yahoo.com.br",
+    "phone": "11992070019",
+    "course": "Smart Business",
+    "lessons": 125,
+    "level": "Beginner",
+    "contractEnd": "10/10/2025"
+  },
+  {
+    "name": "Amyrane Alves",
+    "email": "amyranealves@gmail.com",
+    "phone": "1717311",
+    "course": "Conversaciones",
+    "lessons": 218,
+    "level": "Intermedio",
+    "contractEnd": "06/12/2025"
+  },
+  {
+    "name": "Ana Beatriz Lima Pedroza",
+    "email": "aana.bp09@gmail.com",
+    "phone": "",
+    "course": "Smart Conversation",
+    "lessons": 0,
+    "level": "Survivor",
+    "contractEnd": ""
+  },
+  {
+    "name": "Ana Carolina Brustello",
+    "email": "anabrustello@outlook.com",
+    "phone": "11980494853",
+    "course": "Conversaciones",
+    "lessons": 300,
+    "level": "Elemental",
+    "contractEnd": "08/07/2026"
+  },
+  {
+    "name": "Ana Vaz - SBO",
+    "email": "alu.souza@hotmail.com",
+    "phone": "11998195415",
+    "course": "Smart Business",
+    "lessons": 117,
+    "level": "Beginner",
+    "contractEnd": "30/10/2025"
+  },
+  {
+    "name": "Ananda Ribeiro Silva Nantes",
+    "email": "ananda-nantes@outlook.com",
+    "phone": "11973392596",
+    "course": "Smart Learning",
+    "lessons": 147,
+    "level": "Survivor",
+    "contractEnd": "16/12/2025"
+  },
+  {
+    "name": "Andre Albuquerque de Aguiar",
+    "email": "andre.aaguiar@hotmail.com",
+    "phone": "11964715976",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "16/02/2026"
+  },
+  {
+    "name": "Andre Claro Fonseca",
+    "email": "claroafonseca@gmail.com",
+    "phone": "11991353361",
+    "course": "Smart Learning",
+    "lessons": 228,
+    "level": "Survivor",
+    "contractEnd": "28/07/2026"
+  },
+  {
+    "name": "Andre Quintanilha Leite",
+    "email": "andreerena@gmail.com",
+    "phone": "99988452290",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "17/01/2026"
+  },
+  {
+    "name": "Andre Rivas",
+    "email": "rivas.andre@gmail.com",
+    "phone": "11963884754",
+    "course": "Smart Business",
+    "lessons": 157,
+    "level": "Intermediate",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Andrea Gomes Caetano",
+    "email": "deacaetano@gmail.com",
+    "phone": "11974815522",
+    "course": "Smart Conversation",
+    "lessons": 184,
+    "level": "Survivor",
+    "contractEnd": "06/08/2026"
+  },
+  {
+    "name": "Andreia Carolina de Oliveira - SBO",
+    "email": "dreia_carolina@hotmail.com",
+    "phone": "11951921059",
+    "course": "Smart Learning",
+    "lessons": 145,
+    "level": "Intermediate",
+    "contractEnd": "18/02/2026"
+  },
+  {
+    "name": "ANDREIA SILVA DA ROSA DE AMORIM",
+    "email": "andreiasramorim@gmail.com",
+    "phone": "48999029622",
+    "course": "Smart Business",
+    "lessons": 155,
+    "level": "Beginner",
+    "contractEnd": "04/12/2025"
+  },
+  {
+    "name": "Andressa Reguini Sinenberg",
+    "email": "andressa.redi@gmail.com",
+    "phone": "11997701362",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "29/10/2025"
+  },
+  {
+    "name": "Andreza Dinucci",
+    "email": "andrezamoreti@gmail.com",
+    "phone": "11993226135",
+    "course": "Conversaciones",
+    "lessons": 208,
+    "level": "Intermedio",
+    "contractEnd": "04/06/2026"
+  },
+  {
+    "name": "Ane Saes Zala Meneguel",
+    "email": "ameneguel@waits.com.br",
+    "phone": "11991165796",
+    "course": "Smart Conversation",
+    "lessons": 150,
+    "level": "Starter",
+    "contractEnd": "28/04/2027"
+  },
+  {
+    "name": "Angela Batista",
+    "email": "angela.batista1983@gmail.com",
+    "phone": "11976383567",
+    "course": "Smart Learning",
+    "lessons": 121,
+    "level": "Explorer",
+    "contractEnd": "18/12/2025"
+  },
+  {
+    "name": "Angelica Aiko Justino - SC",
+    "email": "angelicaaiko402@gmail.com",
+    "phone": "11911311615",
+    "course": "Smart Conversation",
+    "lessons": 248,
+    "level": "Explorer",
+    "contractEnd": "05/05/2026"
+  },
+  {
+    "name": "Angelica Aiko Justino - CNV",
+    "email": "angelicaaiko402@gmail.com",
+    "phone": "11911311615",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Intermedio",
+    "contractEnd": "23/01/2026"
+  },
+  {
+    "name": "Anna Clara Machado de Souza",
+    "email": "anna_clarasouza@hotmail.com",
+    "phone": "21971970830",
+    "course": "Smart Conversation",
+    "lessons": 138,
+    "level": "Explorer",
+    "contractEnd": "19/03/2026"
+  },
+  {
+    "name": "Antonio Arildo Aleixo",
+    "email": "aarildoa@hotmail.com",
+    "phone": "11952785614",
+    "course": "Conversaciones",
+    "lessons": 120,
+    "level": "Avanzado",
+    "contractEnd": "15/10/2025"
+  },
+  {
+    "name": "Antonio Linoeudo Sousa",
+    "email": "antoniopereiratst@hotmail.com",
+    "phone": "88999007417",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "28/10/2025"
+  },
+  {
+    "name": "Assunta Pica",
+    "email": "assuntapica@gmail.com",
+    "phone": "11989424769",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "14/11/2025"
+  },
+  {
+    "name": "Beatriz Helena de Paula Machado CLOUDKITCHENS",
+    "email": "beatriz.machado@cloudkitchens.com",
+    "phone": "11971079091",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "27/11/2025"
+  },
+  {
+    "name": "Bernardina Maria Vilhena de Souza Souza",
+    "email": "bernavsouza@gmail.com",
+    "phone": "61999831576",
+    "course": "Conversaciones",
+    "lessons": 156,
+    "level": "Basico",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Bernardo Ribeiro Ramos Da Costa",
+    "email": "bernardo.dc@gmail.com",
+    "phone": "21971503999",
+    "course": "Smart Learning",
+    "lessons": 116,
+    "level": "Explorer",
+    "contractEnd": "10/10/2025"
+  },
+  {
+    "name": "Bruno Alves Ferreira Camargos",
+    "email": "bruno.ferreirasg@gmail.com",
+    "phone": "61981454643",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Beginner",
+    "contractEnd": "05/11/2025"
+  },
+  {
+    "name": "Bruno Carvalho",
+    "email": "bruno.drcarvalho@gmail.com",
+    "phone": "11997521098",
+    "course": "Smart Learning",
+    "lessons": 159,
+    "level": "Explorer",
+    "contractEnd": "05/05/2026"
+  },
+  {
+    "name": "Bruno Henrique Costa",
+    "email": "bruno.costa92@live.com",
+    "phone": "11983012972",
+    "course": "Smart Learning",
+    "lessons": 162,
+    "level": "Survivor",
+    "contractEnd": "28/11/2025"
+  },
+  {
+    "name": "Bruno Imar Fonseca Nunes",
+    "email": "imar.nunes@kaminsolutions.com",
+    "phone": "",
+    "course": "Smart Conversation",
+    "lessons": 0,
+    "level": "Starter",
+    "contractEnd": ""
+  },
+  {
+    "name": "Bruno Tanganeli Di Giacomo",
+    "email": "Brunotanganeli@hotmail.com",
+    "phone": "11967689818",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Intermediate",
+    "contractEnd": "23/05/2026"
+  },
+  {
+    "name": "Bruno Yukio Tanoue",
+    "email": "brunotanoue@hotmail.com",
+    "phone": "48996306627",
+    "course": "Smart Learning",
+    "lessons": 134,
+    "level": "Explorer",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Camila Canjani",
+    "email": "camargocanjani@gmail.com",
+    "phone": "11999063044",
+    "course": "Conversaciones",
+    "lessons": 151,
+    "level": "Intermedio",
+    "contractEnd": "12/12/2025"
+  },
+  {
+    "name": "Camila Petrillo Gonçalves Manflim - CNV",
+    "email": "capetrillo@hotmail.com",
+    "phone": "14997233832",
+    "course": "Conversaciones",
+    "lessons": 186,
+    "level": "Elemental",
+    "contractEnd": "30/04/2026"
+  },
+  {
+    "name": "Carin Mello da Rosa",
+    "email": "carin.mello.rosa@gmail.com",
+    "phone": "55984442754",
+    "course": "Smart Learning",
+    "lessons": 239,
+    "level": "Explorer",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Carina Mota de Oliveira",
+    "email": "carinamotaoli@gmail.com",
+    "phone": "11961685563",
+    "course": "Smart Learning",
+    "lessons": 156,
+    "level": "Explorer",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Carla Farias",
+    "email": "carla_mfarias@yahoo.com.br",
+    "phone": "11968956052",
+    "course": "Smart Conversation",
+    "lessons": 158,
+    "level": "Starter",
+    "contractEnd": "27/03/2026"
+  },
+  {
+    "name": "Carlos Alberto Brumm UFINET",
+    "email": "cbrumm@ufinet.com",
+    "phone": "11992187430",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "01/06/2026"
+  },
+  {
+    "name": "Carlos Alexandre dos Santos - CNV",
+    "email": "ca.xande@yahoo.com.br",
+    "phone": "11980709193",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Carlos Eduardo Wolkartt Vago",
+    "email": "carlos.wolkartt@hotmail.com",
+    "phone": "27999361648",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/11/2025"
+  },
+  {
+    "name": "Carlos Filho - SC",
+    "email": "carllos.filho63@gmail.com",
+    "phone": "11966172200",
+    "course": "Smart Conversation",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "07/01/2026"
+  },
+  {
+    "name": "Carlos Jose De Oliveira Junior",
+    "email": "cj.oliveiras@hotmail.com",
+    "phone": "11998565067",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "12/10/2025"
+  },
+  {
+    "name": "Carlota Moraes",
+    "email": "cblassioli@gmail.com",
+    "phone": "11996519868",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "27/11/2025"
+  },
+  {
+    "name": "Carmen Silvia Winkler Vernaglia",
+    "email": "carmen.vernaglia@uol.com.br",
+    "phone": "11983716461",
+    "course": "Smart Conversation",
+    "lessons": 152,
+    "level": "Starter",
+    "contractEnd": "29/01/2026"
+  },
+  {
+    "name": "Carolina Florentino Bueno dos Santos - SC",
+    "email": "carolinabuenos@yahoo.com.br",
+    "phone": "11974299118",
+    "course": "Smart Conversation",
+    "lessons": 258,
+    "level": "Expert",
+    "contractEnd": "23/01/2026"
+  },
+  {
+    "name": "Carolina Ribeiro Pontello",
+    "email": "carolina@tulliopontello.com.br",
+    "phone": "12966669985",
+    "course": "Smart Conversation",
+    "lessons": 260,
+    "level": "Survivor",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Caroline Bieszczad",
+    "email": "carolinebieszczad@gmail.com",
+    "phone": "11987218399",
+    "course": "Smart Conversation",
+    "lessons": 212,
+    "level": "Survivor",
+    "contractEnd": "05/08/2026"
+  },
+  {
+    "name": "Caroline Cotrim",
+    "email": "caroline@advcotrim.adv.br",
+    "phone": "11983897720",
+    "course": "Smart Learning",
+    "lessons": 120,
+    "level": "Explorer",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Celia Martins WOBBEN",
+    "email": "celia.martins@wobben.com.br",
+    "phone": "15991273330",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Christiane Picanço da Silva",
+    "email": "christianepicanco1974@gmail.com",
+    "phone": "92982032628",
+    "course": "Smart Learning",
+    "lessons": 108,
+    "level": "Starter",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Christophe Rapenne",
+    "email": "christophe.rapenne@patria.com",
+    "phone": "11993700388",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "11/02/2026"
+  },
+  {
+    "name": "Cicero Ferreira de Lira",
+    "email": "cicerodelira@gmail.com",
+    "phone": "11995534347",
+    "course": "Smart Conversation",
+    "lessons": 240,
+    "level": "Starter",
+    "contractEnd": "16/08/2026"
+  },
+  {
+    "name": "Cintia Alves - CNV",
+    "email": "cintia.alves@me.com",
+    "phone": "11981998360",
+    "course": "Conversaciones",
+    "lessons": 153,
+    "level": "Intermedio",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Cintia Alves - SBO",
+    "email": "cintia.alves@me.com",
+    "phone": "11981998360",
+    "course": "Smart Business",
+    "lessons": 231,
+    "level": "Beginner",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Claudia Silveira",
+    "email": "csilveira@danfoss.com",
+    "phone": "11991928436",
+    "course": "Conversaciones",
+    "lessons": 152,
+    "level": "Elemental",
+    "contractEnd": "06/12/2025"
+  },
+  {
+    "name": "Claudio Santos",
+    "email": "claudio.apsantos@hotmail.com",
+    "phone": "11981006908",
+    "course": "Smart Conversation",
+    "lessons": 222,
+    "level": "Survivor",
+    "contractEnd": "19/07/2026"
+  },
+  {
+    "name": "Cleide Falconi",
+    "email": "cleide.falconi@hotmail.com",
+    "phone": "11992238660",
+    "course": "Conversaciones",
+    "lessons": 179,
+    "level": "Intermedio",
+    "contractEnd": "30/01/2026"
+  },
+  {
+    "name": "Cristiane da Silva Ribeiro",
+    "email": "cristiane.csr4@gmail.com",
+    "phone": "11963753674",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "03/03/2026"
+  },
+  {
+    "name": "Cristiane Regina",
+    "email": "cristiani.macedo38@gmail.com",
+    "phone": "11992381845",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "10/12/2025"
+  },
+  {
+    "name": "Cyntia Yoshizaki - SL",
+    "email": "cyntiasy@hotmail.com",
+    "phone": "11988708807",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Daleia Cebuliski",
+    "email": "daleiacebulisk@gmail.com",
+    "phone": "11974017406",
+    "course": "Smart Learning",
+    "lessons": 125,
+    "level": "Explorer",
+    "contractEnd": "01/01/2026"
+  },
+  {
+    "name": "Daniel Lucas Gomes da Silva",
+    "email": "daniellucascv@gmail.com",
+    "phone": "11930920281",
+    "course": "Smart Learning",
+    "lessons": 222,
+    "level": "Survivor",
+    "contractEnd": "25/04/2026"
+  },
+  {
+    "name": "Daniel Sinenberg",
+    "email": "dsinen@gmail.com",
+    "phone": "11984083610",
+    "course": "Smart Business",
+    "lessons": 100,
+    "level": "Advanced",
+    "contractEnd": "13/11/2025"
+  },
+  {
+    "name": "Daniela Fonseca de Araujo",
+    "email": "dani_daniela_1@hotmail.com",
+    "phone": "11940041320",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "DANIELA OLIVEIRA DE MELO",
+    "email": "melo.daniela@unifesp.br",
+    "phone": "11964458909",
+    "course": "Smart Conversation",
+    "lessons": 123,
+    "level": "Survivor",
+    "contractEnd": "12/02/2026"
+  },
+  {
+    "name": "Daniella Assêncio",
+    "email": "daniella_210@hotmail.com",
+    "phone": "11970294516",
+    "course": "Conversaciones",
+    "lessons": 153,
+    "level": "Avanzado",
+    "contractEnd": "09/12/2025"
+  },
+  {
+    "name": "Danielle Souza",
+    "email": "danielle_jsouza@hotmail.com",
+    "phone": "13981151185",
+    "course": "Conversaciones",
+    "lessons": 148,
+    "level": "Basico",
+    "contractEnd": "22/07/2026"
+  },
+  {
+    "name": "Danielle Tome Ferreira",
+    "email": "danitf78@gmail.com",
+    "phone": "11976505067",
+    "course": "Smart Business",
+    "lessons": 120,
+    "level": "Beginner",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Danielly Macedo",
+    "email": "daniellymacedo0704@hotmail.com",
+    "phone": "11977661165",
+    "course": "Smart Learning",
+    "lessons": 214,
+    "level": "Explorer",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Danilo Lopes Nunes",
+    "email": "danilo.llopesnunes@gmail.com",
+    "phone": "91980468295",
+    "course": "Smart Learning",
+    "lessons": 274,
+    "level": "Survivor",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Danilo Nascimento",
+    "email": "nascimento.oficio@gmail.com",
+    "phone": "0",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Danilo Silami - CNV",
+    "email": "danilosilami@hotmail.com",
+    "phone": "31988013096",
+    "course": "Conversaciones",
+    "lessons": 210,
+    "level": "Basico",
+    "contractEnd": "03/06/2026"
+  },
+  {
+    "name": "Danilo Silami - SL",
+    "email": "danilosilami@hotmail.com",
+    "phone": "31988013096",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "03/06/2026"
+  },
+  {
+    "name": "Deyse Carneiro de Araujo Santos",
+    "email": "deyse.cas@gmail.com",
+    "phone": "11944467387",
+    "course": "Smart Business",
+    "lessons": 120,
+    "level": "Intermediate",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Diego luiz Cazelli zucolotto",
+    "email": "diego_fazslucas@hotmail.com",
+    "phone": "7399511604",
+    "course": "Smart Conversation",
+    "lessons": 40,
+    "level": "Starter",
+    "contractEnd": "30/11/2025"
+  },
+  {
+    "name": "Dileno Jose Oliveira Dos Santos",
+    "email": "lenosanoli@yahoo.com",
+    "phone": "91982602020",
+    "course": "Conversaciones",
+    "lessons": 131,
+    "level": "Basico",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Diogenes Souza Damasceno",
+    "email": "diogenesdamasceno@hotmail.com",
+    "phone": "351939500370",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "10/01/2026"
+  },
+  {
+    "name": "Diogenes Tavares dos Santos",
+    "email": "diogenes_tavares@hotmail.com",
+    "phone": "11987575116",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "14/04/2026"
+  },
+  {
+    "name": "Djair Correia da Silva - SC",
+    "email": "djair.correia.silva@gmail.com",
+    "phone": "11963593039",
+    "course": "Smart Conversation",
+    "lessons": 128,
+    "level": "Survivor",
+    "contractEnd": "12/05/2026"
+  },
+  {
+    "name": "Douglas de Souza silva",
+    "email": "dougsouza211@outlook.com",
+    "phone": "11949401615",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Dummy Student 3",
+    "email": "paulo.cavalheiro@mindsetbr.com",
+    "phone": "11111111",
+    "course": "Smart Conversation",
+    "lessons": 158,
+    "level": "Starter",
+    "contractEnd": "09/02/2026"
+  },
+  {
+    "name": "Edicarlos Macedo",
+    "email": "edicarlosmacedo7@gmail.com",
+    "phone": "11943996823",
+    "course": "Conversaciones",
+    "lessons": 200,
+    "level": "Intermedio",
+    "contractEnd": "04/04/2026"
+  },
+  {
+    "name": "Edilaine Barbacovi",
+    "email": "barbacoviedilaine@gmail.com",
+    "phone": "42988036386",
+    "course": "Smart Learning",
+    "lessons": 197,
+    "level": "Starter",
+    "contractEnd": "18/03/2026"
+  },
+  {
+    "name": "Edilson Macedo",
+    "email": "edilsonmacedo@gmail.com",
+    "phone": "31993121960",
+    "course": "Smart Conversation",
+    "lessons": 159,
+    "level": "Starter",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Edna dos Santos Silva",
+    "email": "ednainsencoes@gmail.com",
+    "phone": "11942393905",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Survivor",
+    "contractEnd": "29/01/2026"
+  },
+  {
+    "name": "Edney Silva - CNV",
+    "email": "edney.silva2011@gmail.com",
+    "phone": "11945292287",
+    "course": "Conversaciones",
+    "lessons": 191,
+    "level": "Basico",
+    "contractEnd": "03/01/2026"
+  },
+  {
+    "name": "Edney Silva - SBO",
+    "email": "edney.silva2011@gmail.com",
+    "phone": "11945292287",
+    "course": "Smart Business",
+    "lessons": 148,
+    "level": "Beginner",
+    "contractEnd": "03/01/2026"
+  },
+  {
+    "name": "Edson Gaspar",
+    "email": "gaspar.avc@gmail.com",
+    "phone": "11981261688",
+    "course": "Smart Learning",
+    "lessons": 122,
+    "level": "Expert",
+    "contractEnd": "30/04/2026"
+  },
+  {
+    "name": "Edson Rocha",
+    "email": "edson.polyservice@gmail.com",
+    "phone": "21987785258",
+    "course": "Conversaciones",
+    "lessons": 198,
+    "level": "Intermedio",
+    "contractEnd": "13/05/2026"
+  },
+  {
+    "name": "Eduardo Heron Santos - SBO",
+    "email": "eduardo@cecafe.com.br",
+    "phone": "11950472022",
+    "course": "Smart Business",
+    "lessons": 159,
+    "level": "Intermediate",
+    "contractEnd": "05/08/2026"
+  },
+  {
+    "name": "Eduardo Heron Santos - SC",
+    "email": "eduardo@cecafe.com.br",
+    "phone": "11950472022",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Expert",
+    "contractEnd": "05/08/2026"
+  },
+  {
+    "name": "Eduardo Ribeiro Feitosa INSTITUTO SER TÃO GRANDE",
+    "email": "feitosaeduardo613@gmail.com",
+    "phone": "62993562835",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Edvaldo Dos Santos",
+    "email": "edvaldo.san@terra.com.br",
+    "phone": "11947351264",
+    "course": "Smart Learning",
+    "lessons": 131,
+    "level": "Explorer",
+    "contractEnd": "06/02/2026"
+  },
+  {
+    "name": "Elaine Cristina Palermo",
+    "email": "elaine.palermo.ecp@gmail.com",
+    "phone": "11991022267",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "11/11/2025"
+  },
+  {
+    "name": "Elcimar da Silva Ivo",
+    "email": "elcivo84@gmail.com",
+    "phone": "24999057418",
+    "course": "Smart Conversation",
+    "lessons": 157,
+    "level": "Survivor",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Eliseu Machado",
+    "email": "zezeuma@gmail.com",
+    "phone": "21997254469",
+    "course": "Smart Conversation",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "09/03/2026"
+  },
+  {
+    "name": "Elizangela Silva",
+    "email": "elizangela_es@yahoo.com.br",
+    "phone": "62982955935",
+    "course": "Smart Learning",
+    "lessons": 155,
+    "level": "Explorer",
+    "contractEnd": "24/03/2026"
+  },
+  {
+    "name": "Elizete Melquiades Da Silva",
+    "email": "elizmel@yahoo.com.br",
+    "phone": "11980960975",
+    "course": "Smart Conversation",
+    "lessons": 254,
+    "level": "Survivor",
+    "contractEnd": "12/03/2026"
+  },
+  {
+    "name": "Elusian Menezes Ornellas",
+    "email": "lu_fa21@hotmail.com",
+    "phone": "71987807580",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "10/12/2025"
+  },
+  {
+    "name": "Emile Granado Dantas",
+    "email": "emileg.dantas@gmail.com",
+    "phone": "11941306853",
+    "course": "Smart Learning",
+    "lessons": 122,
+    "level": "Expert",
+    "contractEnd": "29/01/2026"
+  },
+  {
+    "name": "Emilia Leite Gomes Lino",
+    "email": "emilia.lino@alcon.com",
+    "phone": "11.963.534.917",
+    "course": "Smart Business",
+    "lessons": 180,
+    "level": "Beginner",
+    "contractEnd": "16/04/2026"
+  },
+  {
+    "name": "Erica Barbeiro Travassos",
+    "email": "ebarbeiro@hotmail.com",
+    "phone": "11972072763",
+    "course": "Conversaciones",
+    "lessons": 176,
+    "level": "Intermedio",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Erica de Souza Barbosa - SC",
+    "email": "ericadesouzabarbosaa@gmail.com",
+    "phone": "11992146519",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Explorer",
+    "contractEnd": "07/10/2025"
+  },
+  {
+    "name": "Erika Pina SOLUBIO",
+    "email": "erikapina12@outlook.com",
+    "phone": "62992718505",
+    "course": "Smart Learning",
+    "lessons": 192,
+    "level": "Expert",
+    "contractEnd": "05/11/2025"
+  },
+  {
+    "name": "Evandro Davi Pereira",
+    "email": "edpereira1997@gmail.com",
+    "phone": "11968563842",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "Everton Carvalho Da Silva",
+    "email": "evertoncar@gmail.com",
+    "phone": "61985424294",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "26/02/2026"
+  },
+  {
+    "name": "Fabiana Casagrande",
+    "email": "ckfabiana@gmail.com",
+    "phone": "11994089677",
+    "course": "Conversaciones",
+    "lessons": 120,
+    "level": "Basico",
+    "contractEnd": "08/11/2025"
+  },
+  {
+    "name": "Fabiana Junqueira Middleton Quezada",
+    "email": "fabianajunqueira10@gmail.com",
+    "phone": "11942088259",
+    "course": "Conversaciones",
+    "lessons": 231,
+    "level": "Basico",
+    "contractEnd": "18/07/2026"
+  },
+  {
+    "name": "Fabiana Pieri",
+    "email": "fabianapieri@hotmail.com",
+    "phone": "11995380049",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "28/09/2026"
+  },
+  {
+    "name": "Fabiana Sigrist Bertti - SC",
+    "email": "fbsigrist@hotmail.com",
+    "phone": "11981488652",
+    "course": "Smart Conversation",
+    "lessons": 185,
+    "level": "Explorer",
+    "contractEnd": "12/11/2025"
+  },
+  {
+    "name": "Fabiano Lima",
+    "email": "fabianodelima01@gmail.com",
+    "phone": "19997299000",
+    "course": "Conversaciones",
+    "lessons": 126,
+    "level": "Avanzado",
+    "contractEnd": "22/07/2026"
+  },
+  {
+    "name": "Fabiano Ornellas da Silva",
+    "email": "fabiano@vbld.com.br",
+    "phone": "71981254999",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Beginner",
+    "contractEnd": "04/06/2026"
+  },
+  {
+    "name": "Fabio Biagioni",
+    "email": "fabiobiagionisp@gmail.com",
+    "phone": "11940104096",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Fabio Castro",
+    "email": "fabiocastro737@hotmail.com",
+    "phone": "11981059172",
+    "course": "Smart Business",
+    "lessons": 200,
+    "level": "Intermediate",
+    "contractEnd": "24/07/2026"
+  },
+  {
+    "name": "Fabio Lima - CNV",
+    "email": "fabiolucas74@gmail.com",
+    "phone": "61993819833",
+    "course": "Conversaciones",
+    "lessons": 180,
+    "level": "Avanzado",
+    "contractEnd": "11/06/2026"
+  },
+  {
+    "name": "Fabio Moura",
+    "email": "fabiomousa@gmail.com",
+    "phone": "11975008789",
+    "course": "Smart Business",
+    "lessons": 120,
+    "level": "Beginner",
+    "contractEnd": "04/02/2026"
+  },
+  {
+    "name": "Fabio Sakaguchi",
+    "email": "fabioharukis@gmail.com",
+    "phone": "11993745981",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "07/02/2026"
+  },
+  {
+    "name": "Farley Santos Ribeiro",
+    "email": "farleysr@gmail.com",
+    "phone": "31984137195",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "FATIMA SACHETI",
+    "email": "fasacheti@gmail.com",
+    "phone": "11951376248",
+    "course": "Smart Conversation",
+    "lessons": 83,
+    "level": "Starter",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Felipe Mello",
+    "email": "lipemello09@gmail.com",
+    "phone": "11972050646",
+    "course": "Smart Business",
+    "lessons": 144,
+    "level": "Intermediate",
+    "contractEnd": "17/11/2025"
+  },
+  {
+    "name": "Felipe Mendes Watanabe",
+    "email": "eng.felipewatanabe@gmail.com",
+    "phone": "11989657888",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Fernanda Carolina Santos",
+    "email": "urvy0106@gmail.com",
+    "phone": "11984630524",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "03/12/2026"
+  },
+  {
+    "name": "Fernanda Cristina Cardoso",
+    "email": "fcdnanda@hotmail.com",
+    "phone": "319993015131",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/12/2025"
+  },
+  {
+    "name": "Fernanda Cristina Martinez",
+    "email": "fefe_martines1@yahoo.com.br",
+    "phone": "11972198852",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "06/06/2026"
+  },
+  {
+    "name": "Fernando Blaas Knabach",
+    "email": "fernando.blaas@skic.com",
+    "phone": "11952468809",
+    "course": "Conversaciones",
+    "lessons": 75,
+    "level": "Basico",
+    "contractEnd": "31/04/2025"
+  },
+  {
+    "name": "Fernando Marlon da Silva Dutra - CNV",
+    "email": "fernandomsdutra@gmail.com",
+    "phone": "31993675020",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "26/12/2025"
+  },
+  {
+    "name": "Filipe De oliveira dos Santos",
+    "email": "filipe.ol.santos@hotmail.com",
+    "phone": "27997893153",
+    "course": "Smart Learning",
+    "lessons": 173,
+    "level": "Explorer",
+    "contractEnd": "15/10/2025"
+  },
+  {
+    "name": "FLAVIA Sustek DANGELO",
+    "email": "flaviadangelo22@gmail.com",
+    "phone": "11981426865",
+    "course": "Smart Learning",
+    "lessons": 229,
+    "level": "Explorer",
+    "contractEnd": "01/08/2026"
+  },
+  {
+    "name": "Flavia Xavier Reis",
+    "email": "flaviax_reis@yahoo.com.br",
+    "phone": "11982668101",
+    "course": "Smart Learning",
+    "lessons": 144,
+    "level": "Explorer",
+    "contractEnd": "18/11/2025"
+  },
+  {
+    "name": "Flavio Santos Ramos",
+    "email": "fdsramos@hotmail.com",
+    "phone": "21992865717",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "05/05/2026"
+  },
+  {
+    "name": "Francisco Goveia",
+    "email": "frgoveia@gmail.com",
+    "phone": "11989682455",
+    "course": "Conversaciones",
+    "lessons": 187,
+    "level": "Avanzado",
+    "contractEnd": "02/06/2026"
+  },
+  {
+    "name": "Francisco Johne Castro Gomes - SC",
+    "email": "fjcastrogomes@gmail.com",
+    "phone": "19989186904",
+    "course": "Smart Conversation",
+    "lessons": 86,
+    "level": "Survivor",
+    "contractEnd": "14/02/2026"
+  },
+  {
+    "name": "Francisco Johne de Castro Gomes - CNV",
+    "email": "fjcastrogomes@gmail.com",
+    "phone": "19989186904",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "24/12/2025"
+  },
+  {
+    "name": "Frederico de Moura Costa",
+    "email": "fred.mcd@hotmail.com",
+    "phone": "21997762851",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Starter",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Gabriel da Cunha",
+    "email": "gabriel.cunha@live.com",
+    "phone": "81988730210",
+    "course": "Smart Business",
+    "lessons": 225,
+    "level": "Beginner",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Gabriel Moura Beleze",
+    "email": "Gabrielbeleze@gmail.com",
+    "phone": "11989405171",
+    "course": "Smart Learning",
+    "lessons": 123,
+    "level": "Explorer",
+    "contractEnd": "16/01/2026"
+  },
+  {
+    "name": "Gabriela Lima",
+    "email": "gabilimab7@gmail.com",
+    "phone": "61982421590",
+    "course": "Conversaciones",
+    "lessons": 215,
+    "level": "Elemental",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Gabrielle Pereira",
+    "email": "gabriellepsantos@gmail.com",
+    "phone": "11981880410",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Beginner",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Giane Araujo",
+    "email": "gianelaraujo@gmail.com",
+    "phone": "11997423761",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Starter",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Gilsimar Tavares - CNV",
+    "email": "Gilsisea@gmail.com",
+    "phone": "15981344188",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "28/05/2026"
+  },
+  {
+    "name": "Giorgia Rodrigues Pimenta Bueno",
+    "email": "giorgiapimenta@hotmail.com",
+    "phone": "11940760356",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Survivor",
+    "contractEnd": "29/12/2025"
+  },
+  {
+    "name": "Giovanna Christe Orlando Di Girolamo Fangen - CNV",
+    "email": "giovannacfangen@gmail.com",
+    "phone": "11980948170",
+    "course": "Conversaciones",
+    "lessons": 169,
+    "level": "Elemental",
+    "contractEnd": "04/02/2026"
+  },
+  {
+    "name": "Giovanna Christe Orlando Di Girolamo Fangen - SC",
+    "email": "giovannacfangen@gmail.com",
+    "phone": "11980948170",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "22/07/2026"
+  },
+  {
+    "name": "Gisele Fernanda Marcolino - CNV",
+    "email": "gisele.marcolino@ausenco.com",
+    "phone": "31993675020",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "26/12/2025"
+  },
+  {
+    "name": "Gisele Fernanda Marcolino - SBO",
+    "email": "gfmarcolino@gmail.com",
+    "phone": "31993675020",
+    "course": "Smart Business",
+    "lessons": 100,
+    "level": "Intermediate",
+    "contractEnd": "10/10/2025"
+  },
+  {
+    "name": "Giselle Leticia da Silva",
+    "email": "gsilva2310@gmail.com",
+    "phone": "11987638364",
+    "course": "Conversaciones",
+    "lessons": 140,
+    "level": "Basico",
+    "contractEnd": "01/01/2026"
+  },
+  {
+    "name": "Giselle Machado",
+    "email": "gisa26lima@gmail.com",
+    "phone": "94988122005",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "19/11/2025"
+  },
+  {
+    "name": "Gislaine Mota",
+    "email": "gislaine.mota@fde.sp.gov.br",
+    "phone": "11981606980",
+    "course": "Conversaciones",
+    "lessons": 172,
+    "level": "Intermedio",
+    "contractEnd": "07/01/2026"
+  },
+  {
+    "name": "Giulia Volante",
+    "email": "giuliarmv@gmail.com",
+    "phone": "11976523859",
+    "course": "Conversaciones",
+    "lessons": 135,
+    "level": "Avanzado",
+    "contractEnd": "13/01/2026"
+  },
+  {
+    "name": "Graziella de Lucca",
+    "email": "gralucca@uol.com.br",
+    "phone": "11971510591",
+    "course": "Smart Learning",
+    "lessons": 167,
+    "level": "Explorer",
+    "contractEnd": "12/06/2026"
+  },
+  {
+    "name": "Guilherme Castelo",
+    "email": "guilhermemartingo@gmail.com",
+    "phone": "11964878520",
+    "course": "Smart Business",
+    "lessons": 200,
+    "level": "Advanced",
+    "contractEnd": "20/02/2026"
+  },
+  {
+    "name": "Guilherme Castro",
+    "email": "gui_codama@hotmail.com",
+    "phone": "31986759110",
+    "course": "Conversaciones",
+    "lessons": 144,
+    "level": "Avanzado",
+    "contractEnd": "13/01/2026"
+  },
+  {
+    "name": "Guilherme De Oliveira Cezar",
+    "email": "gdocezar@gmail.com",
+    "phone": "51984066345",
+    "course": "Conversaciones",
+    "lessons": 156,
+    "level": "Avanzado",
+    "contractEnd": "14/12/2025"
+  },
+  {
+    "name": "Guilherme Lima",
+    "email": "guilherme.lima06@icloud.com",
+    "phone": "11947625001",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "13/12/2025"
+  },
+  {
+    "name": "Gustavo Carderan Bagarini",
+    "email": "gustavobagarini@gmail.com",
+    "phone": "14997048255",
+    "course": "Smart Learning",
+    "lessons": 202,
+    "level": "Expert",
+    "contractEnd": "10/09/2026"
+  },
+  {
+    "name": "Gustavo Gentil - SL",
+    "email": "gustavo.rgmota@gmail.com",
+    "phone": "11974267830",
+    "course": "Smart Learning",
+    "lessons": 110,
+    "level": "Expert",
+    "contractEnd": "07/10/2025"
+  },
+  {
+    "name": "Gustavo Rodrigues Silva",
+    "email": "gustavorsilva@gmail.com",
+    "phone": "11994249612",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "08/02/2026"
+  },
+  {
+    "name": "Gustavo Santos",
+    "email": "gustavo.santos@belatam.com.br",
+    "phone": "13059303841",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "30/10/2025"
+  },
+  {
+    "name": "Haydee Marques",
+    "email": "haydeemarques01@gmail.com",
+    "phone": "11993673745",
+    "course": "Smart Conversation",
+    "lessons": 114,
+    "level": "Survivor",
+    "contractEnd": "22/06/2026"
+  },
+  {
+    "name": "Hellen Castro",
+    "email": "helleencastro1@gmail.com",
+    "phone": "15998394229",
+    "course": "Conversaciones",
+    "lessons": 120,
+    "level": "Elemental",
+    "contractEnd": "18/12/2025"
+  },
+  {
+    "name": "Heloisa Aparecida do Nascimento Silva",
+    "email": "heloisanasc@msn.com",
+    "phone": "11976049577",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Survivor",
+    "contractEnd": "12/03/2026"
+  },
+  {
+    "name": "Hercules Santos Pacheco",
+    "email": "hercules_sp@hotmail.com",
+    "phone": "11962259647",
+    "course": "Smart Business",
+    "lessons": 154,
+    "level": "Beginner",
+    "contractEnd": "11/12/2025"
+  },
+  {
+    "name": "Hildebrando Mota",
+    "email": "hrmota2019@gmail.com",
+    "phone": "11959207252",
+    "course": "Smart Learning",
+    "lessons": 241,
+    "level": "Survivor",
+    "contractEnd": "01/04/2026"
+  },
+  {
+    "name": "Hivanildo Marinho de Brito",
+    "email": "hivanildobrito@outlook.com",
+    "phone": "11976256414",
+    "course": "Smart Learning",
+    "lessons": 148,
+    "level": "Explorer",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Iago Aquino Ferreira",
+    "email": "iagoferrera_@hotmail.com",
+    "phone": "24981210344",
+    "course": "Smart Conversation",
+    "lessons": 138,
+    "level": "Survivor",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Iara Vasconcellos - CNV",
+    "email": "iaraanacletoamorimvasconcellos@gmail.com",
+    "phone": "11952155121",
+    "course": "Conversaciones",
+    "lessons": 157,
+    "level": "Elemental",
+    "contractEnd": "20/05/2026"
+  },
+  {
+    "name": "Igor Magalhães da Silva Duarte",
+    "email": "igordasilvaduarte@hotmail.com",
+    "phone": "19993762889",
+    "course": "Smart Learning",
+    "lessons": 134,
+    "level": "Survivor",
+    "contractEnd": "17/04/2026"
+  },
+  {
+    "name": "Indaia Pasotti Sanchez",
+    "email": "indaia.sanchez@ibema.com.br",
+    "phone": "11984474339",
+    "course": "Smart Learning",
+    "lessons": 126,
+    "level": "Survivor",
+    "contractEnd": "17/07/2026"
+  },
+  {
+    "name": "Isabela Moraes de Oliveira",
+    "email": "Isaa.oliveira27@gmail.com",
+    "phone": "11914842309",
+    "course": "Smart Conversation",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "18/06/2026"
+  },
+  {
+    "name": "Israel Maiolino",
+    "email": "imaiolino@gmail.com",
+    "phone": "11994800379",
+    "course": "Smart Conversation",
+    "lessons": 150,
+    "level": "Explorer",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Izabela Cristina Leite Rodrigues DELFIA",
+    "email": "izabelacraraujo@gmail.com",
+    "phone": "11983062579",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "30/11/2025"
+  },
+  {
+    "name": "Jackson Marcel Sekula",
+    "email": "jack.sekula@gmail.com",
+    "phone": "45999720800",
+    "course": "Smart Learning",
+    "lessons": 204,
+    "level": "Explorer",
+    "contractEnd": "02/07/2026"
+  },
+  {
+    "name": "Janilson Serudo",
+    "email": "jserudo@gmail.com",
+    "phone": "92981908236",
+    "course": "Conversaciones",
+    "lessons": 178,
+    "level": "Avanzado",
+    "contractEnd": "24/05/2026"
+  },
+  {
+    "name": "Jaqueline Ribeiro",
+    "email": "jaqueribeiro16@gmail.com",
+    "phone": "11971378105",
+    "course": "Smart Learning",
+    "lessons": 199,
+    "level": "Expert",
+    "contractEnd": "21/04/2026"
+  },
+  {
+    "name": "Jaqueline Souza Guerra da Costa",
+    "email": "jaquelineguerra@hotmail.com",
+    "phone": "11980180296",
+    "course": "Smart Learning",
+    "lessons": 201,
+    "level": "Survivor",
+    "contractEnd": "08/11/2026"
+  },
+  {
+    "name": "Jennifer Soares",
+    "email": "jenniferkelly99@hotmail.com",
+    "phone": "19996799304",
+    "course": "Smart Conversation",
+    "lessons": 205,
+    "level": "Explorer",
+    "contractEnd": "16/12/2026"
+  },
+  {
+    "name": "Jenniffer de Oliveira Gonçalves - CNV",
+    "email": "goncalvesjenni95@gmail.com",
+    "phone": "13997769675",
+    "course": "Conversaciones",
+    "lessons": 186,
+    "level": "Elemental",
+    "contractEnd": "07/04/2026"
+  },
+  {
+    "name": "Jenniffer de Oliveira Gonçalves - SC",
+    "email": "goncalvesjenni95@gmail.com",
+    "phone": "13991241195",
+    "course": "Smart Conversation",
+    "lessons": 145,
+    "level": "Starter",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Jhon Borquez - SBO",
+    "email": "jhonbryan1998@hotmail.com",
+    "phone": "11991092049",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Beginner",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Joab Henrique de Souza",
+    "email": "joab.souza@gmail.com",
+    "phone": "11992669398",
+    "course": "Smart Learning",
+    "lessons": 183,
+    "level": "Explorer",
+    "contractEnd": "08/01/2026"
+  },
+  {
+    "name": "Joana Neto da Silva Oliveira",
+    "email": "joana_joneto@hotmail.com",
+    "phone": "51992048783",
+    "course": "Smart Learning",
+    "lessons": 162,
+    "level": "Starter",
+    "contractEnd": "06/01/2026"
+  },
+  {
+    "name": "João Paulo Provinciano Gomes",
+    "email": "jprovincianogomes@gmail.com",
+    "phone": "11973408977",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/11/2025"
+  },
+  {
+    "name": "João Perazzo",
+    "email": "perazzojunior@gmail.com",
+    "phone": "11975547425",
+    "course": "Smart Conversation",
+    "lessons": 123,
+    "level": "Explorer",
+    "contractEnd": "10/04/2026"
+  },
+  {
+    "name": "Jorge Luiz Rosendo Mendes",
+    "email": "jorgerlmendes@gmail.com",
+    "phone": "6182555993",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "28/11/2025"
+  },
+  {
+    "name": "JOSe ED CARLOS Pereira santos",
+    "email": "edymedic@icloud.com",
+    "phone": "11976631809",
+    "course": "Smart Learning",
+    "lessons": 105,
+    "level": "Starter",
+    "contractEnd": "14/02/2026"
+  },
+  {
+    "name": "Jose Luis Pereira - SBO",
+    "email": "joseluiss@contabilouroverde.cnt.br",
+    "phone": "19991122258",
+    "course": "Smart Business",
+    "lessons": 100,
+    "level": "Advanced",
+    "contractEnd": "18/12/2025"
+  },
+  {
+    "name": "Jose Luiz Martini",
+    "email": "jose.martini.otimiza@gmail.com",
+    "phone": "19997972409",
+    "course": "Conversaciones",
+    "lessons": 174,
+    "level": "Intermedio",
+    "contractEnd": "05/11/2025"
+  },
+  {
+    "name": "Jose Maria Cavalcante Filho",
+    "email": "palacioz@me.com",
+    "phone": "85991373313",
+    "course": "Conversaciones",
+    "lessons": 229,
+    "level": "Intermedio",
+    "contractEnd": "25/07/2026"
+  },
+  {
+    "name": "Jose Wallace Hozires Costa",
+    "email": "wallacecosta@netlimpeza.com",
+    "phone": "62984235980",
+    "course": "Conversaciones",
+    "lessons": 135,
+    "level": "Avanzado",
+    "contractEnd": "01/11/2025"
+  },
+  {
+    "name": "Joselita Bispo Santana",
+    "email": "jopsisantana8@gmail.com",
+    "phone": "11998306587",
+    "course": "Smart Conversation",
+    "lessons": 162,
+    "level": "Starter",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Joviana Roberti Pereira J&J - CNV",
+    "email": "jovianapereira@bol.com.br",
+    "phone": "12997034010",
+    "course": "Smart Learning",
+    "lessons": 76,
+    "level": "Intermedio",
+    "contractEnd": "04/12/2025"
+  },
+  {
+    "name": "Joyce Lemos",
+    "email": "joycealvesalmeida1@gmail.com",
+    "phone": "61985123518",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "05/12/2025"
+  },
+  {
+    "name": "Juliana Alzuguir",
+    "email": "julianaalzuguir@gmail.com",
+    "phone": "21996413833",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Explorer",
+    "contractEnd": "19/07/2026"
+  },
+  {
+    "name": "Juliana De Souza Pereira",
+    "email": "justar8787@gmail.com",
+    "phone": "11994173015",
+    "course": "Smart Learning",
+    "lessons": 180,
+    "level": "Starter",
+    "contractEnd": "06/02/2026"
+  },
+  {
+    "name": "Juliana Maniglia",
+    "email": "juliana.maniglia@hotmail.com",
+    "phone": "11979689575",
+    "course": "Smart Learning",
+    "lessons": 242,
+    "level": "Expert",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Karen Spano Drumond",
+    "email": "k_drumond@hotmail.com",
+    "phone": "11983326695",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Advanced",
+    "contractEnd": "29/07/2025"
+  },
+  {
+    "name": "Karina Borges",
+    "email": "karina.fonseca.borges@gmail.com",
+    "phone": "11951339972",
+    "course": "Smart Conversation",
+    "lessons": 144,
+    "level": "Survivor",
+    "contractEnd": "31/10/2025"
+  },
+  {
+    "name": "Karina Laura Fernandes Cardoso",
+    "email": "klfcacademico@gmail.com",
+    "phone": "14996602661",
+    "course": "Smart Learning",
+    "lessons": 218,
+    "level": "Expert",
+    "contractEnd": "16/10/2026"
+  },
+  {
+    "name": "Katia Barrozo Nunes",
+    "email": "katia.b.nunes@gmail.com",
+    "phone": "21972037947",
+    "course": "Smart Learning",
+    "lessons": 154,
+    "level": "Starter",
+    "contractEnd": "10/09/2026"
+  },
+  {
+    "name": "Kauany Silva Soares DELFIA",
+    "email": "kauanys295@gmail.com",
+    "phone": "11942946642",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "30/11/2025"
+  },
+  {
+    "name": "Kauene Faustino da Silva CLOUDKITCHENS",
+    "email": "kauene.faustino@cloudkitchens.com",
+    "phone": "11989579027",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "27/11/2025"
+  },
+  {
+    "name": "Keitt Raquel A Pereira",
+    "email": "keitt.raquel@gmail.com",
+    "phone": "11961319945",
+    "course": "Conversaciones",
+    "lessons": 131,
+    "level": "Intermedio",
+    "contractEnd": "05/09/2026"
+  },
+  {
+    "name": "Keli Cristina - CNV",
+    "email": "criskelister@gmail.com",
+    "phone": "11999778829",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "09/12/2025"
+  },
+  {
+    "name": "Kelpson Thyago Pereira Mariano",
+    "email": "kelpson.thyago@hotmail.com",
+    "phone": "11957722078",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "21/11/2025"
+  },
+  {
+    "name": "Kelson Eugenio da Silva",
+    "email": "mao.kelson@azulcargo.com.br",
+    "phone": "92981162630",
+    "course": "Smart Learning",
+    "lessons": 121,
+    "level": "Starter",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Lais Domingues",
+    "email": "barralais@gmail.com",
+    "phone": "35998493808",
+    "course": "Conversaciones",
+    "lessons": 167,
+    "level": "Avanzado",
+    "contractEnd": "17/01/2026"
+  },
+  {
+    "name": "Lais Gonzales",
+    "email": "laisgonzaless@gmail.com",
+    "phone": "19984098306",
+    "course": "Smart Conversation",
+    "lessons": 273,
+    "level": "Survivor",
+    "contractEnd": "28/11/2025"
+  },
+  {
+    "name": "Lara Vitoria Barbosa Vieira Bastos INSTITUTO SER TÃO GRANDE",
+    "email": "laravitoriabastos26@gmail.com",
+    "phone": "62993877572",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Larissa de Oliveira",
+    "email": "nitassicisrte@hotmail.com",
+    "phone": "11920075289",
+    "course": "Smart Learning",
+    "lessons": 157,
+    "level": "Expert",
+    "contractEnd": "11/10/2025"
+  },
+  {
+    "name": "Larissa Nogueira",
+    "email": "larissa.n.nery@gmail.com",
+    "phone": "11988698778",
+    "course": "Conversaciones",
+    "lessons": 157,
+    "level": "Basico",
+    "contractEnd": "27/06/2026"
+  },
+  {
+    "name": "Lauane Barreto Souza",
+    "email": "lauanebarretosouza@gmail.com",
+    "phone": "16982283446",
+    "course": "Smart Learning",
+    "lessons": 239,
+    "level": "Survivor",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Leandro Brito Tavares",
+    "email": "leandro.brito.tavares@gmail.com",
+    "phone": "11982100710",
+    "course": "Conversaciones",
+    "lessons": 95,
+    "level": "Avanzado",
+    "contractEnd": "09/09/2026"
+  },
+  {
+    "name": "Leandro Pacheco de Souza",
+    "email": "pacheco_leandro@yahoo.com.br",
+    "phone": "21970201222",
+    "course": "Smart Conversation",
+    "lessons": 153,
+    "level": "Survivor",
+    "contractEnd": "16/10/2025"
+  },
+  {
+    "name": "Lenira Ameku",
+    "email": "Lenira.ayumi@gmail.com",
+    "phone": "11995494808",
+    "course": "Smart Business",
+    "lessons": 85,
+    "level": "Beginner",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Lenita Luzia Deris Cardoso",
+    "email": "lenitaluziaderis@gmail.com",
+    "phone": "21974808686",
+    "course": "Smart Learning",
+    "lessons": 252,
+    "level": "Explorer",
+    "contractEnd": "23/04/2026"
+  },
+  {
+    "name": "Leonardo Cadurim",
+    "email": "leocadurim@yahoo.com.br",
+    "phone": "16981460944",
+    "course": "Smart Business",
+    "lessons": 177,
+    "level": "Advanced",
+    "contractEnd": "13/05/2026"
+  },
+  {
+    "name": "Leonardo Darlan Bezerra Castro",
+    "email": "leonard@conversionlab.com.br",
+    "phone": "11986546754",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "02/01/2026"
+  },
+  {
+    "name": "Leonardo Paz Moreira",
+    "email": "leonardo.paz151@gmail.com",
+    "phone": "11948072746",
+    "course": "Smart Conversation",
+    "lessons": 220,
+    "level": "Survivor",
+    "contractEnd": "28/05/2026"
+  },
+  {
+    "name": "Leonardo Richard",
+    "email": "leo.richardm@gmail.com",
+    "phone": "11988243582",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Leonardo Silva Mercês SC",
+    "email": "Leonardo.merces@outlook.com",
+    "phone": "11984744159",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Leonor Violeta Gotuzzo Mendoza",
+    "email": "leogomen1@hotmail.com",
+    "phone": "19997972249",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "16/10/2025"
+  },
+  {
+    "name": "Leticia Bueno Pires",
+    "email": "leticiabuenopr@gmail.com",
+    "phone": "11964715976",
+    "course": "Smart Learning",
+    "lessons": 212,
+    "level": "Expert",
+    "contractEnd": "19/02/2026"
+  },
+  {
+    "name": "Leticia Fanelli",
+    "email": "leticia.fanelli89@gmail.com",
+    "phone": "11988946770",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "CNV",
+    "contractEnd": "13/01/2026"
+  },
+  {
+    "name": "Leticia Nozaki Rodrigues",
+    "email": "spleticia@hotmail.com",
+    "phone": "11975582742",
+    "course": "Smart Learning",
+    "lessons": 235,
+    "level": "Survivor",
+    "contractEnd": "23/05/2026"
+  },
+  {
+    "name": "Leticia Pereira Santos",
+    "email": "leticia.santos04@hotmail.com",
+    "phone": "11952747606",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Beginner",
+    "contractEnd": "07/11/2025"
+  },
+  {
+    "name": "Lia Cristina Maciel de Sousa",
+    "email": "liacristina.ms@gmail.com",
+    "phone": "93981000178",
+    "course": "Smart Learning",
+    "lessons": 154,
+    "level": "Survivor",
+    "contractEnd": "26/11/2025"
+  },
+  {
+    "name": "Libia Soares",
+    "email": "libiasoares_sp@hotmail.com",
+    "phone": "11940693838",
+    "course": "Smart Conversation",
+    "lessons": 182,
+    "level": "Starter",
+    "contractEnd": "13/02/2026"
+  },
+  {
+    "name": "Ligia Borges - CNV",
+    "email": "ligiamdc@gmail.com",
+    "phone": "11995499283",
+    "course": "Conversaciones",
+    "lessons": 138,
+    "level": "Intermedio",
+    "contractEnd": "04/10/2026"
+  },
+  {
+    "name": "Lilian Massae Goto",
+    "email": "licogoto1@gmail.com",
+    "phone": "11987878693",
+    "course": "Smart Conversation",
+    "lessons": 202,
+    "level": "Starter",
+    "contractEnd": "05/02/2026"
+  },
+  {
+    "name": "Lissa Santos Nath - SC",
+    "email": "lissa@agenciamaistur.com.br",
+    "phone": "21964900598",
+    "course": "Smart Conversation",
+    "lessons": 73,
+    "level": "Survivor",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Livia de Campos Mathias",
+    "email": "lcmathias@gmail.com",
+    "phone": "11997861143",
+    "course": "Smart Conversation",
+    "lessons": 90,
+    "level": "Expert",
+    "contractEnd": "18/08/2026"
+  },
+  {
+    "name": "Livia Pietro De Lacerda",
+    "email": "liviapietrobueno2020@gmail.com",
+    "phone": "11959566685",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "15/11/2025"
+  },
+  {
+    "name": "Luana Cristine Pereira Domingues Horchuliki",
+    "email": "luanapdh@gmail.com",
+    "phone": "11937758050",
+    "course": "Smart Conversation",
+    "lessons": 232,
+    "level": "Survivor",
+    "contractEnd": "17/07/2026"
+  },
+  {
+    "name": "Lucas Ribeiro Borges",
+    "email": "borg_lucas@hotmail.com",
+    "phone": "47997393226",
+    "course": "Smart Business",
+    "lessons": 100,
+    "level": "Intermediate",
+    "contractEnd": "13/05/2026"
+  },
+  {
+    "name": "Luciana Fagundes Rangel",
+    "email": "lfrb79@gmail.com",
+    "phone": "11946806719",
+    "course": "Conversaciones",
+    "lessons": 134,
+    "level": "Intermedio",
+    "contractEnd": "09/10/2025"
+  },
+  {
+    "name": "Luciana Mello Moraes",
+    "email": "lucianahmelo@hotmail.com",
+    "phone": "81991663574",
+    "course": "Smart Conversation",
+    "lessons": 228,
+    "level": "Starter",
+    "contractEnd": "10/01/2026"
+  },
+  {
+    "name": "Lucinea Camargo Sampaio - CNV",
+    "email": "lucyy.sampaio@terra.com.br",
+    "phone": "11992313387",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Lucinea Camargo Sampaio - SL",
+    "email": "lucyy.sampaio@terra.com.br",
+    "phone": "11992313387",
+    "course": "Smart Learning",
+    "lessons": 176,
+    "level": "Expert",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Lucineia Roque Antunes de Araujo UFINET",
+    "email": "lantunes@ufinet.com",
+    "phone": "11961717412",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "20/11/2025"
+  },
+  {
+    "name": "Luigi Frisoni",
+    "email": "luigi.frisoni97@gmail.com",
+    "phone": "11942014144",
+    "course": "Smart Learning",
+    "lessons": 212,
+    "level": "Survivor",
+    "contractEnd": "07/09/2026"
+  },
+  {
+    "name": "Luis Carlos Moreira Bicalho - SC",
+    "email": "lcmbicalho@gmail.com",
+    "phone": "11963440088",
+    "course": "Smart Learning",
+    "lessons": 167,
+    "level": "Expert",
+    "contractEnd": "26/05/2026"
+  },
+  {
+    "name": "Luiz Antonio",
+    "email": "lsilveira134@gmail.com",
+    "phone": "11994825098",
+    "course": "Conversaciones",
+    "lessons": 180,
+    "level": "Basico",
+    "contractEnd": "13/06/2026"
+  },
+  {
+    "name": "Luiz Antonio Marasca",
+    "email": "luizmarasca@gmail.com",
+    "phone": "11973631221",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "06/12/2025"
+  },
+  {
+    "name": "Luiz Carlos Ferreira da Silva Junior - CNV",
+    "email": "lzcarlos.lucas@gmail.com",
+    "phone": "11984226083",
+    "course": "Conversaciones",
+    "lessons": 256,
+    "level": "Intermedio",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Luiz Carlos Ferreira da Silva Junior - SL",
+    "email": "lzcarlos.lucas@gmail.com",
+    "phone": "11984226083",
+    "course": "Smart Learning",
+    "lessons": 224,
+    "level": "Explorer",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Luiz Guilherme de Souza Cezar WOBBEN",
+    "email": "lgcezar@hotmail.com",
+    "phone": "84996006915",
+    "course": "Conversaciones",
+    "lessons": 140,
+    "level": "Avanzado",
+    "contractEnd": "17/07/2026"
+  },
+  {
+    "name": "Luiza Matias Matias dos Santos",
+    "email": "matiasdossantosluiza@gmail.com",
+    "phone": "11971318131",
+    "course": "Conversaciones",
+    "lessons": 159,
+    "level": "Intermedio",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Lynea Neves dos Santos Borges",
+    "email": "lyneanev@gmail.com",
+    "phone": "11988831016",
+    "course": "Conversaciones",
+    "lessons": 201,
+    "level": "Intermedio",
+    "contractEnd": "12/07/2026"
+  },
+  {
+    "name": "Magnus Pereira de Castro - SL",
+    "email": "magnuspcs@outlook.com",
+    "phone": "11993492450",
+    "course": "Smart Conversation",
+    "lessons": 165,
+    "level": "Survivor",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Marcela Cristaldo",
+    "email": "alelaw10@gmail.com",
+    "phone": "11995984979",
+    "course": "Conversaciones",
+    "lessons": 240,
+    "level": "Elemental",
+    "contractEnd": "16/10/2025"
+  },
+  {
+    "name": "Marcela Marques - CNV",
+    "email": "marcelamarquesck@gmail.com",
+    "phone": "21964572736",
+    "course": "Conversaciones",
+    "lessons": 192,
+    "level": "Basico",
+    "contractEnd": "10/02/2026"
+  },
+  {
+    "name": "Marcela Marques - SL",
+    "email": "marcelamarquesck@gmail.com",
+    "phone": "21964572736",
+    "course": "Smart Learning",
+    "lessons": 196,
+    "level": "Starter",
+    "contractEnd": "10/02/2026"
+  },
+  {
+    "name": "Marcela Oliveira Mendes",
+    "email": "marcela_oliveira_mendes@hotmail.com",
+    "phone": "11986378297",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Elemental",
+    "contractEnd": "14/02/2026"
+  },
+  {
+    "name": "Marcelo Nistler",
+    "email": "marcelonistler@gmail.com",
+    "phone": "47988382186",
+    "course": "Conversaciones",
+    "lessons": 181,
+    "level": "Intermedio",
+    "contractEnd": "18/01/2026"
+  },
+  {
+    "name": "Marcelo Ramires",
+    "email": "marceloramires1983@gmail.com",
+    "phone": "11960633915",
+    "course": "Smart Learning",
+    "lessons": 133,
+    "level": "Starter",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Marcos Roberto Soek",
+    "email": "msoek@uol.com.br",
+    "phone": "42999226803",
+    "course": "Conversaciones",
+    "lessons": 108,
+    "level": "Intermedio",
+    "contractEnd": "12/02/2026"
+  },
+  {
+    "name": "Marcos Rodrigo Gomes de Oliveira",
+    "email": "cmsdrigo@gmail.com",
+    "phone": "11990211615",
+    "course": "Smart Learning",
+    "lessons": 185,
+    "level": "Explorer",
+    "contractEnd": "11/03/2026"
+  },
+  {
+    "name": "Marcos Teixeira",
+    "email": "marcos.teixeira@roxpartner.com",
+    "phone": "11996818635",
+    "course": "Smart Learning",
+    "lessons": 158,
+    "level": "Survivor",
+    "contractEnd": "17/10/2025"
+  },
+  {
+    "name": "Margarete Totaro",
+    "email": "margarete.totaro@gmail.com",
+    "phone": "11971718333",
+    "course": "Smart Learning",
+    "lessons": 140,
+    "level": "Survivor",
+    "contractEnd": "06/12/2025"
+  },
+  {
+    "name": "Maria Clara Andrade Pereira",
+    "email": "mariaaandp@gmail.com",
+    "phone": "11957722078",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "21/11/2025"
+  },
+  {
+    "name": "Maria Helena da Fonseca - SBO",
+    "email": "mh.fonseca2014@uol.com.br",
+    "phone": "11972615608",
+    "course": "Smart Business",
+    "lessons": 40,
+    "level": "Definir",
+    "contractEnd": "02/03/2026"
+  },
+  {
+    "name": "Maria Jose Borges - CNV",
+    "email": "maria.borges6593@gmail.com",
+    "phone": "11974233930",
+    "course": "Conversaciones",
+    "lessons": 173,
+    "level": "Avanzado",
+    "contractEnd": "28/12/2025"
+  },
+  {
+    "name": "Maria Jose Borges - SC",
+    "email": "maria.borges6593@gmail.com",
+    "phone": "11974233930",
+    "course": "Smart Conversation",
+    "lessons": 176,
+    "level": "Expert",
+    "contractEnd": "28/12/2025"
+  },
+  {
+    "name": "Maria Mazarelo sobrinho de Mesquita",
+    "email": "mazzabelem@hotmail.com",
+    "phone": "91991983618",
+    "course": "Smart Conversation",
+    "lessons": 145,
+    "level": "Starter",
+    "contractEnd": "12/12/2025"
+  },
+  {
+    "name": "Maria Patricia Muniz",
+    "email": "mpatriciamuniz@gmail.com",
+    "phone": "61981314691",
+    "course": "Conversaciones",
+    "lessons": 103,
+    "level": "Intermedio",
+    "contractEnd": "15/01/2026"
+  },
+  {
+    "name": "Maria Sirlei Reino",
+    "email": "mariasirleireino@gmail.com",
+    "phone": "11986636330",
+    "course": "Conversaciones",
+    "lessons": 186,
+    "level": "Intermedio",
+    "contractEnd": "16/10/2025"
+  },
+  {
+    "name": "Maria Teresa Alvarez Lourido - CNV",
+    "email": "tlourido@uol.com.br",
+    "phone": "11993633004",
+    "course": "Conversaciones",
+    "lessons": 166,
+    "level": "Avanzado",
+    "contractEnd": "26/05/2026"
+  },
+  {
+    "name": "Mariane Francisca Medeiros - CNV",
+    "email": "mary.medeiros0710@gmail.com",
+    "phone": "11998814334",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Mariane Telocken",
+    "email": "maritelocken@gmail.com",
+    "phone": "51999891647",
+    "course": "Smart Learning",
+    "lessons": 266,
+    "level": "Survivor",
+    "contractEnd": "18/03/2026"
+  },
+  {
+    "name": "MARISA TERESA DE MELO GRANDINO",
+    "email": "marisagrandino@gmail.com",
+    "phone": "15997818996",
+    "course": "Smart Conversation",
+    "lessons": 144,
+    "level": "Starter",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Marli Eugenio Cadette - CNV",
+    "email": "marlikdt@gmail.com",
+    "phone": "11963821124",
+    "course": "Conversaciones",
+    "lessons": 118,
+    "level": "Basico",
+    "contractEnd": "15/10/2025"
+  },
+  {
+    "name": "Marli Eugenio Cadette - SC",
+    "email": "marlikdt@gmail.com",
+    "phone": "11963821124",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "15/10/2025"
+  },
+  {
+    "name": "Matheus Alves Macedo - CNV",
+    "email": "matheus.macedoa@outlook.com",
+    "phone": "11941850316",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Intermedio",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Matheus Pimentel - CNV",
+    "email": "matheusbpimentel@gmail.com",
+    "phone": "11931478553",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Matheus Pimentel - SL",
+    "email": "matheusbpimentel@gmail.com",
+    "phone": "11931478553",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Matheus Prado de Moura PROJECT EXPLO",
+    "email": "matheuspradom@gmail.com",
+    "phone": "11951748960",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "01/08/2026"
+  },
+  {
+    "name": "Mauricio Toledo",
+    "email": "mauricioctoledo@gmail.com",
+    "phone": "11982045544",
+    "course": "Smart Business",
+    "lessons": 104,
+    "level": "Intermediate",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Melissa Salles",
+    "email": "melissa.sales@outlook.com.br",
+    "phone": "11959117142",
+    "course": "Smart Conversation",
+    "lessons": 157,
+    "level": "Starter",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Michel Falconeri",
+    "email": "mfalconeri26@gmail.com",
+    "phone": "11948032669",
+    "course": "Conversaciones",
+    "lessons": 114,
+    "level": "Basico",
+    "contractEnd": "11/06/2026"
+  },
+  {
+    "name": "Michelle Oliveira",
+    "email": "michelle.rigueira@hotmail.com",
+    "phone": "63991308806",
+    "course": "Smart Learning",
+    "lessons": 157,
+    "level": "Survivor",
+    "contractEnd": "11/01/2026"
+  },
+  {
+    "name": "Milber Ayala Gamarra",
+    "email": "milber.gamarra@gmail.com",
+    "phone": "67996330226",
+    "course": "Smart Learning",
+    "lessons": 239,
+    "level": "Survivor",
+    "contractEnd": "13/08/2026"
+  },
+  {
+    "name": "Milton Expedito Oliveira Neto",
+    "email": "milton.oliveira2@hotmail.com",
+    "phone": "71988486187",
+    "course": "Smart Conversation",
+    "lessons": 121,
+    "level": "Survivor",
+    "contractEnd": "02/08/2026"
+  },
+  {
+    "name": "Milton Jose Ribeiro De Figueiredo",
+    "email": "familia-figueiredo@uol.com.br",
+    "phone": "85992019117",
+    "course": "Smart Learning",
+    "lessons": 163,
+    "level": "Starter",
+    "contractEnd": "09/10/2026"
+  },
+  {
+    "name": "Miriam Ittavo Giusti",
+    "email": "miriamigiusti@gmail.com",
+    "phone": "11994349422",
+    "course": "Smart Learning",
+    "lessons": 95,
+    "level": "Expert",
+    "contractEnd": "22/02/2026"
+  },
+  {
+    "name": "Miriam Massami Suzuki Sato - SC",
+    "email": "miriam.suzuki@gmail.com",
+    "phone": "11989555085",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Explorer",
+    "contractEnd": "21/01/2026"
+  },
+  {
+    "name": "Moises Santos De Oliveira",
+    "email": "moises475oliveira@gmail.com",
+    "phone": "11967587465",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Survivor",
+    "contractEnd": "28/05/2026"
+  },
+  {
+    "name": "Monica Azambuja",
+    "email": "monica.azambuja@me.com",
+    "phone": "11941017705",
+    "course": "Smart Learning",
+    "lessons": 178,
+    "level": "Explorer",
+    "contractEnd": "17/02/2026"
+  },
+  {
+    "name": "Morgana Brandão - SC",
+    "email": "morgana_barrozo@hotmail.com",
+    "phone": "92991519270",
+    "course": "Smart Conversation",
+    "lessons": 200,
+    "level": "Explorer",
+    "contractEnd": "09/03/2026"
+  },
+  {
+    "name": "Nadia Quintino Alves",
+    "email": "nadiafarma2010@hotmail.com",
+    "phone": "15981261578",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "25/11/2025"
+  },
+  {
+    "name": "Natan Cabral",
+    "email": "natancabral@hotmail.com",
+    "phone": "5547997785185",
+    "course": "Smart Conversation",
+    "lessons": 162,
+    "level": "Survivor",
+    "contractEnd": "26/03/2026"
+  },
+  {
+    "name": "Natielle da Silva Costa",
+    "email": "natielle.1986@gmail.com",
+    "phone": "119916251606",
+    "course": "Smart Learning",
+    "lessons": 140,
+    "level": "Survivor",
+    "contractEnd": "07/10/2025"
+  },
+  {
+    "name": "Nayara Bernardes Cerqueira Campos",
+    "email": "nayara.bernardes@hotmail.com",
+    "phone": "32999669370",
+    "course": "Smart Learning",
+    "lessons": 122,
+    "level": "Survivor",
+    "contractEnd": "13/08/2026"
+  },
+  {
+    "name": "Nelson Domingues Figueiroa",
+    "email": "nelsondfigueiroa@gmail.com",
+    "phone": "18991174410",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "06/11/2025"
+  },
+  {
+    "name": "Neuza Ilana Da Silva Souza",
+    "email": "neuzailanasouza@gmail.com",
+    "phone": "",
+    "course": "Conversaciones",
+    "lessons": 0,
+    "level": "Intermedio",
+    "contractEnd": "Expirado"
+  },
+  {
+    "name": "Nicolle Bebiano Araujo",
+    "email": "nicollebebiano@outlook.com",
+    "phone": "11986494195",
+    "course": "Smart Conversation",
+    "lessons": 142,
+    "level": "Explorer",
+    "contractEnd": "15/01/2026"
+  },
+  {
+    "name": "Noemi de Almeida Mafra",
+    "email": "noemimafra@yahoo.com.br",
+    "phone": "11994837130",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Intermediate",
+    "contractEnd": "12/05/2026"
+  },
+  {
+    "name": "Noemi Naomi Nishide - CNV",
+    "email": "nnnishide@gmail.com",
+    "phone": "11989831281",
+    "course": "Conversaciones",
+    "lessons": 88,
+    "level": "Elemental",
+    "contractEnd": "14/12/2025"
+  },
+  {
+    "name": "Noemi Naomi Nishide - SL",
+    "email": "nnnishide@gmail.com",
+    "phone": "11989831281",
+    "course": "Smart Learning",
+    "lessons": 130,
+    "level": "Expert",
+    "contractEnd": "14/12/2025"
+  },
+  {
+    "name": "Patricia Alves Bazoni",
+    "email": "patibazoni@hotmail.com",
+    "phone": "69992336485",
+    "course": "Smart Learning",
+    "lessons": 247,
+    "level": "Survivor",
+    "contractEnd": "03/07/2026"
+  },
+  {
+    "name": "Patricia Ayres Lopreto",
+    "email": "patricia_ayres@hotmail.com",
+    "phone": "11998669131",
+    "course": "Smart Learning",
+    "lessons": 105,
+    "level": "Explorer",
+    "contractEnd": "25/12/2025"
+  },
+  {
+    "name": "Patricia Claus Rodrigues",
+    "email": "patriciaclaus27@gmail.com",
+    "phone": "11971567464",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Survivor",
+    "contractEnd": "11/03/2026"
+  },
+  {
+    "name": "Patricia Leite",
+    "email": "paty3f@gmail.com",
+    "phone": "67996118244",
+    "course": "Conversaciones",
+    "lessons": 149,
+    "level": "Basico",
+    "contractEnd": "13/11/2026"
+  },
+  {
+    "name": "Patrick Bruneli Furieri",
+    "email": "pbfurieri@gmail.com",
+    "phone": "27997669007",
+    "course": "Smart Learning",
+    "lessons": 203,
+    "level": "Survivor",
+    "contractEnd": "15/11/2025"
+  },
+  {
+    "name": "Patrick Fernando Rosa",
+    "email": "patrickfernando0602@hotmail.com",
+    "phone": "351962245032",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "28/11/2025"
+  },
+  {
+    "name": "Paula Guimarães Pereira da Silva",
+    "email": "guimaraespaulaps@gmail.com",
+    "phone": "11982897280",
+    "course": "Smart Learning",
+    "lessons": 164,
+    "level": "Survivor",
+    "contractEnd": "12/12/2025"
+  },
+  {
+    "name": "Paula Leticia Machado Vasconcellos",
+    "email": "pleticiam@gmail.com",
+    "phone": "11999436568",
+    "course": "Conversaciones",
+    "lessons": 167,
+    "level": "Intermedio",
+    "contractEnd": "07/02/2026"
+  },
+  {
+    "name": "Paulo Brasil Paez",
+    "email": "paulobpaez@gmail.com",
+    "phone": "61981163405",
+    "course": "Smart Learning",
+    "lessons": 185,
+    "level": "Explorer",
+    "contractEnd": "21/02/2027"
+  },
+  {
+    "name": "Paulo Ernani Bernardes de Faria INSTITUTO SER TÃO GRANDE",
+    "email": "pauloernanibernardes@gmail.com",
+    "phone": "62999864884",
+    "course": "Smart Conversation",
+    "lessons": 76,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Paulo Ferreira",
+    "email": "paulohbfdf@gmail.com",
+    "phone": "11956776721",
+    "course": "Conversaciones",
+    "lessons": 134,
+    "level": "Avanzado",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Paulo Gouveia",
+    "email": "pgouveia198@gmail.com",
+    "phone": "98984880050",
+    "course": "Conversaciones",
+    "lessons": 182,
+    "level": "Basico",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Paulo Henrique Aquilino de Freitas",
+    "email": "pauloaquilino02@gmail.com",
+    "phone": "12974025776",
+    "course": "Smart Learning",
+    "lessons": 191,
+    "level": "Explorer",
+    "contractEnd": "16/07/2026"
+  },
+  {
+    "name": "Pedro Alvarenga Morais",
+    "email": "pedroalvarengamorais@hotmail.com",
+    "phone": "33991912685",
+    "course": "Smart Conversation",
+    "lessons": 229,
+    "level": "Explorer",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Pedro Henrique Joaquim do Nascimento UFINET",
+    "email": "pedrojo28@gmail.com",
+    "phone": "11947752429",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "Pedro Leite",
+    "email": "pedroygor.di@gmail.com",
+    "phone": "21980651492",
+    "course": "Smart Conversation",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Priscila Cavariani",
+    "email": "priscila_cavariani@msn.com",
+    "phone": "13991374491",
+    "course": "Conversaciones",
+    "lessons": 171,
+    "level": "Avanzado",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Priscila Correia",
+    "email": "priscila22csouza@hotmail.com",
+    "phone": "11976193207",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "29/12/2025"
+  },
+  {
+    "name": "Rafael Borges",
+    "email": "rafael.gborges@gmail.com",
+    "phone": "11981677926",
+    "course": "Conversaciones",
+    "lessons": 129,
+    "level": "Basico",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Rafael de Oliveira Miranda",
+    "email": "rafaeloliveiramiranda89@gmail.com",
+    "phone": "11975245494",
+    "course": "Smart Business",
+    "lessons": 138,
+    "level": "Beginner",
+    "contractEnd": "22/10/2025"
+  },
+  {
+    "name": "Rafael Garcia Braga Dias",
+    "email": "rafaeldias33@hotmail.com",
+    "phone": "11961168836",
+    "course": "Smart Learning",
+    "lessons": 115,
+    "level": "Explorer",
+    "contractEnd": "05/12/2025"
+  },
+  {
+    "name": "Rafael Rubinho - CNV",
+    "email": "rafael_rubinho20@hotmail.com",
+    "phone": "11997899937",
+    "course": "Conversaciones",
+    "lessons": 105,
+    "level": "Intermedio",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Rafael Rubinho - SC",
+    "email": "rafael_rubinho20@hotmail.com",
+    "phone": "11997899937",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Raissa de Moraes Pereira",
+    "email": "raizmoraes@gmail.com",
+    "phone": "31980105772",
+    "course": "Smart Conversation",
+    "lessons": 148,
+    "level": "Expert",
+    "contractEnd": "23/07/2026"
+  },
+  {
+    "name": "Raphael Anderaos - CNV",
+    "email": "raphael.anderaos@gmail.com",
+    "phone": "11971785368",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "11/01/2027"
+  },
+  {
+    "name": "Raphael Anderaos - SL",
+    "email": "raphael.anderaos@gmail.com",
+    "phone": "11971785368",
+    "course": "Smart Learning",
+    "lessons": 318,
+    "level": "Explorer",
+    "contractEnd": "11/01/2027"
+  },
+  {
+    "name": "Raphael Donato",
+    "email": "rdonato2208@gmail.com",
+    "phone": "11993444011",
+    "course": "Smart Learning",
+    "lessons": 120,
+    "level": "Survivor",
+    "contractEnd": "14/02/2026"
+  },
+  {
+    "name": "Raphael Gonçalves de Paula",
+    "email": "raphaelgpaula@hotmail.com",
+    "phone": "11998767710",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "Raquel Zago Arronchi",
+    "email": "zago.raquel@gmail.com",
+    "phone": "11989869768",
+    "course": "Smart Learning",
+    "lessons": 155,
+    "level": "Starter",
+    "contractEnd": "25/12/2025"
+  },
+  {
+    "name": "Regiane Nogueira Santos",
+    "email": "winemaker.regiane@gmail.com",
+    "phone": "11983503832",
+    "course": "Smart Learning",
+    "lessons": 240,
+    "level": "Survivor",
+    "contractEnd": "26/12/2026"
+  },
+  {
+    "name": "Regina Socorro Meireles dos Santos",
+    "email": "fmmregina1@gmail.com",
+    "phone": "11966185482",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Renan Ferreira Felix",
+    "email": "renanferreirafelix@gmail.com",
+    "phone": "17991124638",
+    "course": "Smart Learning",
+    "lessons": 138,
+    "level": "Expert",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Renan Henrique de Souza",
+    "email": "renan_henrique27@hotmail.com",
+    "phone": "11961859864",
+    "course": "Smart Conversation",
+    "lessons": 199,
+    "level": "Survivor",
+    "contractEnd": "18/07/2026"
+  },
+  {
+    "name": "Renata Alves",
+    "email": "renata707nana@gmail.com",
+    "phone": "11960560906",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "07/10/2025"
+  },
+  {
+    "name": "Renata Andrade Dantas HUGO BOSS",
+    "email": "renata_dantas@hugoboss.com",
+    "phone": "11983615930",
+    "course": "Smart Learning",
+    "lessons": 76,
+    "level": "Explorer",
+    "contractEnd": "11/01/2026"
+  },
+  {
+    "name": "Renata Goulart Corral - CNV",
+    "email": "regoulartc89@gmail.com",
+    "phone": "11979971818",
+    "course": "conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Renata Goulart Corral - SL",
+    "email": "regoulartc89@gmail.com",
+    "phone": "11979971818",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "15/10/2025"
+  },
+  {
+    "name": "Renato Morettini",
+    "email": "renato.morettini@outlook.com.br",
+    "phone": "11976368606",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "08/11/2025"
+  },
+  {
+    "name": "Renato Sorgatto",
+    "email": "renatosorgatto@gmail.com",
+    "phone": "11994871635",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "25/10/2025"
+  },
+  {
+    "name": "Rhanna Ribeiro",
+    "email": "rhannaribeiro2@gmail.com",
+    "phone": "34992436208",
+    "course": "Smart Conversation",
+    "lessons": 162,
+    "level": "Survivor",
+    "contractEnd": "13/12/2025"
+  },
+  {
+    "name": "Ricardo Hans",
+    "email": "ricardohans@uol.com.br",
+    "phone": "13991571603",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Ricardo Ramos",
+    "email": "ricardoramos82@outlook.com",
+    "phone": "4599988961",
+    "course": "Conversaciones",
+    "lessons": 104,
+    "level": "Elemental",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Ritieli Andrade",
+    "email": "riveiga100@gmail.com",
+    "phone": "11998963372",
+    "course": "Conversaciones",
+    "lessons": 161,
+    "level": "Elemental",
+    "contractEnd": "29/07/2026"
+  },
+  {
+    "name": "Roberta Caramaschi e Silva Ricciardi",
+    "email": "roberta.csricciardi@gmail.com",
+    "phone": "11985347032",
+    "course": "Smart Conversation",
+    "lessons": 240,
+    "level": "Starter",
+    "contractEnd": "10/09/2026"
+  },
+  {
+    "name": "Roberta Maria da Silva",
+    "email": "robertamaria_rm@outlook.com",
+    "phone": "66996101843",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "05/01/2026"
+  },
+  {
+    "name": "Roberto Moraes",
+    "email": "rmarcond@hotmail.com",
+    "phone": "21964782763",
+    "course": "Smart Conversation",
+    "lessons": 138,
+    "level": "Starter",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Roberto Queiroz",
+    "email": "roberto.rqjunior@gmail.com",
+    "phone": "11985285340",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "14/04/2026"
+  },
+  {
+    "name": "Roberto Velasquez",
+    "email": "roberto.velasquez@factoenergy.com",
+    "phone": "21982803437",
+    "course": "Smart Business",
+    "lessons": 180,
+    "level": "Advanced",
+    "contractEnd": "11/03/2026"
+  },
+  {
+    "name": "Robson Almeida",
+    "email": "robson.almeida2405@gmail.com",
+    "phone": "11998788991",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "04/09/2026"
+  },
+  {
+    "name": "Robson William",
+    "email": "robson.willian.ns@outlook.com",
+    "phone": "",
+    "course": "Smart Conversation",
+    "lessons": 0,
+    "level": "Explorer",
+    "contractEnd": ""
+  },
+  {
+    "name": "Rodrigo Evaristo Nunes UFINET",
+    "email": "rnunes@Ufinet.com",
+    "phone": "11992186842",
+    "course": "Conversaciones",
+    "lessons": 158,
+    "level": "Intermedio",
+    "contractEnd": "01/06/2026"
+  },
+  {
+    "name": "Rodrigo Meneses Brasil",
+    "email": "aplicadorajr@hotmail.com",
+    "phone": "11992565377",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "17/12/2025"
+  },
+  {
+    "name": "Rodrigo Oliveira",
+    "email": "rsoliveira@klabin.com.br",
+    "phone": "42998270234",
+    "course": "Smart Learning",
+    "lessons": 188,
+    "level": "Explorer",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Rodrigo Teixeira Guerreiro da Silva",
+    "email": "rodguerreiro@hotmail.com",
+    "phone": "11964478726",
+    "course": "Smart Conversation",
+    "lessons": 196,
+    "level": "Survivor",
+    "contractEnd": "07/08/2026"
+  },
+  {
+    "name": "Rodrigo Vieira Moreira",
+    "email": "rvmmoreira@gmail.com",
+    "phone": "91981399950",
+    "course": "Smart Conversation",
+    "lessons": 140,
+    "level": "Starter",
+    "contractEnd": "10/03/2026"
+  },
+  {
+    "name": "Rodrigo Wagner Reboredo de Freitas",
+    "email": "rodrigowagnerdefreitas@gmail.com",
+    "phone": "11952858266",
+    "course": "Smart Learning",
+    "lessons": 238,
+    "level": "Starter",
+    "contractEnd": "20/12/2025"
+  },
+  {
+    "name": "Rodrigo Wawruk",
+    "email": "rodrigo.wawruk@hotmail.com",
+    "phone": "11985078547",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Explorer",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Rogerio Moura - SBO",
+    "email": "rorimo@gmail.com",
+    "phone": "22999471817",
+    "course": "Smart Business",
+    "lessons": 102,
+    "level": "Beginner",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Rogerio Souza Lopes",
+    "email": "rsl.rogerio@gmail.com",
+    "phone": "11940106254",
+    "course": "Smart Learning",
+    "lessons": 258,
+    "level": "Starter",
+    "contractEnd": "14/08/2026"
+  },
+  {
+    "name": "Rosangela Azeredo da Silva Soares - CNV",
+    "email": "roazeredo1409@gmail.com",
+    "phone": "21998573894",
+    "course": "Conversaciones",
+    "lessons": 258,
+    "level": "Avanzado",
+    "contractEnd": "01/07/2026"
+  },
+  {
+    "name": "Rosangela Azeredo da Silva Soares - SC",
+    "email": "roazeredo1409@gmail.com",
+    "phone": "21998573894",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Roseli Perella",
+    "email": "zeliperella@gmail.com",
+    "phone": "11979618754",
+    "course": "Conversaciones",
+    "lessons": 60,
+    "level": "Avanzado",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Sabrina Almeida da Silva",
+    "email": "sabrina017almeida@gmail.com",
+    "phone": "11982667217",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "29/11/2025"
+  },
+  {
+    "name": "Sabrina de Castro Penteado de Almeida",
+    "email": "scpsabrina16@gmail.com",
+    "phone": "15996648578",
+    "course": "Conversaciones",
+    "lessons": 150,
+    "level": "Basico",
+    "contractEnd": "20/03/2026"
+  },
+  {
+    "name": "Sabrina Santi",
+    "email": "sbrnsanti@gmail.com",
+    "phone": "984032120",
+    "course": "Smart Learning",
+    "lessons": 152,
+    "level": "Explorer",
+    "contractEnd": "11/08/2026"
+  },
+  {
+    "name": "Sam Scott",
+    "email": "scott.samuel.e@gmail.com",
+    "phone": "14694429700",
+    "course": "Conversaciones",
+    "lessons": 174,
+    "level": "Intermedio",
+    "contractEnd": "23/04/2026"
+  },
+  {
+    "name": "Sergio Shuiti Yamaba",
+    "email": "sergio.yamaba@gmail.com",
+    "phone": "11986769202",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "04/05/2026"
+  },
+  {
+    "name": "Sheila Erika Ferro Ramalho Nobre",
+    "email": "sheilaferro-ramalho@hotmail.com",
+    "phone": "82988540385",
+    "course": "Conversaciones",
+    "lessons": 243,
+    "level": "Elemental",
+    "contractEnd": "23/10/2026"
+  },
+  {
+    "name": "Sidney Dutra",
+    "email": "sdutra30@gmail.com",
+    "phone": "11992500964",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "09/06/2026"
+  },
+  {
+    "name": "Sidney Fernandes",
+    "email": "sidneyfg69@gmail.com",
+    "phone": "94981410360",
+    "course": "Smart Business",
+    "lessons": 216,
+    "level": "Intermediate",
+    "contractEnd": "23/07/2026"
+  },
+  {
+    "name": "Silvania Costa",
+    "email": "silvaniaac@gmail.com",
+    "phone": "66996365110",
+    "course": "Conversaciones",
+    "lessons": 133,
+    "level": "Basico",
+    "contractEnd": "11/12/2025"
+  },
+  {
+    "name": "Simone Ibanhes",
+    "email": "sibanhes@gmail.com",
+    "phone": "19997827690",
+    "course": "Conversaciones",
+    "lessons": 201,
+    "level": "Avanzado",
+    "contractEnd": "11/07/2026"
+  },
+  {
+    "name": "Sophia Andrade Pereira",
+    "email": "so.andradee26@gmail.com",
+    "phone": "11957722078",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "21/11/2025"
+  },
+  {
+    "name": "Stephanie Borges",
+    "email": "drastephanieborges@gmail.com",
+    "phone": "21999587262",
+    "course": "Conversaciones",
+    "lessons": 138,
+    "level": "Basico",
+    "contractEnd": "06/08/2026"
+  },
+  {
+    "name": "Stephanie Pimenta Vicente BELATAM",
+    "email": "stephanievicente.mindsetbr@gmail.com",
+    "phone": "11933469562",
+    "course": "Conversaciones",
+    "lessons": 14,
+    "level": "Elemental",
+    "contractEnd": "06/08/2026"
+  },
+  {
+    "name": "Sueli Macrineu Mota",
+    "email": "suelimmota@icloud.com",
+    "phone": "11947286375",
+    "course": "Smart Conversation",
+    "lessons": 120,
+    "level": "Starter",
+    "contractEnd": "06/12/2025"
+  },
+  {
+    "name": "Taciana de Deus",
+    "email": "dedeus.taciana@gmail.com",
+    "phone": "31992252757",
+    "course": "Conversaciones",
+    "lessons": 163,
+    "level": "Basico",
+    "contractEnd": "21/04/2026"
+  },
+  {
+    "name": "Talissa Rocha",
+    "email": "talissadionisio@outlook.com",
+    "phone": "11965486080",
+    "course": "Smart Learning",
+    "lessons": 136,
+    "level": "Starter",
+    "contractEnd": "14/01/2026"
+  },
+  {
+    "name": "Talita Soares",
+    "email": "talitasoares.91@gmail.com",
+    "phone": "24999654192",
+    "course": "Smart Learning",
+    "lessons": 107,
+    "level": "Expert",
+    "contractEnd": "05/06/2026"
+  },
+  {
+    "name": "Talitha Batista Ferreira Borges",
+    "email": "talitha_bf@hotmail.com",
+    "phone": "11998905061",
+    "course": "Smart Learning",
+    "lessons": 144,
+    "level": "Survivor",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Tamires de Abreu Cezar",
+    "email": "tam.abreu@hotmail.com",
+    "phone": "11979943318",
+    "course": "Smart Learning",
+    "lessons": 150,
+    "level": "Explorer",
+    "contractEnd": "16/12/2025"
+  },
+  {
+    "name": "Tamires Schimith da Silva",
+    "email": "tamires.schimith@gmail.com",
+    "phone": "11995457758",
+    "course": "Smart Learning",
+    "lessons": 75,
+    "level": "Expert",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "Natan Athaide dos Santos",
+    "email": "natanathaide@hotmail.com",
+    "phone": "11963592733",
+    "course": "Smart Learning",
+    "lessons": 159,
+    "level": "Explorer",
+    "contractEnd": "22/11/2025"
+  },
+  {
+    "name": "Tania Cristina Bruno",
+    "email": "tcbcristina@gmail.com",
+    "phone": "11995681117",
+    "course": "Conversaciones",
+    "lessons": 124,
+    "level": "Intermedio",
+    "contractEnd": "17/10/2025"
+  },
+  {
+    "name": "Tania Esposito",
+    "email": "tae.esposito@gmail.com",
+    "phone": "11996665925",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Explorer",
+    "contractEnd": "24/04/2026"
+  },
+  {
+    "name": "Tania Guertas - CNV",
+    "email": "tguertas@gmail.com",
+    "phone": "11999808102",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "16/01/2026"
+  },
+  {
+    "name": "Tatiana Calandrini",
+    "email": "Calandrinitatiana@gmail.com",
+    "phone": "96999712292",
+    "course": "Conversaciones",
+    "lessons": 153,
+    "level": "Basico",
+    "contractEnd": "09/03/2026"
+  },
+  {
+    "name": "Tatiane de Almeida da Silva",
+    "email": "taty0301@gmail.com",
+    "phone": "21998766975",
+    "course": "Smart Learning",
+    "lessons": 20,
+    "level": "Survivor",
+    "contractEnd": "14/04/2026"
+  },
+  {
+    "name": "Tatiane de Paula dos Passos SYNLAB",
+    "email": "tatiane.passos@synlab-sd.com",
+    "phone": "11994832673",
+    "course": "Conversaciones",
+    "lessons": 79,
+    "level": "Elemental",
+    "contractEnd": "09/02/2026"
+  },
+  {
+    "name": "Teresa Miriam Guemureman",
+    "email": "guemureman@gmail.com",
+    "phone": "11999064167",
+    "course": "Smart Learning",
+    "lessons": 153,
+    "level": "Explorer",
+    "contractEnd": "21/10/2025"
+  },
+  {
+    "name": "Thais da Silva Furtado Homenhuck",
+    "email": "thaiscuritiba@gmail.com",
+    "phone": "11912964008",
+    "course": "Smart Conversation",
+    "lessons": 174,
+    "level": "Explorer",
+    "contractEnd": "27/02/2026"
+  },
+  {
+    "name": "Thais Kessler Sant'Ana",
+    "email": "thaiskessler@hotmail.com",
+    "phone": "11993196907",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "30/11/2026"
+  },
+  {
+    "name": "Thais Menezes Viana",
+    "email": "thaismviana@outlook.com",
+    "phone": "11942286633",
+    "course": "Smart Learning",
+    "lessons": 230,
+    "level": "Starter",
+    "contractEnd": "22/08/2026"
+  },
+  {
+    "name": "Thaise Sousa",
+    "email": "thaisefs@outlook.com",
+    "phone": "11982627749",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Thiago Allisson Cardoso De Jesus",
+    "email": "t_allisson@hotmail.com",
+    "phone": "98988170948",
+    "course": "Conversaciones",
+    "lessons": 118,
+    "level": "Elemental",
+    "contractEnd": "23/01/2026"
+  },
+  {
+    "name": "Thiago beleze",
+    "email": "thiagobeleze@hotmail.com",
+    "phone": "11944882352",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "03/12/2025"
+  },
+  {
+    "name": "Thiago Henrique Tezolim Peraçolio",
+    "email": "thiago_peracoli@hotmail.com",
+    "phone": "44999813587",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "05/11/2025"
+  },
+  {
+    "name": "Thiago Pereira Coutinho ALLYA",
+    "email": "tpcouto@me.com",
+    "phone": "11981935164",
+    "course": "Smart Learning",
+    "lessons": 183,
+    "level": "Expert",
+    "contractEnd": "11/02/2026"
+  },
+  {
+    "name": "Thomaz Pereira",
+    "email": "thomazyuri@hotmail.com",
+    "phone": "21996276092",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Beginner",
+    "contractEnd": "03/12/2025"
+  },
+  {
+    "name": "Thyago da Silva Bezerra",
+    "email": "thyagosilvabezerra@gmail.com",
+    "phone": "8591640550",
+    "course": "Smart Conversation",
+    "lessons": 313,
+    "level": "Survivor",
+    "contractEnd": "18/04/2026"
+  },
+  {
+    "name": "Valerio Del Maschi",
+    "email": "valerio.maschi@gmail.com",
+    "phone": "11993733737",
+    "course": "Conversaciones",
+    "lessons": 230,
+    "level": "Basico",
+    "contractEnd": "10/10/2026"
+  },
+  {
+    "name": "Vanessa Altafim",
+    "email": "van_altafim@hotmail.com",
+    "phone": "11986712710",
+    "course": "Smart Learning",
+    "lessons": 110,
+    "level": "Expert",
+    "contractEnd": "04/05/2026"
+  },
+  {
+    "name": "Vanessa Neves Barros",
+    "email": "van_nev@hotmail.com",
+    "phone": "11940176989",
+    "course": "Smart Business",
+    "lessons": 220,
+    "level": "Beginner",
+    "contractEnd": "05/05/2026"
+  },
+  {
+    "name": "Vanessa Simões Batista",
+    "email": "simoesvaba@gmail.com",
+    "phone": "11945287124",
+    "course": "Smart Learning",
+    "lessons": 209,
+    "level": "Starter",
+    "contractEnd": "11/08/2026"
+  },
+  {
+    "name": "Vera Lucia Lahoz F Rivera",
+    "email": "veralahoz@terra.com.br",
+    "phone": "11992110054",
+    "course": "Smart Learning",
+    "lessons": 175,
+    "level": "Survivor",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Vera Silvia",
+    "email": "vsilviateixeira@uol.com.br",
+    "phone": "11998909494",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Elemental",
+    "contractEnd": "06/06/2026"
+  },
+  {
+    "name": "VICTOR ANDREOLI CUSTODIO - SBO",
+    "email": "victor.andreoli07@gmail.com",
+    "phone": "11941808681",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Intermediate",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Victor Hugo G Pelaez",
+    "email": "victor.pelaez@outlook.com.br",
+    "phone": "11984083181",
+    "course": "Conversaciones",
+    "lessons": 240,
+    "level": "Basico",
+    "contractEnd": "02/10/2026"
+  },
+  {
+    "name": "Victor Akio Ishii",
+    "email": "victorakioishii@gmail.com",
+    "phone": "18997913025",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Expert",
+    "contractEnd": "11/03/2027"
+  },
+  {
+    "name": "Victor Teixeira Da Cruz",
+    "email": "victorcruzjornal@gmail.com",
+    "phone": "92984538926",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "05/11/2025"
+  },
+  {
+    "name": "Victoria Bueno Pestana",
+    "email": "contato.vbueno@gmail.com",
+    "phone": "11972864561",
+    "course": "Smart Learning",
+    "lessons": 142,
+    "level": "Starter",
+    "contractEnd": "11/10/2025"
+  },
+  {
+    "name": "Vinicius Bertolini",
+    "email": "vincasaca@gmail.com",
+    "phone": "21981726061",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "Vinicius Machado Ferreira",
+    "email": "vinnie_eb@hotmail.com",
+    "phone": "11987264782",
+    "course": "Smart Conversation",
+    "lessons": 129,
+    "level": "Starter",
+    "contractEnd": "09/01/2026"
+  },
+  {
+    "name": "Vinicius Pinheiro",
+    "email": "viniciusmerivel@gmail.com",
+    "phone": "61981392606",
+    "course": "Conversaciones",
+    "lessons": 208,
+    "level": "Elemental",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Vitor Passos Silva",
+    "email": "vitorpassosman@gmail.com",
+    "phone": "71984288996",
+    "course": "Smart Learning",
+    "lessons": 136,
+    "level": "Expert",
+    "contractEnd": "14/10/2025"
+  },
+  {
+    "name": "Viviane Amancio da Silva",
+    "email": "viviamanciosilva@gmail.com",
+    "phone": "11978934680",
+    "course": "Smart Learning",
+    "lessons": 212,
+    "level": "Starter",
+    "contractEnd": "17/02/2026"
+  },
+  {
+    "name": "Viviane Neves dos Santos",
+    "email": "vivianeneves81@gmail.com",
+    "phone": "11983939327",
+    "course": "Smart Learning",
+    "lessons": 172,
+    "level": "Expert",
+    "contractEnd": "20/02/2026"
+  },
+  {
+    "name": "Vladimir de Sa - CNV",
+    "email": "vladimir-eng@hotmail.com",
+    "phone": "19997587218",
+    "course": "Conversaciones",
+    "lessons": 198,
+    "level": "Intermedio",
+    "contractEnd": "20/06/2026"
+  },
+  {
+    "name": "Vladimir de Sa - SC",
+    "email": "vladimir-eng@hotmail.com",
+    "phone": "19997587218",
+    "course": "Smart Conversation",
+    "lessons": 243,
+    "level": "Starter",
+    "contractEnd": "20/06/2026"
+  },
+  {
+    "name": "Wadson Hayner dos Santos Lima",
+    "email": "wadsonhaynner@gmail.com",
+    "phone": "62992110965",
+    "course": "Smart Conversation",
+    "lessons": 159,
+    "level": "Survivor",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Webert Silva",
+    "email": "webert.csilva@hotmail.com",
+    "phone": "31984025726",
+    "course": "Smart Conversation",
+    "lessons": 197,
+    "level": "Starter",
+    "contractEnd": "26/12/2025"
+  },
+  {
+    "name": "Wenderson Gasparotto",
+    "email": "wend@unisolbrasil.org.br",
+    "phone": "11987960296",
+    "course": "Smart Conversation",
+    "lessons": 180,
+    "level": "Survivor",
+    "contractEnd": "23/01/2026"
+  },
+  {
+    "name": "Wesmen Souza",
+    "email": "wesmensouza@gmail.com",
+    "phone": "11957058832",
+    "course": "Smart Business",
+    "lessons": 120,
+    "level": "Intermediate",
+    "contractEnd": "13/01/2026"
+  },
+  {
+    "name": "William da Silva Santos UFINET",
+    "email": "wsantos@ufinet.com",
+    "phone": "11985511054",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "08/01/2026"
+  },
+  {
+    "name": "William Junior Silva de Souza - SL",
+    "email": "william.souza@pepsico.com",
+    "phone": "19993473754",
+    "course": "Smart Learning",
+    "lessons": 122,
+    "level": "Explorer",
+    "contractEnd": "27/07/2026"
+  },
+  {
+    "name": "Wilson Carnevalli Filho",
+    "email": "carnevallifilho@hotmail.com",
+    "phone": "11972701338",
+    "course": "Smart Business",
+    "lessons": 85,
+    "level": "Advanced",
+    "contractEnd": "11/05/2026"
+  },
+  {
+    "name": "Vitor Martinez Jacinto de Souza - CNV",
+    "email": "vitor.martinez.jacinto.souza@gmail.com",
+    "phone": "19996535509",
+    "course": "Conversaciones",
+    "lessons": 40,
+    "level": "Intermedio",
+    "contractEnd": "21/01/2026"
+  },
+  {
+    "name": "Wilson Pereira - SBO",
+    "email": "wspg07@gmail.com",
+    "phone": "11972991599",
+    "course": "Smart Business",
+    "lessons": 160,
+    "level": "Beginner",
+    "contractEnd": "29/07/2026"
+  },
+  {
+    "name": "Leticia Aparecida Pereira de Souza",
+    "email": "letsou.aps@gmail.com",
+    "phone": "11984339060",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "11/12/2025"
+  },
+  {
+    "name": "Noelia Rojas Benavente",
+    "email": "rnoeliab@gmail.com",
+    "phone": "11961711676",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "22/01/2026"
+  },
+  {
+    "name": "João Vitor Da Silva Justino",
+    "email": "joaovitorjustinosilva@gmail.com",
+    "phone": "11977074595",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Rodrigo Jardim da Silva",
+    "email": "jardimsilva988@gmail.com",
+    "phone": "11986251969",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Survivor",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Lucas de Almeida Borges",
+    "email": "borgeslucas31@gmail.com",
+    "phone": "11971924068",
+    "course": "Smart Learning",
+    "lessons": 144,
+    "level": "Starter",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Michel Sentinelo MONTANA - CNV",
+    "email": "msentinelo@montana.com.br",
+    "phone": "32010290",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Michel Sentinelo MONTANA - SC",
+    "email": "msentinelo@montana.com.br",
+    "phone": "32010290",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Marcela Mariana De Abreu Freitas DELFIA",
+    "email": "deabreu.marcela@gmail.com",
+    "phone": "11995913373",
+    "course": "Conversaciones",
+    "lessons": 0,
+    "level": "Basico",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Acacio Batista Lima DELFIA",
+    "email": "acacio.batista1993@gmail.com",
+    "phone": "11992039284",
+    "course": "Conversaciones",
+    "lessons": 0,
+    "level": "Basico",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Renan De Mello Contessoto",
+    "email": "renan.contessoto1@gmail.com",
+    "phone": "11967184779",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "William Junior Silva de Souza - CNV",
+    "email": "william.souza@pepsico.com",
+    "phone": "19993473754",
+    "course": "Conversaciones",
+    "lessons": 120,
+    "level": "Basico",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Gabriela Cozer Bandeira",
+    "email": "gabrielaband@hotmail.com",
+    "phone": "45991342343",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Leonardo Santos Belasco Da Silva DELFIA",
+    "email": "leonardo.belasco@outlook.com.br",
+    "phone": "11964779332",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Gabriela de Souza Ribeiro",
+    "email": "souzagabih@gmail.com",
+    "phone": "21973215355",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Guilherme Jose Marins da Silva",
+    "email": "guilhermejs0@gmail.com",
+    "phone": "12981414630",
+    "course": "Smart Conversation",
+    "lessons": 145,
+    "level": "Survivor",
+    "contractEnd": "01/02/2026"
+  },
+  {
+    "name": "Rafaella Gomes Carraro",
+    "email": "raffacarraro2002@hotmail.com",
+    "phone": "11993592302",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "04/02/2026"
+  },
+  {
+    "name": "Melissa Medeiros",
+    "email": "memelinda08@gmail.com",
+    "phone": "11987165443",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "04/02/2026"
+  },
+  {
+    "name": "Vinicius de Lima Ruiz",
+    "email": "vinicius.pyt@gmail.com",
+    "phone": "11942776170",
+    "course": "Smart Conversation",
+    "lessons": 170,
+    "level": "Survivor",
+    "contractEnd": "05/02/2026"
+  },
+  {
+    "name": "Hugo Gonçalves Monteiro",
+    "email": "hugomonteirode0707@gmail.com",
+    "phone": "22998328952",
+    "course": "Smart Learning",
+    "lessons": 145,
+    "level": "Explorer",
+    "contractEnd": "05/02/2026"
+  },
+  {
+    "name": "Thatyane Moreno",
+    "email": "thatyane.moreno@yahoo.com.br",
+    "phone": "11948359536",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "06/02/2026"
+  },
+  {
+    "name": "Vitor De Melo",
+    "email": "vitor.melo@btgpactual.com",
+    "phone": "61982954804",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "05/02/2026"
+  },
+  {
+    "name": "Rafaella Gomes Carraro - SC",
+    "email": "raffacarraro2002@hotmail.com",
+    "phone": "11993592302",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "10/02/2026"
+  },
+  {
+    "name": "Flavia Silva Vilas",
+    "email": "flaviavilas2006@gmail.com",
+    "phone": "11975652711",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "07/02/2026"
+  },
+  {
+    "name": "Clenivalda França Dos Santos",
+    "email": "clenivaldasantoss@gmail.com",
+    "phone": "11988275514",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "05/04/2026"
+  },
+  {
+    "name": "Amanda Cristina Rodrigues de Sousa",
+    "email": "amandaccc903@gmail.com",
+    "phone": "11974042704",
+    "course": "Smart Learning",
+    "lessons": 144,
+    "level": "Starter",
+    "contractEnd": "27/01/2026"
+  },
+  {
+    "name": "Bruno Fantinel",
+    "email": "brunomfantinel@gmail.com",
+    "phone": "11983830345",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Survivor",
+    "contractEnd": "12/02/2026"
+  },
+  {
+    "name": "Roberta Selva Silva",
+    "email": "santosrob220708@gmail.com",
+    "phone": "21974145000",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "10/02/2026"
+  },
+  {
+    "name": "Rejane Nascimento",
+    "email": "nanenasc1@hotmail.com",
+    "phone": "11989832192",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Gerson Nascimento",
+    "email": "gersonnasc@hotmail.com",
+    "phone": "11984044510",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "Aline Caroline De Macedo Vital",
+    "email": "alinecmvital@hotmail.com",
+    "phone": "71988903232",
+    "course": "Smart Learning",
+    "lessons": 120,
+    "level": "Survivor",
+    "contractEnd": "29/01/2026"
+  },
+  {
+    "name": "Ingrid Caroline Rodrigues - CNV",
+    "email": "Ingridcarolineamaro@hotmail.com",
+    "phone": "11974334818",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "13/02/2026"
+  },
+  {
+    "name": "Ingrid Caroline Rodrigues - SC",
+    "email": "Ingridcarolineamaro@hotmail.com",
+    "phone": "11974334818",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "13/02/2026"
+  },
+  {
+    "name": "Nelson Motta",
+    "email": "nmottati@gmail.com",
+    "phone": "21975941986",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "09/02/2026"
+  },
+  {
+    "name": "Raquel De Lima Motta",
+    "email": "cont.raquelmotta@gmail.com",
+    "phone": "21966959154",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "09/02/2026"
+  },
+  {
+    "name": "Wendel Viana Batista",
+    "email": "wendel.viana.7@outlook.com",
+    "phone": "11962750129",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "14/02/2026"
+  },
+  {
+    "name": "Polliana Testa",
+    "email": "pollianatmartin@gmail.com",
+    "phone": "51992697595",
+    "course": "Smart Conversation",
+    "lessons": 81,
+    "level": "Explorer",
+    "contractEnd": "17/02/2026"
+  },
+  {
+    "name": "Vanessa Falbo Cipolla Sousa",
+    "email": "vfcipollasousa@gmail.com",
+    "phone": "11974668115",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/02/2026"
+  },
+  {
+    "name": "Fabio Pereira dos Santos",
+    "email": "fabiop.santos@outlook.com.br",
+    "phone": "11971070401",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "11/02/2026"
+  },
+  {
+    "name": "Samuel de Azevedo Miguel",
+    "email": "samuel-azevedo@outlook.com",
+    "phone": "11962642083",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "31/01/2026"
+  },
+  {
+    "name": "JHENNIFER TRAJANO DA SILVA DELFIA",
+    "email": "jhennifertrajano@hotmail.com",
+    "phone": "11953424394",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "17/02/2026"
+  },
+  {
+    "name": "Mariane Santana",
+    "email": "mari_c.cont@hotmail.com",
+    "phone": "11947923595",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "19/02/2026"
+  },
+  {
+    "name": "Marina Rodrigues",
+    "email": "marirodrigues20@yahoo.com.br",
+    "phone": "11984389927",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "20/02/2026"
+  },
+  {
+    "name": "Eduardo Ribas UFINET",
+    "email": "eribas@ufinet.com",
+    "phone": "11980313963",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "07/02/2026"
+  },
+  {
+    "name": "HAQUILA PIMENTEL PORFIRIO DELFIA",
+    "email": "porfirio356@gmail.com",
+    "phone": "11985638452",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "17/02/2026"
+  },
+  {
+    "name": "Eduardo Fata",
+    "email": "eduardo.fata@gmail.com",
+    "phone": "11976411331",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Intermediate",
+    "contractEnd": "19/02/2026"
+  },
+  {
+    "name": "Julia Neves de Sa",
+    "email": "nevesjulia2602@gmail.com",
+    "phone": "11941764001",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Starter",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Matheus Maia Santos GRUPO ITG",
+    "email": "matheus.santos@nordica.net.br",
+    "phone": "61981110919",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "28/01/2026"
+  },
+  {
+    "name": "Luciane Ayaipoma",
+    "email": "lugodoi074@yahoo.com.br",
+    "phone": "11981115974",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "21/02/2026"
+  },
+  {
+    "name": "Juliane Cavalcanti",
+    "email": "julianenc@gmail.com",
+    "phone": "11967370607",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Explorer",
+    "contractEnd": "25/02/2026"
+  },
+  {
+    "name": "Carolina Dattein",
+    "email": "emailbalance@gmail.com",
+    "phone": "11988525133",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "25/02/2026"
+  },
+  {
+    "name": "Igor Soares Silva UFINET",
+    "email": "isoares@ufinet.com",
+    "phone": "21982600122",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Lucas Xavier dos Reis",
+    "email": "lucas-xavier14@hotmail.com",
+    "phone": "11989965140",
+    "course": "Smart Conversation",
+    "lessons": 145,
+    "level": "Explorer",
+    "contractEnd": "30/03/2026"
+  },
+  {
+    "name": "Felipe Piglionico",
+    "email": "felipepiglionico@hotmail.com",
+    "phone": "11915460049",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "José Renan Farias de Carvalho",
+    "email": "joserenan26@hotmail.com",
+    "phone": "11988322829",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Murielle Xavier - CNV",
+    "email": "muriellereis2@outlook.com",
+    "phone": "11934128911",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "28/02/2026"
+  },
+  {
+    "name": "Murielle Xavier - SL",
+    "email": "muriellereis2@outlook.com",
+    "phone": "11934128911",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "27/02/2026"
+  },
+  {
+    "name": "Rodolfo Gomes Sousa",
+    "email": "gomesrodolfo2@gmail.com",
+    "phone": "11993742532",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "27/02/2026"
+  },
+  {
+    "name": "Esthefania Acosta CLOUDKITCHENS",
+    "email": "estefania.acosta@cloudkitchens.com",
+    "phone": "573133218772",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "04/02/2026"
+  },
+  {
+    "name": "Lucas Barbosa Bezerra",
+    "email": "lcsbarbosa0609@gmail.com",
+    "phone": "11997087616",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Survivor",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Bruno Oliveira de Almeida",
+    "email": "bruno_oa@msn.com",
+    "phone": "19998954455",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "ROSANGELA AZEREDO DA SILVA SOARES",
+    "email": "roazeredo14009@gmail.com",
+    "phone": "21998573894",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "27/02/2026"
+  },
+  {
+    "name": "Ana Clara INSTITUTO SER TÃO GRANDE",
+    "email": "magalhaesdiasa@gmail.com",
+    "phone": "62999815595",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Telma Maria Galvão de Almeida",
+    "email": "telmatata1@outlook.com.br",
+    "phone": "11997730113",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Flavio Lucio INSTITUTO SER TÃO GRANDE",
+    "email": "flavioluc90000@gmail.com",
+    "phone": "62991704914",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "João Paulo INSTITUTO SER TÃO GRANDE",
+    "email": "joaopaulosantanasilva332@gmail.com",
+    "phone": "62985270225",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Lucas Ernani INSTITUTO SER TÃO GRANDE",
+    "email": "lucas.ernani07@gmail.com",
+    "phone": "62999222634",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Pedro Mendes INSTITUTO SER TÃO GRANDE",
+    "email": "pedromendeshonorato@gmail.com",
+    "phone": "62984074715",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Luiza de Paula INSTITUTO SER TÃO GRANDE",
+    "email": "luizadepaulacarvalho13@gmail.com",
+    "phone": "3499156817",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Gabriel Teixeira Furquim",
+    "email": "gabrieltfsiqueira@gmail.com",
+    "phone": "11975436325",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Natalia Almeida Zeminian",
+    "email": "nataliamomo@hotmail.com",
+    "phone": "11971387818",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "06/03/2026"
+  },
+  {
+    "name": "Yuri Lopes Padlipskas",
+    "email": "yupadlipskas@gmail.com",
+    "phone": "11941185569",
+    "course": "Smart Learning",
+    "lessons": 200,
+    "level": "Explorer",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Hellem Almargo  CLOUDKITCHENS",
+    "email": "hellem.almagro@cloudkitchens.com",
+    "phone": "",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "10/03/2026"
+  },
+  {
+    "name": "Evanilson Farias",
+    "email": "evanilson.fariaso9@gmail.com",
+    "phone": "9294042515",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "10/03/2026"
+  },
+  {
+    "name": "Djalma Lucio Rodrigues DELFIA",
+    "email": "djalmaluciorodrigues@gmail.com",
+    "phone": "11997000731",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Fabio Morais - SBO",
+    "email": "fmoraispereiradesouza@gmail.com",
+    "phone": "11961821505",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Beginner",
+    "contractEnd": "13/04/2026"
+  },
+  {
+    "name": "Juliana Bueno Blum DELFIA",
+    "email": "julianablum@hotmail.com",
+    "phone": "11992956611",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Maria Vitoria Vieira",
+    "email": "vitoria_vieira14@hotmail.com",
+    "phone": "11975922963",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/03/2026"
+  },
+  {
+    "name": "Fabio Morais - SL",
+    "email": "fmoraispereiradesouza@gmail.com",
+    "phone": "11961821505",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Katia Cristina Lima - SC",
+    "email": "katia.cristina.lima76@gmail.com",
+    "phone": "42998344466",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "16/03/2026"
+  },
+  {
+    "name": "Sara Sirlane",
+    "email": "sarasscampelo@gmail.com",
+    "phone": "11974648040",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/03/2026"
+  },
+  {
+    "name": "Jacielle Claudio HUBSTER",
+    "email": "jacielle.claudio@cloudkitchens.com",
+    "phone": "21964362988",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "11/03/2026"
+  },
+  {
+    "name": "Bianca Dias Alvim HUBSTER",
+    "email": "bianca.dias@cloudkitchens.com",
+    "phone": "11993600606",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "19/03/2026"
+  },
+  {
+    "name": "David Cardoso",
+    "email": "david.tawanna1@gmail.com",
+    "phone": "11997312863",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "IGOR SOUSA DINIZ DELFIA",
+    "email": "mr.diniz8888@gmail.com",
+    "phone": "88994988832",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Thiago Antônio INSTITUTO SER TÃO GRANDE",
+    "email": "thiago.antonio.sno@gmail.com",
+    "phone": "62992496363",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/03/2026"
+  },
+  {
+    "name": "Sofia Martinez Jacinto Souza",
+    "email": "sofiamartinezjs22@gmail.com",
+    "phone": "19971261267",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "20/03/2026"
+  },
+  {
+    "name": "Laura Jeronimo Golias DELFIA",
+    "email": "Lauragolias@gmail.com",
+    "phone": "11942402680",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/01/2026"
+  },
+  {
+    "name": "Guilherme Silva dos Reis",
+    "email": "guilhermesilvareis64@gmail.com",
+    "phone": "11949251320",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "19/03/2026"
+  },
+  {
+    "name": "Shirley Bonjorno - CNV",
+    "email": "shirley.bonjorno@thule.com",
+    "phone": "11991639062",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "20/03/2026"
+  },
+  {
+    "name": "Shirley Bonjorno - SC",
+    "email": "shirley.bonjorno@thule.com",
+    "phone": "11991639062",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "20/03/2026"
+  },
+  {
+    "name": "Aline Heredia Andrade THULE - SC",
+    "email": "aline.heredia@thule.com",
+    "phone": "11913362787",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Aline Heredia Andrade THULE - CNV",
+    "email": "aline.heredia@thule.com",
+    "phone": "11913362787",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Heron Brandão THULE - SC",
+    "email": "heron.brandao@thule.com",
+    "phone": "11913659487",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Heron Brandão THULE - CNV",
+    "email": "heron.brandao@thule.com",
+    "phone": "11913659487",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Gustavo Norato THULE - SC",
+    "email": "gustavo.norato@thule.com",
+    "phone": "11992349117",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Gustavo Norato THULE - CNV",
+    "email": "gustavo.norato@thule.com",
+    "phone": "11992349117",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Fabio Luciano THULE - SC",
+    "email": "fabio.melo@thule.com",
+    "phone": "11984230083",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Fabio Luciano THULE - CNV",
+    "email": "fabio.melo@thule.com",
+    "phone": "11984230083",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "21/03/2026"
+  },
+  {
+    "name": "Yago Silva Santos UFINET",
+    "email": "ysilvas@ufinet.com",
+    "phone": "11976666237",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "24/03/2026"
+  },
+  {
+    "name": "Julia Morse",
+    "email": "juliamorsef@gmail.com",
+    "phone": "21993525069",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "24/03/2026"
+  },
+  {
+    "name": "Fabricio Nazario",
+    "email": "fabriciopalmares020@gmail.com",
+    "phone": "38988135079",
+    "course": "Smart Conversation",
+    "lessons": 213,
+    "level": "Starter",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Cintia Aparecida Dantas DELFIA",
+    "email": "CDANTAS2206@GMAIL.COM",
+    "phone": "11960843650",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Stella Rodrigues - SC",
+    "email": "stella.rferreira@hotmail.com",
+    "phone": "11975572383",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "18/03/2026"
+  },
+  {
+    "name": "Stella Rodrigues - CNV",
+    "email": "stella.rferreira@hotmail.com",
+    "phone": "11975572383",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "18/03/2026"
+  },
+  {
+    "name": "Vitoria Silva dos Reis",
+    "email": "vitoriasilvadosreis2@gmail.com",
+    "phone": "11991378028",
+    "course": "Conversaciones",
+    "lessons": 77,
+    "level": "Basico",
+    "contractEnd": "24/03/2026"
+  },
+  {
+    "name": "Flavia Xavier dos Reis - SBO",
+    "email": "flaviax.reis@gmail.com",
+    "phone": "11982668101",
+    "course": "Smart Business",
+    "lessons": 145,
+    "level": "Beginner",
+    "contractEnd": "24/03/2026"
+  },
+  {
+    "name": "Luiz Rogerio Mariano DELFIA",
+    "email": "LRMARIANO12@GMAIL.COM",
+    "phone": "11999681170",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Thaisa Alves Dias de Jesus",
+    "email": "thaisadias@yahoo.com.br",
+    "phone": "11994079984",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "26/09/2026"
+  },
+  {
+    "name": "Keila Machado Fernandes THULE - CNV",
+    "email": "keila_ms@yahoo.com.br",
+    "phone": "11994595129",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "27/03/2026"
+  },
+  {
+    "name": "Keila Machado Fernandes THULE - SC",
+    "email": "keila_ms@yahoo.com.br",
+    "phone": "11994595129",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "27/03/2026"
+  },
+  {
+    "name": "Gislaine Gonçalves",
+    "email": "gi.lainegs@gmail.com",
+    "phone": "11951188787",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "20/12/2025"
+  },
+  {
+    "name": "Vanessa Fonseca THULE",
+    "email": "nessacry@hotmail.com",
+    "phone": "11982621611",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "25/03/2026"
+  },
+  {
+    "name": "Bruna Coutinho",
+    "email": "bruna_coutinho09@hotmail.com",
+    "phone": "11982025684",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "01/04/2026"
+  },
+  {
+    "name": "Cintia Ramos de Moura",
+    "email": "cintiarmoura@gmail.com",
+    "phone": "3196007967",
+    "course": "Smart Business",
+    "lessons": 80,
+    "level": "Beginner",
+    "contractEnd": "02/10/2026"
+  },
+  {
+    "name": "Lynea Borges",
+    "email": "lyneanev@gmail.com",
+    "phone": "11988831016",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "02/07/2026"
+  },
+  {
+    "name": "Pablo Kauê Ramos Macedo UFINET",
+    "email": "pablokauerm@outlook.com",
+    "phone": "11910197452",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "28/03/2026"
+  },
+  {
+    "name": "Simone Carlini",
+    "email": "simone_carlini@c2bagencia.com",
+    "phone": "11988782648",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Cicero Fernandes Pinto UFINET",
+    "email": "cicerofernandesp@gmail.com",
+    "phone": "11949137227",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "03/04/2026"
+  },
+  {
+    "name": "Ana Lua Rodrigues Mendonça",
+    "email": "analua_rodrigues@hotmail.com",
+    "phone": "11984142355",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "09/04/2026"
+  },
+  {
+    "name": "Alessandro bergo - SBO",
+    "email": "alessandro.bergo@gmail.com",
+    "phone": "21991709988",
+    "course": "Smart Business",
+    "lessons": 120,
+    "level": "Advanced",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Gisele Ubaldo",
+    "email": "gisele_barreto@c2bagencia.com",
+    "phone": "11995192977",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Gabriela Lisboa de Alencar da Silva",
+    "email": "glisboa19@gmail.com",
+    "phone": "19995419317",
+    "course": "Conversaciones",
+    "lessons": 60,
+    "level": "Basico",
+    "contractEnd": "14/10/2025"
+  },
+  {
+    "name": "Daiane Lobato",
+    "email": "daianelobato544@gmail.com",
+    "phone": "11954824629",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "09/04/2026"
+  },
+  {
+    "name": "Tatiane Boroni",
+    "email": "tatyboroni@hotmail.com",
+    "phone": "11965082471",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Raphael Lopes",
+    "email": "raphael_camara@c2bagencia.com",
+    "phone": "11963962550",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Emerson José da Silva UFINET",
+    "email": "emeersonsilva92@gmail.com",
+    "phone": "11982511511",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "02/04/2026"
+  },
+  {
+    "name": "Julia Luiza Dias Pereira",
+    "email": "ju_diaspe@hotmail.com",
+    "phone": "11943315833",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/04/2026"
+  },
+  {
+    "name": "Frederico Seixas",
+    "email": "frederico_seixas@hotmail.com",
+    "phone": "11972611902",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "11/04/2026"
+  },
+  {
+    "name": "Felipe Gimenes Esteves UFINET",
+    "email": "felipe.gimenees@gmail.com",
+    "phone": "11951944394",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Eduardo Alves Moura UFINET",
+    "email": "emoura@ufinet.com",
+    "phone": "11991220924",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "22/04/2026"
+  },
+  {
+    "name": "Tatiana Pons Casal",
+    "email": "tatiana_rey@c2bagencia.com",
+    "phone": "11992639622",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "08/04/2026"
+  },
+  {
+    "name": "Marcus Vinícius Belda",
+    "email": "marcusbelda@me.com",
+    "phone": "11951633320",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "25/04/2026"
+  },
+  {
+    "name": "Iara Vasconcellos - SBO",
+    "email": "iaraanacletoamorimvasconcellos@gmail.com",
+    "phone": "11952155121",
+    "course": "Smart Business",
+    "lessons": 100,
+    "level": "Beginner",
+    "contractEnd": "24/04/2026"
+  },
+  {
+    "name": "Matheus Lustosa",
+    "email": "matheusl.costa@uni9.edu.br",
+    "phone": "11967870705",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "24/04/2026"
+  },
+  {
+    "name": "Thayara Rocha",
+    "email": "thayara.rocha.santos@gmail.com",
+    "phone": "11999747690",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "29/04/2026"
+  },
+  {
+    "name": "Ellen Mangabeira - SBO",
+    "email": "ellendpj@gmail.com",
+    "phone": "11985906624",
+    "course": "Smart Learning",
+    "lessons": 146,
+    "level": "Beginner",
+    "contractEnd": "02/05/2026"
+  },
+  {
+    "name": "Gustavo Cardoso",
+    "email": "gustavofelontacardoso@gmail.com",
+    "phone": "351938622778",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "04/04/2026"
+  },
+  {
+    "name": "Daiane Trigo",
+    "email": "daiane_trigo@hotmail.com",
+    "phone": "11998188855",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "30/04/2026"
+  },
+  {
+    "name": "Fabiana Cristina Barbosa Ribeiro",
+    "email": "fabianacbr02@gmail.com",
+    "phone": "11995623942",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "Rita de Cassia Machoski",
+    "email": "rita.machoski@gmail.com",
+    "phone": "41984957357",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "07/05/2026"
+  },
+  {
+    "name": "Camila Petrillo",
+    "email": "capetrillo@hotmail.com",
+    "phone": "14997233832",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "30/04/2026"
+  },
+  {
+    "name": "Sergio Guastale",
+    "email": "guastale@hotmail.com",
+    "phone": "19995753582",
+    "course": "Smart Conversation",
+    "lessons": 150,
+    "level": "Explorer",
+    "contractEnd": "08/05/2026"
+  },
+  {
+    "name": "Ludmila Toledo",
+    "email": "dulamil@gmail.com",
+    "phone": "1197178276",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "29/04/2026"
+  },
+  {
+    "name": "Janaína de Carvalho Andrade",
+    "email": "janaina.particular@hotmail.com",
+    "phone": "31627976924",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "08/05/2026"
+  },
+  {
+    "name": "Thayara Rocha - SC",
+    "email": "thayara.rocha.santos@gmail.com",
+    "phone": "11999747691",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "29/04/2026"
+  },
+  {
+    "name": "Brennda Dias Schittini UFINET",
+    "email": "bschittini@ufinet.com",
+    "phone": "11988640861",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/05/2026"
+  },
+  {
+    "name": "Djair Correia da Silva - CNV",
+    "email": "djair.correia.silva@gmail.com",
+    "phone": "11963593039",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "12/05/2026"
+  },
+  {
+    "name": "Cleber Camargo Vicente UFINET",
+    "email": "cvicente@ufinet.com",
+    "phone": "11981131131",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "13/05/2026"
+  },
+  {
+    "name": "Fernando Ungaretti DELFIA",
+    "email": "fernando_ungaretti@hotmail.com",
+    "phone": "11977586174",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "12/05/2026"
+  },
+  {
+    "name": "Ederson Satyro Lopes UFINET",
+    "email": "esatyro@ufinet.com",
+    "phone": "11991347080",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "14/05/2026"
+  },
+  {
+    "name": "Adriana Stringelli",
+    "email": "adrianastringelli@gmail.com",
+    "phone": "11992591737",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "16/05/2026"
+  },
+  {
+    "name": "Larissa Vieira",
+    "email": "larissacastagnacci@icloud.com",
+    "phone": "11992219260",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "19/05/2026"
+  },
+  {
+    "name": "Leda Silva de Oliveira",
+    "email": "lleeddaa@gmail.com",
+    "phone": "11945924777",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "21/05/2026"
+  },
+  {
+    "name": "Patricia Miranda",
+    "email": "patricia.miranda@totvs.com.br",
+    "phone": "11961691149",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "16/05/2026"
+  },
+  {
+    "name": "Bianca Vasques",
+    "email": "biancavasques.08@gmail.com",
+    "phone": "11964612642",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "23/05/2026"
+  },
+  {
+    "name": "Victoria Carvalho",
+    "email": "vickycf3490@gmail.com",
+    "phone": "11988636365",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "26/05/2026"
+  },
+  {
+    "name": "Monica Santana HUBSTER",
+    "email": "monica.santana@cloudkitchens.com",
+    "phone": "529841526803",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "08/05/2026"
+  },
+  {
+    "name": "Daniel Lopes Paiva",
+    "email": "daniel.lopespaiva@gmail.com",
+    "phone": "11999745382",
+    "course": "Smart Learning",
+    "lessons": 140,
+    "level": "Explorer",
+    "contractEnd": "27/05/2026"
+  },
+  {
+    "name": "Mario Harker COZINHAS DO FUTURO II",
+    "email": "marioandres.harker@cloudkitchens.com",
+    "phone": "573013819441",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Alan Vinicius Torres Ferreira DELFIA",
+    "email": "alan.ferreira@delfia.tech",
+    "phone": "11952949621",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Diego Sanches de Morais DELFIA",
+    "email": "diego.moraes@delfia.tech",
+    "phone": "11941220118",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Beatriz Bastos dos Santos",
+    "email": "beatrizbastos211@gmail.com",
+    "phone": "11999808563",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "30/05/2026"
+  },
+  {
+    "name": "Victor Morcelli",
+    "email": "victormorcelli@gmail.com",
+    "phone": "11981199263",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "06/05/2026"
+  },
+  {
+    "name": "João Higor Pinto Dias",
+    "email": "jhigordias@hotmail.com",
+    "phone": "84988787855",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "28/05/2026"
+  },
+  {
+    "name": "Helen Santos de Lima DELFIA",
+    "email": "helen.santos@delfia.tech",
+    "phone": "11972388227",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Natalia Lima de Almeida",
+    "email": "nataliaalmeida_am@hotmail.com",
+    "phone": "92991682141",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "30/05/2026"
+  },
+  {
+    "name": "Rosely Aponte da Silva Banhos",
+    "email": "roselyaponte12@gmail.com",
+    "phone": "12996197625",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "31/05/2026"
+  },
+  {
+    "name": "Guilherme Santos Domingues DELFIA",
+    "email": "guilherme.domingues@delfia.tech",
+    "phone": "11996586529",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Stefan Lubliner - CNV",
+    "email": "lubliner@bol.com.br",
+    "phone": "11992356690",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "03/06/2026"
+  },
+  {
+    "name": "Stefan Lubliner - SC",
+    "email": "lubliner@bol.com.br",
+    "phone": "11992356690",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "03/06/2026"
+  },
+  {
+    "name": "Maria Antonieta",
+    "email": "maria.antonieta@lealchaves.com.br",
+    "phone": "11998258588",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "02/06/2026"
+  },
+  {
+    "name": "Nathalia Soares",
+    "email": "nathaliasbd.silva@gmail.com",
+    "phone": "21983205181",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "03/06/2026"
+  },
+  {
+    "name": "Gideon Silva",
+    "email": "gideon.anjos@icloud.com",
+    "phone": "351965647660",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Starter",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Arlan Gustavo",
+    "email": "arlangustavo@hotmail.com",
+    "phone": "17991232222",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "04/06/2026"
+  },
+  {
+    "name": "Allana Saidler Vieira",
+    "email": "allana_saidler@hotmail.com",
+    "phone": "11965809651",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "30/05/2026"
+  },
+  {
+    "name": "Ruth dos Santos",
+    "email": "santosdosruthh@gmail.com",
+    "phone": "11971140786",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "05/06/2026"
+  },
+  {
+    "name": "Tamara Jacome",
+    "email": "tamarajacome@gmail.com",
+    "phone": "11954946417",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "06/06/2026"
+  },
+  {
+    "name": "Luana Camargo DELFIA",
+    "email": "contatoluanacamargo@gmail.com",
+    "phone": "11991414153",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "05/06/2026"
+  },
+  {
+    "name": "Paulo Pedroza",
+    "email": "pedrozapaulo22@gmail.com",
+    "phone": "11980975263",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "10/06/2026"
+  },
+  {
+    "name": "Susan Zemella",
+    "email": "susanzemella@terra.com.br",
+    "phone": "11997057396",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "10/06/2026"
+  },
+  {
+    "name": "Emília Naya",
+    "email": "efnaya@gmail.com",
+    "phone": "11933004657",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "13/06/2026"
+  },
+  {
+    "name": "Camila Franco",
+    "email": "camiladamacenof@gmail.com",
+    "phone": "11958670153",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "13/06/2026"
+  },
+  {
+    "name": "Patricia Augatas",
+    "email": "patricia.m.augatas@gmail.com",
+    "phone": "15996537338",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "10/06/2026"
+  },
+  {
+    "name": "Andrés José - CNV",
+    "email": "andres_alonso1@hotmail.com",
+    "phone": "41996909848",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Avanzado",
+    "contractEnd": "14/10/2026"
+  },
+  {
+    "name": "Abner Justino DELFIA",
+    "email": "abner_varga123@hotmail.com",
+    "phone": "11992669102",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "05/06/2026"
+  },
+  {
+    "name": "Mauro Lamensdorf DELFIA",
+    "email": "mauro@lamensdorf.com.br",
+    "phone": "11947298183",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "05/06/2026"
+  },
+  {
+    "name": "Daniel Ricardo Marim DELFIA",
+    "email": "daniel.marim@delfia.tech",
+    "phone": "11930851325",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Alexandre Casarin HUBSTER",
+    "email": "alexandre.casarin@cloudkitchens.com",
+    "phone": "11914752685",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "29/04/2026"
+  },
+  {
+    "name": "Maria Hilda DELFIA",
+    "email": "maria.alves@delfia.tech",
+    "phone": "11940833141",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "18/06/2026"
+  },
+  {
+    "name": "Bruno Silva Gonçalves Lima DELFIA",
+    "email": "bruno.lima@delfia.tech",
+    "phone": "11967201968",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Thalyta Oliveira DELFIA",
+    "email": "thalyta.oliveira@delfia.tech",
+    "phone": "11910299424",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "18/06/2026"
+  },
+  {
+    "name": "Renato Vieira Donha DELFIA",
+    "email": "renato.donha@delfia.tech",
+    "phone": "19992353218",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/05/2026"
+  },
+  {
+    "name": "Jonatas Almeida DELFIA",
+    "email": "jonatas.santos@delfia.tech",
+    "phone": "11947025129",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "23/06/2026"
+  },
+  {
+    "name": "Alex Sandro Santos",
+    "email": "alex.spsantos@proton.me",
+    "phone": "15991309229",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "18/06/2026"
+  },
+  {
+    "name": "Gabriela Mundim",
+    "email": "gabrimmaciel@gmail.com",
+    "phone": "32991798666",
+    "course": "Smart Business",
+    "lessons": 40,
+    "level": "Advanced",
+    "contractEnd": "31/12/2025"
+  },
+  {
+    "name": "Yenny Caroline CLOUDKITCHENS",
+    "email": "carolina.lopez@cloudkitchens.com",
+    "phone": "573133187297",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "23/06/2026"
+  },
+  {
+    "name": "Alexandra Santos",
+    "email": "Alexandrassh@gmail.com",
+    "phone": "11973538884",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "24/06/2026"
+  },
+  {
+    "name": "Renan Matheus",
+    "email": "rmatheusouza@gmail.com",
+    "phone": "11953908687",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "19/06/2026"
+  },
+  {
+    "name": "Gustavo Viel Ferro",
+    "email": "gustavoviel@gmail.com",
+    "phone": "11981521271",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "14/03/2026"
+  },
+  {
+    "name": "Eduarda Nogueira Santos",
+    "email": "edunogueiras@gmail.com",
+    "phone": "35998247307",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "26/06/2026"
+  },
+  {
+    "name": "Rafael Belotti",
+    "email": "Rafael.rocha.belotti@gmail.com",
+    "phone": "15997549533",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "30/06/2026"
+  },
+  {
+    "name": "Fredy Duque DELFIA",
+    "email": "fredy.souza@delfia.tech",
+    "phone": "11940744676",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "27/06/2026"
+  },
+  {
+    "name": "Kassia Moares",
+    "email": "kassiakmcs@gmail.com",
+    "phone": "21996647879",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "27/06/2026"
+  },
+  {
+    "name": "Andreza Irlla",
+    "email": "airllalins@gmail.com",
+    "phone": "62985108121",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "27/06/2026"
+  },
+  {
+    "name": "William Cavalcante",
+    "email": "william_toncev@hotmail.com",
+    "phone": "11954797615",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Andrés José - SC",
+    "email": "andres_alonso1@hotmail.com",
+    "phone": "41996909848",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "27/06/2026"
+  },
+  {
+    "name": "Renato Belotti",
+    "email": "renatobelotti@terra.com.br",
+    "phone": "15997549533",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "30/06/2026"
+  },
+  {
+    "name": "Vitoria Brito DELFIA",
+    "email": "vitoriabicudo@gmail.com",
+    "phone": "11940529779",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "02/07/2026"
+  },
+  {
+    "name": "Ana Carolina Comende DELFIA",
+    "email": "ana.comende@delfia.tech",
+    "phone": "11970861225",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "18/06/2026"
+  },
+  {
+    "name": "Matheus Cravo",
+    "email": "matheuscravomc@gmail.com",
+    "phone": "19997181097",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Basico",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Luiz Mariano DELFIA",
+    "email": "luiz.mariano@delfia.tech",
+    "phone": "11999681170",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Roberto Macedo DELFIA",
+    "email": "roberto.teixeira@delfia.tech",
+    "phone": "11994798785",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Renatha Nascimento DELFIA",
+    "email": "renatha.nascimento@delfia.tech",
+    "phone": "11997137253",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "04/07/2026"
+  },
+  {
+    "name": "Luiza Cordiolli",
+    "email": "luizacsilvestre@gmail.com",
+    "phone": "11975114802",
+    "course": "Conversaciones",
+    "lessons": 40,
+    "level": "Elemental",
+    "contractEnd": "08/01/2026"
+  },
+  {
+    "name": "Maria da Conceição Alves de Assunção",
+    "email": "conceica68@gmail.com",
+    "phone": "11980141383",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "09/08/2026"
+  },
+  {
+    "name": "Edmilson Delgado",
+    "email": "edmilsonddr@gmail.com",
+    "phone": "11954507746",
+    "course": "Smart Conversation",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "14/11/2026"
+  },
+  {
+    "name": "Magna Regina",
+    "email": "magnaelias28@hotmail.com",
+    "phone": "96991091399",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Eliana Cortiana - SL",
+    "email": "eliana.cortiana@zodiac.com.br",
+    "phone": "16981052913",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "16/07/2027"
+  },
+  {
+    "name": "Jonatas Almeida UFINET",
+    "email": "jsanticioli@ufinet.com",
+    "phone": "11988616469",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "18/07/2026"
+  },
+  {
+    "name": "Eduardo Lemos - CNV",
+    "email": "eduardol6@outlook.com",
+    "phone": "11963336248",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "20/07/2026"
+  },
+  {
+    "name": "Eduardo Lemos - SC",
+    "email": "eduardol6@outlook.com",
+    "phone": "11963336248",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "20/07/2026"
+  },
+  {
+    "name": "Carolina Shima",
+    "email": "carolinashima@hotmail.com",
+    "phone": "16981103571",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "16/09/2026"
+  },
+  {
+    "name": "Yasmin Ruescas",
+    "email": "yasmim.ruescas@outlook.com",
+    "phone": "11989686953",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "21/07/2026"
+  },
+  {
+    "name": "Andre Luis",
+    "email": "andreluys01@gmail.com",
+    "phone": "19981989341",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "22/07/2026"
+  },
+  {
+    "name": "Thiago Gonçalves Amorim Coelho",
+    "email": "coelho.thiagoamorim@gmail.com",
+    "phone": "32991530407",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "25/07/2026"
+  },
+  {
+    "name": "Joana Ribeiro UFINET",
+    "email": "rpereira11@outlook.com",
+    "phone": "11951315480",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "23/07/2026"
+  },
+  {
+    "name": "Flavia Silveira",
+    "email": "fla_art@hotmail.com",
+    "phone": "11976743337",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "25/07/2026"
+  },
+  {
+    "name": "Thais Silva",
+    "email": "tatydade21@hotmail.com",
+    "phone": "11980772361",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "25/07/2026"
+  },
+  {
+    "name": "Vitória Moreira",
+    "email": "Vitoriam.medeiros00@gmail.com",
+    "phone": "11953749105",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "28/07/2026"
+  },
+  {
+    "name": "Lais Gomes - SC",
+    "email": "lais_gomees@outlook.com",
+    "phone": "11964132570",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/07/2026"
+  },
+  {
+    "name": "Lais Gomes - CNV",
+    "email": "lais_gomees@outlook.com",
+    "phone": "11964132570",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "29/07/2026"
+  },
+  {
+    "name": "Laís Neuto Lopes",
+    "email": "laislopes020@gmail.com",
+    "phone": "11962253800",
+    "course": "Smart Learning",
+    "lessons": 130,
+    "level": "Explorer",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Noel Santana",
+    "email": "noelsantana07@gmail.com",
+    "phone": "11986087270",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Gabriela Diniz",
+    "email": "Gabriela.diniz86@hotmail.com",
+    "phone": "11997613749",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Isabela Caper",
+    "email": "isabela.caper@gmail.com",
+    "phone": "11985972166",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Ana Paula Andrade",
+    "email": "apandrade22@gmail.com",
+    "phone": "11949221433",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "01/07/2026"
+  },
+  {
+    "name": "Tatiana Agustoni",
+    "email": "t.agustoni@gmail.com",
+    "phone": "11991093138",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "01/07/2026"
+  },
+  {
+    "name": "Thiago Trindade -SC",
+    "email": "prev.alcan@hotmail.com",
+    "phone": "15991466380",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "02/07/2026"
+  },
+  {
+    "name": "Jenni Wang",
+    "email": "jenniwang304@gmail.com",
+    "phone": "11914805890",
+    "course": "Smart Business",
+    "lessons": 12,
+    "level": "Intermediate",
+    "contractEnd": "16/07/2026"
+  },
+  {
+    "name": "Mirella Yamada",
+    "email": "mirella.iglesias.mi@gmail.com",
+    "phone": "14991862584",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Wesley Ferro",
+    "email": "wferromonteiro@gmail.com",
+    "phone": "11943233595",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "05/07/2026"
+  },
+  {
+    "name": "Thiago Barcelos",
+    "email": "thiago.barcelos.botelho@gmail.com",
+    "phone": "12981935981",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "07/07/2026"
+  },
+  {
+    "name": "Emerson Bossoli",
+    "email": "emersonbassoli@gmail.com",
+    "phone": "11999069180",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "05/07/2026"
+  },
+  {
+    "name": "Renata Rodrigues Tomaz Silva",
+    "email": "renatasama5@hotmail.com",
+    "phone": "11954757469",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Survivor",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Domício Sindeaux Lima",
+    "email": "domiciosindeaux@yahoo.com.br",
+    "phone": "11972595415",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Fernanda Ferreira",
+    "email": "ferfanjos@hotmail.com",
+    "phone": "11978636006",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "06/07/2026"
+  },
+  {
+    "name": "Matheus Ribeiro",
+    "email": "theus.riibeiro@gmail.com",
+    "phone": "18997927146",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "06/07/2026"
+  },
+  {
+    "name": "Karyna Oliveira",
+    "email": "karyna.ketley@gmail.com",
+    "phone": "31991703315",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "08/07/2026"
+  },
+  {
+    "name": "Barbara Ganzoto HUBSTER",
+    "email": "barbaragranz@gmail.com",
+    "phone": "11974937555",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "07/07/2026"
+  },
+  {
+    "name": "Anderson Xavier",
+    "email": "andersonlxavier@gmail.com",
+    "phone": "19993778572",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "11/07/2026"
+  },
+  {
+    "name": "Maria Eugênia Sousa Freitas - Salesforce",
+    "email": "meugeniasf2017@gmail.com",
+    "phone": "",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "08/07/2026"
+  },
+  {
+    "name": "Simone Maria",
+    "email": "barros.sms@gmail.com",
+    "phone": "11981757989",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "11/07/2026"
+  },
+  {
+    "name": "Yara Nunes",
+    "email": "yaranunes1@hotmail.com",
+    "phone": "11999303579",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "12/07/2026"
+  },
+  {
+    "name": "Clovis Barreto",
+    "email": "clovis@mosaicai.com.br",
+    "phone": "11949837201",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "13/07/2026"
+  },
+  {
+    "name": "Cleusa de Jesus - SC",
+    "email": "pccleusa@outlook.com",
+    "phone": "11981535634",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "12/07/2026"
+  },
+  {
+    "name": "Silvio Eduardo",
+    "email": "s.scotti.tecnologia@gmail.com",
+    "phone": "11953148970",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "12/07/2026"
+  },
+  {
+    "name": "Alan Morelli",
+    "email": "alan.morelli3@gmail.com",
+    "phone": "11996033527",
+    "course": "Smart Learning",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "13/07/2026"
+  },
+  {
+    "name": "Bianca de Souza Guimarães",
+    "email": "guimaraesbianca09@gmail.com",
+    "phone": "31984629068",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "13/07/2026"
+  },
+  {
+    "name": "Fernanda Barbosa",
+    "email": "fernandabarbosa.fe@gmail.com",
+    "phone": "11984178026",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Priscilla Bonfim",
+    "email": "priscilla.bonfim@hotmail.com",
+    "phone": "11952941449",
+    "course": "Smart Conversation",
+    "lessons": 30,
+    "level": "Starter",
+    "contractEnd": "28/10/2025"
+  },
+  {
+    "name": "Flavia Luciana",
+    "email": "flaluso1@gmail.com",
+    "phone": "31988067474",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "31/07/2026"
+  },
+  {
+    "name": "Isabelle Miriã UFINET",
+    "email": "isabellemoreiraa8@gmail.com",
+    "phone": "11930230838",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Alexandre Eduardo",
+    "email": "ale.edu.s@gmail.com",
+    "phone": "31982351771",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "11/07/2026"
+  },
+  {
+    "name": "Marcela Marques",
+    "email": "marcelamaah807@gmail.com",
+    "phone": "35988873923",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "13/07/2026"
+  },
+  {
+    "name": "Izabela Kaori",
+    "email": "izabela.ueh@hotmail.com",
+    "phone": "11989064907",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "14/07/2026"
+  },
+  {
+    "name": "Gregório Costa - SC",
+    "email": "gregoriocosta@gmail.com",
+    "phone": "83988863912",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Gregório Costa - CNV",
+    "email": "gregoriocosta@gmail.com",
+    "phone": "83988863912",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Simone Pereira DELFIA",
+    "email": "Oliveirasim@hotmail.com",
+    "phone": "11999104446",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Daiane Costa",
+    "email": "sdaiane88@gmail.com",
+    "phone": "51997218823",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "18/08/2026"
+  },
+  {
+    "name": "Angelica Silva do Nascimento",
+    "email": "angelica_sdonascimento@hotmail.com",
+    "phone": "11976941929",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Starter",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Gustavo Ribeiro",
+    "email": "gustavoribeiros@outlook.com",
+    "phone": "11970255174",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Basico",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Eládia Vieira Duarte da Silva",
+    "email": "eladiavd@gmail.com",
+    "phone": "91991630818",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Survivor",
+    "contractEnd": "18/08/2026"
+  },
+  {
+    "name": "Thales Fidelis",
+    "email": "thalestrajano@hotmail.com",
+    "phone": "11980675439",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Intermedio",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Beatriz Evangelista DELFIA - CNV",
+    "email": "beatrizevangelista25@gmail.com",
+    "phone": "11984373066",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Tania Almeida DELFIA",
+    "email": "taniadiniz001@gmail.com",
+    "phone": "11940152177",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Edna Sebastiana",
+    "email": "ednacardoso58@yahoo.com.br",
+    "phone": "31983895740",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Intermedio",
+    "contractEnd": "18/08/2026"
+  },
+  {
+    "name": "Bianca Silva",
+    "email": "biancasilvaribeiro6@gmail.com",
+    "phone": "35991761926",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "19/08/2026"
+  },
+  {
+    "name": "Danilo Lopes - SC",
+    "email": "danilo_dalmazo@yahoo.com.br",
+    "phone": "11993322729",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "13/07/2026"
+  },
+  {
+    "name": "José Ricardo",
+    "email": "ricbraz45@gmail.com",
+    "phone": "11999347307",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Carolina dos Reis Alves",
+    "email": "carolreis490@gmail.com",
+    "phone": "11980535987",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Armando Maia DELFIA",
+    "email": "armando.alves@delfia.tech",
+    "phone": "11934141412",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "18/07/2026"
+  },
+  {
+    "name": "Yasmin Sene UFINET",
+    "email": "yseles@ufinet.com",
+    "phone": "11997927788",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Daniel Jesus",
+    "email": "danipensador35@gmail.com",
+    "phone": "11968383911",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Ana Flávia de Sousa Farias",
+    "email": "anaffllavia.sousa@gmail.com",
+    "phone": "11999625352",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "22/08/2026"
+  },
+  {
+    "name": "Grasyelle Maria",
+    "email": "grasyellemmferreira@gmail.com",
+    "phone": "31998348713",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Basico",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Anderson Souza",
+    "email": "asmarinho76@gmail.com",
+    "phone": "11972836079",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "25/08/2026"
+  },
+  {
+    "name": "Izabela Rodrigues DELFIA",
+    "email": "izabela.leitte07@gmail.com",
+    "phone": "11983062579",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Rafaelly Mota",
+    "email": "veruskavasconcelos300@gmail.com",
+    "phone": "85985341153",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "21/08/2026"
+  },
+  {
+    "name": "Elaine Mucciarelli",
+    "email": "laine.mucciarelli@gmail.com",
+    "phone": "11962815807",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "19/08/2026"
+  },
+  {
+    "name": "Fernanda Esteves",
+    "email": "festeves1997@hotmail.com",
+    "phone": "11983711846",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Survivor",
+    "contractEnd": "30/07/2026"
+  },
+  {
+    "name": "Alecio Pontieri",
+    "email": "aleciopontieri@gmail.com",
+    "phone": "16991760532",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "26/08/2026"
+  },
+  {
+    "name": "Larissa Silva",
+    "email": "scamposlarissa@gmail.com",
+    "phone": "21999394573",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Maria Inês",
+    "email": "mariainesalves18@gmail.com",
+    "phone": "11988936500",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Basico",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Marilza Conventi",
+    "email": "marilza.conventi@hotmail.com",
+    "phone": "11991110450",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Lanna Beatriz",
+    "email": "lannabya.lb@gmail.com",
+    "phone": "92984931116",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Pedro Ornelas - CNV",
+    "email": "pedroeuzebio46@gmail.com",
+    "phone": "11930394891",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Pedro Ornelas - SC",
+    "email": "pedroeuzebio46@gmail.com",
+    "phone": "11930394891",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Cristian Javier",
+    "email": "cristyan1@gmail.com",
+    "phone": "11954514203",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "28/08/2026"
+  },
+  {
+    "name": "Fagner Fabricio",
+    "email": "fabricio.fs2@gmail.com",
+    "phone": "11982451245",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Elemental",
+    "contractEnd": "29/08/2026"
+  },
+  {
+    "name": "Priscila Mariana",
+    "email": "priscila.silva2@foundever.com",
+    "phone": "11986284488",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "29/08/2026"
+  },
+  {
+    "name": "Vivian Agaton",
+    "email": "vivian_gabor@hotmail.com",
+    "phone": "11982444351",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/08/2026"
+  },
+  {
+    "name": "Lohani Gomes UFINET",
+    "email": "loliveira@ufinet.com",
+    "phone": "11958203106",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "29/08/2026"
+  },
+  {
+    "name": "Taciana Valeria",
+    "email": "tatavsm@yahoo.com.br",
+    "phone": "11998776668",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "29/08/2026"
+  },
+  {
+    "name": "Aline Carreno",
+    "email": "aline_carreno@yahoo.com.br",
+    "phone": "16994278379",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Sara Oliveira",
+    "email": "sarafioli@hotmail.com",
+    "phone": "11999909670",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "28/04/2026"
+  },
+  {
+    "name": "Lucas Bertoldo",
+    "email": "lucas.bertoldo@live.com",
+    "phone": "11960923012",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Starter",
+    "contractEnd": "30/08/2026"
+  },
+  {
+    "name": "Thaynara Sepulveda",
+    "email": "sepulvedathaynara@gmail.com",
+    "phone": "11960166480",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "01/09/2026"
+  },
+  {
+    "name": "Wilson Carlos",
+    "email": "wnca.andrade@gmail.com",
+    "phone": "11945432323",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "02/09/2026"
+  },
+  {
+    "name": "Marcelo Jeronimo",
+    "email": "marcelojneto15@gmail.com",
+    "phone": "11983981928",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Starter",
+    "contractEnd": "02/09/2026"
+  },
+  {
+    "name": "Odete Medeiros",
+    "email": "odeteteia9@gmail.com",
+    "phone": "11963545481",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "03/09/2026"
+  },
+  {
+    "name": "Bianca Arantes",
+    "email": "biancaarantes28@gmail.com",
+    "phone": "11972512855",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "04/09/2026"
+  },
+  {
+    "name": "Mauricio Fernandes",
+    "email": "mauriciofs21@gmail.com",
+    "phone": "15997125056",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "04/09/2026"
+  },
+  {
+    "name": "Marcela Akemi",
+    "email": "marcela.taguchi@gmail.com",
+    "phone": "11963749385",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "27/08/2026"
+  },
+  {
+    "name": "Jonatha Pereira - SC",
+    "email": "jonatha.pcarvalho@gmail.com",
+    "phone": "11939377967",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "05/09/2026"
+  },
+  {
+    "name": "Jonatha Pereira - CNV",
+    "email": "jonatha.pcarvalho@gmail.com",
+    "phone": "11939377967",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "05/09/2026"
+  },
+  {
+    "name": "Majid Bayat",
+    "email": "makidbayatbrazil@gmail.com",
+    "phone": "11930120290",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "05/03/2026"
+  },
+  {
+    "name": "Jose Bryan CLOUDKITCHEN",
+    "email": "jose.laborda@cloudkitchens.com",
+    "phone": "51996566526",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "08/09/2026"
+  },
+  {
+    "name": "Cristiane Bezerra Zaparoli",
+    "email": "cris-zap@hotmail.com",
+    "phone": "11974005722",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "06/09/2026"
+  },
+  {
+    "name": "Bianca Costa",
+    "email": "biancamoraisc@gmail.com",
+    "phone": "62981109394",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "05/09/2026"
+  },
+  {
+    "name": "Simone Reis",
+    "email": "reis.mone@gmail.com",
+    "phone": "11995440492",
+    "course": "Conversaciones",
+    "lessons": 100,
+    "level": "Intermedio",
+    "contractEnd": "08/09/2026"
+  },
+  {
+    "name": "Karina Santos",
+    "email": "karinasantana110591@gmail.com",
+    "phone": "11973838762",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "08/09/2026"
+  },
+  {
+    "name": "Rafael Silva",
+    "email": "rscampos3@gmail.com",
+    "phone": "11964133872",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "09/09/2026"
+  },
+  {
+    "name": "Anna Patricia",
+    "email": "annapatty@gmail.com",
+    "phone": "11994992158",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "09/09/2026"
+  },
+  {
+    "name": "Carlos Eduardo dos Santos Pereira - SC",
+    "email": "cpereira2713@hotmail.com",
+    "phone": "11998442519",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "10/09/2026"
+  },
+  {
+    "name": "Marcos Cesar de Lima",
+    "email": "mclmarcos@gmail.com",
+    "phone": "11995103021",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Expert",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Lurian Ayumi Bannwart Miyashiro",
+    "email": "lurian.miyashiro@gmail.com",
+    "phone": "11970962061",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Expert",
+    "contractEnd": "11/09/2026"
+  },
+  {
+    "name": "Tatiane Pereira UFINET - CNV",
+    "email": "tpereira@ufinet.com",
+    "phone": "11963904954",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Tatiane Pereira UFINET - SC",
+    "email": "tpereira@ufinet.com",
+    "phone": "11963904954",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Ana Carolina Moraes",
+    "email": "anacarol_moraes@yahoo.com.br",
+    "phone": "11993606311",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Elemental",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Wanessa Ramos",
+    "email": "wanessa.secretariado@gmail.com",
+    "phone": "21970446700",
+    "course": "Smart Conversation",
+    "lessons": 130,
+    "level": "Explorer",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Caroline Yukie Marinho Narisawa",
+    "email": "carolyukie48@gmail.com",
+    "phone": "11971860225",
+    "course": "Smart Learning",
+    "lessons": 100,
+    "level": "Explorer",
+    "contractEnd": "15/09/2026"
+  },
+  {
+    "name": "Andreia Luiza",
+    "email": "aluizae@gmail.com",
+    "phone": "11993305822",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Survivor",
+    "contractEnd": "12/09/2026"
+  },
+  {
+    "name": "Nathalia Camille",
+    "email": "nathaliacmodanez@gmail.com",
+    "phone": "11956292359",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "16/09/2026"
+  },
+  {
+    "name": "Natalyn Oliveira - CNV",
+    "email": "natalyn_vigo@hotmail.com",
+    "phone": "19998959878",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Natalyn Oliveira - SC",
+    "email": "natalyn_vigo@hotmail.com",
+    "phone": "19998959878",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "15/07/2026"
+  },
+  {
+    "name": "Andressa Ribeiro",
+    "email": "andressa.way@hotmail.com",
+    "phone": "11957654599",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Basico",
+    "contractEnd": "20/08/2026"
+  },
+  {
+    "name": "Carolina Muniz da Silva - CNV",
+    "email": "carolmunizsilva@gmail.com",
+    "phone": "11986118418",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Intermedio",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Carolina Muniz da Silva - SC",
+    "email": "carolmunizsilva@gmail.com",
+    "phone": "11986118418",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Mariana Carvalhaes - SC",
+    "email": "mcarvalhaes@unifesp.br",
+    "phone": "11977863080",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Expert",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Mariana Carvalhaes - CNV",
+    "email": "mcarvalhaes@unifesp.br",
+    "phone": "11977863080",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Adriana Marco SAESP",
+    "email": "dripps2@yahoo.com.br",
+    "phone": "11973015099",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Daniela Oliveira de Almeida Carvalho SAESP - SC",
+    "email": "daniaoliveralmeida@gmail.com",
+    "phone": "11961068477",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Douglas Souza de Oliveira Motta SAESP",
+    "email": "douglas9souza@gmail.com",
+    "phone": "11991743456",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Leandro Barreto Pineda Marcos SAESP",
+    "email": "lepineda84@gmail.com",
+    "phone": "11988440534",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Daniela Oliveira de Almeida SAESP - CNV",
+    "email": "daniaoliveralmeida@gmail.com",
+    "phone": "11961068477",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Mayara dos Santos Oliveira SAESP",
+    "email": "omayara60@gmail.com",
+    "phone": "11940870459",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Intermedio",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Darling Emilia de Souza",
+    "email": "darlingsouza27@yahoo.com.br",
+    "phone": "19991878049",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Basico",
+    "contractEnd": "18/09/2026"
+  },
+  {
+    "name": "Renan Bonilha SAESP",
+    "email": "renan.bonilha.rb@gmail.com",
+    "phone": "11992268921",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Guilherme Rocha Gambim",
+    "email": "guilherme.gambim84@gmail.com",
+    "phone": "11972127272",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "23/09/2026"
+  },
+  {
+    "name": "Valdelice dos Santos Matos",
+    "email": "vmatossantos@gmail.com",
+    "phone": "11954087335",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "22/09/2026"
+  },
+  {
+    "name": "Andre Luis de Abreu",
+    "email": "andrel.abreu08@gmail.com",
+    "phone": "11983357381",
+    "course": "Conversaciones",
+    "lessons": 160,
+    "level": "Elemental",
+    "contractEnd": "22/09/2026"
+  },
+  {
+    "name": "Mauricio Potente",
+    "email": "mauricio@cbadiesel.com.br",
+    "phone": "11942433846",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "22/09/2026"
+  },
+  {
+    "name": "Mara Elise da Silva",
+    "email": "maraelisesilva@gmail.com",
+    "phone": "11967427715",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "23/09/2026"
+  },
+  {
+    "name": "Allan Jonathan",
+    "email": "allangut@gmail.com",
+    "phone": "19981692682",
+    "course": "Smart Conversation",
+    "lessons": 160,
+    "level": "Explorer",
+    "contractEnd": "03/09/2026"
+  },
+  {
+    "name": "Raphael Silva Soares dos Santos SAESP",
+    "email": "theraphacluub@gmail.com",
+    "phone": "11993634819",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Elemental",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Camilla dos Santos de Medeiros",
+    "email": "camillasdmedeiros@gmail.com",
+    "phone": "11960242503",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Aures Mayara Mendanha",
+    "email": "auresmendanha@hotmail.com",
+    "phone": "94991100018",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "25/09/2026"
+  },
+  {
+    "name": "Nicolle Silva Fernandes",
+    "email": "nik_fernandes@live.com",
+    "phone": "11951771044",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Intermedio",
+    "contractEnd": "26/09/2026"
+  },
+  {
+    "name": "Gabriel Fonseca Bolina Santana",
+    "email": "fonseca.santana1@gmail.com",
+    "phone": "11991615266",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Basico",
+    "contractEnd": "26/09/2026"
+  },
+  {
+    "name": "Williames Souza",
+    "email": "williamessouza@hotmail.com",
+    "phone": "71987546040",
+    "course": "Conversaciones",
+    "lessons": 130,
+    "level": "Intermedio",
+    "contractEnd": "26/09/2026"
+  },
+  {
+    "name": "Rosane dos Santos Lima",
+    "email": "sanelima26@gmail.com",
+    "phone": "21988380321",
+    "course": "Smart Learning",
+    "lessons": 80,
+    "level": "Starter",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Bruna Suemi Shimabukuro - SC",
+    "email": "suemi.bruna@gmail.com",
+    "phone": "11999092237",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "26/09/2026"
+  },
+  {
+    "name": "Victor Andreoli Custodio - SC",
+    "email": "victor.andreoli07@gmail.com",
+    "phone": "11941808681",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "24/09/2026"
+  },
+  {
+    "name": "Evani Marzagão Beringhs",
+    "email": "frutototal@gmail.com",
+    "phone": "11976089846",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Explorer",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Hans Albert Motta DELFIA",
+    "email": "hans_motta@hotmail.com",
+    "phone": "11962260044",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "29/09/2026"
+  },
+  {
+    "name": "Derek Pascuinelli SAESP",
+    "email": "derekpasc@gmail.com",
+    "phone": "11953434970",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Emilly Dias SAESP",
+    "email": "emillysdias@gmail.com",
+    "phone": "11962308069",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "17/09/2026"
+  },
+  {
+    "name": "Osvaldo Luis Mendes de Resende",
+    "email": "osvaldofamac@hotmail.com",
+    "phone": "31993163316",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "30/09/2026"
+  },
+  {
+    "name": "Ana Paula Fernandes Rezende",
+    "email": "ppfrezende@hotmail.com",
+    "phone": "62981026262",
+    "course": "Conversaciones",
+    "lessons": 80,
+    "level": "Basico",
+    "contractEnd": "30/09/2026"
+  },
+  {
+    "name": "Douglas Luiz Sinclair da Silva",
+    "email": "dougsinclair2002@gmail.com",
+    "phone": "11981122305",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "01/10/2026"
+  },
+  {
+    "name": "Julia Tomoe Mimura Rodriguez",
+    "email": "jumimura@gmail.com",
+    "phone": "11 971820616",
+    "course": "Smart Conversation",
+    "lessons": 80,
+    "level": "Survivor",
+    "contractEnd": "02/10/2026"
+  }
+];
+
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = students;
+}
+
+// For browser usage
+if (typeof window !== 'undefined') {
+    window.students = students;
+}

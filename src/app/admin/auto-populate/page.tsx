@@ -20,7 +20,7 @@ export default function AutoPopulatePage() {
   }
 
   const handleAutoPopulate = async () => {
-    if (!confirm('This will add all students from the Numbers file to the database. Continue?')) {
+    if (!confirm('This will add all 816 students from your CSV file to the database. Continue?')) {
       return;
     }
 
@@ -28,7 +28,7 @@ export default function AutoPopulatePage() {
     setResult(null);
 
     try {
-      const response = await fetch('/api/admin/auto-populate', {
+      const response = await fetch('/api/admin/csv-populate', {
         method: 'POST',
       });
 
@@ -77,11 +77,11 @@ export default function AutoPopulatePage() {
               <div className="bg-blue-50 p-4 rounded">
                 <h4 className="font-medium mb-2 text-blue-800">What this will do:</h4>
                 <ul className="text-sm space-y-1 text-blue-700">
-                  <li>• Import 50 students from UPLOAD ALUNOS.numbers</li>
+                  <li>• Import all 816 students from your 3.csv file</li>
                   <li>• Generate unique student IDs (MST-2025-XXXX format)</li>
                   <li>• Create lesson packages based on contract data</li>
-                  <li>• Set contract start dates (1 year before end date)</li>
-                  <li>• Map course levels to system levels</li>
+                  <li>• Parse DD/MM/YYYY date format correctly</li>
+                  <li>• Map Portuguese/Spanish levels to system levels</li>
                   <li>• Generate temporary passwords for all students</li>
                 </ul>
               </div>
@@ -102,7 +102,7 @@ export default function AutoPopulatePage() {
                 className="w-full"
                 size="lg"
               >
-                {importing ? 'Importing Students...' : 'Import All Students from Numbers File'}
+{importing ? 'Importing 816 Students...' : 'Import All 816 Students from CSV File'}
               </Button>
             </div>
           </CardContent>
