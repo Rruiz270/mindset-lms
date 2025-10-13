@@ -246,6 +246,13 @@ export default function AdminDashboard() {
                 <Settings className="h-6 w-6 mx-auto mb-2 text-orange-600" />
                 <span className="text-sm">Setup Database</span>
               </button>
+              <button 
+                onClick={() => router.push('/admin/setup-demo')}
+                className="p-4 text-center hover:bg-red-50 rounded-lg transition-colors border-2 border-red-200"
+              >
+                <Users className="h-6 w-6 mx-auto mb-2 text-red-600" />
+                <span className="text-sm font-medium text-red-700">Fix Demo Accounts</span>
+              </button>
             </div>
           </CardContent>
         </Card>
