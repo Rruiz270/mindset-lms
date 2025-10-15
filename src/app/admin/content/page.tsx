@@ -269,9 +269,10 @@ export default function ContentManagement() {
                             alert('Sample content added successfully!')
                             await fetchTopics()
                           }
-                        } catch (error) {
+                        } catch (error: any) {
                           console.error('Error seeding content:', error)
-                          alert('Failed to add sample content')
+                          const errorDetails = error.response?.data?.details || error.message || 'Unknown error'
+                          alert(`Failed to add sample content: ${errorDetails}`)
                         }
                       }}
                     >

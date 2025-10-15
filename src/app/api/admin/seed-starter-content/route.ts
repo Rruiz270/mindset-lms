@@ -30,10 +30,37 @@ export async function POST(req: Request) {
       })
     }
 
+    // First check if Content table exists
+    try {
+      const tableCheck = await prisma.$queryRaw`
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'Content'
+      `
+      
+      if ((tableCheck as any[]).length === 0) {
+        return NextResponse.json(
+          { 
+            error: 'Content table does not exist',
+            details: 'Please run database initialization first'
+          },
+          { status: 400 }
+        )
+      }
+    } catch (checkError) {
+      console.error('Error checking table:', checkError)
+    }
+
     // Clear existing content for this topic using raw SQL
-    await prisma.$executeRaw`
-      DELETE FROM "Content" WHERE "topicId" = ${starterTopic.id}
-    `
+    try {
+      await prisma.$executeRaw`
+        DELETE FROM "Content" WHERE "topicId" = ${starterTopic.id}
+      `
+    } catch (deleteError) {
+      // Table might be empty, continue
+      console.log('No existing content to delete')
+    }
 
     // Pre-class content (30 minutes total)
     const preClassContent = [
@@ -163,28 +190,39 @@ export async function POST(req: Request) {
 
     // Insert all content using raw SQL
     const allContent = [...preClassContent, ...liveClassContent, ...postClassContent]
+    let insertedCount = 0
     
     for (const content of allContent) {
-      await prisma.$executeRaw`
-        INSERT INTO "Content" (
-          "id", "title", "description", "type", "phase", 
-          "duration", "resourceUrl", "order", "level", "topicId",
-          "createdAt", "updatedAt"
-        ) VALUES (
-          gen_random_uuid()::text,
-          ${content.title},
-          ${content.description},
-          ${content.type}::"ContentType",
-          ${content.phase}::"ContentPhase",
-          ${content.duration},
-          ${content.resourceUrl || null},
-          ${content.order},
-          ${content.level},
-          ${content.topicId},
-          CURRENT_TIMESTAMP,
-          CURRENT_TIMESTAMP
-        )
-      `
+      try {
+        await prisma.$executeRaw`
+          INSERT INTO "Content" (
+            "id", "title", "description", "type", "phase", 
+            "duration", "resourceUrl", "order", "level", "topicId",
+            "createdAt", "updatedAt"
+          ) VALUES (
+            gen_random_uuid()::text,
+            ${content.title},
+            ${content.description},
+            ${content.type}::"ContentType",
+            ${content.phase}::"ContentPhase",
+            ${content.duration},
+            ${content.resourceUrl || null},
+            ${content.order},
+            ${content.level},
+            ${content.topicId},
+            CURRENT_TIMESTAMP,
+            CURRENT_TIMESTAMP
+          )
+        `
+        insertedCount++
+      } catch (insertError: any) {
+        console.error('Error inserting content item:', {
+          title: content.title,
+          error: insertError.message,
+          code: insertError.code
+        })
+        throw insertError
+      }
     }
 
     return NextResponse.json({
@@ -198,10 +236,14 @@ export async function POST(req: Request) {
       }
     })
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error seeding content:', error)
     return NextResponse.json(
-      { error: 'Failed to seed content' },
+      { 
+        error: 'Failed to seed content',
+        details: error.message,
+        code: error.code
+      },
       { status: 500 }
     )
   }
