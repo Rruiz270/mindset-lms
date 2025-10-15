@@ -307,6 +307,20 @@ export default function ContentBuilderPage() {
               >
                 Test All Exercise Types
               </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.post('/api/admin/test-seed-with-logging')
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="secondary"
+                className="w-full"
+              >
+                Test Seed With Logging
+              </Button>
             </div>
           </CardContent>
         </Card>
