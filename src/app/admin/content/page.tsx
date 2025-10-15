@@ -63,6 +63,7 @@ export default function ContentManagement() {
   const [showAddForm, setShowAddForm] = useState(false)
   const [selectedPhase, setSelectedPhase] = useState<'pre_class' | 'live_class' | 'post_class'>('pre_class')
   const [loading, setLoading] = useState(false)
+  const [contents, setContents] = useState<Content[]>([])
 
   // Form state
   const [formData, setFormData] = useState({
@@ -91,6 +92,12 @@ export default function ContentManagement() {
     }
   }, [selectedLevel])
 
+  useEffect(() => {
+    if (selectedTopic) {
+      fetchContents()
+    }
+  }, [selectedTopic])
+
   const setupTopicsIfNeeded = async () => {
     try {
       await axios.post('/api/admin/setup-topics-if-needed')
@@ -114,6 +121,15 @@ export default function ContentManagement() {
     }
   }
 
+  const fetchContents = async () => {
+    try {
+      const response = await axios.get(`/api/admin/content?topicId=${selectedTopic}`)
+      setContents(response.data)
+    } catch (error) {
+      console.error('Error fetching contents:', error)
+    }
+  }
+
   const handleSaveContent = async () => {
     if (!selectedTopic) return
 
@@ -133,8 +149,8 @@ export default function ContentManagement() {
         await axios.post('/api/admin/content', contentData)
       }
 
-      // Refresh topics
-      await fetchTopics()
+      // Refresh contents
+      await fetchContents()
       
       // Reset form
       setFormData({
@@ -158,7 +174,7 @@ export default function ContentManagement() {
 
     try {
       await axios.delete(`/api/admin/content/${contentId}`)
-      await fetchTopics()
+      await fetchContents()
     } catch (error) {
       console.error('Error deleting content:', error)
     }
@@ -186,7 +202,7 @@ export default function ContentManagement() {
   }
 
   const currentTopic = topics.find(t => t.id === selectedTopic)
-  const phaseContents = currentTopic?.contents.filter(c => c.phase === selectedPhase) || []
+  const phaseContents = contents.filter(c => c.phase === selectedPhase) || []
 
   if (status === 'loading') {
     return (
