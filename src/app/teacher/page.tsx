@@ -770,6 +770,14 @@ export default function TeacherDashboard() {
                 </Button>
                 <Button 
                   variant="outline" 
+                  onClick={() => router.push('/teacher/classes')}
+                  className="w-full justify-start"
+                >
+                  <Video className="h-4 w-4 mr-2" />
+                  Manage Classes
+                </Button>
+                <Button 
+                  variant="outline" 
                   onClick={() => router.push('/teacher/materials')}
                   className="w-full justify-start"
                 >

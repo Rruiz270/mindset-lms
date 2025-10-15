@@ -170,15 +170,15 @@ export default function StudentDashboard() {
             <CardHeader>
               <CardTitle className="flex items-center text-green-900">
                 <BookOpen className="h-5 w-5 mr-2 text-green-600" />
-                Pre-Class Activities
+                My Learning
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-green-700 mb-4">
-                Complete exercises before your live class
+                Access pre-class and post-class content & exercises
               </p>
-              <Button variant="outline" className="w-full border-green-300 text-green-700 hover:bg-green-50" onClick={() => router.push('/student/exercises')}>
-                View Exercises
+              <Button variant="outline" className="w-full border-green-300 text-green-700 hover:bg-green-50" onClick={() => router.push('/student/learning')}>
+                Start Learning
               </Button>
             </CardContent>
           </Card>
