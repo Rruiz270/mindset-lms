@@ -11,23 +11,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Find or create the first starter topic
-    let starterTopic = await prisma.topic.findFirst({
-      where: {
-        level: 'STARTER',
-        name: 'Travel: Things to Do'
-      }
-    })
+    // Find the first starter topic using raw SQL
+    const topicResult = await prisma.$queryRaw`
+      SELECT id, name FROM "Topic" 
+      WHERE level = 'STARTER' 
+      AND name = 'Travel: Things to Do'
+      LIMIT 1
+    `
 
+    const starterTopic = (topicResult as any[])[0]
+    
     if (!starterTopic) {
-      starterTopic = await prisma.topic.create({
-        data: {
-          name: 'Travel: Things to Do',
-          level: 'STARTER',
-          orderIndex: 1,
-          description: 'Learn essential vocabulary and phrases for travel activities'
-        }
-      })
+      return NextResponse.json(
+        { 
+          error: 'Topic not found',
+          details: 'Travel: Things to Do topic must exist first'
+        },
+        { status: 404 }
+      )
     }
 
     // First check if Content table exists

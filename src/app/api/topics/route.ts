@@ -24,20 +24,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const topics = await prisma.topic.findMany({
-      where: {
-        level: level as 'STARTER' | 'SURVIVOR' | 'EXPLORER' | 'EXPERT'
-      },
-      orderBy: {
-        orderIndex: 'asc'
-      },
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        orderIndex: true
-      }
-    })
+    // Use raw SQL to avoid Prisma schema issues
+    const topics = await prisma.$queryRaw`
+      SELECT id, name, description, "orderIndex" 
+      FROM "Topic" 
+      WHERE level = ${level}::"Level"
+      ORDER BY "orderIndex" ASC
+    `
 
     // Fetch contents separately using raw SQL
     for (const topic of topics) {
