@@ -146,66 +146,46 @@ export default function ContentBuilderPage() {
           })}
         </div>
 
-        {/* Content Seeding */}
+        {/* Populate All Content */}
         <Card>
           <CardHeader>
-            <CardTitle>Seed Content by Level</CardTitle>
+            <CardTitle>Populate Content Repository</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs value={selectedLevel} onValueChange={setSelectedLevel}>
-              <TabsList className="grid w-full grid-cols-4">
-                {levels.map((level) => (
-                  <TabsTrigger key={level.value} value={level.value}>
-                    {level.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              
-              {levels.map((level) => (
-                <TabsContent key={level.value} value={level.value} className="space-y-4">
-                  <div className="p-6 bg-gray-50 rounded-lg">
-                    <h3 className="text-lg font-semibold mb-2">{level.label} Level</h3>
-                    <p className="text-gray-600 mb-4">
-                      This will create comprehensive content for all topics in the {level.label} level,
-                      including:
-                    </p>
-                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1 mb-4">
-                      <li>Pre-class content (videos, readings, audio)</li>
-                      <li>Live class activities (discussions, exercises)</li>
-                      <li>Post-class assignments (writing, speaking practice)</li>
-                      <li>All associated exercises (multiple choice, gap fill, etc.)</li>
-                    </ul>
-                    
-                    <Button
-                      onClick={() => seedContent(level.value)}
-                      disabled={loading}
-                      className="w-full"
-                      size="lg"
-                    >
-                      {loading && selectedLevel === level.value ? (
-                        <>
-                          <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                          Seeding Content...
-                        </>
-                      ) : (
-                        <>
-                          <BookOpen className="h-5 w-5 mr-2" />
-                          Seed {level.label} Content
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </TabsContent>
-              ))}
-            </Tabs>
-
-            {progress > 0 && (
-              <div className="mt-6">
-                <Progress value={progress} className="h-2" />
-                <p className="text-sm text-gray-600 mt-2 text-center">{progress}% Complete</p>
-              </div>
-            )}
-
+            <p className="text-gray-600 mb-4">
+              This will populate the entire content repository with exercises and materials for all levels.
+            </p>
+            <Button
+              onClick={async () => {
+                setLoading(true)
+                setResult(null)
+                try {
+                  const response = await axios.post('/api/admin/populate-all-content')
+                  setResult(response.data)
+                  await fetchStats()
+                } catch (error: any) {
+                  setResult({ error: error.message })
+                } finally {
+                  setLoading(false)
+                }
+              }}
+              disabled={loading}
+              className="w-full"
+              size="lg"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                  Populating Content...
+                </>
+              ) : (
+                <>
+                  <BookOpen className="h-5 w-5 mr-2" />
+                  Populate All Content
+                </>
+              )}
+            </Button>
+            
             {result && (
               <div className="mt-6">
                 {result.error ? (
@@ -223,31 +203,22 @@ export default function ContentBuilderPage() {
                     <CheckCircle className="h-4 w-4 text-green-600" />
                     <AlertDescription>
                       <div className="font-semibold mb-2">
-                        Successfully seeded {result.level} content!
+                        Successfully populated content repository!
                       </div>
-                      <div className="grid grid-cols-3 gap-4 text-sm">
-                        <div>
-                          <span className="text-gray-600">Topics:</span>
-                          <span className="font-semibold ml-1">
-                            {result.stats?.topicsProcessed}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-gray-600">Content:</span>
-                          <span className="font-semibold ml-1">
-                            {result.stats?.contentCreated}
-                          </span>
-                        </div>
-                        <div>
-                          <span className="text-gray-600">Exercises:</span>
-                          <span className="font-semibold ml-1">
-                            {result.stats?.exercisesCreated}
-                          </span>
-                        </div>
-                      </div>
-                      {result.errors && result.errors.length > 0 && (
-                        <div className="mt-2 text-sm text-red-600">
-                          {result.errors.length} errors occurred
+                      {result.stats && (
+                        <div className="grid grid-cols-3 gap-4 text-sm">
+                          <div>
+                            <span className="text-gray-600">Levels:</span>
+                            <span className="font-semibold ml-1">{result.stats.levels}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600">Topics:</span>
+                            <span className="font-semibold ml-1">{result.stats.topics}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-600">Exercises:</span>
+                            <span className="font-semibold ml-1">{result.stats.exercises}</span>
+                          </div>
                         </div>
                       )}
                     </AlertDescription>
@@ -258,185 +229,15 @@ export default function ContentBuilderPage() {
           </CardContent>
         </Card>
 
-        {/* Quick Test */}
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Exercise Testing</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/seed-exercises-simple')
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="secondary"
-                className="w-full"
-              >
-                Test Simple Exercise Creation
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.get('/api/admin/debug-exercise-creation')
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="outline"
-                className="w-full"
-              >
-                Debug Exercise Creation
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/test-exercise-types')
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="outline"
-                className="w-full"
-              >
-                Test All Exercise Types
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/test-seed-with-logging')
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="secondary"
-                className="w-full"
-              >
-                Test Seed With Logging
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.get('/api/admin/debug-seed-errors')
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="outline"
-                className="w-full"
-              >
-                Debug Seed Errors
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/test-seed-debug', { level: 'STARTER' })
-                    setResult(response.data)
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="outline"
-                className="w-full"
-              >
-                Test Database Operations
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/seed-minimal', { level: selectedLevel })
-                    setResult(response.data)
-                    await fetchStats()
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="default"
-                className="w-full"
-              >
-                Seed Minimal Content (Safe)
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    // First update content resources
-                    await axios.post('/api/admin/update-content-resources')
-                    
-                    // Then create demo bookings
-                    const usersResponse = await axios.get('/api/admin/users')
-                    const students = usersResponse.data.users.filter((u: any) => u.role === 'STUDENT')
-                    const teachers = usersResponse.data.users.filter((u: any) => u.role === 'TEACHER')
-                    
-                    if (students.length > 0 && teachers.length > 0) {
-                      const response = await axios.post('/api/admin/create-demo-bookings', {
-                        studentId: students[0].id,
-                        teacherId: teachers[0].id
-                      })
-                      setResult(response.data)
-                    } else {
-                      setResult({ error: 'No students or teachers found' })
-                    }
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="secondary"
-                className="w-full"
-              >
-                Setup Demo Data (Resources + Bookings)
-              </Button>
-              <Button
-                onClick={async () => {
-                  try {
-                    const response = await axios.post('/api/admin/populate-getting-job')
-                    setResult(response.data)
-                    await fetchStats()
-                  } catch (error: any) {
-                    setResult({ error: error.message })
-                  }
-                }}
-                variant="default"
-                className="w-full bg-green-600 hover:bg-green-700"
-              >
-                Populate "Getting a Job" Topic
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Actions */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button
             variant="default"
-            onClick={() => router.push('/admin/content-review')}
-            className="w-full"
-          >
-            <FileText className="h-4 w-4 mr-2" />
-            Review Content Structure
-          </Button>
-          <Button
-            variant="outline"
             onClick={() => router.push('/admin/content')}
             className="w-full"
           >
-            <FileText className="h-4 w-4 mr-2" />
-            Manage Content
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => router.push('/admin/exercises')}
-            className="w-full"
-          >
-            <BarChart className="h-4 w-4 mr-2" />
-            View Exercises
+            <BookOpen className="h-4 w-4 mr-2" />
+            Content & Exercise Management
           </Button>
           <Button
             variant="outline"
