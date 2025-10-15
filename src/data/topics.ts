@@ -209,7 +209,7 @@ export const getTopicForDate = (date: Date, level: 'STARTER' | 'SURVIVOR' | 'EXP
   if (date.getDay() === 0) return null;
 
   // Calculate days since September 1, 2025 (Monday) - the start date from your calendar
-  const startDate = new Date('2025-09-01'); // Sept 1, 2025 was a Monday
+  const startDate = new Date(2025, 8, 1); // Sept 1, 2025 (month is 0-based)
   const daysSinceStart = Math.floor((date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   
   // If date is before start date, return null
