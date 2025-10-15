@@ -393,6 +393,21 @@ export default function ContentBuilderPage() {
               >
                 Setup Demo Data (Resources + Bookings)
               </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.post('/api/admin/populate-getting-job')
+                    setResult(response.data)
+                    await fetchStats()
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="default"
+                className="w-full bg-green-600 hover:bg-green-700"
+              >
+                Populate "Getting a Job" Topic
+              </Button>
             </div>
           </CardContent>
         </Card>
