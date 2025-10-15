@@ -195,7 +195,7 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
               <button 
                 onClick={() => router.push('/admin/users')}
                 className="p-4 text-center hover:bg-blue-50 rounded-lg transition-colors border-2 border-blue-200"
@@ -237,6 +237,13 @@ export default function AdminDashboard() {
               >
                 <Database className="h-6 w-6 mx-auto mb-2 text-indigo-600" />
                 <span className="text-sm font-medium text-indigo-700">Initialize DB</span>
+              </button>
+              <button 
+                onClick={() => router.push('/admin/test-content')}
+                className="p-4 text-center hover:bg-yellow-50 rounded-lg transition-colors border-2 border-yellow-200"
+              >
+                <Database className="h-6 w-6 mx-auto mb-2 text-yellow-600" />
+                <span className="text-sm font-medium text-yellow-700">Test Content</span>
               </button>
             </div>
           </CardContent>
