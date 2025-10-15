@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { v4 as uuidv4 } from 'uuid'
 
 export async function POST(req: Request) {
   try {
@@ -32,7 +31,7 @@ export async function POST(req: Request) {
     const contentItems = [
       // Pre-class content
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         title: 'Pre-Class: Introduction to Job Applications',
         description: 'Watch this video about job interviews and complete the vocabulary exercises',
         type: 'video',
@@ -42,7 +41,7 @@ export async function POST(req: Request) {
         orderIndex: 1
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         title: 'Pre-Class: Job Vocabulary Reading',
         description: 'Read about essential vocabulary for job applications',
         type: 'reading',
@@ -52,7 +51,7 @@ export async function POST(req: Request) {
       },
       // Live class content
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         title: 'Live Class: Interactive Activities',
         description: 'Teacher-led activities including discussions, grammar practice, and role-play',
         type: 'exercise',
@@ -62,7 +61,7 @@ export async function POST(req: Request) {
       },
       // Post-class content
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         title: 'Post-Class: Write Your Cover Letter',
         description: 'Practice writing a cover letter for a job application',
         type: 'exercise',
@@ -71,7 +70,7 @@ export async function POST(req: Request) {
         orderIndex: 4
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         title: 'Post-Class: Interview Practice Recording',
         description: 'Record yourself answering common interview questions',
         type: 'audio',
@@ -101,7 +100,7 @@ export async function POST(req: Request) {
     const exercises = [
       // Pre-class exercises
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'MULTIPLE_CHOICE',
         category: 'vocabulary',
         phase: 'PRE_CLASS',
@@ -121,7 +120,7 @@ export async function POST(req: Request) {
         orderIndex: 1
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'TRUE_FALSE',
         category: 'grammar',
         phase: 'PRE_CLASS',
@@ -135,7 +134,7 @@ export async function POST(req: Request) {
         orderIndex: 2
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'GAP_FILL',
         category: 'grammar',
         phase: 'PRE_CLASS',
@@ -151,7 +150,7 @@ export async function POST(req: Request) {
       },
       // Post-class exercises
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'ESSAY',
         category: 'writing',
         phase: 'AFTER_CLASS',
@@ -166,7 +165,7 @@ export async function POST(req: Request) {
         orderIndex: 4
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'AUDIO_RECORDING',
         category: 'speaking',
         phase: 'AFTER_CLASS',
@@ -181,7 +180,7 @@ export async function POST(req: Request) {
         orderIndex: 5
       },
       {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         type: 'MULTIPLE_CHOICE',
         category: 'vocabulary',
         phase: 'AFTER_CLASS',
