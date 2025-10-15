@@ -82,9 +82,11 @@ export default function RealTimePreClassActivities({ studentLevel, studentId }: 
       // Add current week and next week
       for (let i = 0; i < 14; i++) {
         const date = addDays(current, i);
+        const dayOfWeek = date.getDay();
+        console.log(`RealTime - Date: ${date.toDateString()}, Day: ${dayOfWeek}, Skipping: ${dayOfWeek === 0}`);
         
         // Skip Sundays
-        if (date.getDay() === 0) continue;
+        if (dayOfWeek === 0) continue;
         
         const topic = getTopicForDate(date, studentLevel);
         if (topic) {
