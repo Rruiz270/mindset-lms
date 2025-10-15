@@ -60,8 +60,12 @@ export async function POST(req: Request) {
             if (['reading', 'video', 'audio', 'exercise'].includes(content.type)) {
               const exercises = getExercisesForContent(content, topic.name, level)
               for (const exercise of exercises) {
-                await createExercise(exercise, contentId, topic.id)
-                totalExercises++
+                try {
+                  await createExercise(exercise, contentId, topic.id)
+                  totalExercises++
+                } catch (exerciseError: any) {
+                  console.error('Failed to create exercise:', exercise.title, exerciseError.message)
+                }
               }
             }
           } catch (error: any) {
@@ -253,14 +257,14 @@ function getContentStructure(topicName: string, level: string) {
 function getExercisesForContent(content: any, topicName: string, level: string) {
   const exercises = []
   
+  // Only create exercises for pre_class and post_class content
+  if (content.phase === 'live_class') {
+    return exercises // No exercises for live class
+  }
+  
   // Map content phase to exercise phase
   const getPhase = (contentPhase: string) => {
-    // Only pre_class and post_class content gets exercises
-    // Live class exercises are considered PRE_CLASS for preparation
-    if (contentPhase === 'pre_class' || contentPhase === 'live_class') {
-      return 'PRE_CLASS'
-    }
-    return 'AFTER_CLASS'
+    return contentPhase === 'pre_class' ? 'PRE_CLASS' : 'AFTER_CLASS'
   }
   
   // Different exercise types based on content type and phase
@@ -301,161 +305,58 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
     )
   }
   
-  if (content.type === 'exercise' && content.title.includes('Grammar')) {
-    exercises.push(
-      {
-        title: `${topicName} - Fill in the Gaps`,
-        instructions: 'Complete the sentences with the correct grammar form',
-        type: 'GAP_FILL',
-        category: 'GRAMMAR',
-        phase: getPhase(content.phase),
-        points: 15,
-        content: {
-          text: `I ___ (go) to the ${topicName.toLowerCase()} yesterday.`,
-          gaps: [{ position: 1, answer: 'went' }]
-        },
-        correctAnswer: { gaps: ['went'] },
-        orderIndex: exercises.length + 1
+  // For video content - listening comprehension
+  if (content.type === 'video' && content.phase === 'pre_class') {
+    exercises.push({
+      title: 'Video Comprehension',
+      instructions: 'Answer questions about the video',
+      type: 'MULTIPLE_CHOICE',
+      category: 'LISTENING',
+      phase: 'PRE_CLASS',
+      points: 10,
+      content: {
+        question: 'What was the main topic discussed in the video?',
+        options: ['Option A', 'Option B', 'Option C', 'Option D']
       },
-      {
-        title: `${topicName} - Sentence Construction`,
-        instructions: 'Choose the grammatically correct sentence',
-        type: 'MULTIPLE_CHOICE',
-        category: 'GRAMMAR',
-        phase: getPhase(content.phase),
-        points: 10,
-        content: {
-          question: 'Which sentence is grammatically correct?',
-          options: [
-            'A: She go to shopping yesterday',
-            'B: She went shopping yesterday',
-            'C: She goes to shopping yesterday',
-            'D: She going shopping yesterday'
-          ]
-        },
-        correctAnswer: { answer: 'B', text: 'She went shopping yesterday' },
-        orderIndex: exercises.length + 2
-      }
-    )
+      correctAnswer: { answer: 'A' },
+      orderIndex: 1
+    })
   }
   
-  if (content.type === 'exercise' && content.title.includes('Vocabulary')) {
-    exercises.push(
-      {
-        title: `${topicName} - Word Matching`,
-        instructions: 'Match words with their definitions',
-        type: 'MATCHING',
-        category: 'VOCABULARY',
-        phase: getPhase(content.phase),
-        points: 10,
-        content: {
-          items: [
-            { id: '1', word: 'purchase', definition: 'to buy something' },
-            { id: '2', word: 'receipt', definition: 'proof of payment' },
-            { id: '3', word: 'discount', definition: 'reduced price' }
-          ]
-        },
-        correctAnswer: {
-          matches: [
-            { wordId: '1', definitionId: '1' },
-            { wordId: '2', definitionId: '2' },
-            { wordId: '3', definitionId: '3' }
-          ]
-        },
-        orderIndex: exercises.length + 1
-      },
-      {
-        title: `${topicName} - Vocabulary in Context`,
-        instructions: 'Fill in the blank with the correct word',
-        type: 'MULTIPLE_CHOICE',
-        category: 'VOCABULARY',
-        phase: getPhase(content.phase),
-        points: 12,
-        content: {
-          question: 'I need to ___ some groceries from the store.',
-          options: [
-            'A: purchase',
-            'B: sell',
-            'C: return',
-            'D: exchange'
-          ]
-        },
-        correctAnswer: { answer: 'A', text: 'purchase' },
-        orderIndex: exercises.length + 2
-      }
-    )
-  }
-  
-  if (content.type === 'audio' && content.phase === 'post_class') {
-    exercises.push(
-      {
-        title: `${topicName} - Speaking Practice`,
-        instructions: 'Record your response to the prompt. Speak for at least 2 minutes.',
-        type: 'AUDIO_RECORDING',
-        category: 'SPEAKING',
-        phase: getPhase(content.phase),
-        points: 20,
-        content: {
-          prompt: `Describe your last experience with ${topicName.toLowerCase()}. Use at least 5 vocabulary words from today's lesson.`,
-          recordingTime: 120,
-          tips: [
-            'Speak clearly and at a natural pace',
-            'Use vocabulary from the lesson',
-            'Give specific examples'
-          ]
-        },
-        correctAnswer: null,
-        orderIndex: exercises.length + 1
-      }
-    )
-  }
-  
-  if (content.phase === 'post_class' && content.title.includes('Writing')) {
-    exercises.push(
-      {
-        title: `${topicName} - Essay Writing`,
-        instructions: 'Write a short essay on the given topic. Minimum 100 words.',
-        type: 'ESSAY',
-        category: 'WRITING',
-        phase: getPhase(content.phase),
-        points: 25,
-        content: {
-          prompt: `Write about your personal experience with ${topicName.toLowerCase()}. Include an introduction, body, and conclusion.`,
-          requirements: {
-            minWords: level === 'STARTER' ? 100 : level === 'SURVIVOR' ? 150 : 200,
-            structure: ['introduction', 'body', 'conclusion'],
-            includeVocabulary: true
-          }
-        },
-        correctAnswer: null,
-        orderIndex: exercises.length + 1
-      }
-    )
-  }
-  
-  // Add listening exercises for audio content in pre-class
+  // For audio content - listening exercises
   if (content.type === 'audio' && content.phase === 'pre_class') {
-    exercises.push(
-      {
-        title: `${content.title} - Comprehension`,
-        instructions: 'Answer the following question based on the audio',
-        type: 'MULTIPLE_CHOICE',
-        category: 'LISTENING',
-        phase: getPhase(content.phase),
-        points: 10,
-        content: {
-          question: 'What was the main topic discussed in the audio?',
-          options: [
-            'A: The main topic from the audio',
-            'B: A different topic',
-            'C: Another unrelated topic',
-            'D: Yet another topic'
-          ]
-        },
-        correctAnswer: { answer: 'A', text: 'The main topic from the audio' },
-        orderIndex: exercises.length + 1
-      }
-    )
+    exercises.push({
+      title: 'Listening Comprehension',
+      instructions: 'Answer questions about the audio',
+      type: 'MULTIPLE_CHOICE',
+      category: 'LISTENING',
+      phase: 'PRE_CLASS',
+      points: 10,
+      content: {
+        question: 'What was the main topic discussed?',
+        options: ['Option A', 'Option B', 'Option C', 'Option D']
+      },
+      correctAnswer: { answer: 'A' },
+      orderIndex: 1
+    })
+  }
+  
+  // For post-class writing assignments
+  if (content.phase === 'post_class' && content.title.includes('Writing')) {
+    exercises.push({
+      title: 'Essay Writing',
+      instructions: 'Write a short essay on the topic',
+      type: 'ESSAY',
+      category: 'WRITING',
+      phase: 'AFTER_CLASS',
+      points: 25,
+      content: {
+        prompt: `Write about ${topicName.toLowerCase()}`,
+        minWords: 100
+      },
+      correctAnswer: null,
+      orderIndex: 1
+    })
   }
   
   return exercises
