@@ -258,6 +258,29 @@ export default function ContentBuilderPage() {
           </CardContent>
         </Card>
 
+        {/* Quick Test */}
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Exercise Testing</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button
+              onClick={async () => {
+                try {
+                  const response = await axios.post('/api/admin/seed-exercises-simple')
+                  setResult(response.data)
+                } catch (error: any) {
+                  setResult({ error: error.message })
+                }
+              }}
+              variant="secondary"
+              className="w-full"
+            >
+              Test Simple Exercise Creation
+            </Button>
+          </CardContent>
+        </Card>
+
         {/* Actions */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button

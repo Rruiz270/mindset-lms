@@ -267,36 +267,36 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
   if (content.type === 'reading' && content.phase === 'pre_class') {
     exercises.push(
       {
-        title: `${content.title} - Comprehension Check`,
+        title: `Comprehension Check`,
         instructions: 'Test your understanding of the reading material. Choose the best answer.',
         type: 'MULTIPLE_CHOICE',
         category: 'READING',
         phase: getPhase(content.phase),
         points: 10,
         content: {
-          question: `What is the main topic discussed in the ${content.title} reading?`,
+          question: `What is the main topic discussed in "${content.title}"?`,
           options: [
             'Option A: Main concept of the reading',
-            'Option B: A different topic',
+            'Option B: A different topic', 
             'Option C: Another unrelated topic',
             'Option D: Yet another topic'
           ]
         },
         correctAnswer: { answer: 'A', text: 'Option A: Main concept of the reading' },
-        orderIndex: exercises.length + 1
+        orderIndex: 1
       },
       {
-        title: `${content.title} - True or False`,
+        title: `True or False Question`,
         instructions: 'Determine if this statement is true or false based on the reading.',
         type: 'TRUE_FALSE',
-        category: 'READING',
+        category: 'READING', 
         phase: getPhase(content.phase),
         points: 5,
         content: {
           statement: `The reading mentions specific examples of ${topicName.toLowerCase()}.`
         },
         correctAnswer: { answer: true },
-        orderIndex: exercises.length + 2
+        orderIndex: 2
       }
     )
   }
