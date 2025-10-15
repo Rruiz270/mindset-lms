@@ -27,9 +27,27 @@ import {
   GraduationCap,
   Lightbulb,
   Target,
-  ChevronRight
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  CheckCircle,
+  Circle,
+  PenTool,
+  MessageSquare
 } from 'lucide-react'
 import axios from 'axios'
+
+interface Exercise {
+  id: string
+  type: string
+  category: string
+  phase: string
+  title: string
+  instructions: string
+  content: any
+  points: number
+  correctAnswer: any
+}
 
 interface Content {
   id: string
@@ -42,6 +60,7 @@ interface Content {
   resourceUrl?: string
   level: string
   topicId: string
+  exercises?: Exercise[]
 }
 
 interface Topic {
@@ -64,6 +83,7 @@ export default function ContentManagement() {
   const [selectedPhase, setSelectedPhase] = useState<'pre_class' | 'live_class' | 'post_class'>('pre_class')
   const [loading, setLoading] = useState(false)
   const [contents, setContents] = useState<Content[]>([])
+  const [expandedContent, setExpandedContent] = useState<Set<string>>(new Set())
 
   // Form state
   const [formData, setFormData] = useState({
@@ -124,7 +144,23 @@ export default function ContentManagement() {
   const fetchContents = async () => {
     try {
       const response = await axios.get(`/api/admin/content?topicId=${selectedTopic}`)
-      setContents(response.data)
+      const contentData = response.data
+      
+      // Fetch exercises for this topic
+      const exercisesResponse = await axios.get(`/api/admin/exercises?topicId=${selectedTopic}`)
+      const exercises = exercisesResponse.data
+      
+      // Map exercises to content
+      const contentWithExercises = contentData.map((content: Content) => ({
+        ...content,
+        exercises: exercises.filter((ex: any) => 
+          (content.phase === 'pre_class' && ex.phase === 'PRE_CLASS') ||
+          (content.phase === 'live_class' && ex.phase === 'PRE_CLASS') ||
+          (content.phase === 'post_class' && ex.phase === 'AFTER_CLASS')
+        )
+      }))
+      
+      setContents(contentWithExercises)
     } catch (error) {
       console.error('Error fetching contents:', error)
     }
@@ -370,11 +406,102 @@ export default function ContentManagement() {
                               </div>
                               <p className="text-sm text-gray-600 mb-2">{content.description}</p>
                               {content.resourceUrl && (
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-gray-500 mb-2">
                                   Resource: <a href={content.resourceUrl} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
                                     {content.resourceUrl}
                                   </a>
                                 </p>
+                              )}
+                              
+                              {/* Show exercises for this content */}
+                              {content.exercises && content.exercises.length > 0 && (
+                                <div className="mt-3 pt-3 border-t">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <Target className="h-4 w-4 text-gray-500" />
+                                    <span className="text-sm font-semibold text-gray-700">
+                                      Exercises ({content.exercises.length})
+                                    </span>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => {
+                                        const newExpanded = new Set(expandedContent)
+                                        if (newExpanded.has(content.id)) {
+                                          newExpanded.delete(content.id)
+                                        } else {
+                                          newExpanded.add(content.id)
+                                        }
+                                        setExpandedContent(newExpanded)
+                                      }}
+                                    >
+                                      {expandedContent.has(content.id) ? (
+                                        <ChevronUp className="h-4 w-4" />
+                                      ) : (
+                                        <ChevronDown className="h-4 w-4" />
+                                      )}
+                                    </Button>
+                                  </div>
+                                  
+                                  {expandedContent.has(content.id) && (
+                                    <div className="space-y-2 ml-6">
+                                      {content.exercises.map((exercise, idx) => (
+                                        <div key={exercise.id} className="bg-gray-50 p-3 rounded-lg text-sm">
+                                          <div className="flex items-start justify-between">
+                                            <div className="flex-1">
+                                              <div className="flex items-center gap-2 mb-1">
+                                                {exercise.type === 'MULTIPLE_CHOICE' && <CheckCircle className="h-4 w-4 text-blue-500" />}
+                                                {exercise.type === 'TRUE_FALSE' && <Circle className="h-4 w-4 text-green-500" />}
+                                                {exercise.type === 'ESSAY' && <PenTool className="h-4 w-4 text-purple-500" />}
+                                                {exercise.type === 'AUDIO_RECORDING' && <Headphones className="h-4 w-4 text-orange-500" />}
+                                                {exercise.type === 'GAP_FILL' && <FileText className="h-4 w-4 text-red-500" />}
+                                                {exercise.type === 'MATCHING' && <MessageSquare className="h-4 w-4 text-indigo-500" />}
+                                                <span className="font-medium">{exercise.title}</span>
+                                                <Badge variant="outline" className="text-xs">
+                                                  {exercise.type.replace('_', ' ')}
+                                                </Badge>
+                                                <Badge variant="secondary" className="text-xs">
+                                                  {exercise.category}
+                                                </Badge>
+                                              </div>
+                                              <p className="text-gray-600 mb-1">{exercise.instructions}</p>
+                                              <div className="flex items-center gap-4 text-xs text-gray-500">
+                                                <span>Points: {exercise.points}</span>
+                                                <span>Phase: {exercise.phase.replace('_', ' ')}</span>
+                                              </div>
+                                              
+                                              {/* Show exercise content preview */}
+                                              {exercise.content && (
+                                                <div className="mt-2 p-2 bg-white rounded border text-xs">
+                                                  {exercise.content.question && (
+                                                    <p className="font-medium mb-1">Q: {exercise.content.question}</p>
+                                                  )}
+                                                  {exercise.content.prompt && (
+                                                    <p className="font-medium mb-1">Prompt: {exercise.content.prompt}</p>
+                                                  )}
+                                                  {exercise.content.options && (
+                                                    <div className="ml-3">
+                                                      {exercise.content.options.map((opt: string, i: number) => (
+                                                        <div key={i} className="flex items-center gap-1">
+                                                          <span className="text-gray-500">{String.fromCharCode(65 + i)}.</span>
+                                                          <span>{opt}</span>
+                                                        </div>
+                                                      ))}
+                                                    </div>
+                                                  )}
+                                                  {exercise.correctAnswer && exercise.correctAnswer.answer && (
+                                                    <p className="text-green-600 mt-1">
+                                                      Answer: {exercise.correctAnswer.answer}
+                                                    </p>
+                                                  )}
+                                                </div>
+                                              )}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
                               )}
                             </div>
                           </div>
