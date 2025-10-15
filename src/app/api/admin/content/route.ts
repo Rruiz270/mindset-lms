@@ -51,17 +51,45 @@ export async function GET(req: Request) {
     const topicId = searchParams.get('topicId')
     const level = searchParams.get('level')
 
-    const where: any = {}
-    if (topicId) where.topicId = topicId
-    if (level) where.level = level
-
-    const contents = await prisma.content.findMany({
-      where,
-      orderBy: [
-        { phase: 'asc' },
-        { order: 'asc' }
-      ]
-    })
+    // Use raw SQL to fetch content
+    let contents: any[] = []
+    
+    if (topicId) {
+      contents = await prisma.$queryRaw`
+        SELECT * FROM "Content" 
+        WHERE "topicId" = ${topicId}
+        ORDER BY 
+          CASE "phase"
+            WHEN 'pre_class' THEN 1
+            WHEN 'live_class' THEN 2
+            WHEN 'post_class' THEN 3
+          END,
+          "order" ASC
+      `
+    } else if (level) {
+      contents = await prisma.$queryRaw`
+        SELECT * FROM "Content" 
+        WHERE "level" = ${level}
+        ORDER BY 
+          CASE "phase"
+            WHEN 'pre_class' THEN 1
+            WHEN 'live_class' THEN 2
+            WHEN 'post_class' THEN 3
+          END,
+          "order" ASC
+      `
+    } else {
+      contents = await prisma.$queryRaw`
+        SELECT * FROM "Content"
+        ORDER BY 
+          CASE "phase"
+            WHEN 'pre_class' THEN 1
+            WHEN 'live_class' THEN 2
+            WHEN 'post_class' THEN 3
+          END,
+          "order" ASC
+      `
+    }
 
     return NextResponse.json(contents)
   } catch (error) {

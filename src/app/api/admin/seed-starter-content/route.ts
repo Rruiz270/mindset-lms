@@ -30,10 +30,10 @@ export async function POST(req: Request) {
       })
     }
 
-    // Clear existing content for this topic
-    await prisma.content.deleteMany({
-      where: { topicId: starterTopic.id }
-    })
+    // Clear existing content for this topic using raw SQL
+    await prisma.$executeRaw`
+      DELETE FROM "Content" WHERE "topicId" = ${starterTopic.id}
+    `
 
     // Pre-class content (30 minutes total)
     const preClassContent = [
@@ -161,11 +161,30 @@ export async function POST(req: Request) {
       }
     ]
 
-    // Insert all content
+    // Insert all content using raw SQL
     const allContent = [...preClassContent, ...liveClassContent, ...postClassContent]
     
     for (const content of allContent) {
-      await prisma.content.create({ data: content })
+      await prisma.$executeRaw`
+        INSERT INTO "Content" (
+          "id", "title", "description", "type", "phase", 
+          "duration", "resourceUrl", "order", "level", "topicId",
+          "createdAt", "updatedAt"
+        ) VALUES (
+          gen_random_uuid()::text,
+          ${content.title},
+          ${content.description},
+          ${content.type}::"ContentType",
+          ${content.phase}::"ContentPhase",
+          ${content.duration},
+          ${content.resourceUrl || null},
+          ${content.order},
+          ${content.level},
+          ${content.topicId},
+          CURRENT_TIMESTAMP,
+          CURRENT_TIMESTAMP
+        )
+      `
     }
 
     return NextResponse.json({

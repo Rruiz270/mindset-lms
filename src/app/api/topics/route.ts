@@ -35,15 +35,25 @@ export async function GET(request: NextRequest) {
         id: true,
         name: true,
         description: true,
-        orderIndex: true,
-        contents: {
-          orderBy: [
-            { phase: 'asc' },
-            { order: 'asc' }
-          ]
-        }
+        orderIndex: true
       }
     })
+
+    // Fetch contents separately using raw SQL
+    for (const topic of topics) {
+      const contents = await prisma.$queryRaw`
+        SELECT * FROM "Content" 
+        WHERE "topicId" = ${topic.id}
+        ORDER BY 
+          CASE "phase"
+            WHEN 'pre_class' THEN 1
+            WHEN 'live_class' THEN 2
+            WHEN 'post_class' THEN 3
+          END,
+          "order" ASC
+      `
+      ;(topic as any).contents = contents
+    }
 
     return NextResponse.json(topics)
   } catch (error) {
