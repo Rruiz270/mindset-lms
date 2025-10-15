@@ -15,33 +15,36 @@ export async function POST(req: Request) {
     try {
       // First check if table exists
       const tableExists = await prisma.$queryRaw`
-        SELECT EXISTS (
-          SELECT FROM information_schema.tables 
-          WHERE table_schema = 'public' 
-          AND table_name = 'Content'
-        );
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'Content'
       `
 
-      if ((tableExists as any)[0]?.exists) {
+      if ((tableExists as any[]).length > 0) {
         return NextResponse.json({ 
           success: true, 
           message: 'Content table already exists' 
         })
       }
 
-      // Create enums first
-      await prisma.$executeRaw`
-        DO $$ 
-        BEGIN
-          IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'ContentType') THEN
-            CREATE TYPE "ContentType" AS ENUM ('reading', 'video', 'audio', 'exercise', 'quiz', 'discussion');
-          END IF;
-          
-          IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'ContentPhase') THEN
-            CREATE TYPE "ContentPhase" AS ENUM ('pre_class', 'live_class', 'post_class');
-          END IF;
-        END $$;
-      `
+      // Create enums first - check and create ContentType
+      try {
+        await prisma.$executeRaw`
+          CREATE TYPE "ContentType" AS ENUM ('reading', 'video', 'audio', 'exercise', 'quiz', 'discussion')
+        `
+      } catch (e) {
+        // Type already exists, ignore error
+      }
+
+      // Check and create ContentPhase
+      try {
+        await prisma.$executeRaw`
+          CREATE TYPE "ContentPhase" AS ENUM ('pre_class', 'live_class', 'post_class')
+        `
+      } catch (e) {
+        // Type already exists, ignore error
+      }
 
       // Create Content table
       await prisma.$executeRaw`
@@ -64,11 +67,17 @@ export async function POST(req: Request) {
         );
       `
 
-      // Create indexes
+      // Create indexes separately
       await prisma.$executeRaw`
-        CREATE INDEX IF NOT EXISTS "Content_topicId_idx" ON "Content"("topicId");
-        CREATE INDEX IF NOT EXISTS "Content_level_idx" ON "Content"("level");
-        CREATE INDEX IF NOT EXISTS "Content_topicId_phase_idx" ON "Content"("topicId", "phase");
+        CREATE INDEX IF NOT EXISTS "Content_topicId_idx" ON "Content"("topicId")
+      `
+      
+      await prisma.$executeRaw`
+        CREATE INDEX IF NOT EXISTS "Content_level_idx" ON "Content"("level")
+      `
+      
+      await prisma.$executeRaw`
+        CREATE INDEX IF NOT EXISTS "Content_topicId_phase_idx" ON "Content"("topicId", "phase")
       `
 
       return NextResponse.json({ 
