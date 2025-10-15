@@ -321,6 +321,35 @@ export default function ContentBuilderPage() {
               >
                 Test Seed With Logging
               </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.get('/api/admin/debug-seed-errors')
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="outline"
+                className="w-full"
+              >
+                Debug Seed Errors
+              </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.post('/api/admin/seed-minimal', { level: selectedLevel })
+                    setResult(response.data)
+                    await fetchStats()
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="default"
+                className="w-full"
+              >
+                Seed Minimal Content (Safe)
+              </Button>
             </div>
           </CardContent>
         </Card>
