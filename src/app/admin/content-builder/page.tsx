@@ -293,6 +293,20 @@ export default function ContentBuilderPage() {
               >
                 Debug Exercise Creation
               </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.post('/api/admin/test-exercise-types')
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="outline"
+                className="w-full"
+              >
+                Test All Exercise Types
+              </Button>
             </div>
           </CardContent>
         </Card>

@@ -56,16 +56,20 @@ export async function POST(req: Request) {
             const contentId = await createContentItem(content, topic.id, level)
             totalContent++
 
-            // Create associated exercises for appropriate content types
-            if (['reading', 'video', 'audio', 'exercise'].includes(content.type)) {
-              const exercises = getExercisesForContent(content, topic.name, level)
-              for (const exercise of exercises) {
-                try {
-                  await createExercise(exercise, contentId, topic.id)
-                  totalExercises++
-                } catch (exerciseError: any) {
-                  console.error('Failed to create exercise:', exercise.title, exerciseError.message)
-                }
+            // Create exercises for appropriate content types
+            const exercisesToCreate = getExercisesForContent(content, topic.name)
+            
+            for (const exerciseData of exercisesToCreate) {
+              try {
+                await createExercise(exerciseData, contentId, topic.id)
+                totalExercises++
+              } catch (exerciseError: any) {
+                console.error(`Failed to create ${exerciseData.type} exercise:`, exerciseError.message)
+                errors.push({
+                  content: content.title,
+                  exercise: exerciseData.title,
+                  error: exerciseError.message
+                })
               }
             }
           } catch (error: any) {
@@ -254,109 +258,229 @@ function getContentStructure(topicName: string, level: string) {
   return baseStructure
 }
 
-function getExercisesForContent(content: any, topicName: string, level: string) {
+function getExercisesForContent(content: any, topicName: string) {
   const exercises = []
   
-  // Only create exercises for pre_class and post_class content
-  if (content.phase === 'live_class') {
-    return exercises // No exercises for live class
-  }
-  
-  // Map content phase to exercise phase
-  const getPhase = (contentPhase: string) => {
-    return contentPhase === 'pre_class' ? 'PRE_CLASS' : 'AFTER_CLASS'
-  }
-  
-  // Different exercise types based on content type and phase
-  if (content.type === 'reading' && content.phase === 'pre_class') {
-    exercises.push(
-      {
-        title: `Comprehension Check`,
-        instructions: 'Test your understanding of the reading material. Choose the best answer.',
+  // Pre-class comprehension exercises
+  if (content.phase === 'pre_class') {
+    if (content.type === 'reading') {
+      exercises.push({
+        title: 'Reading Comprehension',
+        instructions: 'Answer the questions based on the reading material',
         type: 'MULTIPLE_CHOICE',
         category: 'READING',
-        phase: getPhase(content.phase),
+        phase: 'PRE_CLASS',
         points: 10,
         content: {
-          question: `What is the main topic discussed in "${content.title}"?`,
+          question: 'What is the main idea of the text?',
           options: [
-            'Option A: Main concept of the reading',
-            'Option B: A different topic', 
-            'Option C: Another unrelated topic',
-            'Option D: Yet another topic'
+            'Understanding basic concepts',
+            'Learning advanced techniques',
+            'Practicing conversation skills',
+            'Memorizing vocabulary'
           ]
         },
-        correctAnswer: { answer: 'A', text: 'Option A: Main concept of the reading' },
+        correctAnswer: { answer: 'A' },
         orderIndex: 1
-      },
-      {
-        title: `True or False Question`,
-        instructions: 'Determine if this statement is true or false based on the reading.',
-        type: 'TRUE_FALSE',
-        category: 'READING', 
-        phase: getPhase(content.phase),
+      })
+      
+      exercises.push({
+        title: 'Vocabulary Check',
+        instructions: 'Select the correct meaning of the highlighted words',
+        type: 'MULTIPLE_CHOICE',
+        category: 'VOCABULARY',
+        phase: 'PRE_CLASS',
         points: 5,
         content: {
-          statement: `The reading mentions specific examples of ${topicName.toLowerCase()}.`
+          question: 'Choose the correct definition for the vocabulary term',
+          options: ['Definition A', 'Definition B', 'Definition C', 'Definition D']
+        },
+        correctAnswer: { answer: 'B' },
+        orderIndex: 2
+      })
+    }
+    
+    if (content.type === 'video') {
+      exercises.push({
+        title: 'Video Comprehension',
+        instructions: 'Watch the video and answer the questions',
+        type: 'MULTIPLE_CHOICE',
+        category: 'LISTENING',
+        phase: 'PRE_CLASS',
+        points: 10,
+        content: {
+          question: 'What was the speaker\'s main point?',
+          options: [
+            'The importance of practice',
+            'The history of the topic',
+            'Common mistakes to avoid',
+            'Advanced techniques'
+          ]
+        },
+        correctAnswer: { answer: 'A' },
+        orderIndex: 1
+      })
+      
+      exercises.push({
+        title: 'True or False',
+        instructions: 'Based on the video, determine if these statements are true or false',
+        type: 'TRUE_FALSE',
+        category: 'LISTENING',
+        phase: 'PRE_CLASS',
+        points: 5,
+        content: {
+          statement: 'The video mentioned three key points about the topic'
         },
         correctAnswer: { answer: true },
         orderIndex: 2
-      }
-    )
+      })
+    }
+    
+    if (content.type === 'audio') {
+      exercises.push({
+        title: 'Listening Comprehension',
+        instructions: 'Listen to the audio and answer the questions',
+        type: 'MULTIPLE_CHOICE',
+        category: 'LISTENING',
+        phase: 'PRE_CLASS',
+        points: 10,
+        content: {
+          question: 'What was the conversation about?',
+          options: [
+            `Introduction to ${topicName}`,
+            'Review of previous lesson',
+            'Practice exercises',
+            'Homework assignment'
+          ]
+        },
+        correctAnswer: { answer: 'A' },
+        orderIndex: 1
+      })
+    }
   }
   
-  // For video content - listening comprehension
-  if (content.type === 'video' && content.phase === 'pre_class') {
-    exercises.push({
-      title: 'Video Comprehension',
-      instructions: 'Answer questions about the video',
-      type: 'MULTIPLE_CHOICE',
-      category: 'LISTENING',
-      phase: 'PRE_CLASS',
-      points: 10,
-      content: {
-        question: 'What was the main topic discussed in the video?',
-        options: ['Option A', 'Option B', 'Option C', 'Option D']
-      },
-      correctAnswer: { answer: 'A' },
-      orderIndex: 1
-    })
+  // Live class exercises (during class activities)
+  if (content.phase === 'live_class' && content.type === 'exercise') {
+    if (content.title.includes('Grammar')) {
+      exercises.push({
+        title: 'Grammar Practice',
+        instructions: 'Fill in the blanks with the correct form',
+        type: 'GAP_FILL',
+        category: 'GRAMMAR',
+        phase: 'PRE_CLASS',
+        points: 15,
+        content: {
+          text: 'I ___ (go) to the store yesterday and ___ (buy) some groceries.',
+          gaps: ['went', 'bought']
+        },
+        correctAnswer: { answers: ['went', 'bought'] },
+        orderIndex: 1
+      })
+    }
+    
+    if (content.title.includes('Vocabulary')) {
+      exercises.push({
+        title: 'Word Matching',
+        instructions: 'Match the words with their definitions',
+        type: 'MATCHING',
+        category: 'VOCABULARY',
+        phase: 'PRE_CLASS',
+        points: 10,
+        content: {
+          pairs: [
+            { term: 'Word 1', definition: 'Definition 1' },
+            { term: 'Word 2', definition: 'Definition 2' },
+            { term: 'Word 3', definition: 'Definition 3' },
+            { term: 'Word 4', definition: 'Definition 4' }
+          ]
+        },
+        correctAnswer: {
+          matches: [
+            { term: 'Word 1', definition: 'Definition 1' },
+            { term: 'Word 2', definition: 'Definition 2' },
+            { term: 'Word 3', definition: 'Definition 3' },
+            { term: 'Word 4', definition: 'Definition 4' }
+          ]
+        },
+        orderIndex: 1
+      })
+    }
   }
   
-  // For audio content - listening exercises
-  if (content.type === 'audio' && content.phase === 'pre_class') {
-    exercises.push({
-      title: 'Listening Comprehension',
-      instructions: 'Answer questions about the audio',
-      type: 'MULTIPLE_CHOICE',
-      category: 'LISTENING',
-      phase: 'PRE_CLASS',
-      points: 10,
-      content: {
-        question: 'What was the main topic discussed?',
-        options: ['Option A', 'Option B', 'Option C', 'Option D']
-      },
-      correctAnswer: { answer: 'A' },
-      orderIndex: 1
-    })
-  }
-  
-  // For post-class writing assignments
-  if (content.phase === 'post_class' && content.title.includes('Writing')) {
-    exercises.push({
-      title: 'Essay Writing',
-      instructions: 'Write a short essay on the topic',
-      type: 'ESSAY',
-      category: 'WRITING',
-      phase: 'AFTER_CLASS',
-      points: 25,
-      content: {
-        prompt: `Write about ${topicName.toLowerCase()}`,
-        minWords: 100
-      },
-      correctAnswer: null,
-      orderIndex: 1
-    })
+  // Post-class exercises
+  if (content.phase === 'post_class') {
+    if (content.title.includes('Writing')) {
+      exercises.push({
+        title: 'Essay Writing',
+        instructions: `Write a short essay (100-150 words) about ${topicName}`,
+        type: 'ESSAY',
+        category: 'WRITING',
+        phase: 'AFTER_CLASS',
+        points: 25,
+        content: {
+          prompt: `Describe your thoughts on ${topicName} and how it relates to your daily life.`,
+          minWords: 100,
+          maxWords: 150
+        },
+        correctAnswer: null,
+        orderIndex: 1
+      })
+    }
+    
+    if (content.type === 'quiz' && content.title.includes('Grammar')) {
+      exercises.push({
+        title: 'Grammar Review Quiz',
+        instructions: 'Complete the grammar review questions',
+        type: 'MULTIPLE_CHOICE',
+        category: 'GRAMMAR',
+        phase: 'AFTER_CLASS',
+        points: 10,
+        content: {
+          question: 'Which sentence uses the correct grammar structure?',
+          options: [
+            'I have went to the store',
+            'I have gone to the store',
+            'I has gone to the store',
+            'I have going to the store'
+          ]
+        },
+        correctAnswer: { answer: 'B' },
+        orderIndex: 1
+      })
+      
+      exercises.push({
+        title: 'Sentence Transformation',
+        instructions: 'Transform these sentences as instructed',
+        type: 'GAP_FILL',
+        category: 'GRAMMAR',
+        phase: 'AFTER_CLASS',
+        points: 15,
+        content: {
+          text: 'Change to past tense: She speaks English. → She ___ English.',
+          gaps: ['spoke']
+        },
+        correctAnswer: { answers: ['spoke'] },
+        orderIndex: 2
+      })
+    }
+    
+    if (content.type === 'audio' && content.title.includes('Speaking')) {
+      exercises.push({
+        title: 'Speaking Practice',
+        instructions: `Record yourself speaking about ${topicName} for 1-2 minutes`,
+        type: 'AUDIO_RECORDING',
+        category: 'SPEAKING',
+        phase: 'AFTER_CLASS',
+        points: 20,
+        content: {
+          prompt: `Talk about ${topicName} using at least 5 new vocabulary words from today's lesson.`,
+          minDuration: 60,
+          maxDuration: 120
+        },
+        correctAnswer: null,
+        orderIndex: 1
+      })
+    }
   }
   
   return exercises
