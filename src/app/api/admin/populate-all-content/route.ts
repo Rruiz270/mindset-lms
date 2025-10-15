@@ -3,6 +3,11 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
+// Simple ID generator using timestamp and random number
+function generateId() {
+  return `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`
+}
+
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions)
@@ -159,7 +164,7 @@ export async function POST(req: Request) {
       // Create content items
       const contentItems = [
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           topicId: topic.id,
           title: `Pre-Class: Introduction to ${topic.name}`,
           description: `Watch the introductory video and complete the vocabulary exercises`,
@@ -170,7 +175,7 @@ export async function POST(req: Request) {
           orderIndex: 1
         },
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           topicId: topic.id,
           title: `Live Class: ${topic.name} Activities`,
           description: 'Interactive activities for the live class session',
@@ -180,7 +185,7 @@ export async function POST(req: Request) {
           orderIndex: 2
         },
         {
-          id: crypto.randomUUID(),
+          id: generateId(),
           topicId: topic.id,
           title: `Post-Class: ${topic.name} Practice`,
           description: 'Complete the writing and speaking assignments',
@@ -235,7 +240,7 @@ export async function POST(req: Request) {
                 instructions, content, "correctAnswer", points, 
                 "orderIndex", "createdAt", "updatedAt"
               ) VALUES (
-                ${crypto.randomUUID()}, ${topic.id}, 
+                ${generateId()}, ${topic.id}, 
                 ${template.type}::"ExerciseType", ${category}, 
                 ${template.phase}::"ExercisePhase", ${template.title}, 
                 ${template.instructions}, ${JSON.stringify(generated.content)}::jsonb,
