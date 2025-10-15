@@ -350,6 +350,35 @@ export default function ContentBuilderPage() {
               >
                 Seed Minimal Content (Safe)
               </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    // First update content resources
+                    await axios.post('/api/admin/update-content-resources')
+                    
+                    // Then create demo bookings
+                    const usersResponse = await axios.get('/api/admin/users')
+                    const students = usersResponse.data.users.filter((u: any) => u.role === 'STUDENT')
+                    const teachers = usersResponse.data.users.filter((u: any) => u.role === 'TEACHER')
+                    
+                    if (students.length > 0 && teachers.length > 0) {
+                      const response = await axios.post('/api/admin/create-demo-bookings', {
+                        studentId: students[0].id,
+                        teacherId: teachers[0].id
+                      })
+                      setResult(response.data)
+                    } else {
+                      setResult({ error: 'No students or teachers found' })
+                    }
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="secondary"
+                className="w-full"
+              >
+                Setup Demo Data (Resources + Bookings)
+              </Button>
             </div>
           </CardContent>
         </Card>
