@@ -49,8 +49,8 @@ interface Topic {
   name: string
   level: string
   description: string
-  order: number
-  contents: Content[]
+  orderIndex: number
+  contents?: Content[]
 }
 
 export default function ContentManagement() {
@@ -79,6 +79,9 @@ export default function ContentManagement() {
     if (status === 'loading') return
     if (!session || session.user.role !== 'ADMIN') {
       router.push('/auth/login')
+    } else {
+      // Setup topics if needed
+      setupTopicsIfNeeded()
     }
   }, [status, session, router])
 
@@ -88,10 +91,18 @@ export default function ContentManagement() {
     }
   }, [selectedLevel])
 
+  const setupTopicsIfNeeded = async () => {
+    try {
+      await axios.post('/api/admin/setup-topics-if-needed')
+    } catch (error) {
+      console.error('Error setting up topics:', error)
+    }
+  }
+
   const fetchTopics = async () => {
     setLoading(true)
     try {
-      const response = await axios.get(`/api/topics?level=${selectedLevel}`)
+      const response = await axios.get(`/api/topics?level=${selectedLevel.toUpperCase()}`)
       setTopics(response.data)
       if (response.data.length > 0 && !selectedTopic) {
         setSelectedTopic(response.data[0].id)
@@ -232,7 +243,7 @@ export default function ContentManagement() {
                   <SelectContent>
                     {topics.map((topic) => (
                       <SelectItem key={topic.id} value={topic.id}>
-                        {topic.order}. {topic.name}
+                        {topic.orderIndex}. {topic.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -242,8 +253,32 @@ export default function ContentManagement() {
 
             {currentTopic && (
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <h3 className="font-semibold text-gray-900">{currentTopic.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">{currentTopic.description}</p>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{currentTopic.name}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{currentTopic.description}</p>
+                  </div>
+                  {currentTopic.name === 'Travel: Things to Do' && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={async () => {
+                        try {
+                          const response = await axios.post('/api/admin/seed-starter-content')
+                          if (response.data.success) {
+                            alert('Sample content added successfully!')
+                            await fetchTopics()
+                          }
+                        } catch (error) {
+                          console.error('Error seeding content:', error)
+                          alert('Failed to add sample content')
+                        }
+                      }}
+                    >
+                      Add Sample Content
+                    </Button>
+                  )}
+                </div>
               </div>
             )}
           </CardContent>

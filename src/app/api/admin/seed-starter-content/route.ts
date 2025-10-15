@@ -1,13 +1,17 @@
-import { PrismaClient } from '@prisma/client'
+import { NextResponse } from 'next/server'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
 
-const prisma = new PrismaClient()
-
-async function seedStarterContent() {
-  console.log('🌱 Seeding starter level content...')
-  
+export async function POST(req: Request) {
   try {
-    // Find the first starter topic
-    // First ensure the topic exists
+    const session = await getServerSession(authOptions)
+    
+    if (!session || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    // Find or create the first starter topic
     let starterTopic = await prisma.topic.findFirst({
       where: {
         level: 'STARTER',
@@ -15,7 +19,6 @@ async function seedStarterContent() {
       }
     })
 
-    // If not found, create it
     if (!starterTopic) {
       starterTopic = await prisma.topic.create({
         data: {
@@ -26,9 +29,6 @@ async function seedStarterContent() {
         }
       })
     }
-
-
-    console.log(`📚 Adding content for topic: ${starterTopic.name}`)
 
     // Clear existing content for this topic
     await prisma.content.deleteMany({
@@ -168,17 +168,22 @@ async function seedStarterContent() {
       await prisma.content.create({ data: content })
     }
 
-    console.log('✅ Successfully seeded content for Travel: Things to Do')
-    console.log(`📊 Added ${preClassContent.length} pre-class items`)
-    console.log(`📊 Added ${liveClassContent.length} live class items`)
-    console.log(`📊 Added ${postClassContent.length} post-class items`)
+    return NextResponse.json({
+      success: true,
+      message: 'Successfully seeded content for Travel: Things to Do',
+      stats: {
+        preClass: preClassContent.length,
+        liveClass: liveClassContent.length,
+        postClass: postClassContent.length,
+        total: allContent.length
+      }
+    })
     
   } catch (error) {
-    console.error('❌ Error seeding content:', error)
-  } finally {
-    await prisma.$disconnect()
+    console.error('Error seeding content:', error)
+    return NextResponse.json(
+      { error: 'Failed to seed content' },
+      { status: 500 }
+    )
   }
 }
-
-// Run the seed function
-seedStarterContent()
