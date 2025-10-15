@@ -32,9 +32,12 @@ export async function POST(req: Request) {
     // For each topic, create comprehensive content
     for (const topic of topics as any[]) {
       try {
-        // Clear existing content for this topic
+        // Clear existing content and exercises for this topic
         await prisma.$executeRaw`
           DELETE FROM "Content" WHERE "topicId" = ${topic.id}
+        `
+        await prisma.$executeRaw`
+          DELETE FROM "Exercise" WHERE "topicId" = ${topic.id}
         `
 
         // Define content structure based on topic type
@@ -119,26 +122,21 @@ async function createContentItem(content: any, topicId: string, level: string) {
 async function createExercise(exercise: any, contentId: string, topicId: string) {
   await prisma.$executeRaw`
     INSERT INTO "Exercise" (
-      "id", "title", "description", "type", "category", 
-      "difficulty", "points", "timeLimit", "content",
-      "correctAnswer", "options", "hints", "explanation",
-      "orderIndex", "isActive", "createdAt", "updatedAt"
+      "id", "topicId", "phase", "category", "type",
+      "title", "instructions", "content", "correctAnswer",
+      "points", "orderIndex", "createdAt", "updatedAt"
     ) VALUES (
       gen_random_uuid()::text,
-      ${exercise.title},
-      ${exercise.description},
-      ${exercise.type}::"ExerciseType",
+      ${topicId},
+      ${exercise.phase}::"Phase",
       ${exercise.category}::"ExerciseCategory",
-      ${exercise.difficulty}::"Difficulty",
-      ${exercise.points},
-      ${exercise.timeLimit || null},
+      ${exercise.type}::"ExerciseType",
+      ${exercise.title},
+      ${exercise.instructions},
       ${JSON.stringify(exercise.content)},
-      ${exercise.correctAnswer || null},
-      ${exercise.options ? JSON.stringify(exercise.options) : null},
-      ${exercise.hints ? JSON.stringify(exercise.hints) : null},
-      ${exercise.explanation || null},
+      ${exercise.correctAnswer ? JSON.stringify(exercise.correctAnswer) : null},
+      ${exercise.points},
       ${exercise.orderIndex},
-      true,
       CURRENT_TIMESTAMP,
       CURRENT_TIMESTAMP
     )
@@ -248,36 +246,50 @@ function getContentStructure(topicName: string, level: string) {
 function getExercisesForContent(content: any, topicName: string, level: string) {
   const exercises = []
   
+  // Map content phase to exercise phase
+  const getPhase = (contentPhase: string) => {
+    // Only pre_class and post_class content gets exercises
+    // Live class exercises are considered PRE_CLASS for preparation
+    if (contentPhase === 'pre_class' || contentPhase === 'live_class') {
+      return 'PRE_CLASS'
+    }
+    return 'AFTER_CLASS'
+  }
+  
   // Different exercise types based on content type and phase
   if (content.type === 'reading' && content.phase === 'pre_class') {
     exercises.push(
       {
         title: `${content.title} - Comprehension Check`,
-        description: 'Test your understanding of the reading material',
+        instructions: 'Test your understanding of the reading material. Choose the best answer.',
         type: 'MULTIPLE_CHOICE',
         category: 'READING',
-        difficulty: level === 'STARTER' ? 'EASY' : level === 'SURVIVOR' ? 'MEDIUM' : 'HARD',
+        phase: getPhase(content.phase),
         points: 10,
         content: {
           question: `What is the main topic discussed in the ${content.title} reading?`,
-          text: 'Choose the best answer based on the reading material.'
+          options: [
+            'Option A: Main concept of the reading',
+            'Option B: A different topic',
+            'Option C: Another unrelated topic',
+            'Option D: Yet another topic'
+          ]
         },
-        options: ['Option A', 'Option B', 'Option C', 'Option D'],
-        correctAnswer: 'Option A',
-        orderIndex: 1
+        correctAnswer: { answer: 'A', text: 'Option A: Main concept of the reading' },
+        orderIndex: exercises.length + 1
       },
       {
         title: `${content.title} - True or False`,
-        description: 'Determine if these statements are true or false',
+        instructions: 'Determine if this statement is true or false based on the reading.',
         type: 'TRUE_FALSE',
         category: 'READING',
-        difficulty: level === 'STARTER' ? 'EASY' : 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 5,
         content: {
           statement: `The reading mentions specific examples of ${topicName.toLowerCase()}.`
         },
-        correctAnswer: 'true',
-        orderIndex: 2
+        correctAnswer: { answer: true },
+        orderIndex: exercises.length + 2
       }
     )
   }
@@ -286,38 +298,36 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
     exercises.push(
       {
         title: `${topicName} - Fill in the Gaps`,
-        description: 'Complete the sentences with the correct grammar form',
+        instructions: 'Complete the sentences with the correct grammar form',
         type: 'GAP_FILL',
         category: 'GRAMMAR',
-        difficulty: level === 'STARTER' ? 'EASY' : level === 'SURVIVOR' ? 'MEDIUM' : 'HARD',
+        phase: getPhase(content.phase),
         points: 15,
         content: {
           text: `I ___ (go) to the ${topicName.toLowerCase()} yesterday.`,
-          gaps: ['went']
+          gaps: [{ position: 1, answer: 'went' }]
         },
-        correctAnswer: 'went',
-        hints: ['Think about the past tense'],
-        orderIndex: 1
+        correctAnswer: { gaps: ['went'] },
+        orderIndex: exercises.length + 1
       },
       {
         title: `${topicName} - Sentence Construction`,
-        description: 'Build grammatically correct sentences',
+        instructions: 'Choose the grammatically correct sentence',
         type: 'MULTIPLE_CHOICE',
         category: 'GRAMMAR',
-        difficulty: level === 'EXPERT' ? 'HARD' : 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 10,
         content: {
-          question: 'Choose the grammatically correct sentence:'
+          question: 'Which sentence is grammatically correct?',
+          options: [
+            'A: She go to shopping yesterday',
+            'B: She went shopping yesterday',
+            'C: She goes to shopping yesterday',
+            'D: She going shopping yesterday'
+          ]
         },
-        options: [
-          'She go to shopping yesterday',
-          'She went shopping yesterday',
-          'She goes to shopping yesterday',
-          'She going shopping yesterday'
-        ],
-        correctAnswer: 'She went shopping yesterday',
-        explanation: 'Use simple past tense for completed actions',
-        orderIndex: 2
+        correctAnswer: { answer: 'B', text: 'She went shopping yesterday' },
+        orderIndex: exercises.length + 2
       }
     )
   }
@@ -326,33 +336,45 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
     exercises.push(
       {
         title: `${topicName} - Word Matching`,
-        description: 'Match words with their definitions',
+        instructions: 'Match words with their definitions',
         type: 'MATCHING',
         category: 'VOCABULARY',
-        difficulty: level === 'STARTER' ? 'EASY' : 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 10,
         content: {
-          pairs: [
-            { word: 'purchase', definition: 'to buy something' },
-            { word: 'receipt', definition: 'proof of payment' },
-            { word: 'discount', definition: 'reduced price' }
+          items: [
+            { id: '1', word: 'purchase', definition: 'to buy something' },
+            { id: '2', word: 'receipt', definition: 'proof of payment' },
+            { id: '3', word: 'discount', definition: 'reduced price' }
           ]
         },
-        orderIndex: 1
+        correctAnswer: {
+          matches: [
+            { wordId: '1', definitionId: '1' },
+            { wordId: '2', definitionId: '2' },
+            { wordId: '3', definitionId: '3' }
+          ]
+        },
+        orderIndex: exercises.length + 1
       },
       {
         title: `${topicName} - Vocabulary in Context`,
-        description: 'Choose the correct word for each sentence',
-        type: 'GAP_FILL',
+        instructions: 'Fill in the blank with the correct word',
+        type: 'MULTIPLE_CHOICE',
         category: 'VOCABULARY',
-        difficulty: 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 12,
         content: {
-          text: 'I need to ___ some groceries from the store.',
-          options: ['purchase', 'sell', 'return', 'exchange']
+          question: 'I need to ___ some groceries from the store.',
+          options: [
+            'A: purchase',
+            'B: sell',
+            'C: return',
+            'D: exchange'
+          ]
         },
-        correctAnswer: 'purchase',
-        orderIndex: 2
+        correctAnswer: { answer: 'A', text: 'purchase' },
+        orderIndex: exercises.length + 2
       }
     )
   }
@@ -360,18 +382,23 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
   if (content.type === 'audio' && content.phase === 'post_class') {
     exercises.push(
       {
-        title: `${topicName} - Speaking Assessment`,
-        description: 'Record your response to the prompt',
+        title: `${topicName} - Speaking Practice`,
+        instructions: 'Record your response to the prompt. Speak for at least 2 minutes.',
         type: 'AUDIO_RECORDING',
         category: 'SPEAKING',
-        difficulty: level === 'STARTER' ? 'EASY' : 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 20,
         content: {
           prompt: `Describe your last experience with ${topicName.toLowerCase()}. Use at least 5 vocabulary words from today's lesson.`,
-          timeLimit: 120
+          recordingTime: 120,
+          tips: [
+            'Speak clearly and at a natural pace',
+            'Use vocabulary from the lesson',
+            'Give specific examples'
+          ]
         },
-        timeLimit: 120,
-        orderIndex: 1
+        correctAnswer: null,
+        orderIndex: exercises.length + 1
       }
     )
   }
@@ -380,16 +407,46 @@ function getExercisesForContent(content: any, topicName: string, level: string) 
     exercises.push(
       {
         title: `${topicName} - Essay Writing`,
-        description: 'Write a short essay on the given topic',
+        instructions: 'Write a short essay on the given topic. Minimum 100 words.',
         type: 'ESSAY',
         category: 'WRITING',
-        difficulty: level === 'EXPERT' ? 'HARD' : 'MEDIUM',
+        phase: getPhase(content.phase),
         points: 25,
         content: {
           prompt: `Write about your personal experience with ${topicName.toLowerCase()}. Include an introduction, body, and conclusion.`,
-          minWords: level === 'STARTER' ? 100 : level === 'SURVIVOR' ? 150 : 200
+          requirements: {
+            minWords: level === 'STARTER' ? 100 : level === 'SURVIVOR' ? 150 : 200,
+            structure: ['introduction', 'body', 'conclusion'],
+            includeVocabulary: true
+          }
         },
-        orderIndex: 1
+        correctAnswer: null,
+        orderIndex: exercises.length + 1
+      }
+    )
+  }
+  
+  // Add listening exercises for audio content in pre-class
+  if (content.type === 'audio' && content.phase === 'pre_class') {
+    exercises.push(
+      {
+        title: `${content.title} - Comprehension`,
+        instructions: 'Answer the following question based on the audio',
+        type: 'MULTIPLE_CHOICE',
+        category: 'LISTENING',
+        phase: getPhase(content.phase),
+        points: 10,
+        content: {
+          question: 'What was the main topic discussed in the audio?',
+          options: [
+            'A: The main topic from the audio',
+            'B: A different topic',
+            'C: Another unrelated topic',
+            'D: Yet another topic'
+          ]
+        },
+        correctAnswer: { answer: 'A', text: 'The main topic from the audio' },
+        orderIndex: exercises.length + 1
       }
     )
   }
