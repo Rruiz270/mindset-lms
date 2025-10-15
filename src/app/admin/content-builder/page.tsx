@@ -160,7 +160,7 @@ export default function ContentBuilderPage() {
                 setLoading(true)
                 setResult(null)
                 try {
-                  const response = await axios.post('/api/admin/populate-all-content')
+                  const response = await axios.post('/api/admin/seed-starter-complete')
                   setResult(response.data)
                   await fetchStats()
                 } catch (error: any) {
