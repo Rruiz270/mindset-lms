@@ -46,6 +46,9 @@ export default function SetupTopicsPage() {
 
   const checkTopicStatus = async () => {
     try {
+      // Only run on client side
+      if (typeof window === 'undefined') return
+      
       const response = await fetch('/api/admin/setup-topics-simple')
       const data = await response.json()
       

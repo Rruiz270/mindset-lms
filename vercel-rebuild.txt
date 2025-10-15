@@ -1,0 +1,8 @@
+# Force Vercel rebuild
+Timestamp: 2024-10-15 14:30:00
+
+Changes included:
+- Fixed calendar week display (Monday start)
+- Added content management system
+- Fixed topics dropdown
+- Added sample content seeding
