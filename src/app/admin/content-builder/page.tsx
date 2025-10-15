@@ -264,20 +264,36 @@ export default function ContentBuilderPage() {
             <CardTitle>Exercise Testing</CardTitle>
           </CardHeader>
           <CardContent>
-            <Button
-              onClick={async () => {
-                try {
-                  const response = await axios.post('/api/admin/seed-exercises-simple')
-                  setResult(response.data)
-                } catch (error: any) {
-                  setResult({ error: error.message })
-                }
-              }}
-              variant="secondary"
-              className="w-full"
-            >
-              Test Simple Exercise Creation
-            </Button>
+            <div className="space-y-2">
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.post('/api/admin/seed-exercises-simple')
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="secondary"
+                className="w-full"
+              >
+                Test Simple Exercise Creation
+              </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    const response = await axios.get('/api/admin/debug-exercise-creation')
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="outline"
+                className="w-full"
+              >
+                Debug Exercise Creation
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
