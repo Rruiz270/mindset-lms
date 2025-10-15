@@ -123,7 +123,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Clear all exercises first
+    // Clear submissions first, then exercises
+    await prisma.$executeRaw`
+      DELETE FROM "Submission"
+    `
     await prisma.$executeRaw`
       DELETE FROM "Exercise"
     `

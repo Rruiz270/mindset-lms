@@ -32,12 +32,19 @@ export async function POST(req: Request) {
     // For each topic, create comprehensive content
     for (const topic of topics as any[]) {
       try {
-        // Clear existing content and exercises for this topic
+        // Clear existing submissions, exercises, and content for this topic
+        // First delete submissions that reference exercises for this topic
         await prisma.$executeRaw`
-          DELETE FROM "Content" WHERE "topicId" = ${topic.id}
+          DELETE FROM "Submission" 
+          WHERE "exerciseId" IN (
+            SELECT id FROM "Exercise" WHERE "topicId" = ${topic.id}
+          )
         `
         await prisma.$executeRaw`
           DELETE FROM "Exercise" WHERE "topicId" = ${topic.id}
+        `
+        await prisma.$executeRaw`
+          DELETE FROM "Content" WHERE "topicId" = ${topic.id}
         `
 
         // Define content structure based on topic type
