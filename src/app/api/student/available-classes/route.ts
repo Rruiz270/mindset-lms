@@ -30,8 +30,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Start date and end date required' }, { status: 400 });
     }
 
-    const start = new Date(startDate);
-    const end = new Date(endDate);
+    // Parse dates ensuring local timezone (avoid UTC conversion)
+    const parseLocalDate = (dateStr: string) => {
+      const [year, month, day] = dateStr.split('-').map(Number);
+      return new Date(year, month - 1, day); // month is 0-based
+    };
+    
+    const start = parseLocalDate(startDate);
+    const end = parseLocalDate(endDate);
 
     // Get available teachers (for now, using mock teachers)
     const teachers = [

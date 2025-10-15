@@ -46,8 +46,15 @@ export default function EnhancedBookingCalendar({ studentLevel, onBookingComplet
       const startDate = startOfMonth(currentDate);
       const endDate = endOfMonth(addDays(currentDate, 60)); // Next 2 months
 
+      // Format dates as YYYY-MM-DD to avoid timezone issues
+      const formatDate = (date: Date) => {
+        return date.getFullYear() + '-' + 
+               String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+               String(date.getDate()).padStart(2, '0');
+      };
+
       const response = await fetch(
-        `/api/student/available-classes?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`
+        `/api/student/available-classes?startDate=${formatDate(startDate)}&endDate=${formatDate(endDate)}`
       );
       
       if (response.ok) {
