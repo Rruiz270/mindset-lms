@@ -20,6 +20,7 @@ import {
   Upload,
   Database,
   BookOpen,
+  Library,
 } from 'lucide-react'
 
 
@@ -61,7 +62,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Main Admin Tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Tile 1: Dashboard Admin */}
           <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-blue-200"
                 onClick={() => router.push('/admin/dashboard')}>
@@ -112,7 +113,32 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
 
-          {/* Tile 3: Teacher Registration */}
+          {/* Tile 3: Content Management */}
+          <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-indigo-200"
+                onClick={() => router.push('/admin/content')}>
+            <CardHeader className="pb-4">
+              <div className="flex items-start justify-between">
+                <div className="p-3 bg-indigo-100 rounded-lg">
+                  <Library className="h-8 w-8 text-indigo-600" />
+                </div>
+                <BookOpen className="h-5 w-5 text-gray-400" />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardTitle className="text-xl mb-2">Content Management</CardTitle>
+              <CardDescription className="text-sm text-gray-600">
+                Organize and manage pre-class, live class, and post-class content
+                for all topics across different levels
+              </CardDescription>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <div className="text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Pre-Class Materials</div>
+                <div className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded">Live Class Content</div>
+                <div className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded">Post-Class Activities</div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Tile 5: Teacher Registration */}
           <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-purple-200"
                 onClick={() => router.push('/admin/teachers')}>
             <CardHeader className="pb-4">
@@ -137,7 +163,7 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
 
-          {/* Tile 4: Settings & Rules */}
+          {/* Tile 6: Settings & Rules */}
           <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-orange-200"
                 onClick={() => router.push('/admin/settings')}>
             <CardHeader className="pb-4">

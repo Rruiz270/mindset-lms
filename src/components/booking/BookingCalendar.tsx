@@ -77,8 +77,8 @@ export default function BookingCalendar({ studentLevel, onBookingComplete }: Boo
   const fetchAvailableSlots = async () => {
     setLoading(true);
     try {
-      const start = startOfWeek(selectedDate);
-      const end = endOfWeek(selectedDate);
+      const start = startOfWeek(selectedDate, { weekStartsOn: 1 });
+      const end = endOfWeek(selectedDate, { weekStartsOn: 1 });
       
       const params = new URLSearchParams({
         startDate: start.toISOString(),
@@ -138,7 +138,7 @@ export default function BookingCalendar({ studentLevel, onBookingComplete }: Boo
   };
 
   const weekDays = Array.from({ length: 7 }, (_, i) => {
-    const date = addDays(startOfWeek(selectedDate), i);
+    const date = addDays(startOfWeek(selectedDate, { weekStartsOn: 1 }), i);
     return {
       date,
       dayName: format(date, 'EEE'),
@@ -199,7 +199,7 @@ export default function BookingCalendar({ studentLevel, onBookingComplete }: Boo
               Previous Week
             </Button>
             <span className="text-sm font-medium">
-              {format(startOfWeek(selectedDate), 'MMM d')} - {format(endOfWeek(selectedDate), 'MMM d, yyyy')}
+              {format(startOfWeek(selectedDate, { weekStartsOn: 1 }), 'MMM d')} - {format(endOfWeek(selectedDate, { weekStartsOn: 1 }), 'MMM d, yyyy')}
             </span>
             <Button
               variant="outline"

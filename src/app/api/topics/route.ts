@@ -35,7 +35,13 @@ export async function GET(request: NextRequest) {
         id: true,
         name: true,
         description: true,
-        orderIndex: true
+        orderIndex: true,
+        contents: {
+          orderBy: [
+            { phase: 'asc' },
+            { order: 'asc' }
+          ]
+        }
       }
     })
 

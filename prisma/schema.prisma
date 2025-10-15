@@ -81,6 +81,7 @@ model Topic {
   exercises       Exercise[]
   liveClassSlides Slide[]
   progress        Progress[]
+  contents        Content[]
 }
 
 model Booking {
@@ -235,6 +236,41 @@ enum ExerciseType {
   DRAG_DROP
   CROSSWORD
   FLASHCARD
+}
+
+enum ContentType {
+  reading
+  video
+  audio
+  exercise
+  quiz
+  discussion
+}
+
+enum ContentPhase {
+  pre_class
+  live_class
+  post_class
+}
+
+model Content {
+  id              String       @id @default(cuid())
+  title           String
+  description     String
+  type            ContentType
+  phase           ContentPhase
+  duration        Int          @default(15) // in minutes
+  resourceUrl     String?
+  order           Int          @default(1)
+  level           String
+  topicId         String
+  topic           Topic        @relation(fields: [topicId], references: [id])
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  
+  @@index([topicId])
+  @@index([level])
+  @@index([topicId, phase])
 }
 
 model AttendanceLog {
