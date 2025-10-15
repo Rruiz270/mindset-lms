@@ -185,21 +185,57 @@ export default function TestContentPage() {
               </div>
             )}
 
-            <div className="mt-6 flex gap-4">
-              <Button 
-                variant="outline"
-                onClick={() => router.push('/admin/initialize')}
-                className="flex-1"
-              >
-                Back to Initialize
-              </Button>
-              <Button 
-                variant="outline"
-                onClick={() => router.push('/admin')}
-                className="flex-1"
-              >
-                Back to Admin
-              </Button>
+            <div className="mt-6 space-y-4">
+              <div className="flex gap-4">
+                <Button 
+                  onClick={async () => {
+                    try {
+                      const response = await fetch('/api/admin/fix-content-topics')
+                      const data = await response.json()
+                      setResults(data)
+                    } catch (error) {
+                      console.error(error)
+                    }
+                  }}
+                  className="flex-1"
+                  variant="secondary"
+                >
+                  Check Topic IDs
+                </Button>
+                <Button 
+                  onClick={async () => {
+                    if (confirm('This will update all content to use the correct Travel topic ID. Continue?')) {
+                      try {
+                        const response = await fetch('/api/admin/fix-content-topics', { method: 'POST' })
+                        const data = await response.json()
+                        setResults(data)
+                      } catch (error) {
+                        console.error(error)
+                      }
+                    }
+                  }}
+                  className="flex-1"
+                  variant="destructive"
+                >
+                  Fix Topic IDs
+                </Button>
+              </div>
+              <div className="flex gap-4">
+                <Button 
+                  variant="outline"
+                  onClick={() => router.push('/admin/initialize')}
+                  className="flex-1"
+                >
+                  Back to Initialize
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => router.push('/admin')}
+                  className="flex-1"
+                >
+                  Back to Admin
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
