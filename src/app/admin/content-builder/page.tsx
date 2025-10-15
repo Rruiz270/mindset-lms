@@ -357,6 +357,14 @@ export default function ContentBuilderPage() {
         {/* Actions */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button
+            variant="default"
+            onClick={() => router.push('/admin/content-review')}
+            className="w-full"
+          >
+            <FileText className="h-4 w-4 mr-2" />
+            Review Content Structure
+          </Button>
+          <Button
             variant="outline"
             onClick={() => router.push('/admin/content')}
             className="w-full"

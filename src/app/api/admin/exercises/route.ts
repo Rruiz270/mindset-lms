@@ -13,28 +13,50 @@ export async function GET(req: Request) {
 
     const { searchParams } = new URL(req.url)
     const level = searchParams.get('level') || 'STARTER'
+    const topicId = searchParams.get('topicId')
 
     // Get exercises with their topics
-    const exercises = await prisma.$queryRaw`
-      SELECT 
-        e.id,
-        e."topicId",
-        e.phase,
-        e.category,
-        e.type,
-        e.title,
-        e.instructions,
-        e.content,
-        e."correctAnswer",
-        e.points,
-        e."orderIndex",
-        t.name as topic_name,
-        t.level as topic_level
-      FROM "Exercise" e
-      JOIN "Topic" t ON e."topicId" = t.id
-      WHERE t.level = ${level}::"Level"
-      ORDER BY t."orderIndex", e.phase, e."orderIndex"
-    `
+    let exercises
+    if (topicId) {
+      exercises = await prisma.$queryRaw`
+        SELECT 
+          e.id,
+          e."topicId",
+          e.phase,
+          e.category,
+          e.type,
+          e.title,
+          e.instructions,
+          e.content,
+          e."correctAnswer",
+          e.points,
+          e."orderIndex"
+        FROM "Exercise" e
+        WHERE e."topicId" = ${topicId}
+        ORDER BY e.phase, e."orderIndex"
+      `
+    } else {
+      exercises = await prisma.$queryRaw`
+        SELECT 
+          e.id,
+          e."topicId",
+          e.phase,
+          e.category,
+          e.type,
+          e.title,
+          e.instructions,
+          e.content,
+          e."correctAnswer",
+          e.points,
+          e."orderIndex",
+          t.name as topic_name,
+          t.level as topic_level
+        FROM "Exercise" e
+        JOIN "Topic" t ON e."topicId" = t.id
+        WHERE t.level = ${level}::"Level"
+        ORDER BY t."orderIndex", e.phase, e."orderIndex"
+      `
+    }
 
     // Format the results
     const formattedExercises = (exercises as any[]).map(ex => ({
