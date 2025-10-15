@@ -13,7 +13,8 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:seed-starter": "tsx prisma/seed-starter-topics.ts",
     "db:setup": "prisma db push && prisma generate",
-    "seed:starter": "tsx scripts/seed-starter-content.ts"
+    "seed:starter": "tsx scripts/seed-starter-content.ts",
+    "seed:content": "tsx prisma/seed-content.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
