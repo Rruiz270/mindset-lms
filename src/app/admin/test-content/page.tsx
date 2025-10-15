@@ -222,6 +222,38 @@ export default function TestContentPage() {
               </div>
               <div className="flex gap-4">
                 <Button 
+                  onClick={async () => {
+                    try {
+                      const response = await fetch('/api/admin/test-exercise-creation')
+                      const data = await response.json()
+                      setResults(data)
+                    } catch (error) {
+                      console.error(error)
+                    }
+                  }}
+                  className="flex-1"
+                  variant="outline"
+                >
+                  Test Exercise Structure
+                </Button>
+                <Button 
+                  onClick={async () => {
+                    try {
+                      const response = await fetch('/api/admin/test-exercise-creation', { method: 'POST' })
+                      const data = await response.json()
+                      setResults(data)
+                    } catch (error) {
+                      console.error(error)
+                    }
+                  }}
+                  className="flex-1"
+                  variant="secondary"
+                >
+                  Create Test Exercises
+                </Button>
+              </div>
+              <div className="flex gap-4">
+                <Button 
                   variant="outline"
                   onClick={() => router.push('/admin/initialize')}
                   className="flex-1"
