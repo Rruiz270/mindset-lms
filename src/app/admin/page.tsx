@@ -287,6 +287,13 @@ export default function AdminDashboard() {
                 <BookOpen className="h-6 w-6 mx-auto mb-2 text-green-600" />
                 <span className="text-sm font-medium text-green-700">Setup Topics</span>
               </button>
+              <button 
+                onClick={() => router.push('/admin/initialize')}
+                className="p-4 text-center hover:bg-indigo-50 rounded-lg transition-colors border-2 border-indigo-200"
+              >
+                <Database className="h-6 w-6 mx-auto mb-2 text-indigo-600" />
+                <span className="text-sm font-medium text-indigo-700">Initialize DB</span>
+              </button>
             </div>
           </CardContent>
         </Card>
