@@ -195,7 +195,7 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-9 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               <button 
                 onClick={() => router.push('/admin/users')}
                 className="p-4 text-center hover:bg-blue-50 rounded-lg transition-colors border-2 border-blue-200"
@@ -225,67 +225,11 @@ export default function AdminDashboard() {
                 <span className="text-sm font-medium text-orange-700">Update Hours</span>
               </button>
               <button 
-                onClick={() => router.push('/admin/live-class-content')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
+                onClick={() => router.push('/admin/content')}
+                className="p-4 text-center hover:bg-indigo-50 rounded-lg transition-colors border-2 border-indigo-200"
               >
-                <FileText className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">Live Class Content</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/bookings')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Calendar className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">View Bookings</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/reports')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <BarChart3 className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">Generate Reports</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/communications')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Users className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">Communications</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/attendance')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <UserCheck className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">Attendance Reports</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/database')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <FileText className="h-6 w-6 mx-auto mb-2 text-gray-600" />
-                <span className="text-sm">View Database</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/setup')}
-                className="p-4 text-center hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Settings className="h-6 w-6 mx-auto mb-2 text-orange-600" />
-                <span className="text-sm">Setup Database</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/setup-demo')}
-                className="p-4 text-center hover:bg-red-50 rounded-lg transition-colors border-2 border-red-200"
-              >
-                <Users className="h-6 w-6 mx-auto mb-2 text-red-600" />
-                <span className="text-sm font-medium text-red-700">Fix Demo Accounts</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/setup/topics')}
-                className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
-              >
-                <BookOpen className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                <span className="text-sm font-medium text-green-700">Setup Topics</span>
+                <Library className="h-6 w-6 mx-auto mb-2 text-indigo-600" />
+                <span className="text-sm font-medium text-indigo-700">Content Mgmt</span>
               </button>
               <button 
                 onClick={() => router.push('/admin/initialize')}

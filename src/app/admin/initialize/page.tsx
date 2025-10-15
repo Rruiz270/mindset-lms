@@ -34,6 +34,21 @@ export default function InitializePage() {
     setResults([])
     
     try {
+      // Step 0: Ensure Content table exists
+      setCurrentStep('Creating Content table...')
+      addResult('Creating Content table if needed...', true)
+      
+      const contentTableResponse = await fetch('/api/admin/create-content-table', {
+        method: 'POST',
+      })
+      const contentTableData = await contentTableResponse.json()
+      
+      if (contentTableData.success) {
+        addResult(`✅ ${contentTableData.message}`, true)
+      } else {
+        addResult(`❌ Failed to create Content table: ${contentTableData.error || 'Unknown error'}`, false)
+      }
+
       // Step 1: Setup Topics
       setCurrentStep('Setting up topics...')
       addResult('Setting up topics...', true)
