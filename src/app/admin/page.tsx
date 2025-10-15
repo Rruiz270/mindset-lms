@@ -21,6 +21,7 @@ import {
   Database,
   BookOpen,
   Library,
+  Sparkles
 } from 'lucide-react'
 
 
@@ -134,6 +135,31 @@ export default function AdminDashboard() {
                 <div className="text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Pre-Class Materials</div>
                 <div className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded">Live Class Content</div>
                 <div className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded">Post-Class Activities</div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Tile 4: Content Builder */}
+          <Card className="hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-yellow-200"
+                onClick={() => router.push('/admin/content-builder')}>
+            <CardHeader className="pb-4">
+              <div className="flex items-start justify-between">
+                <div className="p-3 bg-yellow-100 rounded-lg">
+                  <Database className="h-8 w-8 text-yellow-600" />
+                </div>
+                <Sparkles className="h-5 w-5 text-gray-400" />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <CardTitle className="text-xl mb-2">Content Builder</CardTitle>
+              <CardDescription className="text-sm text-gray-600">
+                Build comprehensive content and exercises for all levels with automated
+                content generation and exercise creation
+              </CardDescription>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <div className="text-xs bg-yellow-50 text-yellow-700 px-2 py-1 rounded">Auto Generate</div>
+                <div className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded">All Levels</div>
+                <div className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded">Exercise Creation</div>
               </div>
             </CardContent>
           </Card>
