@@ -338,6 +338,20 @@ export default function ContentBuilderPage() {
               <Button
                 onClick={async () => {
                   try {
+                    const response = await axios.post('/api/admin/test-seed-debug', { level: 'STARTER' })
+                    setResult(response.data)
+                  } catch (error: any) {
+                    setResult({ error: error.message })
+                  }
+                }}
+                variant="outline"
+                className="w-full"
+              >
+                Test Database Operations
+              </Button>
+              <Button
+                onClick={async () => {
+                  try {
                     const response = await axios.post('/api/admin/seed-minimal', { level: selectedLevel })
                     setResult(response.data)
                     await fetchStats()
