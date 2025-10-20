@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -51,6 +51,8 @@ model User {
   teacherAvailability Availability[]
   attendanceLogs  AttendanceLog[]
   studentStats    StudentStats?
+  accounts        Account[]
+  contentProgress ContentProgress[]
 }
 
 model Package {
@@ -261,15 +263,16 @@ model Content {
   phase           ContentPhase
   duration        Int          @default(15) // in minutes
   resourceUrl     String?
-  order           Int          @default(1)
-  level           String
+  orderIndex      Int          @default(1)
   topicId         String
   topic           Topic        @relation(fields: [topicId], references: [id])
   createdAt       DateTime     @default(now())
   updatedAt       DateTime     @updatedAt
   
+  // Relations
+  contentProgress ContentProgress[]
+  
   @@index([topicId])
-  @@index([level])
   @@index([topicId, phase])
 }
 
@@ -297,4 +300,43 @@ model StudentStats {
   lastUpdated     DateTime @default(now())
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model ContentProgress {
+  id              String    @id @default(cuid())
+  userId          String
+  contentId       String
+  completed       Boolean   @default(false)
+  timeSpent       Int       @default(0) // in seconds
+  completedAt     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Relations
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content         Content   @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, contentId])
+  @@index([userId])
+  @@index([contentId])
+  @@index([userId, completed])
 }

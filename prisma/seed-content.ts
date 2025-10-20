@@ -1,24 +1,12 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { prisma } from '../src/lib/prisma'
 
 async function main() {
   console.log('🌱 Seeding content and exercises...')
 
   try {
-    // Get Starter level ID
-    const starterLevel = await prisma.level.findFirst({
-      where: { name: 'STARTER' }
-    })
-
-    if (!starterLevel) {
-      console.error('Starter level not found!')
-      return
-    }
-
     // Get all starter topics
     const topics = await prisma.topic.findMany({
-      where: { levelId: starterLevel.id },
+      where: { level: 'STARTER' },
       orderBy: { orderIndex: 'asc' }
     })
 
@@ -26,7 +14,7 @@ async function main() {
 
     // Content and exercises for each topic
     const topicData = {
-      'Getting a Job': {
+      'Work: Getting a Job': {
         content: [
           {
             id: 'cont_job_1',
@@ -63,7 +51,7 @@ async function main() {
           {
             id: 'ex_job_1',
             type: 'MULTIPLE_CHOICE',
-            category: 'vocabulary',
+            category: 'VOCABULARY',
             phase: 'PRE_CLASS',
             title: 'Job Vocabulary Quiz',
             instructions: 'Choose the correct definition',
@@ -83,7 +71,7 @@ async function main() {
           {
             id: 'ex_job_2',
             type: 'GAP_FILL',
-            category: 'grammar',
+            category: 'GRAMMAR',
             phase: 'PRE_CLASS',
             title: 'Present Perfect Practice',
             instructions: 'Fill in the blanks with the correct form',
@@ -98,7 +86,7 @@ async function main() {
           {
             id: 'ex_job_3',
             type: 'ESSAY',
-            category: 'writing',
+            category: 'WRITING',
             phase: 'AFTER_CLASS',
             title: 'Cover Letter Writing',
             instructions: 'Write a cover letter for your dream job',
@@ -149,7 +137,7 @@ async function main() {
           {
             id: 'ex_shop_1',
             type: 'MULTIPLE_CHOICE',
-            category: 'vocabulary',
+            category: 'VOCABULARY',
             phase: 'PRE_CLASS',
             title: 'Shopping Places',
             instructions: 'Where can you buy these items?',
@@ -164,7 +152,7 @@ async function main() {
           {
             id: 'ex_shop_2',
             type: 'TRUE_FALSE',
-            category: 'listening',
+            category: 'LISTENING',
             phase: 'PRE_CLASS',
             title: 'Price Expressions',
             instructions: 'Are these expressions correct?',
@@ -178,7 +166,7 @@ async function main() {
           {
             id: 'ex_shop_3',
             type: 'AUDIO_RECORDING',
-            category: 'speaking',
+            category: 'SPEAKING',
             phase: 'AFTER_CLASS',
             title: 'At the Store',
             instructions: 'Record a shopping conversation',
@@ -192,7 +180,7 @@ async function main() {
           }
         ]
       },
-      'Daily Commute': {
+      'Travel: Going Places': {
         content: [
           {
             id: 'cont_comm_1',
@@ -229,7 +217,7 @@ async function main() {
           {
             id: 'ex_comm_1',
             type: 'MATCHING',
-            category: 'vocabulary',
+            category: 'VOCABULARY',
             phase: 'PRE_CLASS',
             title: 'Match Transportation',
             instructions: 'Match the transportation with its description',
@@ -247,7 +235,7 @@ async function main() {
           {
             id: 'ex_comm_2',
             type: 'MULTIPLE_CHOICE',
-            category: 'grammar',
+            category: 'GRAMMAR',
             phase: 'PRE_CLASS',
             title: 'Direction Prepositions',
             instructions: 'Choose the correct word',
@@ -262,7 +250,7 @@ async function main() {
           {
             id: 'ex_comm_3',
             type: 'ESSAY',
-            category: 'writing',
+            category: 'WRITING',
             phase: 'AFTER_CLASS',
             title: 'My Commute Story',
             instructions: 'Describe your daily journey',
@@ -276,7 +264,7 @@ async function main() {
           }
         ]
       },
-      'Leisure Time': {
+      'Free Time: Free-time Activities': {
         content: [
           {
             id: 'cont_leisure_1',
@@ -313,7 +301,7 @@ async function main() {
           {
             id: 'ex_leisure_1',
             type: 'MULTIPLE_CHOICE',
-            category: 'vocabulary',
+            category: 'VOCABULARY',
             phase: 'PRE_CLASS',
             title: 'Hobby Vocabulary',
             instructions: 'Choose the correct activity',
@@ -328,7 +316,7 @@ async function main() {
           {
             id: 'ex_leisure_2',
             type: 'GAP_FILL',
-            category: 'grammar',
+            category: 'GRAMMAR',
             phase: 'PRE_CLASS',
             title: 'Present Simple Habits',
             instructions: 'Complete the sentence',
@@ -343,7 +331,7 @@ async function main() {
           {
             id: 'ex_leisure_3',
             type: 'AUDIO_RECORDING',
-            category: 'speaking',
+            category: 'SPEAKING',
             phase: 'AFTER_CLASS',
             title: 'My Favorite Hobby',
             instructions: 'Talk about what you love to do',
