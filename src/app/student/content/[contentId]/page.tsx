@@ -64,9 +64,18 @@ export default function ContentViewerPage() {
       const response = await axios.get(`/api/student/content/${params.contentId}`)
       setContent(response.data)
       
-      // Check if already completed
-      const progressResponse = await axios.get(`/api/student/progress/${params.contentId}`)
+      // Check if already completed using new content progress API
+      const progressResponse = await axios.get(`/api/student/content-progress?contentId=${params.contentId}`)
       setCompleted(progressResponse.data.completed || false)
+      
+      // Track view (not completion)
+      await axios.post('/api/student/content-progress', {
+        contentId: params.contentId,
+        completed: false,
+        timeSpent: 0
+      }).catch(() => {
+        // Ignore errors for view tracking
+      })
     } catch (error) {
       console.error('Error fetching content:', error)
     } finally {
@@ -76,10 +85,19 @@ export default function ContentViewerPage() {
 
   const markAsComplete = async () => {
     try {
+      // Track content progress
+      await axios.post('/api/student/content-progress', {
+        contentId: params.contentId,
+        completed: true,
+        timeSpent
+      })
+      
+      // Also update topic-level progress
       await axios.post('/api/student/progress/complete', {
         contentId: params.contentId,
         timeSpent
       })
+      
       setCompleted(true)
       
       // Navigate to exercises if available

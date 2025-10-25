@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
 import { authOptions } from '@/lib/auth';
 import { z } from 'zod';
+import { GoogleCalendarService, getGoogleAccessToken } from '@/lib/google-calendar';
 
 const createBookingSchema = z.object({
   teacherId: z.string(),
@@ -167,6 +168,65 @@ export async function POST(request: Request) {
       );
     }
 
+    // Get teacher's data for Google Calendar
+    const teacher = await prisma.user.findUnique({
+      where: { id: validatedData.teacherId },
+      include: {
+        accounts: {
+          where: { provider: 'google' },
+        },
+      },
+    });
+
+    // Get student's data
+    const student = await prisma.user.findUnique({
+      where: { id: session.user.id },
+    });
+
+    // Get topic data
+    const topic = await prisma.topic.findUnique({
+      where: { id: validatedData.topicId },
+    });
+
+    if (!teacher || !student || !topic) {
+      return NextResponse.json(
+        { error: 'Invalid data' },
+        { status: 400 }
+      );
+    }
+
+    let googleEventId: string | null = null;
+    let googleMeetLink: string | null = null;
+
+    // Try to create Google Calendar event if teacher has Google account connected
+    if (teacher.accounts.length > 0 && teacher.accounts[0].refresh_token) {
+      try {
+        const accessToken = await getGoogleAccessToken(teacher.accounts[0].refresh_token);
+        const calendarService = new GoogleCalendarService(accessToken);
+        
+        // Calculate end time (60 minutes after start)
+        const endTime = new Date(scheduledTime);
+        endTime.setMinutes(endTime.getMinutes() + 60);
+
+        const eventResult = await calendarService.createEvent({
+          title: 'Mindset English Class',
+          description: `Join your English class with ${teacher.name}`,
+          startTime: scheduledTime,
+          endTime: endTime,
+          studentEmail: student.email,
+          teacherEmail: teacher.email,
+          topicName: topic.name,
+          studentLevel: student.level || 'STARTER',
+        });
+
+        googleEventId = eventResult.eventId;
+        googleMeetLink = eventResult.meetLink || null;
+      } catch (error) {
+        console.error('Failed to create Google Calendar event:', error);
+        // Continue without Google Calendar integration
+      }
+    }
+
     // Create the booking
     const booking = await prisma.booking.create({
       data: {
@@ -175,6 +235,8 @@ export async function POST(request: Request) {
         topicId: validatedData.topicId,
         scheduledAt: scheduledTime,
         status: 'SCHEDULED',
+        googleEventId,
+        googleMeetLink,
       },
       include: {
         student: {

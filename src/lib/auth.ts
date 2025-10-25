@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
@@ -15,6 +16,18 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error",
   },
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+          scope: "openid email profile https://www.googleapis.com/auth/calendar.events",
+        },
+      },
+    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -56,12 +69,18 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id
         token.role = user.role
         token.level = user.level
       }
+      
+      // Store the refresh token from initial sign in
+      if (account?.refresh_token) {
+        token.refreshToken = account.refresh_token
+      }
+      
       return token
     },
     async session({ session, token }) {
@@ -69,6 +88,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id as string
         session.user.role = token.role as string
         session.user.level = token.level as string
+        session.user.refreshToken = token.refreshToken as string
       }
       return session
     },

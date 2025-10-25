@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
 import { authOptions } from '@/lib/auth';
+import { GoogleCalendarService, getGoogleAccessToken } from '@/lib/google-calendar';
 
 export async function GET(
   request: Request,
@@ -79,6 +80,15 @@ export async function PATCH(
 
     const booking = await prisma.booking.findUnique({
       where: { id: params.id },
+      include: {
+        teacher: {
+          include: {
+            accounts: {
+              where: { provider: 'google' },
+            },
+          },
+        },
+      },
     });
 
     if (!booking) {
@@ -130,6 +140,21 @@ export async function PATCH(
             },
           },
         });
+      }
+
+      // Delete Google Calendar event if exists
+      if (booking.googleEventId && booking.teacher.accounts.length > 0) {
+        try {
+          const refreshToken = booking.teacher.accounts[0].refresh_token;
+          if (refreshToken) {
+            const accessToken = await getGoogleAccessToken(refreshToken);
+            const calendarService = new GoogleCalendarService(accessToken);
+            await calendarService.deleteEvent(booking.googleEventId);
+          }
+        } catch (error) {
+          console.error('Failed to delete Google Calendar event:', error);
+          // Continue with cancellation even if Google Calendar fails
+        }
       }
     }
 
