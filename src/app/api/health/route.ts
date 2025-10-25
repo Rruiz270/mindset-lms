@@ -12,6 +12,8 @@ export async function GET() {
       where: { email: 'admin@mindset.com' }
     })
     
+    let createdUsers = 0
+    
     if (!adminUser) {
       // Create demo users if they don't exist
       const hashedPassword = await bcrypt.hash('admin123', 12)
@@ -25,6 +27,7 @@ export async function GET() {
           level: 'STARTER'
         }
       })
+      createdUsers++
       
       // Create demo student
       const studentPassword = await bcrypt.hash('student123', 12)
@@ -37,6 +40,7 @@ export async function GET() {
           level: 'STARTER'
         }
       })
+      createdUsers++
       
       // Create demo teacher
       const teacherPassword = await bcrypt.hash('teacher123', 12)
@@ -49,12 +53,25 @@ export async function GET() {
           level: 'STARTER'
         }
       })
+      createdUsers++
     }
+    
+    // Get all users for debugging
+    const allUsers = await prisma.user.findMany({
+      select: {
+        email: true,
+        role: true,
+        name: true,
+        createdAt: true
+      }
+    })
     
     return NextResponse.json({ 
       status: 'healthy',
       database: 'connected',
-      users: 'seeded'
+      usersCreated: createdUsers,
+      totalUsers: allUsers.length,
+      users: allUsers
     })
   } catch (error) {
     console.error('Health check failed:', error)
