@@ -562,10 +562,10 @@ export default function TeacherContentPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">All Levels</SelectItem>
-                        <SelectItem value="starter">Starter</SelectItem>
-                        <SelectItem value="basic">Basic</SelectItem>
-                        <SelectItem value="intermediate">Intermediate</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
+                        <SelectItem value="STARTER">Starter</SelectItem>
+                        <SelectItem value="SURVIVOR">Survivor</SelectItem>
+                        <SelectItem value="EXPLORER">Explorer</SelectItem>
+                        <SelectItem value="EXPERT">Expert</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

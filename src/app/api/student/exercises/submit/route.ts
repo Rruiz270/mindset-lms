@@ -65,22 +65,16 @@ export async function POST(req: Request) {
       `
     } else {
       // Create new submission
-      await prisma.$executeRaw`
-        INSERT INTO "Submission" (
-          id, "userId", "exerciseId", answer, 
-          score, feedback, "submittedAt", "createdAt", "updatedAt"
-        ) VALUES (
-          gen_random_uuid()::text,
-          ${session.user.id},
-          ${exerciseId},
-          ${JSON.stringify(answer)}::jsonb,
-          ${score},
-          ${isCorrect ? 'Correct!' : ex.type === 'ESSAY' || ex.type === 'AUDIO_RECORDING' ? 'Awaiting teacher review' : 'Review the correct answer'},
-          CURRENT_TIMESTAMP,
-          CURRENT_TIMESTAMP,
-          CURRENT_TIMESTAMP
-        )
-      `
+      const feedback = isCorrect ? 'Correct!' : (ex.type === 'ESSAY' || ex.type === 'AUDIO_RECORDING') ? 'Awaiting teacher review' : 'Review the correct answer'
+      await prisma.submission.create({
+        data: {
+          userId: session.user.id,
+          exerciseId,
+          answer: answer as any,
+          score,
+          feedback,
+        },
+      })
     }
 
     return NextResponse.json({

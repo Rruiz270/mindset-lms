@@ -21,8 +21,7 @@ import {
   CheckCircle,
   XCircle,
   Clock,
-  MessageSquare,
-  Eye
+  MessageSquare
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -351,27 +350,57 @@ export default function AdminUsersPage() {
                       
                       {user.role === 'STUDENT' && (
                         <div className="flex flex-col gap-2">
-                          <Button 
-                            variant="outline" 
+                          <select
+                            value={user.level || ''}
+                            onChange={async (e) => {
+                              const newLevel = e.target.value;
+                              try {
+                                const res = await fetch('/api/admin/users', {
+                                  method: 'PUT',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({ userId: user.id, action: 'updateLevel', level: newLevel }),
+                                });
+                                if (res.ok) {
+                                  fetchUsers();
+                                }
+                              } catch (err) {
+                                console.error('Error updating level:', err);
+                              }
+                            }}
+                            className="border border-gray-300 rounded-md px-2 py-1 text-sm bg-white"
+                          >
+                            <option value="">Set Level</option>
+                            <option value="STARTER">Starter</option>
+                            <option value="SURVIVOR">Survivor</option>
+                            <option value="EXPLORER">Explorer</option>
+                            <option value="EXPERT">Expert</option>
+                          </select>
+                          <Button
+                            variant="outline"
                             size="sm"
-                            onClick={() => {
-                              const details = {
-                                name: user.name,
-                                email: user.email,
-                                phone: user.phone || 'Not provided',
-                                studentId: user.studentId || 'N/A',
-                                level: user.level || 'Not set',
-                                remainingHours: user.remainingHours ?? 'Not set',
-                                comments: user.comments || 'No comments',
-                                status: user.isActive ? 'Active' : 'Inactive',
-                                joinedDate: formatDate(user.createdAt)
-                              };
-                              
-                              alert(`Student Details:\n\nName: ${details.name}\nEmail: ${details.email}\nPhone: ${details.phone}\nStudent ID: ${details.studentId}\nLevel: ${details.level}\nRemaining Hours: ${details.remainingHours}\nStatus: ${details.status}\nJoined: ${details.joinedDate}\n\nComments:\n${details.comments}`);
+                            onClick={async () => {
+                              const lessons = prompt('How many lesson credits to add?', '20');
+                              if (!lessons) return;
+                              try {
+                                const res = await fetch('/api/admin/users', {
+                                  method: 'PUT',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({
+                                    userId: user.id,
+                                    action: 'addPackage',
+                                    totalLessons: parseInt(lessons),
+                                    validMonths: 6,
+                                  }),
+                                });
+                                if (res.ok) {
+                                  fetchUsers();
+                                }
+                              } catch (err) {
+                                console.error('Error adding package:', err);
+                              }
                             }}
                           >
-                            <Eye className="h-4 w-4 mr-2" />
-                            View Details
+                            + Add Credits
                           </Button>
                         </div>
                       )}

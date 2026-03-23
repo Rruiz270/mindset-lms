@@ -17,17 +17,22 @@ export default function Navbar() {
           { href: '/student', label: 'Dashboard', icon: Home },
           { href: '/student/book', label: 'Book Class', icon: Calendar },
           { href: '/student/exercises', label: 'Exercises', icon: BookOpen },
+          { href: '/student/content', label: 'Slides', icon: BookOpen },
           { href: '/student/progress', label: 'Progress', icon: Users },
         ];
       case 'TEACHER':
         return [
           { href: '/teacher', label: 'Dashboard', icon: Home },
+          { href: '/teacher/classes', label: 'Classes', icon: Calendar },
           { href: '/teacher/availability', label: 'Availability', icon: Calendar },
+          { href: '/teacher/content', label: 'Content', icon: BookOpen },
         ];
       case 'ADMIN':
         return [
           { href: '/admin', label: 'Dashboard', icon: Home },
           { href: '/admin/users', label: 'Users', icon: Users },
+          { href: '/admin/content', label: 'Content', icon: BookOpen },
+          { href: '/admin/attendance', label: 'Attendance', icon: Users },
           { href: '/admin/settings', label: 'Settings', icon: Settings },
         ];
       default:

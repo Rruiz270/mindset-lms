@@ -3,62 +3,121 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'TEACHER') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Get teacher's classes with student and topic information
-    const classes = await prisma.$queryRaw`
-      SELECT 
-        b.id,
-        b.date,
-        b.time,
-        b.status,
-        b."topicId",
-        s.id as "studentId",
-        s.name as "studentName",
-        s.email as "studentEmail",
-        t.id as "topic.id",
-        t.name as "topic.name",
-        t.level as "topic.level",
-        t."orderIndex" as "topic.orderIndex",
-        t.description as "topic.description"
-      FROM "Booking" b
-      JOIN "User" s ON b."studentId" = s.id
-      JOIN "Topic" t ON b."topicId" = t.id
-      WHERE b."teacherId" = ${session.user.id}
-      AND b.status IN ('confirmed', 'completed')
-      ORDER BY b.date DESC, b.time ASC
-    ` as any[]
+    const classes = await prisma.booking.findMany({
+      where: {
+        teacherId: session.user.id,
+        status: { in: ['SCHEDULED', 'COMPLETED'] },
+      },
+      include: {
+        student: {
+          select: { id: true, name: true, email: true, level: true },
+        },
+        topic: {
+          select: { id: true, name: true, level: true, orderIndex: true, description: true },
+        },
+      },
+      orderBy: { scheduledAt: 'desc' },
+    })
 
-    // Transform the flat result into nested structure
-    const formattedClasses = classes.map(row => ({
-      id: row.id,
-      date: row.date,
-      time: row.time,
-      status: row.status,
-      studentId: row.studentId,
-      studentName: row.studentName,
-      studentEmail: row.studentEmail,
-      topic: {
-        id: row['topic.id'],
-        name: row['topic.name'],
-        level: row['topic.level'],
-        orderIndex: row['topic.orderIndex'],
-        description: row['topic.description']
-      }
+    const formattedClasses = classes.map(booking => ({
+      id: booking.id,
+      scheduledAt: booking.scheduledAt.toISOString(),
+      status: booking.status,
+      googleMeetLink: booking.googleMeetLink,
+      duration: booking.duration,
+      attendedAt: booking.attendedAt?.toISOString() || null,
+      student: booking.student,
+      topic: booking.topic,
     }))
 
     return NextResponse.json(formattedClasses)
 
-  } catch (error: any) {
-    console.error('Error fetching teacher classes:', error)
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error fetching teacher classes:', message)
     return NextResponse.json(
-      { error: 'Failed to fetch classes', details: error.message },
+      { error: 'Failed to fetch classes', details: message },
+      { status: 500 }
+    )
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const session = await getServerSession(authOptions)
+
+    if (!session || session.user.role !== 'TEACHER') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const { bookingId, action } = await req.json()
+
+    if (!bookingId || !action) {
+      return NextResponse.json({ error: 'bookingId and action required' }, { status: 400 })
+    }
+
+    if (action === 'complete') {
+      const booking = await prisma.booking.update({
+        where: { id: bookingId, teacherId: session.user.id },
+        data: {
+          status: 'COMPLETED',
+          attendedAt: new Date(),
+        },
+      })
+
+      // Update student progress for this topic
+      await prisma.progress.upsert({
+        where: {
+          userId_topicId: {
+            userId: booking.studentId,
+            topicId: booking.topicId,
+          },
+        },
+        update: { liveClassAttended: true },
+        create: {
+          userId: booking.studentId,
+          topicId: booking.topicId,
+          liveClassAttended: true,
+        },
+      })
+
+      // Deduct a lesson credit from the student's package
+      const pkg = await prisma.package.findFirst({
+        where: {
+          userId: booking.studentId,
+          remainingLessons: { gt: 0 },
+          validUntil: { gte: new Date() },
+        },
+        orderBy: { validUntil: 'asc' },
+      })
+
+      if (pkg) {
+        await prisma.package.update({
+          where: { id: pkg.id },
+          data: {
+            usedLessons: { increment: 1 },
+            remainingLessons: { decrement: 1 },
+          },
+        })
+      }
+
+      return NextResponse.json({ success: true, booking })
+    }
+
+    return NextResponse.json({ error: 'Invalid action' }, { status: 400 })
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Error updating class:', message)
+    return NextResponse.json(
+      { error: 'Failed to update class', details: message },
       { status: 500 }
     )
   }

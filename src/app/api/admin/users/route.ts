@@ -80,3 +80,73 @@ export async function GET(request: Request) {
     );
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id || session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await request.json();
+    const { userId, action, level, totalLessons, validMonths } = body;
+
+    if (!userId || !action) {
+      return NextResponse.json({ error: 'userId and action required' }, { status: 400 });
+    }
+
+    if (action === 'updateLevel') {
+      const validLevels = ['STARTER', 'SURVIVOR', 'EXPLORER', 'EXPERT'];
+      if (!validLevels.includes(level)) {
+        return NextResponse.json({ error: 'Invalid level' }, { status: 400 });
+      }
+
+      const user = await prisma.user.update({
+        where: { id: userId },
+        data: { level },
+      });
+
+      return NextResponse.json({ success: true, user: { id: user.id, level: user.level } });
+    }
+
+    if (action === 'addPackage') {
+      const lessons = totalLessons || 20;
+      const months = validMonths || 6;
+      const now = new Date();
+      const validUntil = new Date(now);
+      validUntil.setMonth(validUntil.getMonth() + months);
+
+      const pkg = await prisma.package.create({
+        data: {
+          userId,
+          totalLessons: lessons,
+          usedLessons: 0,
+          remainingLessons: lessons,
+          validFrom: now,
+          validUntil,
+        },
+      });
+
+      return NextResponse.json({ success: true, package: pkg });
+    }
+
+    if (action === 'toggleActive') {
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+      if (!user) {
+        return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      }
+
+      const updated = await prisma.user.update({
+        where: { id: userId },
+        data: { isActive: !user.isActive },
+      });
+
+      return NextResponse.json({ success: true, isActive: updated.isActive });
+    }
+
+    return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
+  } catch (error) {
+    console.error('Error updating user:', error);
+    return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
+  }
+}

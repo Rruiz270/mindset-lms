@@ -5,23 +5,20 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Navbar from '@/components/layout/navbar'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
-import { 
-  LayoutDashboard, 
-  UserPlus, 
-  GraduationCap, 
+import {
+  LayoutDashboard,
+  UserPlus,
+  GraduationCap,
   Settings,
   Users,
   Building2,
   Calendar,
   Award,
   BarChart3,
-  FileText,
-  UserCheck,
-  Upload,
-  Database,
   BookOpen,
   Library,
-  Sparkles
+  Sparkles,
+  ClipboardCheck
 } from 'lucide-react'
 
 
@@ -221,55 +218,34 @@ export default function AdminDashboard() {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-              <button 
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <button
                 onClick={() => router.push('/admin/users')}
                 className="p-4 text-center hover:bg-blue-50 rounded-lg transition-colors border-2 border-blue-200"
               >
                 <Users className="h-6 w-6 mx-auto mb-2 text-blue-600" />
                 <span className="text-sm font-medium text-blue-700">View Users</span>
               </button>
-              <button 
-                onClick={() => router.push('/admin/simple-import')}
-                className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
-              >
-                <Upload className="h-6 w-6 mx-auto mb-2 text-green-600" />
-                <span className="text-sm font-medium text-green-700">Import CSV</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/auto-populate')}
-                className="p-4 text-center hover:bg-purple-50 rounded-lg transition-colors border-2 border-purple-200"
-              >
-                <Users className="h-6 w-6 mx-auto mb-2 text-purple-600" />
-                <span className="text-sm font-medium text-purple-700">Auto-Populate</span>
-              </button>
-              <button 
-                onClick={() => router.push('/admin/update-student-data')}
-                className="p-4 text-center hover:bg-orange-50 rounded-lg transition-colors border-2 border-orange-200"
-              >
-                <Database className="h-6 w-6 mx-auto mb-2 text-orange-600" />
-                <span className="text-sm font-medium text-orange-700">Update Hours</span>
-              </button>
-              <button 
+              <button
                 onClick={() => router.push('/admin/content')}
                 className="p-4 text-center hover:bg-indigo-50 rounded-lg transition-colors border-2 border-indigo-200"
               >
                 <Library className="h-6 w-6 mx-auto mb-2 text-indigo-600" />
                 <span className="text-sm font-medium text-indigo-700">Content Mgmt</span>
               </button>
-              <button 
-                onClick={() => router.push('/admin/initialize')}
-                className="p-4 text-center hover:bg-indigo-50 rounded-lg transition-colors border-2 border-indigo-200"
+              <button
+                onClick={() => router.push('/admin/attendance')}
+                className="p-4 text-center hover:bg-green-50 rounded-lg transition-colors border-2 border-green-200"
               >
-                <Database className="h-6 w-6 mx-auto mb-2 text-indigo-600" />
-                <span className="text-sm font-medium text-indigo-700">Initialize DB</span>
+                <ClipboardCheck className="h-6 w-6 mx-auto mb-2 text-green-600" />
+                <span className="text-sm font-medium text-green-700">Attendance</span>
               </button>
-              <button 
-                onClick={() => router.push('/admin/test-content')}
-                className="p-4 text-center hover:bg-yellow-50 rounded-lg transition-colors border-2 border-yellow-200"
+              <button
+                onClick={() => router.push('/admin/teachers')}
+                className="p-4 text-center hover:bg-purple-50 rounded-lg transition-colors border-2 border-purple-200"
               >
-                <Database className="h-6 w-6 mx-auto mb-2 text-yellow-600" />
-                <span className="text-sm font-medium text-yellow-700">Test Content</span>
+                <GraduationCap className="h-6 w-6 mx-auto mb-2 text-purple-600" />
+                <span className="text-sm font-medium text-purple-700">Teachers</span>
               </button>
             </div>
           </CardContent>

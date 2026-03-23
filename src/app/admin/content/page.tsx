@@ -75,7 +75,7 @@ interface Topic {
 export default function ContentManagement() {
   const { data: session, status } = useSession()
   const router = useRouter()
-  const [selectedLevel, setSelectedLevel] = useState('starter')
+  const [selectedLevel, setSelectedLevel] = useState('STARTER')
   const [topics, setTopics] = useState<Topic[]>([])
   const [selectedTopic, setSelectedTopic] = useState<string>('')
   const [editingContent, setEditingContent] = useState<Content | null>(null)
@@ -101,8 +101,7 @@ export default function ContentManagement() {
     if (!session || session.user.role !== 'ADMIN') {
       router.push('/auth/login')
     } else {
-      // Setup topics if needed
-      setupTopicsIfNeeded()
+      fetchTopics()
     }
   }, [status, session, router])
 
@@ -118,18 +117,10 @@ export default function ContentManagement() {
     }
   }, [selectedTopic])
 
-  const setupTopicsIfNeeded = async () => {
-    try {
-      await axios.post('/api/admin/setup-topics-if-needed')
-    } catch (error) {
-      console.error('Error setting up topics:', error)
-    }
-  }
-
   const fetchTopics = async () => {
     setLoading(true)
     try {
-      const response = await axios.get(`/api/topics?level=${selectedLevel.toUpperCase()}`)
+      const response = await axios.get(`/api/topics?level=${selectedLevel}`)
       setTopics(response.data)
       if (response.data.length > 0 && !selectedTopic) {
         setSelectedTopic(response.data[0].id)
@@ -278,10 +269,10 @@ export default function ContentManagement() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="starter">Starter</SelectItem>
-                    <SelectItem value="basic">Basic</SelectItem>
-                    <SelectItem value="intermediate">Intermediate</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
+                    <SelectItem value="STARTER">Starter</SelectItem>
+                    <SelectItem value="SURVIVOR">Survivor</SelectItem>
+                    <SelectItem value="EXPLORER">Explorer</SelectItem>
+                    <SelectItem value="EXPERT">Expert</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
