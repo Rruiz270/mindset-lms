@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       message: 'Database schema created successfully!',
       output: stdout
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Migration error:', error)
     return NextResponse.json(
       { message: 'Migration failed', error: error.message },

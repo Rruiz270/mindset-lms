@@ -126,7 +126,7 @@ export default function StudentExercises() {
       case 'READING':
         return (
           <div className="space-y-4">
-            {content.passage && (
+            {!!content.passage && (
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
                 <p className="text-sm font-medium text-blue-800 mb-2">Reading Passage</p>
                 <p className="text-gray-700 leading-relaxed">{content.passage as string}</p>
@@ -162,7 +162,7 @@ export default function StudentExercises() {
       case 'WRITING':
         return (
           <div className="space-y-4">
-            {content.prompt && (
+            {!!content.prompt && (
               <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-r-lg">
                 <p className="text-gray-700">{content.prompt as string}</p>
               </div>
@@ -192,7 +192,7 @@ export default function StudentExercises() {
       case 'LISTENING':
         return (
           <div className="space-y-4">
-            {content.dialogue && (
+            {!!content.dialogue && (
               <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg">
                 <p className="text-sm font-medium text-orange-800 mb-2">
                   Dialogue
@@ -242,7 +242,7 @@ export default function StudentExercises() {
       case 'SPEAKING':
         return (
           <div className="space-y-4">
-            {content.prompt && (
+            {!!content.prompt && (
               <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
                 <p className="text-gray-700">{content.prompt as string}</p>
               </div>
@@ -283,7 +283,7 @@ export default function StudentExercises() {
       case 'GRAMMAR':
         return (
           <div className="space-y-4">
-            {content.grammarFocus && (
+            {!!content.grammarFocus && (
               <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
                 <p className="text-sm font-medium text-red-800 mb-1">
                   Grammar Focus

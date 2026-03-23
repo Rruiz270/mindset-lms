@@ -4,9 +4,10 @@ import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
+import { UserRole, Level } from "@prisma/client"
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as any,
   session: {
     strategy: "jwt",
   },
@@ -87,8 +88,8 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (session?.user) {
         session.user.id = token.id as string
-        session.user.role = token.role as string
-        session.user.level = token.level as string
+        session.user.role = token.role as UserRole
+        session.user.level = token.level as Level | null
         session.user.refreshToken = token.refreshToken as string
       }
       return session

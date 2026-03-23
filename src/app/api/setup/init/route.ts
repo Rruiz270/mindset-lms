@@ -167,7 +167,7 @@ export async function POST(request: NextRequest) {
         ]
       }
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database initialization error:', error)
     return NextResponse.json(
       { message: 'Database initialization failed', error: error.message },

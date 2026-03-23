@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
         students: students.map(s => s.email)
       }
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Setup error:', error)
     return NextResponse.json(
       { message: 'Setup failed', error: error.message },

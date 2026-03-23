@@ -5,17 +5,18 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   req: Request,
-  { params }: { params: { topicId: string } }
+  { params }: { params: Promise<{ topicId: string }> }
 ) {
   try {
+    const { topicId } = await params
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'ADMIN') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const exercises = await prisma.$queryRaw`
-      SELECT 
+      SELECT
         id,
         "topicId",
         phase,
@@ -28,7 +29,7 @@ export async function GET(
         points,
         "orderIndex"
       FROM "Exercise"
-      WHERE "topicId" = ${params.topicId}
+      WHERE "topicId" = ${topicId}
       ORDER BY phase, "orderIndex"
     `
 

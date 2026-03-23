@@ -124,13 +124,13 @@ function SlideViewerContent() {
       case 'intro':
         return (
           <div className="space-y-6">
-            {c.objective && (
+            {!!c.objective && (
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5">
                 <p className="text-sm font-medium text-yellow-800 mb-1">Lesson Objective</p>
                 <p className="text-gray-700">{c.objective as string}</p>
               </div>
             )}
-            {c.warmUpActivity && (
+            {!!c.warmUpActivity && (
               <div className="bg-white border rounded-lg p-5">
                 <p className="text-sm font-medium text-gray-600 mb-2">Warm-up Activity</p>
                 <p className="text-gray-800 text-lg">{c.warmUpActivity as string}</p>
@@ -167,7 +167,7 @@ function SlideViewerContent() {
                 </div>
               </div>
             ))}
-            {c.activity && (
+            {!!c.activity && (
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-sm font-medium text-blue-800 mb-1">Practice Activity</p>
                 <p className="text-gray-700">{c.activity as string}</p>
@@ -179,13 +179,13 @@ function SlideViewerContent() {
       case 'grammar':
         return (
           <div className="space-y-6">
-            {c.grammarPoint && (
+            {!!c.grammarPoint && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-5">
                 <p className="text-sm font-medium text-red-800 mb-1">Grammar Point</p>
                 <p className="text-gray-800 text-lg font-medium">{c.grammarPoint as string}</p>
               </div>
             )}
-            {c.explanation && (
+            {!!c.explanation && (
               <div className="bg-white border rounded-lg p-5">
                 <p className="text-gray-700 leading-relaxed">{c.explanation as string}</p>
               </div>
@@ -203,7 +203,7 @@ function SlideViewerContent() {
                 </ul>
               </div>
             )}
-            {c.practiceActivity && (
+            {!!c.practiceActivity && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <p className="text-sm font-medium text-red-800 mb-1">Practice</p>
                 <p className="text-gray-700">{c.practiceActivity as string}</p>
@@ -215,7 +215,7 @@ function SlideViewerContent() {
       case 'communication':
         return (
           <div className="space-y-6">
-            {c.activity && (
+            {!!c.activity && (
               <div className="bg-green-50 border border-green-200 rounded-lg p-5">
                 <p className="text-gray-800">{c.activity as string}</p>
               </div>
@@ -261,7 +261,7 @@ function SlideViewerContent() {
       case 'review':
         return (
           <div className="space-y-6">
-            {c.reviewActivity && (
+            {!!c.reviewActivity && (
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-5">
                 <p className="text-sm font-medium text-purple-800 mb-1">Review Activity</p>
                 <p className="text-gray-700">{c.reviewActivity as string}</p>
@@ -280,7 +280,7 @@ function SlideViewerContent() {
                 </ul>
               </div>
             )}
-            {c.homeworkPreview && (
+            {!!c.homeworkPreview && (
               <div className="bg-gray-50 border rounded-lg p-4">
                 <p className="text-sm font-medium text-gray-600 mb-1">Homework Preview</p>
                 <p className="text-gray-700">{c.homeworkPreview as string}</p>

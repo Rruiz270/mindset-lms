@@ -26,11 +26,11 @@ export async function GET(request: NextRequest) {
 
     // Use raw SQL to avoid Prisma schema issues
     const topics = await prisma.$queryRaw`
-      SELECT id, name, description, "orderIndex" 
-      FROM "Topic" 
+      SELECT id, name, description, "orderIndex"
+      FROM "Topic"
       WHERE level = ${level}::"Level"
       ORDER BY "orderIndex" ASC
-    `
+    ` as any[]
 
     // Fetch contents separately using raw SQL
     for (const topic of topics) {

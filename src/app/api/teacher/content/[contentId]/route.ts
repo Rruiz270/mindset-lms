@@ -5,18 +5,19 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   req: Request,
-  { params }: { params: { contentId: string } }
+  { params }: { params: Promise<{ contentId: string }> }
 ) {
   try {
+    const { contentId } = await params
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'TEACHER') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     // Get content details with topic and exercise information
     const content = await prisma.$queryRaw`
-      SELECT 
+      SELECT
         c.id,
         c.title,
         c.description,
@@ -35,7 +36,7 @@ export async function GET(
         t.materials
       FROM "Content" c
       JOIN "Topic" t ON c."topicId" = t.id
-      WHERE c.id = ${params.contentId}
+      WHERE c.id = ${contentId}
     ` as any[]
 
     if (content.length === 0) {
@@ -63,10 +64,10 @@ export async function GET(
         OR (phase = 'AFTER_CLASS' AND ${contentItem.phase} = 'post_class')
       )
       ORDER BY "orderIndex"
-    `
+    ` as any[]
 
     // Get slides for live class content
-    let slides = []
+    let slides: any[] = []
     if (contentItem.phase === 'live_class') {
       slides = await prisma.$queryRaw`
         SELECT 

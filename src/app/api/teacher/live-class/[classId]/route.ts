@@ -5,18 +5,19 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   req: Request,
-  { params }: { params: { classId: string } }
+  { params }: { params: Promise<{ classId: string }> }
 ) {
   try {
+    const { classId } = await params
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'TEACHER') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     // Get booking and topic information
     const booking = await prisma.$queryRaw`
-      SELECT 
+      SELECT
         b.id,
         b."scheduledAt" as date,
         TO_CHAR(b."scheduledAt", 'HH24:MI') as time,
@@ -31,7 +32,7 @@ export async function GET(
       FROM "Booking" b
       JOIN "User" u ON b."studentId" = u.id
       JOIN "Topic" t ON b."topicId" = t.id
-      WHERE b.id = ${params.classId}
+      WHERE b.id = ${classId}
       AND b."teacherId" = ${session.user.id}
     ` as any[]
 

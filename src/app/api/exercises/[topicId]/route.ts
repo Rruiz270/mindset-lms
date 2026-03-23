@@ -5,9 +5,10 @@ import { authOptions } from '@/lib/auth'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { topicId: string } }
+  { params }: { params: Promise<{ topicId: string }> }
 ) {
   try {
+    const { topicId } = await params
     const session = await getServerSession(authOptions)
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -18,7 +19,7 @@ export async function GET(
     const category = searchParams.get('category')
 
     const whereClause: any = {
-      topicId: params.topicId,
+      topicId,
     }
 
     if (phase) {

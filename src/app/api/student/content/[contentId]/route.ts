@@ -5,18 +5,19 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   req: Request,
-  { params }: { params: { contentId: string } }
+  { params }: { params: Promise<{ contentId: string }> }
 ) {
   try {
+    const { contentId } = await params
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'STUDENT') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     // Get content details with topic information
     const content = await prisma.$queryRaw`
-      SELECT 
+      SELECT
         c.id,
         c.title,
         c.description,
@@ -27,7 +28,7 @@ export async function GET(
         t.name as "topicName"
       FROM "Content" c
       JOIN "Topic" t ON c."topicId" = t.id
-      WHERE c.id = ${params.contentId}
+      WHERE c.id = ${contentId}
     ` as any[]
 
     if (content.length === 0) {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Navbar from '@/components/layout/navbar'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
@@ -25,12 +25,14 @@ interface Exercise {
   orderIndex: number
 }
 
-export default function ExercisePlayer({ params }: { params: { topicId: string } }) {
+export default function ExercisePlayer() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const searchParams = useSearchParams()
+  const params = useParams()
+  const topicId = topicId as string
   const category = searchParams.get('category') || 'READING'
-  
+
   const [exercises, setExercises] = useState<Exercise[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<{[key: string]: any}>({})
@@ -54,7 +56,7 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
     const fetchExercises = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`/api/exercises/${params.topicId}?phase=PRE_CLASS&category=${category}`)
+        const response = await fetch(`/api/exercises/${topicId}?phase=PRE_CLASS&category=${category}`)
         if (response.ok) {
           const exerciseData = await response.json()
           setExercises(exerciseData)
@@ -67,10 +69,10 @@ export default function ExercisePlayer({ params }: { params: { topicId: string }
       }
     }
 
-    if (params.topicId && category && typeof window !== 'undefined') {
+    if (topicId && category && typeof window !== 'undefined') {
       fetchExercises()
     }
-  }, [params.topicId, category])
+  }, [topicId, category])
 
   const handleAnswerChange = (exerciseId: string, answer: any) => {
     setAnswers(prev => ({

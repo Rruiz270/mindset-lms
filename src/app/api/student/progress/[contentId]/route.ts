@@ -5,24 +5,25 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   req: Request,
-  { params }: { params: { contentId: string } }
+  { params }: { params: Promise<{ contentId: string }> }
 ) {
   try {
+    const { contentId } = await params
     const session = await getServerSession(authOptions)
-    
+
     if (!session || session.user.role !== 'STUDENT') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     // Check if student has completed this content
     const progress = await prisma.$queryRaw`
-      SELECT 
+      SELECT
         id,
         "completedAt",
         "timeSpent"
       FROM "Progress"
       WHERE "userId" = ${session.user.id}
-      AND "contentId" = ${params.contentId}
+      AND "contentId" = ${contentId}
     ` as any[]
 
     if (progress.length === 0) {

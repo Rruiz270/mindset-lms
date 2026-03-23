@@ -70,10 +70,10 @@ export class ContentSyncService {
         },
         orderBy: [
           { topic: { orderIndex: 'asc' } },
-          { 
+          {
             phase: 'asc' // This will be sorted by enum order
           },
-          { order: 'asc' }
+          { orderIndex: 'asc' }
         ]
       })
 
@@ -229,10 +229,10 @@ export class ContentSyncService {
       const contents = await prisma.content.findMany({
         where: {
           topicId,
-          phase
+          phase: phase as any
         },
         orderBy: {
-          order: 'asc'
+          orderIndex: 'asc'
         }
       })
 
@@ -240,7 +240,7 @@ export class ContentSyncService {
       for (let i = 0; i < contents.length; i++) {
         await prisma.content.update({
           where: { id: contents[i].id },
-          data: { order: i + 1 }
+          data: { orderIndex: i + 1 }
         })
       }
     } catch (error) {

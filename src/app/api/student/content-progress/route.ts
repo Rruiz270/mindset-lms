@@ -94,7 +94,7 @@ export async function GET(req: Request) {
     if (contentId) {
       // Get progress for a specific content
       const progress = await prisma.$queryRaw`
-        SELECT 
+        SELECT
           cp."contentId",
           cp.completed,
           cp."timeSpent",
@@ -106,7 +106,7 @@ export async function GET(req: Request) {
         JOIN "Content" c ON cp."contentId" = c.id
         WHERE cp."userId" = ${session.user.id}
         AND cp."contentId" = ${contentId}
-      `
+      ` as any[]
 
       return NextResponse.json(progress[0] || { completed: false, timeSpent: 0 })
     }
@@ -114,14 +114,14 @@ export async function GET(req: Request) {
     if (topicId) {
       // Get all content progress for a topic
       const contents = await prisma.$queryRaw`
-        SELECT 
+        SELECT
           c.id,
           c.title,
           c.description,
           c.type,
           c.phase,
           c.duration,
-          c."order",
+          c."orderIndex",
           COALESCE(cp.completed, false) as completed,
           COALESCE(cp."timeSpent", 0) as "timeSpent",
           cp."completedAt"
@@ -129,13 +129,13 @@ export async function GET(req: Request) {
         LEFT JOIN "ContentProgress" cp ON c.id = cp."contentId" AND cp."userId" = ${session.user.id}
         WHERE c."topicId" = ${topicId}
         AND c.phase IN ('pre_class', 'post_class')
-        ORDER BY 
+        ORDER BY
           CASE c.phase
             WHEN 'pre_class' THEN 1
             WHEN 'post_class' THEN 2
           END,
-          c."order"
-      `
+          c."orderIndex"
+      ` as any[]
 
       // Get topic progress
       const topicProgress = await prisma.progress.findUnique({
