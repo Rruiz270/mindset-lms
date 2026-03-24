@@ -56,12 +56,19 @@ export async function GET() {
       createdUsers++
     }
     
+    // Ensure all STUDENT users have a level set (default STARTER)
+    await prisma.user.updateMany({
+      where: { role: 'STUDENT', level: null },
+      data: { level: 'STARTER' }
+    })
+
     // Get all users for debugging
     const allUsers = await prisma.user.findMany({
       select: {
         email: true,
         role: true,
         name: true,
+        level: true,
         createdAt: true
       }
     })

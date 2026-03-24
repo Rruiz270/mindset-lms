@@ -59,7 +59,7 @@ export default function StudentExercisesPage() {
     } catch (e) { console.error(e) } finally { setLoading(false) }
   }, [session?.user?.level])
 
-  useEffect(() => { if (session?.user?.level) fetchTopics() }, [session?.user?.level, fetchTopics])
+  useEffect(() => { if (status === 'authenticated') fetchTopics() }, [status, fetchTopics])
 
   const fetchExercises = useCallback(async (topicId: string) => {
     setLoadingExercises(true)

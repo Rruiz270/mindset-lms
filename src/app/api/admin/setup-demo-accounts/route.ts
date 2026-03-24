@@ -57,9 +57,6 @@ export async function POST(request: NextRequest) {
               level: account.level,
               studentId: account.studentId,
               isActive: account.isActive,
-              phone: null,
-              remainingHours: account.role === 'STUDENT' ? 100 : null,
-              comments: null
             }
           });
           
@@ -81,9 +78,6 @@ export async function POST(request: NextRequest) {
               level: account.level,
               studentId: account.studentId,
               isActive: account.isActive,
-              phone: null,
-              remainingHours: account.role === 'STUDENT' ? 100 : null,
-              comments: null
             }
           });
           

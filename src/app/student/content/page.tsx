@@ -52,7 +52,7 @@ function SlideViewerContent() {
     } catch (e) { console.error(e) } finally { setLoading(false) }
   }, [session?.user?.level])
 
-  useEffect(() => { if (session?.user?.level) fetchTopics() }, [session?.user?.level, fetchTopics])
+  useEffect(() => { if (status === 'authenticated') fetchTopics() }, [status, fetchTopics])
 
   const fetchSlides = useCallback(async (id: string) => {
     setSlidesLoading(true)

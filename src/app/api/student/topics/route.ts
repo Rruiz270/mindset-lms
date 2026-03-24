@@ -12,7 +12,16 @@ export async function GET(req: Request) {
     }
 
     const { searchParams } = new URL(req.url)
-    const level = searchParams.get('level') || 'STARTER'
+    let level = searchParams.get('level')
+
+    // If no level provided or invalid, look up from DB, default to STARTER
+    if (!level || !['STARTER', 'SURVIVOR', 'EXPLORER', 'EXPERT'].includes(level)) {
+      const user = await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: { level: true }
+      })
+      level = user?.level || 'STARTER'
+    }
 
     // Get topics for the specified level
     const topics = await prisma.$queryRaw`
